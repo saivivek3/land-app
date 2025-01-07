@@ -1,9 +1,10 @@
-import useFormHook from "@/hooks/useFormHook";
-import Input from "@/components/ui/Input";
-import Button from "@/components/ui/Button";
+import useFormHook from '@/hooks/useFormHook';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = data => console.log(data);
   const { handleSubmit, register } = useFormHook();
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
@@ -24,6 +25,14 @@ function LoginForm() {
         name="password"
         register={register}
       />
+
+      <Link
+        to="/forgot-password"
+        className="text-brandTertiary text-[10px] font-bold  mt-1"
+      >
+        {' '}
+        Forgot Password
+      </Link>
 
       {/* Action Buttons */}
       <Button>Sign In</Button>

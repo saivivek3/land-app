@@ -6,6 +6,7 @@ import useFormHook from '@/hooks/useFormHook';
 import Button from '@/components/ui/Button.jsx';
 import { openSidesOptions } from '@/pages/property/propertyFormConfig.js';
 import PropertySidebar from './PropertySidebar';
+import { useNavigate } from 'react-router-dom';
 
 const DetailsForm = ({
   heading,
@@ -13,9 +14,11 @@ const DetailsForm = ({
   formConfig,
   formHeading,
   isOpenSidesRequired = false,
+  nextPath,
 }) => {
   const { register, handleSubmit } = useFormHook();
   const [selectedOpenSides, setSelectedOpenSides] = useState([]);
+  const navigate = useNavigate();
   function onSubmit(data) {
     console.log(data);
   }
@@ -65,12 +68,6 @@ const DetailsForm = ({
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-sm">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-xl font-bold">LandApp</h1>
-        <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
-      </div>
-
       {/* Main Content */}
       <div className="flex gap-8">
         {/* Sidebar */}
@@ -78,7 +75,10 @@ const DetailsForm = ({
         {/* Form Content */}
         <div className="flex-1">
           <div className="mb-6">
-            <button className="flex items-center text-primary font-bold text-xl mb-3 hover:text-gray-900">
+            <button
+              className="flex items-center text-primary font-bold text-xl mb-3 hover:text-gray-900"
+              onClick={() => navigate(-1)}
+            >
               <ChevronLeft className="w-5 h-5 mr-1 " />
               Back to
             </button>
@@ -133,6 +133,7 @@ const DetailsForm = ({
             <Button
               type="submit"
               className="w-1/2 bg-primary rounded-lg text-base font-semibold hover:bg-primary/50"
+              onClick={() => navigate(`${nextPath}`)}
             >
               Continue
             </Button>

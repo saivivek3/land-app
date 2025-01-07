@@ -1,9 +1,9 @@
-import cn from "@/lib/cn";
-import { Pencil } from "lucide-react";
-import Input from "@/components/ui/Input";
-import { useState } from "react";
-import useFormHook from "@/hooks/useFormHook";
-import Button from "@/components/ui/Button";
+import cn from '@/lib/cn';
+import { Pencil } from 'lucide-react';
+import { useState } from 'react';
+import Button from '@/components/ui/Button';
+import HomeScreen from '@/assets/images/image.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 // const header = (
 //   <div className="flex items-center justify-between mb-6">
@@ -14,11 +14,13 @@ import Button from "@/components/ui/Button";
 
 const CreatePropertyForm = () => {
   const [property, setProperty] = useState({
-    propertyType: "",
-    propertyCategory: "",
-    role: "",
+    propertyType: '',
+    propertyCategory: '',
+    role: '',
   });
   // const { register, handleSubmit } = useFormHook();
+
+  const navigate = useNavigate();
 
   function onSubmit(data) {
     console.log(data);
@@ -57,18 +59,25 @@ const CreatePropertyForm = () => {
             <span className="text-primary text-base">Seal the Deal</span>
           </div>
         </div>
+        <div>
+          <img
+            src={HomeScreen}
+            alt="lock-screen"
+            className="object-cover w-full h-[260px] rounded-lg"
+          />
+        </div>
       </div>
       <div className="space-y-6 border  shadow-sm  rounded-lg p-4">
         <div>
-          <label className="block  text-xl font-[600] mb-2">You are</label>
-          <div className="flex gap-2 text-primary text-sm">
-            {["User", "Owner", "Agent", "Other"].map((option) => (
+          <label className="block  text-base font-[600] mb-2">You are</label>
+          <div className="flex gap-2 text-primary ">
+            {['User', 'Owner', 'Agent', 'Other'].map(option => (
               <button
                 key={option}
                 onClick={() => setProperty({ ...property, role: option })}
                 className={cn(
-                  "px-4 py-2 rounded-full border border-bQuinary",
-                  property.role === option ? "bg-blightMode " : ""
+                  'px-4 py-2 rounded-full border border-bQuinary text-xs',
+                  property.role === option ? 'bg-blightMode ' : '',
                 )}
               >
                 {option}
@@ -78,19 +87,19 @@ const CreatePropertyForm = () => {
         </div>
 
         <div>
-          <label className="block  text-xl font-[600] mb-2 ">
+          <label className="block  text-base font-[600] mb-2 ">
             You are looking to
           </label>
-          <div className="flex gap-2">
-            {["Agriculture", "Commercial"].map((option) => (
+          <div className="flex gap-2 ">
+            {['Agriculture', 'Commercial'].map(option => (
               <button
                 key={option}
                 onClick={() =>
                   setProperty({ ...property, propertyType: option })
                 }
                 className={cn(
-                  "px-4 py-2 rounded-full border border-bQuinary",
-                  property.propertyType === option ? "bg-blightMode " : ""
+                  'px-4 py-2 rounded-full border border-bQuinary text-xs ',
+                  property.propertyType === option ? 'bg-blightMode ' : '',
                 )}
               >
                 {option}
@@ -100,19 +109,19 @@ const CreatePropertyForm = () => {
         </div>
 
         <div>
-          <label className="block  text-xl font-[600] mb-2">
+          <label className="block  text-base font-[600] mb-2">
             You are looking to
           </label>
-          <div className="flex gap-2">
-            {["Land", "Industry", "Plot", "Other"].map((option) => (
+          <div className="flex gap-2 text-xs">
+            {['Land', 'Industry', 'Plot', 'Other'].map(option => (
               <button
                 key={option}
                 onClick={() =>
                   setProperty({ ...property, propertyCategory: option })
                 }
                 className={cn(
-                  "px-4 py-2 rounded-full border border-bQuinary",
-                  property.propertyCategory === option ? "bg-blightMode " : ""
+                  'px-4 py-2 rounded-full border border-bQuinary',
+                  property.propertyCategory === option ? 'bg-blightMode ' : '',
                 )}
               >
                 {option}
@@ -121,27 +130,30 @@ const CreatePropertyForm = () => {
           </div>
         </div>
 
-        <label className="block text-xl font-semibold mb-2">
+        <label className="block text-base font-semibold mb-2">
           Your Contact number for buyer to reach
         </label>
 
         <div className="flex items-center gap-2 justify-between    border border-[#E2E4E5]  rounded-lg px-4">
           <div className="px-1 py-2">
-            <p className="text-base font-semibold text-[#242426]">
+            <p className="text-sm font-semibold text-[#242426]">
               +91 9966132599
             </p>
-            <p className="text-sm text-[#575F6E] ">Registered number</p>
+            <p className="text-xs text-[#575F6E] ">Registered number</p>
           </div>
           <Pencil className=" w-4 h-4 text-blue-500" />
         </div>
 
-        <div className="mt-3 flex items-center  gap-1">
-          <p className="text-base text-[#242426]">
-            Are you a registered user? <a href="#">Login</a>
+        <div className="mt-3 flex items-center  gap-2">
+          <p className="text-sm text-[#242426]">
+            Are you a registered user? <Link to="/?tab=login">Login</Link>
           </p>
         </div>
 
-        <Button className="bg-primary text-white text-base font-semibold hover:bg-primary/55">
+        <Button
+          className="bg-primary text-white text-base font-semibold hover:bg-primary/55"
+          onClick={() => navigate('/create-property/verification')}
+        >
           Start Now
         </Button>
       </div>

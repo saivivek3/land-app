@@ -1,16 +1,31 @@
-import { Outlet } from "react-router-dom";
-import ArrowLeftIcon from "@/assets/arrow-left.svg";
+import { Outlet, useNavigate } from 'react-router-dom';
+import ArrowLeftIcon from '@/assets/arrow-left.svg';
 
 function ForgotPasswordLayout() {
+  const navigate = useNavigate();
+
+  function navigateToLogin() {
+    navigate('/?tab=login');
+  }
   return (
-    <div className="space-y-4 max-w-xs m-auto ">
-      <div className="flex flex-col items-center gap-3">
+    <div className="space-y-4 max-w-xs mx-auto ">
+      <div className="flex flex-col  gap-3">
         <>
-          <Outlet />
+          <div className="mt-3">
+            <Outlet />
+          </div>
+
           <div className="flex items-center justify-center  gap-2 mt-4">
-            <img src={ArrowLeftIcon} alt="arrow-left-icon" />
-            <p className="text-primary text-sm cursor-pointer">
-              Back to Log In{" "}
+            <img
+              src={ArrowLeftIcon}
+              alt="arrow-left-icon"
+              className="flex justify-center"
+            />
+            <p
+              className="text-primary text-sm cursor-pointer"
+              onClick={navigateToLogin}
+            >
+              Back to Log In{' '}
             </p>
           </div>
         </>

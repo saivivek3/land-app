@@ -16,6 +16,7 @@ export default {
         buttontertiary: '#6941C6',
         brandTertiary: '#7F56D9',
         brandPrimary: '#F9F5FF',
+        brandSecondary: '#f4ebff',
 
         disabledlight: '#FAFAFA',
         disabledDark: '#D5D7DA',
@@ -23,11 +24,6 @@ export default {
       },
       boxShadow: {
         customBoxShadow: '0px 1px 2px 0px #0A0D12',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
     },
   },

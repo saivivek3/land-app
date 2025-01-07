@@ -1,11 +1,15 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import Header from '@/pages/property/Header';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 function PropertyLayout() {
   return (
-    <div className=" container mx-auto my-3 ">
-      <Outlet />
-    </div>
+    <>
+      <Header />
+      <div className=" container mx-auto my-8 ">
+        <Outlet />
+      </div>
+    </>
   );
 }
 

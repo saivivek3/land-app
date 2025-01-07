@@ -1,19 +1,30 @@
-import Icon from "@/assets/react.svg";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import useFormHook from "@/hooks/useFormHook";
+import Icon from '@/assets/react.svg';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
+import useFormHook from '@/hooks/useFormHook';
+import { useNavigate } from 'react-router-dom';
 
 function ForgotPasswordForm() {
   const { handleSubmit, register } = useFormHook();
   function onSubmit(data) {
     console.log(data);
   }
+  const navigate = useNavigate();
+
+  function navigateToEmail() {
+    navigate('/forgot-password/check-email');
+  }
 
   return (
     <>
-      <img src={Icon} alt="Forgot Password" className="w-8 h-8 " />
-      <h2 className="text-primary text-2xl font-semibold ">Forgot Password</h2>
-      <p className="text-base text-tertiary">
+      <div className="flex justify-center items-center">
+        <img src={Icon} alt="Forgot Password" className="w-8 h-8 flex " />
+      </div>
+
+      <h2 className="text-primary text-2xl font-semibold text-center">
+        Forgot Password
+      </h2>
+      <p className="text-sm  text-tertiary ">
         No worries, we’ll send you reset instructions.
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +35,7 @@ function ForgotPasswordForm() {
           labelName="Name"
           name="name"
         />
-        <Button>Reset Password </Button>
+        <Button onClick={navigateToEmail}>Reset Password </Button>
       </form>
     </>
   );

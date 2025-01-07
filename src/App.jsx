@@ -15,7 +15,12 @@ import {
 import { PropertyDetailsForm } from '@/pages/property/PropertyDetails.jsx';
 import PropertyLocatedForm from '@/pages/property/PropertyLocatedForm.jsx';
 import OwnerDetailsForm from '@/pages/property/OwnerDetailsForm.jsx';
-import PropertyDocuments from '@/pages/property/PropertyDocuments.jsx';
+
+import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider';
+import PropertyDocuments from './pages/property/PropertyDocuments';
+import ImageUploadGallery from './pages/property/ImageUploadGallery';
+import CreatePropertyConfirmation from './pages/property/createPropertyConfirmation';
+import PropertyPhoneNumberVerification from './pages/property/PropertyVerification';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -59,6 +64,10 @@ export default function App() {
           element: <CreatePropertyForm />,
         },
         {
+          path: '/create-property/verification',
+          element: <PropertyPhoneNumberVerification />,
+        },
+        {
           path: '/create-property/property-details',
           element: (
             <PropertyDetailsForm
@@ -69,6 +78,7 @@ export default function App() {
                 'An accurate information helps you connect with right buyers'
               }
               formConfig={propertyDetailsConfig}
+              nextPath="/create-property/property-located"
             />
           ),
         },
@@ -82,6 +92,7 @@ export default function App() {
                 'An accurate location helps you connect with right buyers'
               }
               formConfig={LocationDetailsConfig}
+              nextPath="/create-property/owner-details"
             />
           ),
         },
@@ -93,12 +104,29 @@ export default function App() {
               formHeading=""
               subHeading={'Owner information'}
               formConfig={OwnerDetailsConfig}
+              nextPath="/create-property/property-documents"
             />
           ),
         },
         {
           path: '/create-property/property-documents',
-          element: <PropertyDocuments />,
+          element: (
+            <PropertyDetailsContextProvider nextPath="/create-property/photos">
+              <PropertyDocuments />
+            </PropertyDetailsContextProvider>
+          ),
+        },
+        {
+          path: '/create-property/photos',
+          element: (
+            <PropertyDetailsContextProvider nextPath="/create-property/confirmation">
+              <ImageUploadGallery />
+            </PropertyDetailsContextProvider>
+          ),
+        },
+        {
+          path: '/create-property/confirmation',
+          element: <CreatePropertyConfirmation />,
         },
       ],
     },

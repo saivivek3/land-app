@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
 import Button from '@/components/ui/Button';
 import GoogleIcon from '@/assets/google-icon.svg';
+import { useSearchParams } from 'react-router-dom';
 
 function AuthenticationForm() {
   const [userType, setUserType] = useState('User');
   const userTypes = ['User', 'Owner', 'Agent', 'Other'];
   const [activeTab, setActiveTab] = useState('signup');
+  const [searchParams] = useSearchParams();
 
+  const tab = searchParams.get('tab');
+
+  useEffect(() => {
+    if (tab === 'login') {
+      setActiveTab('login');
+    } else {
+      setActiveTab('signup');
+    }
+  }, [tab]);
+
+  console.log(tab, searchParams);
   return (
     <div className="max-w-md mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Create an account</h1>
@@ -16,18 +29,18 @@ function AuthenticationForm() {
         <div className="grid grid-cols-2 mb-3 relative">
           <button
             onClick={() => setActiveTab('signup')}
-            className={`p-2 text-[11px]  text-quaternary border z-10 border-bPrimary transition-all font-semibold duration-300 bg-white  rounded-lg shadow-sm  ${
+            className={`p-2 text-[11px]  text-quaternary border z-10 border-bPrimary transition-all font-semibold duration-300  rounded-lg shadow-sm  ${
               activeTab === 'signup' &&
-              '  text-secondary font-bold  border-bQuinary bg-[#FAFAFA]'
+              '  text-secondary font-bold  border-bQuinary bg-blightMode'
             }`}
           >
             Sign up
           </button>
           <button
             onClick={() => setActiveTab('login')}
-            className={` p-2  absolute left-[40%] w-[60%]  text-[11px] border-bPrimary text-quaternary border transition-all font-semibold duration-300 bg-white  rounded-lg shadow-sm border-l-0  rounded-s-none  ${
+            className={` p-2  absolute left-[40%] w-[60%]  text-[11px] border-bPrimary text-quaternary border transition-all font-semibold duration-300   rounded-lg shadow-sm border-l-0  rounded-s-none overflow-hidden  ${
               activeTab === 'login' &&
-              '  text-secondary font-bold  border-bQuinary bg-[#FAFAFA] rounded-s-lg '
+              '  text-secondary font-bold  border-bQuinary bg-blightMode rounded-s-lg  '
             }`}
           >
             Log in
