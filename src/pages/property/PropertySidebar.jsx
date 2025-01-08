@@ -1,7 +1,7 @@
 import React from 'react';
 import { steps } from './propertyFormConfig';
 import cn from '@/lib/cn';
-import PropertyScoreCard from './PropertyScoreCard';
+import PropertyScoreCard from './PropertyScoreCard.jsx';
 
 function PropertySidebar() {
   return (

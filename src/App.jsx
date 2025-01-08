@@ -19,7 +19,7 @@ import OwnerDetailsForm from '@/pages/property/OwnerDetailsForm.jsx';
 import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider.jsx';
 import PropertyDocuments from './pages/property/PropertyDocuments.jsx';
 import ImageUploadGallery from './pages/property/ImageUploadGallery.jsx';
-import CreatePropertyConfirmation from './pages/property/createPropertyConfirmation.jsx';
+import CreatePropertyConfirmation from './pages/property/CreatePropertyConfirmation.jsx';
 import PropertyPhoneNumberVerification from './pages/property/PropertyVerification.jsx';
 
 export default function App() {
