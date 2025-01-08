@@ -1,5 +1,5 @@
 import Icon from '@/assets/react.svg';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button.jsx';
 import { useNavigate } from 'react-router-dom';
 
 function CheckEmailForm() {

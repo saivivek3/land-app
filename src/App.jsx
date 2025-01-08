@@ -1,12 +1,12 @@
-import AuthenticationForm from './pages/authentication/AuthenticationForm';
+import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx ';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm';
-import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
-import CheckEmailForm from './pages/authentication/CheckEmailForm';
-import NewPasswordForm from './pages/authentication/NewPasswordForm';
-import PasswordReset from './pages/authentication/PasswordReset';
-import CreatePropertyForm from './pages/property/CreatePropertyForm';
-import PropertyLayout from './layout/PropertyLayout';
+import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm.jsx';
+import ForgotPasswordLayout from './layout/ForgotPasswordLayout.jsx';
+import CheckEmailForm from './pages/authentication/CheckEmailForm.jsx';
+import NewPasswordForm from './pages/authentication/NewPasswordForm.jsx';
+import PasswordReset from './pages/authentication/PasswordReset.jsx';
+import CreatePropertyForm from './pages/property/CreatePropertyForm.jsx';
+import PropertyLayout from './layout/PropertyLayout.jsx';
 import {
   LocationDetailsConfig,
   OwnerDetailsConfig,
@@ -16,11 +16,11 @@ import { PropertyDetailsForm } from '@/pages/property/PropertyDetails.jsx';
 import PropertyLocatedForm from '@/pages/property/PropertyLocatedForm.jsx';
 import OwnerDetailsForm from '@/pages/property/OwnerDetailsForm.jsx';
 
-import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider';
-import PropertyDocuments from './pages/property/PropertyDocuments';
-import ImageUploadGallery from './pages/property/ImageUploadGallery';
-import CreatePropertyConfirmation from './pages/property/createPropertyConfirmation';
-import PropertyPhoneNumberVerification from './pages/property/PropertyVerification';
+import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider.jsx';
+import PropertyDocuments from './pages/property/PropertyDocuments.jsx';
+import ImageUploadGallery from './pages/property/ImageUploadGallery.jsx';
+import CreatePropertyConfirmation from './pages/property/createPropertyConfirmation.jsx';
+import PropertyPhoneNumberVerification from './pages/property/PropertyVerification.jsx';
 
 export default function App() {
   const router = createBrowserRouter([

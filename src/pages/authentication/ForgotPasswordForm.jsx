@@ -1,7 +1,7 @@
 import Icon from '@/assets/react.svg';
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
-import useFormHook from '@/hooks/useFormHook';
+import Button from '@/components/ui/Button.jsx';
+import Input from '@/components/ui/Input.jsx';
+import useFormHook from '@/hooks/useFormHook.jsx';
 import { useNavigate } from 'react-router-dom';
 
 function ForgotPasswordForm() {

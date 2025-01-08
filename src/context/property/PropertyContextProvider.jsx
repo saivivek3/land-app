@@ -1,5 +1,5 @@
 import Button from '@/components/ui/Button';
-import PropertySidebar from '@/pages/property/PropertySidebar';
+import PropertySidebar from '@/pages/property/PropertySidebar.jsx';
 import { ArrowLeft } from 'lucide-react';
 import { createContext, useCallback, useState } from 'react';
 import UploadIcon from '@/assets/upload-cloud.svg';

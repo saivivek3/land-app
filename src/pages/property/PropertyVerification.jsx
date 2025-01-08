@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Lock, Pencil } from 'lucide-react';
-import Input from '@/components/ui/Input';
-import OTPInput from './OtpInput';
-import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input.jsx';
+import OTPInput from './OtpInputjsx';
+import Button from '@/components/ui/Button.jsx';
 import LockScreen from '@/assets/lock-screen.svg';
 import { useNavigate } from 'react-router-dom';
 

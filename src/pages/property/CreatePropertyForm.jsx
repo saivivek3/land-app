@@ -1,7 +1,7 @@
 import cn from '@/lib/cn';
 import { Pencil } from 'lucide-react';
 import { useState } from 'react';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button.jsx';
 import HomeScreen from '@/assets/images/image.png';
 import { Link, useNavigate } from 'react-router-dom';
 

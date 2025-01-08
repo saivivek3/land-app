@@ -1,6 +1,6 @@
-import useFormHook from '@/hooks/useFormHook';
-import Input from '@/components/ui/Input';
-import Button from '@/components/ui/Button';
+import useFormHook from '@/hooks/useFormHook.jsx';
+import Input from '@/components/ui/Input.jsx';
+import Button from '@/components/ui/Button.jsx';
 import { Link } from 'react-router-dom';
 
 function LoginForm() {

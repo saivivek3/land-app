@@ -1,6 +1,6 @@
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
-import useFormHook from '@/hooks/useFormHook';
+import Button from '@/components/ui/Button.jsx';
+import Input from '@/components/ui/Input.jsx';
+import useFormHook from '@/hooks/useFormHook.jsx';
 
 const SignUpForm = () => {
   const onSubmit = data => console.log(data);

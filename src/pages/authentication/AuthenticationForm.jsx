@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
-import Button from '@/components/ui/Button';
+import SignUpForm from './SignUpForm.jsx';
+import LoginForm from './LoginForm.jsx';
+import Button from '@/components/ui/Button.jsx';
 import GoogleIcon from '@/assets/google-icon.svg';
 import { useSearchParams } from 'react-router-dom';
 

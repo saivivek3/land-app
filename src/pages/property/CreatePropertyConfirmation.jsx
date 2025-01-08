@@ -1,5 +1,5 @@
 import CheckIconFull from '@/assets/check-circle-full.svg';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button.jsx';
 
 function CreatePropertyConfirmation() {
   return (
