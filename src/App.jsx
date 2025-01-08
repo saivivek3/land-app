@@ -1,4 +1,4 @@
-import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx ';
+import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm.jsx';
 import ForgotPasswordLayout from './layout/ForgotPasswordLayout.jsx';
