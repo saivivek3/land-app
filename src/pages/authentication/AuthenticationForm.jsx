@@ -40,7 +40,7 @@ function AuthenticationForm() {
             onClick={() => setActiveTab('login')}
             className={` p-2  absolute left-[40%] w-[60%]  text-[11px] border-bPrimary text-quaternary border transition-all font-semibold duration-300   rounded-lg shadow-sm border-l-0  rounded-s-none overflow-hidden  ${
               activeTab === 'login' &&
-              '  text-secondary font-bold  border-bQuinary bg-blightMode rounded-s-lg  '
+              '  text-secondary font-bold  border-bQuinary  rounded-s-lg bg-gradient-to-r  from-transparent to-blightMode '
             }`}
           >
             Log in
