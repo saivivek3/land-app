@@ -3,6 +3,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import Button from '@/components/ui/Button.jsx';
 import { Bookmark, MapPin, ArrowRightIcon } from 'lucide-react';
 import ArrowLeftIcon from '@/assets/arrow-left.svg';
+import Pagination from './Pagination';
 
 const PropertyCard = ({ property }) => (
   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -58,40 +59,6 @@ const PropertiesGrid = ({ properties }) => (
     {properties.map((property, index) => (
       <PropertyCard key={index} property={property} />
     ))}
-  </div>
-);
-
-const Pagination = ({ currentPage, totalPages, onPageChange }) => (
-  <div className="flex justify-between items-center mt-8">
-    <Button
-      disabled={currentPage === 1}
-      onClick={() => onPageChange(currentPage - 1)}
-      className="rounded-lg shadow-sm border max-w-24 border-b-disabledDark bg-white text-secondary text-xs font-semibold cursor-pointer"
-      iconUrl={ArrowLeftIcon}
-    >
-      Previous
-    </Button>
-
-    <div className="flex gap-2">
-      {[...Array(totalPages)].map((_, index) => (
-        <Button
-          key={index + 1}
-          onClick={() => onPageChange(index + 1)}
-          className={`text-tertiary text-xs font-semibold cursor-pointer w-8 h-8 p-0 flex-1 bg-white mx-auto border-none hover:text-[#252b37] hover:bg-[#fafafa] ${currentPage === index + 1 && 'bg-[#fafafa]'} `}
-        >
-          {index + 1}
-        </Button>
-      ))}
-    </div>
-
-    <Button
-      variant="ghost"
-      disabled={currentPage === totalPages}
-      onClick={() => onPageChange(currentPage + 1)}
-      className="rounded-lg shadow-sm border max-w-24 border-b-disabledDark bg-white text-secondary text-xs font-semibold cursor-pointer"
-    >
-      Next
-    </Button>
   </div>
 );
 

@@ -1,6 +1,13 @@
 import cn from '@/lib/cn';
 
-function Button({ className, iconUrl, children, onClick, ...props }) {
+function Button({
+  className,
+  iconUrl,
+  children,
+  onClick,
+
+  ...props
+}) {
   return (
     <button
       {...props}

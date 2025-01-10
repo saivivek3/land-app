@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { Search, Copy, Pencil } from 'lucide-react';
+import {
+  Search,
+  Copy,
+  Pencil,
+  Trash,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+} from 'lucide-react';
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import { Checkbox } from '@/components/ui/checkbox.jsx';
+import cn from '@/lib/cn';
+import Pagination from './Pagination';
 
 const TableHeader = () => (
   <thead>
@@ -10,19 +19,19 @@ const TableHeader = () => (
       <th className="w-12 px-4 py-3">
         <Checkbox />
       </th>
-      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">
+      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
         Investor Name
       </th>
-      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">
+      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
         Property Name
       </th>
-      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">
+      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
         Contacted
       </th>
-      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">
+      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
         Location
       </th>
-      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">
+      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
         Status
       </th>
       <th className="w-20 px-4 py-3"></th>
@@ -35,30 +44,35 @@ const TableRow = ({ data }) => (
     <td className="px-4 py-3">
       <Checkbox />
     </td>
-    <td className="px-4 py-3 text-sm">{data.investor}</td>
-    <td className="px-4 py-3 text-sm text-violet-600">{data.property}</td>
-    <td className="px-4 py-3 text-sm">{data.contacted}</td>
-    <td className="px-4 py-3 text-sm">{data.location}</td>
-    <td className="px-4 py-3">
-      <span
-        className={`inline-flex px-2 py-1 rounded-full text-xs
-        ${
-          data.status === 'Active'
-            ? 'bg-green-50 text-green-700'
-            : 'bg-blue-50 text-blue-700'
-        }`}
-      >
-        {data.status}
-      </span>
+    <td className="px-4 py-3 text-xs text-primary font-medium">
+      {data.investor}
     </td>
-    <td className="px-4 py-3">
-      <div className="flex gap-1">
-        <Button variant="ghost" size="icon" className="h-8 w-8">
-          <Copy className="h-4 w-4 text-gray-500" />
-        </Button>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
-          <Pencil className="h-4 w-4 text-gray-500" />
-        </Button>
+    <td className="px-4 py-3  text-tertiary font-medium text-xs">
+      {data.property}
+    </td>
+    <td className="px-4 py-3 text-tertiary font-medium text-xs">
+      {data.contacted}
+    </td>
+    <td className="px-4 py-3 text-tertiary font-medium text-xs">
+      {data.location}
+    </td>
+    <td className=" border-bPrimary rounded-md text-xs text-secondary font-medium ">
+      <div className="items-center flex gap-1">
+        <div
+          className={cn(
+            'inline-flex rounded-full text-xs bg-primary text-white h-3 w-3 ',
+            data.status === 'Active' ? 'bg-[ #17b26a]' : 'bg-[#0ba5ec]',
+          )}
+        ></div>
+        <span className={`inline-flex px-2 py-1 rounded-full text-xs   `}>
+          {data.status}
+        </span>
+      </div>
+    </td>
+    <td className="px-4 py-3 cursor-pointer">
+      <div className="flex gap-2">
+        <Trash className="h-3 w-3 text-bQuinary" />
+        <Pencil className="h-3 w-3 text-bQuinary" />
       </div>
     </td>
   </tr>
@@ -125,34 +139,11 @@ const SearchHistoryTable = () => {
         </table>
       </div>
 
-      <div className="flex justify-between items-center">
-        <Button
-          variant="ghost"
-          onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </Button>
-        <div className="flex gap-1">
-          {[1, 2, 3, 4].map(page => (
-            <Button
-              key={page}
-              variant={currentPage === page ? 'secondary' : 'ghost'}
-              className="w-8 h-8 p-0"
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </Button>
-          ))}
-        </div>
-        <Button
-          variant="ghost"
-          onClick={() => setCurrentPage(prev => Math.min(4, prev + 1))}
-          disabled={currentPage === 4}
-        >
-          Next
-        </Button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={4}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };

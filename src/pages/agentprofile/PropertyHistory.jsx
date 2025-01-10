@@ -6,6 +6,7 @@ import { Search, Copy, Edit } from 'lucide-react';
 import SearchHistoryTable from './SearchHistoryTable';
 import useFormHook from '@/hooks/useFormHook';
 import cn from '@/lib/cn';
+import Filter from '@/assets/filter.svg';
 
 const PropertyHistory = () => {
   const { register } = useFormHook();
@@ -66,10 +67,23 @@ const PropertyHistory = () => {
     <div className="bg-white rounded-lg p-6">
       <div className="space-y-4">
         <Tabs defaultValue="history" className="w-full">
-          <TabsList className="mb-6">
-            <TabsTrigger value="search">Search History</TabsTrigger>
-            <TabsTrigger value="viewed">Viewed Properties</TabsTrigger>
-            <TabsTrigger value="communication">
+          <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2">
+            <TabsTrigger
+              value="search"
+              className=" rounded-md text-secondary text-xs font-semibold"
+            >
+              Search History
+            </TabsTrigger>
+            <TabsTrigger
+              value="viewed"
+              className=" rounded-md text-secondary text-xs font-semibold"
+            >
+              Viewed Properties
+            </TabsTrigger>
+            <TabsTrigger
+              value="communication"
+              className=" rounded-md text-secondary text-xs font-semibold"
+            >
               Communication History
             </TabsTrigger>
           </TabsList>
@@ -108,7 +122,7 @@ const PropertyHistory = () => {
               <Search className="absolute left-3 top-4 flex items-center text-gray-400 w-4 h-4" />
               <Input
                 placeholder="Search"
-                className=" w-[250px] rounded-lg  border border-bPrimary p-0 h-10 placeholder:pl-8 "
+                className=" w-[250px] rounded-lg  border border-bPrimary p-0 h-10  pl-8"
                 register={register}
                 name="search"
               />
@@ -116,7 +130,11 @@ const PropertyHistory = () => {
                 ⌘K
               </p>
             </div>
-            <Button variant="outline" className="bg-white">
+            <Button
+              variant="outline"
+              className="bg-white text-secondary text-xs font-semibold"
+              iconUrl={Filter}
+            >
               Filters
             </Button>
           </div>

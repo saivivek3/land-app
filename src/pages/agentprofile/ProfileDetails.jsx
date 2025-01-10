@@ -112,28 +112,30 @@ function ProfileDetails() {
       />
 
       {/* Key Achievements Section */}
-      <KeyAchievements
-        achievements={[
-          {
-            title: 'Top Sales Agent of Year (2023)',
-            description: 'Benchmark for sales success',
-            period: 'Jan 2023 - Dec 2023',
-            image: Image1,
-          },
-          {
-            title: 'Closed over 100 transactions',
-            description: 'Benchmark for sales success',
-            period: 'Jan 2021 - Dec 2024',
-            image: Image2,
-          },
-          {
-            title: 'Certified Specialist',
-            description: 'Benchmark for sales success',
-            period: 'Jan 2021 - Dec 2024',
-            image: Image3,
-          },
-        ]}
-      />
+      <div className="mb-4">
+        <KeyAchievements
+          achievements={[
+            {
+              title: 'Top Sales Agent of Year (2023)',
+              description: 'Benchmark for sales success',
+              period: 'Jan 2023 - Dec 2023',
+              image: Image1,
+            },
+            {
+              title: 'Closed over 100 transactions',
+              description: 'Benchmark for sales success',
+              period: 'Jan 2021 - Dec 2024',
+              image: Image2,
+            },
+            {
+              title: 'Certified Specialist',
+              description: 'Benchmark for sales success',
+              period: 'Jan 2021 - Dec 2024',
+              image: Image3,
+            },
+          ]}
+        />
+      </div>
     </div>
   );
 }

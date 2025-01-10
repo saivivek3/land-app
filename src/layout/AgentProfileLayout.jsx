@@ -250,7 +250,7 @@ const AgentProfileLayout = ({ children, value }) => {
             <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2">
               <TabsTrigger
                 value="profile"
-                className="shadow-sm rounded-md text-secondary text-xs font-semibold"
+                className=" rounded-md text-secondary text-xs font-semibold"
               >
                 Profile Details
               </TabsTrigger>
