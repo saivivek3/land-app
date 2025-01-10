@@ -21,6 +21,11 @@ import PropertyDocuments from './pages/property/PropertyDocuments.jsx';
 import ImageUploadGallery from './pages/property/ImageUploadGallery.jsx';
 import CreatePropertyConfirmation from './pages/property/CreatePropertyConfirmation.jsx';
 import PropertyPhoneNumberVerification from './pages/property/PropertyVerification.jsx';
+import AgentProfileLayout from './layout/AgentProfileLayout.jsx';
+import ProfileDetails from './pages/agentprofile/ProfileDetails.jsx';
+import { TabsContent } from './components/ui/tabs.jsx';
+import PostedProperties from './pages/agentprofile/PostedProperties.jsx';
+import PropertyHistory from './pages/agentprofile/PropertyHistory.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -127,6 +132,27 @@ export default function App() {
         {
           path: '/create-property/confirmation',
           element: <CreatePropertyConfirmation />,
+        },
+      ],
+    },
+    {
+      path: '/agent-profile',
+      children: [
+        {
+          index: true,
+          element: (
+            <AgentProfileLayout>
+              <TabsContent value="profile">
+                <ProfileDetails />
+              </TabsContent>
+              <TabsContent value="properties">
+                <PostedProperties />
+              </TabsContent>
+              <TabsContent value="history">
+                <PropertyHistory />
+              </TabsContent>
+            </AgentProfileLayout>
+          ),
         },
       ],
     },

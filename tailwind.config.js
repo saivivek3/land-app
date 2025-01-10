@@ -21,6 +21,7 @@ export default {
         disabledlight: '#FAFAFA',
         disabledDark: '#D5D7DA',
         bSecondary: '#E9EAEB',
+        active: '#fafafa',
       },
       boxShadow: {
         customBoxShadow: '0px 1px 2px 0px #0A0D12',

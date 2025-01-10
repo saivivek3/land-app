@@ -24,7 +24,9 @@ function AuthenticationForm() {
   console.log(tab, searchParams);
   return (
     <div className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Create an account</h1>
+      <h1 className="text-2xl font-bold mb-6">
+        {activeTab === 'signup' ? 'Create an account' : 'Log in to account'}
+      </h1>
       <div className="max-w-md w-full">
         <div className="grid grid-cols-2 mb-3 relative">
           <button
