@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button.jsx';
 import HomeScreen from '@/assets/images/image.png';
 import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
 
 // const header = (
 //   <div className="flex items-center justify-between mb-6">

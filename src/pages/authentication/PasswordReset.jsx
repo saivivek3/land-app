@@ -1,5 +1,6 @@
 import Icon from '@/assets/react.svg';
 import Button from '@/components/ui/Button.jsx';
+import React from 'react';
 function PasswordReset() {
   return (
     <>

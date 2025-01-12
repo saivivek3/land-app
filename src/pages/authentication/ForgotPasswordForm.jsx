@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 function ForgotPasswordForm() {
   const { handleSubmit, register } = useFormHook();

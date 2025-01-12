@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { createContext, useCallback, useState } from 'react';
 import UploadIcon from '@/assets/upload-cloud.svg';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 export const PropertyDetailsContext = createContext(null);
 

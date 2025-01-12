@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import ArrowLeftIcon from '@/assets/arrow-left.svg';
+import React from 'react';
 
 function ForgotPasswordLayout() {
   const navigate = useNavigate();

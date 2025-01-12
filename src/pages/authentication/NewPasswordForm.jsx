@@ -4,6 +4,7 @@ import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
 import CheckIcon from '@/assets/check-icon.svg';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 function NewPasswordForm() {
   const { handleSubmit, register } = useFormHook();

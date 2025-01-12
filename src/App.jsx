@@ -1,3 +1,4 @@
+import React from 'react';
 import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm.jsx';
@@ -11,7 +12,7 @@ import {
   LocationDetailsConfig,
   OwnerDetailsConfig,
   propertyDetailsConfig,
-} from '@/pages/property/propertyFormConfig.js';
+} from './pages/property/propertyFormConfig.js';
 import { PropertyDetailsForm } from '@/pages/property/PropertyDetails.jsx';
 import PropertyLocatedForm from '@/pages/property/PropertyLocatedForm.jsx';
 import OwnerDetailsForm from '@/pages/property/OwnerDetailsForm.jsx';
@@ -26,6 +27,12 @@ import ProfileDetails from './pages/agentprofile/ProfileDetails.jsx';
 import { TabsContent } from './components/ui/tabs.jsx';
 import PostedProperties from './pages/agentprofile/PostedProperties.jsx';
 import PropertyHistory from './pages/agentprofile/PropertyHistory.jsx';
+import DashboardLayout from './layout/DashboardLayout.jsx';
+import UserDetails from './pages/dashboard/UserDetails.jsx';
+import AgentDetails from './pages/dashboard/AgentDetails.jsx';
+import { Calendar } from '@/components/ui/calendar';
+import LineChart from './pages/agentprofile/ChartComponent.jsx';
+import AdminDetails from './pages/dashboard/AdminDetails.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -152,6 +159,36 @@ export default function App() {
                 <PropertyHistory />
               </TabsContent>
             </AgentProfileLayout>
+          ),
+        },
+      ],
+    },
+    {
+      path: '/dashboard',
+      // element: <DashboardLayout />,
+      children: [
+        {
+          index: true,
+          element: (
+            <DashboardLayout>
+              <UserDetails />
+            </DashboardLayout>
+          ),
+        },
+        {
+          path: '/dashboard/agent',
+          element: (
+            <DashboardLayout>
+              <AgentDetails />
+            </DashboardLayout>
+          ),
+        },
+        {
+          path: '/dashboard/admin',
+          element: (
+            <DashboardLayout>
+              <AdminDetails />
+            </DashboardLayout>
           ),
         },
       ],

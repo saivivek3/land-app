@@ -1,5 +1,6 @@
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button.jsx';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import React from 'react';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => (
   <div className="flex justify-between items-center mt-8">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SignUpForm from './SignUpForm.jsx';
 import LoginForm from './LoginForm.jsx';
 import Button from '@/components/ui/Button.jsx';

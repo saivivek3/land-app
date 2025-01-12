@@ -1,6 +1,7 @@
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
+import React from 'react';
 
 const SignUpForm = () => {
   const onSubmit = data => console.log(data);
