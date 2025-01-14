@@ -30,9 +30,12 @@ import PropertyHistory from './pages/agentprofile/PropertyHistory.jsx';
 import DashboardLayout from './layout/DashboardLayout.jsx';
 import UserDetails from './pages/dashboard/UserDetails.jsx';
 import AgentDetails from './pages/dashboard/AgentDetails.jsx';
-import { Calendar } from '@/components/ui/calendar';
-import LineChart from './pages/agentprofile/ChartComponent.jsx';
 import AdminDetails from './pages/dashboard/AdminDetails.jsx';
+
+import { Toaster } from '@/components/ui/toaster';
+import LocationMap from './pages/agentprofile/LocationMap.jsx';
+import PropertyListing from './pages/premium/index.jsx';
+import PropertyMapView from './pages/premium/PropertyMapView.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -78,6 +81,11 @@ export default function App() {
         {
           path: '/create-property/verification',
           element: <PropertyPhoneNumberVerification />,
+        },
+
+        {
+          path: '/create-property/location-map',
+          element: <LocationMap />,
         },
         {
           path: '/create-property/property-details',
@@ -193,6 +201,25 @@ export default function App() {
         },
       ],
     },
+    {
+      path: '/premium-property',
+
+      children: [
+        {
+          index:true,
+          element: <PropertyListing />,
+        },
+        {
+          path: '/premium-property/property-map-view',
+          element: <PropertyMapView />
+        },
+      ],
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={router} />
+    </>
+  );
 }

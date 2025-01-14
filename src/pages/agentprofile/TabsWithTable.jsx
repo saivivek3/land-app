@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search, Copy, Edit } from 'lucide-react';
+import { Search} from 'lucide-react';
 import useFormHook from '@/hooks/useFormHook';
 import cn from '@/lib/cn';
 import Filter from '@/assets/filter.svg';

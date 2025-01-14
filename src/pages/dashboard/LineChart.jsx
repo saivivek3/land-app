@@ -42,16 +42,16 @@ const LineChart = () => {
       {
         label: '2024',
         data: [60, 65, 68, 72, 75, 78, 80, 83, 85, 87, 89, 90],
-        borderColor: 'rgba(134, 94, 241, 1)', // Purple color
-        backgroundColor: 'rgba(134, 94, 241, 0.2)',
+        borderColor: '#7f56d9', // Purple color
+        backgroundColor: '#7f56d9',
         fill: false,
         tension: 0.4,
       },
       {
         label: '2023',
         data: [40, 43, 46, 49, 52, 55, 58, 61, 64, 67, 69, 72],
-        borderColor: 'rgba(153, 153, 153, 1)', // Light gray color
-        backgroundColor: 'rgba(153, 153, 153, 0.2)',
+        borderColor: '#b692f6', // Light gray color
+        backgroundColor: '#b692f6',
         fill: false,
         tension: 0.4,
       },
