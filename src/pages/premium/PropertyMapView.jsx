@@ -61,8 +61,8 @@ const PropertyMapView = () => {
 
   return (
     <div className="mx-auto p-4 max-w-7xl">
-      <div className="flex gap-4">
-        <div className="flex-1 max-w-fit ">
+      <div className="flex gap-4 justify-between">
+        <div className="flex-1 min-w-fit ">
           <div className="flex justify-between items-center mb-3">
             <div>
               <h1 className="text-xl font-semibold text-primary">
@@ -265,7 +265,9 @@ const PropertyMapView = () => {
             </Button>
           </div>
         </div>
-        <GoogleMapComponent oneMarker={false} />
+
+          <GoogleMapComponent oneMarker={false} />
+
       </div>
     </div>
   );

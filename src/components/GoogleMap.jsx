@@ -43,15 +43,15 @@ import React from 'react';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 import GmapMarker from '@/assets/googlemarker.png';
 
-const GoogleMapComponent = ({ oneMarker }) => {
+const GoogleMapComponent = ({ oneMarker, mapWidth }) => {
   const mapContainerStyle = {
-    width: '40%',
+    width: '100%',
     height: 'auto',
   };
 
   const center = {
-    lat: 17.2403, // Replace with your center latitude
-    lng: 78.4294, // Replace with your center longitude
+    lat: 17.2403,
+    lng: 78.4294,
   };
 
   // Marker data (coordinates and price text)

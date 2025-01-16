@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Summary</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        background-color: #f8fafc;
+        color: #334155;
+        font-size: 13px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 2rem 0;
+        background-color: #ffffff;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .company-title {
+        font-size: 13px;
+        margin: 1rem 0;
+        color: #333333;
+      }
+
+      .company-name {
+        font-weight: 700;
+      }
+
+      .greeting {
+        font-size: 13px;
+        margin-bottom: 1rem;
+        color: #414141;
+      }
+
+      .alert {
+        background: #ffffff;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .alert-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .alert-number {
+        width: 32px;
+        height: 32px;
+        background: #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 400;
+      }
+
+      .divider {
+        flex-grow: 1;
+        height: 1px;
+        background-color: #e0e0e0;
+      }
+
+      .client-tag {
+        background: #6e6e6e;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+        font-size: 13px;
+        margin-left: 0.5rem;
+      }
+
+      .client-tag-name {
+        text: black;
+      }
+
+      .alert-content {
+        margin-bottom: 1.5rem;
+      }
+
+      .cost-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .opportunity-cost {
+        color: #27ae60;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .cost-label {
+        color: #9f9f9f;
+        font-size: 13px;
+      }
+
+      .details-box {
+        background: #fbf8fd;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .detail-alert {
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .detail-label {
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        color: #1e293b;
+      }
+
+      .detail-value {
+        color: #64748b;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .metric-alert {
+        padding: 0.5rem;
+      }
+
+      .metric-value {
+        font-size: 1.125rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+
+      .metric-label {
+        color: #64748b;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .change {
+        color: #eb5757;
+        font-weight: 600;
+      }
+
+      .action-button {
+        display: block;
+        text-align: center;
+        background: #f3e8ff;
+        color: #7e22ce;
+        text-decoration: none;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        margin-top: 1rem;
+      }
+
+      .action-button:hover {
+        background: #ede9fe;
+      }
+
+      .red{
+
+      color:red;
+      }
+
+      .green{
+      color:green
+      };
+
+
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .header {
+          padding: 1.5rem 1rem;
+        }
+
+        .alert {
+          padding: 1rem;
+        }
+
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cost-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img
+          class="profile-image"
+          src="https://images.squarespace-cdn.com/content/v1/617fd048add94a0c8959e684/39be0419-3e5b-4769-89ec-d5ad169adab4/Logo.png?format=1500w"
+          alt="Profile"
+        />
+        <div class="company-title">
+          <span class="company-name">Burt</span>
+          <span>Intelligence.</span>
+        </div>
+        <h1 class="greeting">Hi Shivani !</h1>
+      </header>
+
+       
+      <article class="alert">
+        <div class="alert-header">
+          <div class="alert-number">1</div>
+          <div class="divider"></div>
+          
+          <div class="client-tag">Mars Inc.</div>
+          
+        </div>
+        <div class="client-tag-name">
+          -89% Drop in Revenue_CAD For Mars Inc.
+        </div>
+
+        <div class="alert-content">
+          <div class="cost-row">
+            <div>
+              <div class="opportunity-cost">$23</div>
+              <div class="cost-label">Opportunity Cost</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-box">
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Display:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Google Adx:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="metrics-grid">
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                5,535 →
+                -41,344
+              </div>
+             <div class="metric-label">
+  Impressions
+  
+  <span class="change red">
+    (-88%)
+  </span>
+  
+</div>
+            </div>
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                $4.13 →
+                $-0.12
+              </div>
+             <div class="metric-label">
+  eCPM
+  
+  <span class="change red">
+    (-3%)
+  </span>
+  
+</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <a href="https://burt.cuebeat.databeat.io/summaries?id=1&start_date=2024-12-15&end_date=2025-01-15">Click here for viewing Summary info in detail</a>
+      </article>
+      
+      <article class="alert">
+        <div class="alert-header">
+          <div class="alert-number">2</div>
+          <div class="divider"></div>
+          
+          <div class="client-tag">Mars Inc.</div>
+          
+        </div>
+        <div class="client-tag-name">
+          -89% Drop in Revenue_CAD For Mars Inc.
+        </div>
+
+        <div class="alert-content">
+          <div class="cost-row">
+            <div>
+              <div class="opportunity-cost">$23</div>
+              <div class="cost-label">Opportunity Cost</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-box">
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Display:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Google Adx:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="metrics-grid">
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                5,535 →
+                -41,344
+              </div>
+             <div class="metric-label">
+  Impressions
+  
+  <span class="change red">
+    (-88%)
+  </span>
+  
+</div>
+            </div>
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                $4.13 →
+                $-0.12
+              </div>
+             <div class="metric-label">
+  eCPM
+  
+  <span class="change red">
+    (-3%)
+  </span>
+  
+</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <a href="https://burt.cuebeat.databeat.io/summaries?id=1&start_date=2024-12-15&end_date=2025-01-15">Click here for viewing Summary info in detail</a>
+      </article>
+      
+      <article class="alert">
+        <div class="alert-header">
+          <div class="alert-number">3</div>
+          <div class="divider"></div>
+          
+          <div class="client-tag">Mars Inc.</div>
+          
+        </div>
+        <div class="client-tag-name">
+          -89% Drop in Revenue_CAD For Mars Inc.
+        </div>
+
+        <div class="alert-content">
+          <div class="cost-row">
+            <div>
+              <div class="opportunity-cost">$23</div>
+              <div class="cost-label">Opportunity Cost</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-box">
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Display:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="detail-alert">
+            
+            <div class="detail-label">
+              Google Adx:
+            </div>
+            
+            <div class="detail-value">
+              $-177
+            </div>
+            <div class="detail-value">
+              -89%
+            </div>
+          </div>
+          
+          <div class="metrics-grid">
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                5,535 →
+                -41,344
+              </div>
+             <div class="metric-label">
+  Impressions
+  
+  <span class="change red">
+    (-88%)
+  </span>
+  
+</div>
+            </div>
+            
+            <div class="metric-alert">
+              <div class="metric-value">
+                $4.13 →
+                $-0.12
+              </div>
+             <div class="metric-label">
+  eCPM
+  
+  <span class="change red">
+    (-3%)
+  </span>
+  
+</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <a href="https://burt.cuebeat.databeat.io/summaries?id=1&start_date=2024-12-15&end_date=2025-01-15">Click here for viewing Summary info in detail</a>
+      </article>
+       
+    </div>
+  </body>
+</html>
+

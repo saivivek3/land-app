@@ -24,7 +24,8 @@ export default {
         active: '#fafafa',
       },
       boxShadow: {
-        customBoxShadow: '0px 1px 2px 0px #0A0D12',
+        customBoxShadow:
+          'box-shadow: 0 4px 4px -2px rgba(10, 13, 18, 0.04), 0 24px 48px -12px rgba(10, 13, 18, 0.18);',
       },
     },
   },
