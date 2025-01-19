@@ -1,4 +1,3 @@
-import React from 'react';
 import { MoreVerticalIcon, Calendar, ChevronRight } from 'lucide-react';
 
 function AgentDetails() {

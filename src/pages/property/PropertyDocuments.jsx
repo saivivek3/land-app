@@ -2,7 +2,6 @@ import { PropertyDetailsContext } from '@/context/property/PropertyContextProvid
 import cn from '@/lib/cn';
 import { Check } from 'lucide-react';
 import { useContext } from 'react';
-import React from 'react';
 
 function PropertyDocuments() {
   const { files } = useContext(PropertyDetailsContext);

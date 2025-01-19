@@ -1,5 +1,4 @@
 import cn from '@/lib/cn.js';
-import React from 'react';
 
 function Input({
   type,
@@ -14,7 +13,7 @@ function Input({
   return (
     <div className="mb-4 space-y-1">
       {isLabelRequired && (
-        <label className=" block text-[11px] text-secondary " htmlFor={name}>
+        <label className=" block text-sm text-secondary " htmlFor={name}>
           {labelName}
         </label>
       )}
@@ -22,7 +21,7 @@ function Input({
         type={type}
         placeholder={placeholder}
         className={cn(
-          ' w-full border border-solid border-bPrimary rounded-lg bg-white text-primary text-sm p-2 placeholder:text-quaternary shadow-sm placeholder:pl-4 placeholder:text-[11px]',
+          ' w-full border border-solid border-bPrimary rounded-lg bg-white text-primary text-base p-2 placeholder:text-quaternary shadow-sm placeholder:pl-4 placeholder:text-base',
           className,
         )}
         {...register(name)}

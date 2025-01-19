@@ -1,10 +1,9 @@
-import Icon from '@/assets/react.svg';
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
 import CheckIcon from '@/assets/check-icon.svg';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import MailIcon from '@/assets/mail-icon.svg'
 
 function NewPasswordForm() {
   const { handleSubmit, register } = useFormHook();
@@ -21,10 +20,12 @@ function NewPasswordForm() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <img src={Icon} alt="Forgot Password" className="w-8 h-8 " />
+        <div className="rounded-lg shadow-sm p-4">
+          <img src={MailIcon} alt="Forgot Password" className="w-6 h-6 flex " />
+        </div>
       </div>
 
-      <h2 className="text-primary text-2xl font-semibold  text-center">
+      <h2 className="text-primary text-3xl font-semibold  text-center">
         Set New Password
       </h2>
       <p className="text-tertiary text-base text-center">
@@ -50,9 +51,9 @@ function NewPasswordForm() {
             <img
               src={CheckIcon}
               alt="check-icon"
-              className="h-3 w-3 object-cover"
+              className="h-4 w-4 object-cover"
             />
-            <p className="text-tertiary text-xs">
+            <p className="text-tertiary text-base">
               Must be at least 8 characters
             </p>
           </div>
@@ -60,9 +61,9 @@ function NewPasswordForm() {
             <img
               src={CheckIcon}
               alt="check-icon"
-              className="h-3 w-3 object-cover"
+              className="h-4 w-4 object-cover"
             />
-            <p className="text-tertiary text-xs">
+            <p className="text-tertiary text-base">
               Must contain one special character
             </p>
           </div>

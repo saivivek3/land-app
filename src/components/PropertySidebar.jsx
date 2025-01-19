@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Home, LayoutDashboard, ListPlus, User, Settings } from 'lucide-react';
 import AvatarIcon from '@/assets/avatar-icon.svg';
 

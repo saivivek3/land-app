@@ -2,7 +2,6 @@ import useFormHook from '@/hooks/useFormHook.jsx';
 import Input from '@/components/ui/Input.jsx';
 import Button from '@/components/ui/Button.jsx';
 import { Link } from 'react-router-dom';
-import React from 'react';
 
 function LoginForm() {
   const onSubmit = data => console.log(data);
@@ -21,7 +20,7 @@ function LoginForm() {
       <Input
         type="password"
         placeholder="Create a password"
-        className="w-full mt-1 p-3 border rounded-lg"
+        className="w-full mt-1 p-3 border rounded-lg mb-2"
         labelName="Password"
         name="password"
         register={register}
@@ -29,7 +28,7 @@ function LoginForm() {
 
       <Link
         to="/forgot-password"
-        className="text-brandTertiary text-[10px] font-bold  mt-1"
+        className="text-brandTertiary block mt-2 text-base font-bold "
       >
         {' '}
         Forgot Password

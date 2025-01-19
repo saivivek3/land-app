@@ -1,6 +1,5 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import ArrowLeftIcon from '@/assets/arrow-left.svg';
-import React from 'react';
 
 function ForgotPasswordLayout() {
   const navigate = useNavigate();
@@ -10,9 +9,9 @@ function ForgotPasswordLayout() {
   }
   return (
     <div className="space-y-4 max-w-xs mx-auto ">
-      <div className="flex flex-col  gap-3">
+      <div className="flex flex-col  gap-5">
         <>
-          <div className="mt-3">
+          <div className="mt-3 space-y-4">
             <Outlet />
           </div>
 
@@ -23,7 +22,7 @@ function ForgotPasswordLayout() {
               className="flex justify-center"
             />
             <p
-              className="text-primary text-sm cursor-pointer"
+              className="text-primary text-base cursor-pointer"
               onClick={navigateToLogin}
             >
               Back to Log In{' '}

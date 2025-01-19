@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import SignUpForm from './SignUpForm.jsx';
 import LoginForm from './LoginForm.jsx';
 import Button from '@/components/ui/Button.jsx';
@@ -27,11 +27,12 @@ function AuthenticationForm() {
       <h1 className="text-2xl font-bold mb-6">
         {activeTab === 'signup' ? 'Create an account' : 'Log in to account'}
       </h1>
+      {/* start Button  */}
       <div className="max-w-md w-full">
         <div className="grid grid-cols-2 mb-3 relative">
           <button
             onClick={() => setActiveTab('signup')}
-            className={`p-2 text-[11px]  text-quaternary border z-10 border-bPrimary transition-all font-semibold duration-300  rounded-lg shadow-sm  ${
+            className={`p-2 text-sm  text-quaternary border z-10 border-bPrimary transition-all font-semibold duration-300  rounded-lg shadow-sm  ${
               activeTab === 'signup' &&
               '  text-secondary font-bold  border-bQuinary bg-blightMode'
             }`}
@@ -40,7 +41,7 @@ function AuthenticationForm() {
           </button>
           <button
             onClick={() => setActiveTab('login')}
-            className={` p-2  absolute left-[40%] w-[60%]  text-[11px] border-bPrimary text-quaternary border transition-all font-semibold duration-300   rounded-lg shadow-sm border-l-0  rounded-s-none overflow-hidden  ${
+            className={` p-2  absolute left-[40%] w-[60%]  text-sm border-bPrimary text-quaternary border transition-all font-semibold duration-300   rounded-lg shadow-sm border-l-0  rounded-s-none overflow-hidden  ${
               activeTab === 'login' &&
               '  text-secondary font-bold  border-bQuinary  rounded-s-lg bg-gradient-to-r  from-transparent to-blightMode '
             }`}
@@ -50,15 +51,17 @@ function AuthenticationForm() {
         </div>
       </div>
 
+      {/* End Button  */}
+
       {/* User Type Section */}
       <div className="mb-6">
-        <p className="text-xl mb-3">You are</p>
+        <p className="text-xl font-semibold mb-3">You are</p>
         <div className="flex flex-wrap gap-3">
           {userTypes.map(type => (
             <button
               key={type}
               onClick={() => setUserType(type)}
-              className={`px-6 py-2 rounded-full border border-solid border-bQuinary text-secondary text-[10px] ${
+              className={`px-6 py-2 rounded-full border border-solid border-bQuinary text-secondary text-sm ${
                 userType === type && 'bg-blightMode b text-primary'
               }`}
             >
@@ -77,11 +80,11 @@ function AuthenticationForm() {
 
       {/* Footer */}
       <div className="mt-6 flex gap-2 items-center justify-center">
-        <p className="text-tertiary text-xs  text-center">
+        <p className="text-tertiary text-sm  text-center">
           {activeTab === 'signup' ? 'Already ' : 'Dont '} have an account?{' '}
         </p>
         <span
-          className="text-buttontertiary text-xs cursor-pointer  font-semibold"
+          className="text-buttontertiary text-sm cursor-pointer  font-semibold"
           onClick={() =>
             setActiveTab(activeTab === 'signup' ? 'login' : 'signup')
           }

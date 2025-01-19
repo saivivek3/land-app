@@ -1,4 +1,3 @@
-import React from 'react';
 import { steps } from './propertyFormConfig';
 import cn from '@/lib/cn';
 import PropertyScoreCard from './PropertyScoreCard.jsx';
@@ -51,7 +50,7 @@ function PropertySidebar() {
             <div>
               <h3
                 className={cn(
-                  'font-semibold text-quaternary text-xs',
+                  'font-semibold text-quaternary text-sm',
                   step.active && 'text-brandTertiary',
                   step.completed && 'text-secondary',
                 )}
@@ -60,7 +59,7 @@ function PropertySidebar() {
               </h3>
               <p
                 className={cn(
-                  'text-tertiary text-[11px] min-w-44',
+                  'text-tertiary text-sm min-w-44',
                   step.active && 'text-brandTertiary',
                   step.completed && 'text-tertiary',
                 )}

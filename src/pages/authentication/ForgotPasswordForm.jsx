@@ -1,9 +1,8 @@
-import Icon from '@/assets/react.svg';
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import KeyIcon from '@/assets/key-icon.svg';
 
 function ForgotPasswordForm() {
   const { handleSubmit, register } = useFormHook();
@@ -18,14 +17,16 @@ function ForgotPasswordForm() {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <img src={Icon} alt="Forgot Password" className="w-8 h-8 flex " />
+      <div className="flex justify-center items-center  ">
+        <div className="rounded-lg shadow-sm p-2">
+          <img src={KeyIcon} alt="Forgot Password" className="w-6 h-6 flex " />
+        </div>
       </div>
 
-      <h2 className="text-primary text-2xl font-semibold text-center">
-        Forgot Password
+      <h2 className="text-primary text-3xl font-semibold text-center">
+        Forgot Password ?
       </h2>
-      <p className="text-sm  text-tertiary ">
+      <p className="text-base  text-tertiary min-w-96 ">
         No worries, we’ll send you reset instructions.
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>

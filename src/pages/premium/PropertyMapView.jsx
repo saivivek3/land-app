@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heart, ChevronLeft, ChevronRight, Map, List } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
@@ -83,7 +82,7 @@ const PropertyMapView = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 mb-6 items-center mb-3">
+          <div className="flex gap-4 items-center mb-3">
             <SelectComponent
               placeholder="Kandukur, TS"
               options={[
@@ -265,9 +264,7 @@ const PropertyMapView = () => {
             </Button>
           </div>
         </div>
-
-          <GoogleMapComponent oneMarker={false} />
-
+        <GoogleMapComponent oneMarker={false} />
       </div>
     </div>
   );

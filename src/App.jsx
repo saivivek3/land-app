@@ -1,4 +1,3 @@
-import React from 'react';
 import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm.jsx';
@@ -8,6 +7,7 @@ import NewPasswordForm from './pages/authentication/NewPasswordForm.jsx';
 import PasswordReset from './pages/authentication/PasswordReset.jsx';
 import CreatePropertyForm from './pages/property/CreatePropertyForm.jsx';
 import PropertyLayout from './layout/PropertyLayout.jsx';
+import { LoadScript } from '@react-google-maps/api';
 import {
   LocationDetailsConfig,
   OwnerDetailsConfig,
@@ -33,9 +33,11 @@ import AgentDetails from './pages/dashboard/AgentDetails.jsx';
 import AdminDetails from './pages/dashboard/AdminDetails.jsx';
 
 import { Toaster } from '@/components/ui/toaster';
-import LocationMap from './pages/agentprofile/LocationMap.jsx';
+import LocationMap from './pages/property/LocationMap.jsx';
 import PropertyListing from './pages/premium/index.jsx';
 import PropertyMapView from './pages/premium/PropertyMapView.jsx';
+import PremiumMapView from './pages/premium/PremiunMapView.jsx';
+import SinglePropertyView from './pages/premium/index.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -112,7 +114,7 @@ export default function App() {
                 'An accurate location helps you connect with right buyers'
               }
               formConfig={LocationDetailsConfig}
-              nextPath="/create-property/owner-details"
+              nextPath="/create-property/location-map"
             />
           ),
         },
@@ -131,7 +133,7 @@ export default function App() {
         {
           path: '/create-property/property-documents',
           element: (
-            <PropertyDetailsContextProvider nextPath="/create-property/photos">
+            <PropertyDetailsContextProvider nextPath="/create-property/confirmation">
               <PropertyDocuments />
             </PropertyDetailsContextProvider>
           ),
@@ -139,7 +141,7 @@ export default function App() {
         {
           path: '/create-property/photos',
           element: (
-            <PropertyDetailsContextProvider nextPath="/create-property/confirmation">
+            <PropertyDetailsContextProvider nextPath="/create-property/owner-details">
               <ImageUploadGallery />
             </PropertyDetailsContextProvider>
           ),
@@ -206,12 +208,16 @@ export default function App() {
 
       children: [
         {
-          index:true,
-          element: <PropertyListing />,
+          path: '/premium-property/single-property-view/:id',
+          element: <SinglePropertyView />,
         },
         {
           path: '/premium-property/property-map-view',
-          element: <PropertyMapView />
+          element: <PropertyMapView />,
+        },
+        {
+          path: '/premium-property/satellite-view',
+          element: <PremiumMapView />,
         },
       ],
     },
@@ -219,7 +225,12 @@ export default function App() {
   return (
     <>
       <Toaster />
-      <RouterProvider router={router} />
+      <LoadScript
+        googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28" // or process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+        libraries={['places', 'marker']}
+      >
+        <RouterProvider router={router} />
+      </LoadScript>
     </>
   );
 }

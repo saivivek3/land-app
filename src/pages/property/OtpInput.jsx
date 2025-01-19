@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import React from 'react';
 
 const OTPInput = () => {
   const [otp, setOtp] = useState(new Array(4).fill(''));
@@ -43,8 +42,8 @@ const OTPInput = () => {
 
   return (
     <>
-      <label htmlFor="otp" className=" mb-4 block text-xs text-[#242426]">
-        Confirmation
+      <label htmlFor="otp" className=" mb-4 block text-xsm text-[#242426]">
+        Confirmation Code
       </label>
       <div className="flex gap-2  mb-4">
         {otp.map((digit, index) => (

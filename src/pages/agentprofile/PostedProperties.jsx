@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import Button from '@/components/ui/Button.jsx';
 import { Bookmark, MapPin, ArrowRightIcon } from 'lucide-react';

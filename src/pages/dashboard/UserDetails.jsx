@@ -1,6 +1,5 @@
 import Button from '@/components/ui/Button';
 import { Cloud } from 'lucide-react';
-import React from 'react';
 
 function UserDetails() {
   const recommendations = [

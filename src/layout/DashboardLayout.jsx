@@ -1,5 +1,5 @@
 import PropertySidebar from '@/components/PropertySidebar';
-import React from 'react';
+
 import AvatarIcon from '@/assets/avatar-icon.svg';
 import { CalendarIcon } from 'lucide-react';
 import {

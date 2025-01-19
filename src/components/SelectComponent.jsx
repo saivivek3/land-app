@@ -6,7 +6,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import cn from '@/lib/cn.js';
-import React from 'react';
 
 function SelectComponent({ placeholder, className, options }) {
   return (

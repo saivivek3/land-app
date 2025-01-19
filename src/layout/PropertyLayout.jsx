@@ -1,5 +1,5 @@
 import Header from '@/pages/property/Header';
-import React from 'react';
+
 import { Outlet } from 'react-router-dom';
 
 function PropertyLayout() {

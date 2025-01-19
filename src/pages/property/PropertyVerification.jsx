@@ -22,14 +22,14 @@ const PropertyPhoneNumberVerification = () => {
               onClick={() => navigate(-1)}
             >
               <ArrowLeft className="h-4 w-4 mr-1 text-tertiary" />
-              <span className="text-base text-primary font-bold">Back to</span>
+              <span className="text-[18px] text-primary font-bold">Back to</span>
             </button>
           </div>
 
-          <h1 className="text-2xl font-semibold mb-2 text-[#242731] ">
+          <h1 className="text-3xl font-semibold mb-2 text-[#242731] ">
             Welcome back,
           </h1>
-          <p className="text-[#575f6e] text-base">
+          <p className="text-[#575f6e] text-[18px]">
             Fill in the registration data. It will take a couple of minutes. All
             you need is a phone number
           </p>
@@ -40,14 +40,14 @@ const PropertyPhoneNumberVerification = () => {
           <div className="flex items-center gap-2 justify-between    border border-[#E2E4E5]  rounded-lg px-4">
             <div className="px-1 py-2">
               <input
-                className="text-sm  font-semibold text-[#242426] outline-none border-none mb-1"
+                className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
                 defaultValue=" +91 9966132599"
                 value={phone}
                 type="text"
                 onChange={e => setPhone(e.target.value)}
               />
 
-              <p className="text-xs text-[#575F6E] ">
+              <p className="text-base text-[#575F6E] ">
                 Number not confirmed yet
               </p>
             </div>
@@ -61,7 +61,7 @@ const PropertyPhoneNumberVerification = () => {
             <div>
               <OTPInput />
               <div className="border-b-[1px] border-[#007aff]  h-2 w-full "></div>{' '}
-              <p className="text-[#575f6e] text-xs mt-2 ">
+              <p className="text-[#575f6e] text-base mt-2 ">
                 Confirm phone number with code from sms message
               </p>
             </div>
@@ -79,7 +79,7 @@ const PropertyPhoneNumberVerification = () => {
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 />
               </svg>
-              <span className="mr-1 text-[##007aff] font-semibold text-xs">
+              <span className="mr-1 text-[##007aff] font-semibold text-base">
                 Send again
               </span>
             </button>

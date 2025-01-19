@@ -1,4 +1,3 @@
-import React from 'react';
 import TabsWithTable from './TabsWithTable';
 
 function PropertyHistory() {

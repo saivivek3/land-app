@@ -32,7 +32,7 @@ const DetailsForm = ({
             name={field.name}
             type="text"
             placeholder={field.placeholder}
-            className="placeholder:text-sm placeholder:pl-1 w-full"
+            className="placeholder:text-base placeholder:pl-1 w-full"
           />
         );
       case 'select':
@@ -76,16 +76,16 @@ const DetailsForm = ({
         <div className="flex-1">
           <div className="mb-6">
             <button
-              className="flex items-center text-primary font-bold text-xl mb-3 hover:text-gray-900"
+              className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
               onClick={() => navigate(-1)}
             >
               <ChevronLeft className="w-5 h-5 mr-1 " />
               Back to
             </button>
-            <h2 className="text-xl font-bold mt-2 mb-2">{heading}</h2>
+            <h2 className="text-3xl font-bold mt-2 mb-2">{heading}</h2>
             <p className=" text-[#575F6E] text-sm">{subHeading}</p>
           </div>
-          <div className="border border-[#D9D9D9] "></div>
+          <div className="border border-[#D9D9D9] text-[18px] "></div>
           <h1 className="text-primary font-semibold text-base m-2 my-4">
             {formHeading}
           </h1>

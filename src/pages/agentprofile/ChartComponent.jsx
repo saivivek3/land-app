@@ -1,4 +1,4 @@
-// import React from 'react';
+//
 // import { Line } from 'react-chartjs-2';
 // import {
 //   Chart as ChartJS,
@@ -107,7 +107,7 @@
 // };
 
 // export default LineChart;
-import React from 'react';
+
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import Button from '@/components/ui/Button';

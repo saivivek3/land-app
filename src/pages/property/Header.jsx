@@ -1,4 +1,3 @@
-import React from 'react';
 import AvatarIcon from '@/assets/avatar-icon.svg';
 
 function Header() {

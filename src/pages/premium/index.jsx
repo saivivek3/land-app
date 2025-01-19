@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   CheckCircle2,
   Heart,
@@ -20,21 +19,13 @@ import GoogleMapComponent from '@/components/GoogleMap';
 import { MarkerF } from '@react-google-maps/api';
 import GmapMarker from '@/assets/googlemarker.png';
 
-const PropertyListing = () => {
+
+const SinglePropertyView = () => {
   const center = {
     lat: 17.375278,
     lng: 78.432818,
   };
-  const CustomMarkerComponent = () => {
-    return (
-      <MarkerF
-        position={center}
-        icon={{
-          url: GmapMarker,
-        }}
-      />
-    );
-  };
+
   return (
     <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex gap-4 min-w-fit">
       {/* Property Image */}
@@ -195,4 +186,4 @@ const PropertyListing = () => {
   );
 };
 
-export default PropertyListing;
+export default SinglePropertyView;

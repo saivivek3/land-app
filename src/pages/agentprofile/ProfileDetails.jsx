@@ -1,4 +1,3 @@
-import React from 'react';
 import { PhoneCallIcon } from 'lucide-react';
 import Image1 from '@/assets/image-1.svg';
 import Image2 from '@/assets/image-2.svg';

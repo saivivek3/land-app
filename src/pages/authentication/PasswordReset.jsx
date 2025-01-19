@@ -1,14 +1,21 @@
-import Icon from '@/assets/react.svg';
+
 import Button from '@/components/ui/Button.jsx';
-import React from 'react';
+import CheckCircleIcon from '@/assets/checkcircle-icon.svg'
+
 function PasswordReset() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <img src={Icon} alt="Forgot Password" className="w-8 h-8 " />
+        <div className="rounded-lg shadow-sm p-4">
+          <img
+            src={CheckCircleIcon}
+            alt="Forgot Password"
+            className="w-6 h-6 flex "
+          />
+        </div>
       </div>
 
-      <h2 className="text-2xl font-semibold text-primary text-center">
+      <h2 className="text-3xl font-semibold text-primary text-center">
         Password reset
       </h2>
       <p className="text-tertiary text-base text-center">
