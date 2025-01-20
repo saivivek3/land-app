@@ -152,6 +152,7 @@ const LocationMap = () => {
                   type="text"
                   className=" rounded-full p-2 w-full pl-10 min-w-fit"
                   placeholder="Enter Your Search"
+                  value={location.address}
                 />
               </StandaloneSearchBox>
             </div>
