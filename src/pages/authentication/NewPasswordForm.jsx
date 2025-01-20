@@ -72,7 +72,7 @@ function NewPasswordForm() {
         <Button onClick={navigateToPasswordResetSuccess}>Reset Password</Button>
       </form>
     </>
-  );
+  )
 }
 
 export default NewPasswordForm;

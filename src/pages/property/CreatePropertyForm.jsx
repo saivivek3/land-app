@@ -5,12 +5,7 @@ import Button from '@/components/ui/Button.jsx';
 import HomeScreen from '@/assets/images/image.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-// const header = (
-//   <div className="flex items-center justify-between mb-6">
-//     <h1 className="text-xl font-semibold">LandApp</h1>
-//     <div className="w-8 h-8 bg-gray-200 rounded-full" />
-//   </div>
-// );
+
 
 const CreatePropertyForm = () => {
   const [property, setProperty] = useState({

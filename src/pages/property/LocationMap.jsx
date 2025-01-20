@@ -46,10 +46,19 @@ const LocationMap = () => {
     }
   }, []); // Empty dependency array ensures this runs only once
 
+  const handleDragEnd = event => {
+    setLocation({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    });
+  };
+
   const CustomMarkerComponent = () => (
     <div className="relative">
       <MarkerF
         position={{ lat: location.lat, lng: location.lng }}
+        draggable={true}
+        onDragEnd={handleDragEnd}
         icon={{
           url:
             'data:image/svg+xml;charset=UTF-8,' +
