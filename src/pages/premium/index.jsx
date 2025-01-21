@@ -16,9 +16,6 @@ import LegalIcon from '@/assets/legal.svg';
 import RatingIcon from '@/assets/invoice.svg';
 import WirelessIcon from '@/assets/wireless.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
-import { MarkerF } from '@react-google-maps/api';
-import GmapMarker from '@/assets/googlemarker.png';
-
 
 const SinglePropertyView = () => {
   const center = {

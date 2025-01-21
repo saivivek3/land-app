@@ -54,7 +54,8 @@ const CreatePropertyForm = () => {
         </div>
         <div>
           <img
-            src={HomeScreen}
+            src={
+              HomeScreen}
             alt="lock-screen"
             className="object-cover w-full h-[260px] rounded-lg"
           />
