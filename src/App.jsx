@@ -253,6 +253,9 @@ import PostedProperties from './pages/agentprofile/PostedProperties';
 import ProfileDetails from './pages/agentprofile/ProfileDetails';
 import PropertyHistory from './pages/agentprofile/PropertyHistory';
 import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
+import Landapp_v1 from './pages/Landapp_v1/index.jsx';
+import PropertyListing from './pages/Property_Listing/Components';
+import PropertyDescription from './pages/Property_Description/Components';
 
 // Layouts
 
@@ -324,6 +327,20 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
+      element: <Landapp_v1 />,
+    },
+
+    {
+      path: '/all-lands',
+      element: <PropertyListing />,
+    },
+
+    {
+      path: '/property-description',
+      element: <PropertyDescription />,
+    },
+    {
+      path: '/authentication?tab=signup',
       children: [
         {
           index: true,

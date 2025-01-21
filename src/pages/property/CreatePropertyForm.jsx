@@ -5,8 +5,6 @@ import Button from '@/components/ui/Button.jsx';
 import HomeScreen from '@/assets/images/image.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-
-
 const CreatePropertyForm = () => {
   const [property, setProperty] = useState({
     propertyType: '',
@@ -17,7 +15,7 @@ const CreatePropertyForm = () => {
 
   const navigate = useNavigate();
 
-  function onSubmit(data) {
+  function onSubmit(data) {e
     console.log(data);
   }
   return (
@@ -30,7 +28,7 @@ const CreatePropertyForm = () => {
           <p className=" mt-2 text-xl text-black ">
             Get your property listed in minutes with an easy-to-use
             <br />
-            for <span className="text-primary font-[700] text-xl">free</span>
+            for <span className="text-primary font-[700] text-xl">fre</span>
           </p>
         </div>
 
