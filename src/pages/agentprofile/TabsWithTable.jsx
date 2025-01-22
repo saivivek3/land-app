@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search} from 'lucide-react';
+import { Search } from 'lucide-react';
 import useFormHook from '@/hooks/useFormHook';
 import cn from '@/lib/cn';
 import Filter from '@/assets/filter.svg';
@@ -102,7 +102,7 @@ const TabsWithTable = ({ tabsTriggerData, tabsData }) => {
                 variant="outline"
                 onClick={() => setSelectedTab(tabD.value)}
                 className={cn(
-                  'text-secondary text-xs font-semibold hover:bg-transparent bg-white',
+                  'text-secondary text-xs font-semibold hover:bg-transparent bg-white min-w-fit',
                   'border-r border-r-bPrimary rounded-none shadow-sm',
                   // First child styling
                   'first:rounded-l-md',

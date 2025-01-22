@@ -1,10 +1,4 @@
-import {
-  CheckCircle2,
-  Heart,
-  Share2,
-  MoreHorizontal,
-  EyeIcon,
-} from 'lucide-react';
+import { Heart, Share2, EyeIcon } from 'lucide-react';
 import HomeImage from '@/assets/images/image.png';
 import Button from '@/components/ui/Button';
 import FilterIcon from '@/assets/filter-icon.svg';
@@ -18,11 +12,6 @@ import WirelessIcon from '@/assets/wireless.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
 
 const SinglePropertyView = () => {
-  const center = {
-    lat: 17.375278,
-    lng: 78.432818,
-  };
-
   return (
     <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex gap-4 min-w-fit">
       {/* Property Image */}

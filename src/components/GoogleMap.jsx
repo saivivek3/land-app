@@ -7,10 +7,10 @@ import {
 import React, { useState, useEffect } from 'react';
 import GmapMarker from '@/assets/googlemarker.png';
 
-const GoogleMapComponent = ({ oneMarker, mapWidth }) => {
+const GoogleMapComponent = ({ oneMarker, mapHeight, mapWidth = '100%' }) => {
   const mapContainerStyle = {
-    width: '100%',
-    height: 'auto',
+    width: mapWidth,
+    height: mapHeight || 'auto',
   };
 
   const center = {

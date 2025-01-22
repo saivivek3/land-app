@@ -6,7 +6,7 @@ function Navbar({
   logoText = 'Land App',
   avatarSrc = 'Avatar',
   avatarAlt = 'Avatar',
-  profileLink = '/Profile',
+  profileLink = '/agent-profile',
   menuItems = [
     { label: 'All Lands', to: '/all-lands' },
     { label: 'Developers', to: '#' },

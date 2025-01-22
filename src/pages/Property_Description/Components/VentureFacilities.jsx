@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Dropdown from '../Components/images/Dropdown.svg';
 import arrowUp from '../Components/images/arrowup.svg';
 import Clipboard from '../Components/images/clipboard.svg';

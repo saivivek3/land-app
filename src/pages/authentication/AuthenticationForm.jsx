@@ -1,9 +1,8 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignUpForm from './SignUpForm.jsx';
 import LoginForm from './LoginForm.jsx';
-import Button from '@/components/ui/Button.jsx';
-import GoogleIcon from '@/assets/google-icon.svg';
 import { useSearchParams } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth.jsx';
 
 function AuthenticationForm() {
   const [userType, setUserType] = useState('User');
@@ -71,12 +70,8 @@ function AuthenticationForm() {
         </div>
       </div>
       {activeTab === 'signup' ? <SignUpForm /> : <LoginForm />}
-      <Button
-        iconUrl={GoogleIcon}
-        className="bg-white text-secondary hover:bg-white/50"
-      >
-        {activeTab === 'signup' ? 'Sign up ' : 'Sign in '}with Google
-      </Button>
+
+      <GoogleAuth mode={activeTab} />
 
       {/* Footer */}
       <div className="mt-6 flex gap-2 items-center justify-center">

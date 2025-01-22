@@ -23,6 +23,9 @@ const DetailsForm = ({
     console.log(data);
   }
 
+  // Function to render the appropriate field component based on the field type
+
+
   const renderField = field => {
     switch (field.type) {
       case 'text':

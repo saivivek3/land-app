@@ -15,8 +15,8 @@ import {
 
 export function DatePickerWithRange({ className }) {
   const [date, setDate] = React.useState({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+    from: new Date(2023, 0, 20),
+    to: addDays(new Date(2023, 0, 20), 20),
   });
 
   return (
@@ -53,6 +53,8 @@ export function DatePickerWithRange({ className }) {
             selected={date}
             onSelect={setDate}
             numberOfMonths={2}
+            fromYear={new Date().getFullYear() - 1} // Current year - 1
+            toYear={new Date().getFullYear() + 1} // Current year + 1
           />
         </PopoverContent>
       </Popover>

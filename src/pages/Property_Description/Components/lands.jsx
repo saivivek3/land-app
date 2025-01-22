@@ -1,4 +1,4 @@
-import React from 'react';
+
 // import Land from "../Components/images/big-land-land.jpg";
 import LandLeft from '../Components/images/landLeft.svg';
 // import LandCard from "../Common/landCard";

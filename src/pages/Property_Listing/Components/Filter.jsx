@@ -7,8 +7,10 @@ import Location from './images/location.svg';
 
 import CalendarDropdown from '@/components/CalenderDropdown';
 import Button from '@/components/ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Filter() {
+  const navigate = useNavigate();
   return (
     <div className="px-4 md:px-20 flex flex-col md:flex-row items-center md:items-start -z-50">
       <div className="flex flex-col md:flex-row justify-between py-4 w-full gap-4">
@@ -45,6 +47,9 @@ function Filter() {
             py="py-2"
             px="px-4"
             border="border border-gray-300"
+            onClick={() => {
+              navigate('/premium-property/property-map-view');
+            }}
           >
             <span className="flex gap-2 items-center">
               <img src={Location} alt="Location Icon" className="w-4 h-4" />

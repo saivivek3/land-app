@@ -1,240 +1,3 @@
-// import AuthenticationForm from './pages/authentication/AuthenticationForm.jsx';
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import ForgotPasswordForm from './pages/authentication/ForgotPasswordForm.jsx';
-// import ForgotPasswordLayout from './layout/ForgotPasswordLayout.jsx';
-// import CheckEmailForm from './pages/authentication/CheckEmailForm.jsx';
-// import NewPasswordForm from './pages/authentication/NewPasswordForm.jsx';
-// import PasswordReset from './pages/authentication/PasswordReset.jsx';
-// import CreatePropertyForm from './pages/property/CreatePropertyForm.jsx';
-// import PropertyLayout from './layout/PropertyLayout.jsx';
-// import { LoadScript } from '@react-google-maps/api';
-// import {
-//   LocationDetailsConfig,
-//   OwnerDetailsConfig,
-//   propertyDetailsConfig,
-// } from './pages/property/propertyFormConfig.js';
-// import { PropertyDetailsForm } from '@/pages/property/PropertyDetails.jsx';
-// import PropertyLocatedForm from '@/pages/property/PropertyLocatedForm.jsx';
-// import OwnerDetailsForm from '@/pages/property/OwnerDetailsForm.jsx';
-
-// import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider.jsx';
-// import PropertyDocuments from './pages/property/PropertyDocuments.jsx';
-// import ImageUploadGallery from './pages/property/ImageUploadGallery.jsx';
-// import CreatePropertyConfirmation from './pages/property/CreatePropertyConfirmation.jsx';
-// import PropertyPhoneNumberVerification from './pages/property/PropertyVerification.jsx';
-// import AgentProfileLayout from './layout/AgentProfileLayout.jsx';
-// import ProfileDetails from './pages/agentprofile/ProfileDetails.jsx';
-// import { TabsContent } from './components/ui/tabs.jsx';
-// import PostedProperties from './pages/agentprofile/PostedProperties.jsx';
-// import PropertyHistory from './pages/agentprofile/PropertyHistory.jsx';
-// import DashboardLayout from './layout/DashboardLayout.jsx';
-// import UserDetails from './pages/dashboard/UserDetails.jsx';
-// import AgentDetails from './pages/dashboard/AgentDetails.jsx';
-// import AdminDetails from './pages/dashboard/AdminDetails.jsx';
-
-// import { Toaster } from '@/components/ui/toaster';
-// import LocationMap from './pages/property/LocationMap.jsx';
-// import PropertyListing from './pages/premium/index.jsx';
-// import PropertyMapView from './pages/premium/PropertyMapView.jsx';
-// import PremiumMapView from './pages/premium/PremiunMapView.jsx';
-// import SinglePropertyView from './pages/premium/index.jsx';
-
-// export default function App() {
-//   const router = createBrowserRouter([
-//     {
-//       path: '/',
-//       children: [
-//         {
-//           index: true,
-//           element: <AuthenticationForm />,
-//         },
-//       ],
-//     },
-//     {
-//       element: <ForgotPasswordLayout />,
-//       path: '/forgot-password',
-//       children: [
-//         {
-//           index: true,
-//           element: <ForgotPasswordForm />,
-//         },
-//         {
-//           path: '/forgot-password/check-email',
-//           element: <CheckEmailForm />,
-//         },
-//         {
-//           path: '/forgot-password/new-password',
-//           element: <NewPasswordForm />,
-//         },
-//         {
-//           path: '/forgot-password/password-reset',
-//           element: <PasswordReset />,
-//         },
-//       ],
-//     },
-//     {
-//       path: '/create-property',
-//       element: <PropertyLayout />,
-//       children: [
-//         {
-//           index: true,
-//           element: <CreatePropertyForm />,
-//         },
-//         {
-//           path: '/create-property/verification',
-//           element: <PropertyPhoneNumberVerification />,
-//         },
-
-//         {
-//           path: '/create-property/location-map',
-//           element: <LocationMap />,
-//         },
-//         {
-//           path: '/create-property/property-details',
-//           element: (
-//             <PropertyDetailsForm
-//               heading={'Property Details'}
-//               isOpenSidesRequired
-//               formHeading="Property Details"
-//               subHeading={
-//                 'An accurate information helps you connect with right buyers'
-//               }
-//               formConfig={propertyDetailsConfig}
-//               nextPath="/create-property/property-located"
-//             />
-//           ),
-//         },
-//         {
-//           path: '/create-property/property-located',
-//           element: (
-//             <PropertyLocatedForm
-//               heading={'Where is the Property located?'}
-//               formHeading="Location Details"
-//               subHeading={
-//                 'An accurate location helps you connect with right buyers'
-//               }
-//               formConfig={LocationDetailsConfig}
-//               nextPath="/create-property/location-map"
-//             />
-//           ),
-//         },
-//         {
-//           path: '/create-property/owner-details',
-//           element: (
-//             <OwnerDetailsForm
-//               heading={'Owner Details'}
-//               formHeading=""
-//               subHeading={'Owner information'}
-//               formConfig={OwnerDetailsConfig}
-//               nextPath="/create-property/property-documents"
-//             />
-//           ),
-//         },
-//         {
-//           path: '/create-property/property-documents',
-//           element: (
-//             <PropertyDetailsContextProvider nextPath="/create-property/confirmation">
-//               <PropertyDocuments />
-//             </PropertyDetailsContextProvider>
-//           ),
-//         },
-//         {
-//           path: '/create-property/photos',
-//           element: (
-//             <PropertyDetailsContextProvider nextPath="/create-property/owner-details">
-//               <ImageUploadGallery />
-//             </PropertyDetailsContextProvider>
-//           ),
-//         },
-//         {
-//           path: '/create-property/confirmation',
-//           element: <CreatePropertyConfirmation />,
-//         },
-//       ],
-//     },
-//     {
-//       path: '/agent-profile',
-//       children: [
-//         {
-//           index: true,
-//           element: (
-//             <AgentProfileLayout>
-//               <TabsContent value="profile">
-//                 <ProfileDetails />
-//               </TabsContent>
-//               <TabsContent value="properties">
-//                 <PostedProperties />
-//               </TabsContent>
-//               <TabsContent value="history">
-//                 <PropertyHistory />
-//               </TabsContent>
-//             </AgentProfileLayout>
-//           ),
-//         },
-//       ],
-//     },
-//     {
-//       path: '/dashboard',
-//       // element: <DashboardLayout />,
-//       children: [
-//         {
-//           index: true,
-//           element: (
-//             <DashboardLayout>
-//               <UserDetails />
-//             </DashboardLayout>
-//           ),
-//         },
-//         {
-//           path: '/dashboard/agent',
-//           element: (
-//             <DashboardLayout>
-//               <AgentDetails />
-//             </DashboardLayout>
-//           ),
-//         },
-//         {
-//           path: '/dashboard/admin',
-//           element: (
-//             <DashboardLayout>
-//               <AdminDetails />
-//             </DashboardLayout>
-//           ),
-//         },
-//       ],
-//     },
-//     {
-//       path: '/premium-property',
-
-//       children: [
-//         {
-//           path: '/premium-property/single-property-view/:id',
-//           element: <SinglePropertyView />,
-//         },
-//         {
-//           path: '/premium-property/property-map-view',
-//           element: <PropertyMapView />,
-//         },
-//         {
-//           path: '/premium-property/satellite-view',
-//           element: <PremiumMapView />,
-//         },
-//       ],
-//     },
-//   ]);
-//   return (
-//     <>
-//       <Toaster />
-//       <LoadScript
-//         googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28" // or process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-//         libraries={['places', 'marker']}
-//       >
-//         <RouterProvider router={router} />
-//       </LoadScript>
-//     </>
-//   );
-// }
-
 // utils/lazyLoad.js
 
 // App.jsx
@@ -256,6 +19,8 @@ import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
 import Landapp_v1 from './pages/Landapp_v1/index.jsx';
 import PropertyListing from './pages/Property_Listing/Components';
 import PropertyDescription from './pages/Property_Description/Components';
+import { AuthProvider } from './context/authentication/AuthProvider';
+import 'react-day-picker/dist/style.css';
 
 // Layouts
 
@@ -340,7 +105,7 @@ export default function App() {
       element: <PropertyDescription />,
     },
     {
-      path: '/authentication?tab=signup',
+      path: '/authentication',
       children: [
         {
           index: true,
@@ -513,7 +278,7 @@ export default function App() {
     //AGENT PROFILE
 
     {
-      path: '/agent-profile',
+      path: '/profile',
       children: [
         {
           index: true,
@@ -611,13 +376,15 @@ export default function App() {
 
   return (
     <>
-      <Toaster />
-      <LoadScript
-        googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
-        libraries={['places', 'marker']}
-      >
-        <RouterProvider router={router} />
-      </LoadScript>
+      <AuthProvider>
+        <Toaster />
+        <LoadScript
+          googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
+          libraries={['places', 'marker']}
+        >
+          <RouterProvider router={router} />
+        </LoadScript>
+      </AuthProvider>
     </>
   );
 }

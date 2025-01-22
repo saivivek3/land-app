@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Pagination from './Pagination';
+
 import { Pencil, Trash } from 'lucide-react';
 import { tableData } from './tableData';
 import cn from '@/lib/cn';
 import { Checkbox } from '@/components/ui/checkbox';
+import Pagination from '@/components/ui/Pagination';
 
 function DataTable() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,12 +21,9 @@ function DataTable() {
           </tbody>
         </table>
       </div>
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={4}
-        onPageChange={setCurrentPage}
-      />
+      <div className="w-full">
+        <Pagination currentPage={currentPage} onPageChange={setCurrentPage} />
+      </div>
     </div>
   );
 }

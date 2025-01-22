@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+
 function NavPart() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="flex gap-3">
         <div className="absolute right-16 top-11 border border-white bg-green-500 rounded-full w-2 h-2"></div>
-        <div className="border border-gray-300 px-2 py-1 rounded-md shadow-md text-sm font-semibold">
+        <div
+          className="border border-gray-300 px-2 py-1 rounded-md shadow-md text-sm font-semibold cursor-pointer"
+          onClick={() => navigate('/authentication')}
+        >
           Sell your Land
         </div>
         {/* Container with Black Border */}

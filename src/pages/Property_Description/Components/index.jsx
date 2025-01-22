@@ -9,7 +9,8 @@ import PropertyMoreDetails from './PropertyMoreDetails';
 import PremiumProperties from './PremiumProperties';
 import { properties } from '@/data/data';
 import Navbar from '@/components/Navbar';
-import { Footer } from 'react-day-picker';
+import GoogleMapComponent from '@/components/GoogleMap';
+import Footer from './Footer';
 
 const PropertyDescription = () => {
   return (
@@ -19,7 +20,7 @@ const PropertyDescription = () => {
       <Lands />
       <VentureDetails />
       <VentureFacilities />
-      {/* <Map /> */}
+      <GoogleMapComponent oneMarker mapHeight="400px" />
       <PropertyMoreDetails />
       <PremiumProperties
         title="Related Premium Properties"

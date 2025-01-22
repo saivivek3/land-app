@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const CalendarDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dateRange, setDateRange] = useState({
-    from: '2024-01-06',
-    to: '2024-01-16',
+    from: '2024',
+    to: '2025',
   });
 
   // Function to format the date to "Jan 6"

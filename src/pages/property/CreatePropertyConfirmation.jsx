@@ -1,7 +1,9 @@
 import CheckIconFull from '@/assets/check-circle-full.svg';
 import Button from '@/components/ui/Button.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePropertyConfirmation() {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center  items-center h-screen ">
       <div className="flex flex-col  gap-2 justify-center items-center max-w-[460px] border border-bPrimary shadow-sm rounded-[16px] p-12">
@@ -17,6 +19,7 @@ function CreatePropertyConfirmation() {
           <Button
             type="submit"
             className=" bg-primary rounded-lg text-base font-semibold hover:bg-primary/50 px-5 py-2"
+            onClick={() => navigate('/')}
           >
             Got it
           </Button>

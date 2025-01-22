@@ -15,7 +15,7 @@ const CreatePropertyForm = () => {
 
   const navigate = useNavigate();
 
-  function onSubmit(data) {e
+  function onSubmit(data) {
     console.log(data);
   }
   return (

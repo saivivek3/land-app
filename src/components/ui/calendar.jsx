@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DayPicker } from 'react-day-picker';
+import { DayPicker, DayPickerProvider } from 'react-day-picker';
 import cn from '@/lib/cn';
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
@@ -53,6 +53,10 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
           <ChevronRight className={cn('h-4 w-4', className)} {...props} />
         ),
       }}
+      mode="single"
+      defaultMonth={new Date()} // Set current month as default
+      fromYear={new Date().getFullYear() - 1} // Current year - 1
+      toYear={new Date().getFullYear() + 1} // Current year + 1
       {...props}
     />
   );

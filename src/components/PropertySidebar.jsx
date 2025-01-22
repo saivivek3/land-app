@@ -2,17 +2,53 @@ import { Home, LayoutDashboard, ListPlus, User, Settings } from 'lucide-react';
 import AvatarIcon from '@/assets/avatar-icon.svg';
 
 import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SidebarLink = ({ icon: Icon, label, active }) => (
+const SidebarLink = ({ icon: Icon, label, active, onClick }) => (
   <div
     className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer ${active ? 'bg-active text-[#252327]' : 'hover:text-[#252327]  hover:bg-active '}`}
+    onClick={onClick}
   >
     <Icon className="w-5 h-5" />
     <span className="text-xs font-medium">{label}</span>
   </div>
 );
 
+const sidebarLinksArr = [
+  { icon: Home, label: 'Home', active: false, navigate: '/' },
+  {
+    icon: LayoutDashboard,
+    label: 'Dashboard',
+    active: false,
+    navigate: '/dashboard',
+  },
+  {
+    icon: ListPlus,
+    label: 'Listings Management',
+    active: false,
+    navigate: '/listings',
+  },
+  { icon: User, label: 'Profile', active: true, navigate: '/profile' },
+  { icon: Settings, label: 'Settings', active: false, navigate: '/settings' },
+];
+
 function PropertySidebar({ className = 'max-w-80' }) {
+  const [sidebarLinks, setSideBarLinks] = useState(() => sidebarLinksArr);
+  const navigate = useNavigate();
+
+  const handleClick = (label, navigateLink) => {
+    setSideBarLinks(prev =>
+      prev.map(link =>
+        link.label === label
+          ? { ...link, active: true }
+          : { ...link, active: false },
+      ),
+    );
+
+    navigate(navigateLink);
+  };
+
   return (
     <div
       className={` ${className} bg-white p-4 border-r rounded-xl  ml-2 mt-2 flex flex-col min-h-full`}
@@ -25,15 +61,17 @@ function PropertySidebar({ className = 'max-w-80' }) {
             icon={<Search className="w-4 h-4" />}
           /> */}
       </div>
-
       <div className="space-y-2">
-        <SidebarLink icon={Home} label="Home" />
-        <SidebarLink icon={LayoutDashboard} label="Dashboard" />
-        <SidebarLink icon={ListPlus} label="Listings Management" />
-        <SidebarLink icon={User} label="Profile" active />
-        <SidebarLink icon={Settings} label="Settings" />
+        {sidebarLinks.map((link, index) => (
+          <SidebarLink
+            key={index}
+            onClick={() => handleClick(link.label, link.navigate)}
+            icon={link.icon}
+            label={link.label}
+            active={link.active}
+          />
+        ))}
       </div>
-
       <div className="shadow-sm border border-bSecondary rounded-lg mt-auto">
         <div className="flex items-center gap-2 p-4 ">
           <img

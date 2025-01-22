@@ -61,7 +61,7 @@ const PropertyMapView = () => {
   return (
     <div className="mx-auto p-4 max-w-7xl">
       <div className="flex gap-4 justify-between">
-        <div className="flex-1 min-w-fit ">
+        <div className="flex-1  basis-[1000px]">
           <div className="flex justify-between items-center mb-3">
             <div>
               <h1 className="text-xl font-semibold text-primary">
@@ -90,7 +90,7 @@ const PropertyMapView = () => {
                 { id: 2, label: 'Kandakur', value: 'kandakur' },
               ]}
             />
-            <DatePickerWithRange />
+            {/* <DatePickerWithRange /> */}
             <SelectComponent
               placeholder="Any Price"
               options={[{ id: 1, label: 'Any Price', value: 'Any Price' }]}
@@ -174,7 +174,7 @@ const PropertyMapView = () => {
                   <img
                     src={property.image}
                     alt={property.title}
-                    className="w-64 h-auto object-cover px-4 "
+                    className="w-64 h-32 object-cover px-4 "
                   />
                 </div>
 
@@ -264,7 +264,7 @@ const PropertyMapView = () => {
             </Button>
           </div>
         </div>
-        <GoogleMapComponent oneMarker={false} />
+        <GoogleMapComponent oneMarker={false} mapWidth="50%" />
       </div>
     </div>
   );

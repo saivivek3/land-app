@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function LandCards({ item, link = '/property-description' }) {
   const [like, setLike] = useState(false);
@@ -7,8 +8,8 @@ function LandCards({ item, link = '/property-description' }) {
     setLike(!like);
   }
   return (
-    <a
-      href={link}
+    <Link
+      to={link}
       className="p-2 relative block bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       {/* Logo */}
@@ -70,7 +71,7 @@ function LandCards({ item, link = '/property-description' }) {
           </p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
