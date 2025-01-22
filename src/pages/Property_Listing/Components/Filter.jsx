@@ -1,13 +1,15 @@
 // import CalendarDropdown from "./Calenderdropdown";
 // import Button from "../common/Button";
-import PriceDropdown from './Pricedropdown';
+// import PriceDropdown from './Pricedropdown';
 import filterIcon from '../Components/images/filterIcon.svg';
-import StateDropdown from './StateDropdown';
+// import StateDropdown from './StateDropdown';
 import Location from './images/location.svg';
 
 import CalendarDropdown from '@/components/CalenderDropdown';
-import Button from '@/components/ui/Button';
+import SelectDistrict from './SelectDistrict';
+import SelectPrice from './SelectPrice';
 import { useNavigate } from 'react-router-dom';
+// import CalendarDropdowns from '@/components/CalenderDropdowns';
 
 function Filter() {
   const navigate = useNavigate();
@@ -16,57 +18,38 @@ function Filter() {
       <div className="flex flex-col md:flex-row justify-between py-4 w-full gap-4">
         {/* Dropdown Section */}
         <div className="flex flex-col md:flex-row z-40 items-center gap-4">
-          <StateDropdown />
+          {/* <StateDropdown /> */}
+          <SelectDistrict />
           <CalendarDropdown />
-          <PriceDropdown />
+          <SelectPrice />
+          {/* <CalendarDropdowns /> */}
         </div>
 
         {/* Mobile View Buttons */}
         <div className="block md:hidden w-full flex flex-col items-center gap-4">
-          <Button className="w-full max-w-xs py-2 border border-gray-300 rounded-md">
-            <span className="flex gap-2 items-center justify-center">
-              <img src={Location} alt="Location Icon" className="w-4 h-4" />
-              Map View
-            </span>
-          </Button>
-          <Button
-            className="w-full max-w-xs py-2 border border-gray-300 rounded-md"
-            rounded="rounded-md"
-          >
-            <span className="flex gap-2 items-center justify-center">
-              <img src={filterIcon} alt="Filter Icon" className="w-4 h-4" />
-              More Filters
-            </span>
-          </Button>
+          <button className="w-full max-w-xs py-2 border border-gray-300 rounded-md flex gap-2 items-center justify-center">
+            <img src={Location} alt="Location Icon" className="w-4 h-4" />
+            <span>Map View</span>
+          </button>
+          <button className="w-full max-w-xs py-2 border border-gray-300 rounded-md flex gap-2 items-center justify-center">
+            <img src={filterIcon} alt="Filter Icon" className="w-4 h-4" />
+            <span>More Filters</span>
+          </button>
         </div>
 
         {/* Desktop View Buttons */}
         <div className="hidden md:flex ml-auto gap-4">
-          <Button
-            rounded="rounded-md"
-            py="py-2"
-            px="px-4"
-            border="border border-gray-300"
-            onClick={() => {
-              navigate('/premium-property/property-map-view');
-            }}
+          <button
+            className="py-2 px-4 border border-gray-300 rounded-md flex gap-2 items-center"
+            onClick={() => navigate('/premium-property/property-map-view')}
           >
-            <span className="flex gap-2 items-center">
-              <img src={Location} alt="Location Icon" className="w-4 h-4" />
-              Map View
-            </span>
-          </Button>
-          <Button
-            py="py-2"
-            px="px-4"
-            rounded="rouned-md"
-            border="border border-gray-300"
-          >
-            <span className="flex gap-2 items-center">
-              <img src={filterIcon} alt="Filter Icon" className="w-4 h-4" />
-              More Filters
-            </span>
-          </Button>
+            <img src={Location} alt="Location Icon" className="w-4 h-4" />
+            <span>Map View</span>
+          </button>
+          <button className="py-2 px-4 border border-gray-300 rounded-md flex gap-2 items-center">
+            <img src={filterIcon} alt="Filter Icon" className="w-4 h-4" />
+            <span>More Filters</span>
+          </button>
         </div>
       </div>
     </div>

@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
 // Telangana districts
 const districts = [
-  { city: "Hyderabad", short: "TS" },
-  { city: "Medak", short: "TS" },
-  { city: "Warangal", short: "TS" },
-  { city: "Karimnagar", short: "TS" },
-  { city: "Khammam", short: "TS" },
-  { city: "Nizamabad", short: "TS" },
-  { city: "Adilabad", short: "TS" },
-  { city: "Mahbubnagar", short: "TS" },
-  { city: "Rangareddy", short: "TS" },
-  { city: "Nalgonda", short: "TS" },
+  { city: 'Hyderabad', short: 'TS' },
+  { city: 'Medak', short: 'TS' },
+  { city: 'Warangal', short: 'TS' },
+  { city: 'Karimnagar', short: 'TS' },
+  { city: 'Khammam', short: 'TS' },
+  { city: 'Nizamabad', short: 'TS' },
+  { city: 'Adilabad', short: 'TS' },
+  { city: 'Mahbubnagar', short: 'TS' },
+  { city: 'Rangareddy', short: 'TS' },
+  { city: 'Nalgonda', short: 'TS' },
 ];
 
 const StateDropdown = () => {
   const [selectedDistrict, setSelectedDistrict] = useState(districts[0]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (district) => {
+  const handleSelect = district => {
     setSelectedDistrict(district);
     setIsOpen(false);
   };

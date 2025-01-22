@@ -20,22 +20,12 @@ function SearchBar() {
 
         {/* Medium and above screens: Show Clear and Search buttons in one line */}
         <div className="hidden md:flex gap-2">
-          <Button
-            border="border border-gray-300 rounded-lg"
-            px="px-4"
-            py="py-2"
-          >
+          <button className="border border-gray-300 rounded-lg px-4 py-2">
             Clear
-          </Button>
-          <Button
-            className="rounded-lg"
-            bg="bg-black"
-            text="text-white"
-            px="px-4"
-            py="py-2"
-          >
+          </button>
+          <button className="rounded-lg bg-black text-white px-4 py-2">
             Search
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -43,24 +33,20 @@ function SearchBar() {
       <div className="md:hidden flex flex-col items-center mt-4 gap-4 w-full">
         {/* Clear and Search Buttons */}
         <div className="flex flex-col items-center gap-2 w-full">
-          <Button className="w-full max-w-xs rounded-lg border border-gray-300 py-2 font-semibold">
+          <button className="w-full max-w-xs rounded-lg border border-gray-300 py-2 font-semibold">
             Clear
-          </Button>
-          <Button
-            className="w-full max-w-xs rounded-lg py-2"
-            bg="bg-black"
-            text="text-white"
-          >
+          </button>
+          <button className="w-full max-w-xs rounded-lg py-2 bg-black text-white">
             Search
-          </Button>
+          </button>
         </div>
         {/* More Filters Button */}
-        <Button className="w-full max-w-sm border border-gray-300 rounded-lg py-2">
+        <button className="w-full max-w-sm border border-gray-300 rounded-lg py-2">
           <span className="flex gap-2 items-center justify-center w-full">
             <img src={filterIcon} alt="Filter Icon" className="w-4 h-4" />
             More Filters
           </span>
-        </Button>
+        </button>
       </div>
     </div>
   );

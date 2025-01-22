@@ -1,4 +1,4 @@
-import HomeCenterImg from "@/assets/images/HomeCenterImg.svg";
+import HomeCenterImg from "./images/HomeCenterImg.svg";
 function HomeCenterImage() {
   return (
     <div className="mx-20 mt-12">

@@ -7,7 +7,7 @@ function NavPart() {
       <div className="flex gap-3">
         <div className="absolute right-16 top-11 border border-white bg-green-500 rounded-full w-2 h-2"></div>
         <div
-          className="border border-gray-300 px-2 py-1 rounded-md shadow-md text-sm font-semibold cursor-pointer"
+          className="border border-gray-300 px-2 py-1 rounded-md shadow-md text-sm font-semibold"
           onClick={() => navigate('/authentication')}
         >
           Sell your Land
