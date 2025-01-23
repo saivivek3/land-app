@@ -1,40 +1,40 @@
-import { useState } from "react";
-import cardOneImg from "./images/CardOneImg.jpg";
-import CardSecondImg from "./images/CardSecondImg.jpg";
-import CardThirdImg from "./images/CardThirdImg.jpg";
-import CardFourthImg from "./images/CardFourthImg.jpg";
-import CardFifthImg from "./images/CardFifthImg.jpg";
-import CardSixthImg from "./images/CardSixthImg.jpg";
-import starImg from "./images/emptyStar.svg";
-import leftArrow from "./images/leftArrow.svg";
-import rightArrow from "./images/rightArrow.svg";
+import { useState } from 'react';
+import cardOneImg from './images/CardOneImg.jpg';
+import CardSecondImg from './images/CardSecondImg.jpg';
+import CardThirdImg from './images/CardThirdImg.jpg';
+import CardFourthImg from './images/CardFourthImg.jpg';
+import CardFifthImg from './images/CardFifthImg.jpg';
+import CardSixthImg from './images/CardSixthImg.jpg';
+import starImg from './images/emptyStar.svg';
+import leftArrow from './images/leftArrow.svg';
+import rightArrow from './images/rightArrow.svg';
 
 function EachCard({ cards }) {
   const [activeCard, setActiveCard] = useState(0);
-  const [direction, setDirection] = useState("next");
+  const [direction, setDirection] = useState('next');
 
   const handleNext = () => {
-    setDirection("next");
-    setActiveCard((prevCard) => (prevCard + 1) % cards.length);
+    setDirection('next');
+    setActiveCard(prevCard => (prevCard + 1) % cards.length);
   };
 
   const handlePrevious = () => {
-    setDirection("previous");
-    setActiveCard((prevCard) =>
-      prevCard === 0 ? cards.length - 1 : prevCard - 1
+    setDirection('previous');
+    setActiveCard(prevCard =>
+      prevCard === 0 ? cards.length - 1 : prevCard - 1,
     );
   };
 
   const cardStyle = {
     transform:
-      direction === "next"
+      direction === 'next'
         ? `translateX(-${activeCard * 10}%)`
         : `translateX(${(cards.length - activeCard - 1) * 10}%)`,
-    transition: "transform 0.3s ease-in-out",
+    transition: 'transform 0.3s ease-in-out',
   };
 
   return (
-    <div className="flex flex-col space-y-6 ml-20 overflow-hidden translate-x-20">
+    <div className="flex flex-col space-y-6 ml-5 sm:ml-20 overflow-hidden">
       <div className="mr-auto">
         <div className="font-semibold text-2xl">Top Regional Partners</div>
         <p className="text-sm text-gray-600 mt-2">
@@ -42,16 +42,19 @@ function EachCard({ cards }) {
         </p>
       </div>
       {/* Card Display */}
-      <div className="flex space-x-4 max-w-7xl" style={cardStyle}>
+      <div
+        className="flex space-x-4 max-w-7xl overflow-hidden"
+        style={cardStyle}
+      >
         {cards.map((card, index) => (
           <div
             key={index}
-            className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-96 relative"
+            className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-80 sm:w-96 relative"
           >
             <img
               src={card.image}
               alt="Card"
-              className="w-full h-72 object-cover rounded-lg"
+              className="w-full h-56 sm:h-72 object-cover rounded-lg"
             />
             {/* Always Display Transparent Content */}
             <div className="mx-4 rounded-md absolute inset-x-0 bottom-0 px-6 py-2 backdrop-blur-sm bg-white/30 mb-5">
@@ -93,7 +96,7 @@ function EachCard({ cards }) {
           <img src={rightArrow} alt="rightArrow" className="w-3 h-3" />
         </button>
       </div>
-      <button className="py-2 px-4 w-56 rounded-lg bg-black text-white">
+      <button className="py-2 px-4 w-full sm:w-1/5 rounded-lg bg-black text-white whitespace-nowrap">
         View all Regional Partners
       </button>
     </div>
@@ -104,43 +107,43 @@ const RegionalPartnersCarousel = () => {
   const cards = [
     {
       image: cardOneImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },
     {
       image: CardSecondImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },
     {
       image: CardThirdImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },
     {
       image: CardFourthImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },
     {
       image: CardFifthImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },
     {
       image: CardSixthImg,
-      name: "Manikanta",
-      region: "Vikarabad Reagion",
+      name: 'Manikanta',
+      region: 'Vikarabad Region',
       listings: 140,
       stars: 5,
     },

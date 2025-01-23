@@ -20,7 +20,9 @@ const PropertyDescription = () => {
       <Lands />
       <VentureDetails />
       <VentureFacilities />
-      <GoogleMapComponent oneMarker mapHeight="400px" />
+      <div className="mt-12 md:mx-20 border border-gray-400 rounded-md">
+        <GoogleMapComponent oneMarker mapHeight="500px" />
+      </div>
       <PropertyMoreDetails />
       <PremiumProperties
         title="Related Premium Properties"

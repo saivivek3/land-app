@@ -1,5 +1,5 @@
 // import Box from "../../Common/box";
-import { testimonials } from "@/data/data";
+import { testimonials } from '@/data/data';
 
 function Testimonial() {
   return (
@@ -12,7 +12,7 @@ function Testimonial() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          {testimonials.map((testimonial) => (
+          {testimonials.map(testimonial => (
             <div key={testimonial.id}>
               <div className="flex flex-col items-start border border-gray-300 p-4 rounded-lg">
                 <img

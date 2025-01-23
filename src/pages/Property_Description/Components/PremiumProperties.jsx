@@ -1,13 +1,12 @@
-import { useState } from "react";
-import HeartFill from "../Components/images/HeartFill.svg";
-import imgheart from "../Components/images/heart.svg";
+import { useState } from 'react';
+import HeartFill from '../Components/images/HeartFill.svg';
 
 function PremiumProperties({ title, properties }) {
   const [like, setLike] = useState(properties.map(() => true));
 
   function toggleLike(index) {
-    setLike((prevlike) =>
-      prevlike.map((like, i) => (i === index ? !like : like))
+    setLike(prevlike =>
+      prevlike.map((like, i) => (i === index ? !like : like)),
     );
   }
   return (
@@ -62,7 +61,7 @@ function PremiumProperties({ title, properties }) {
                 </div>
                 <div className="flex flex-col md:text-start text-center sm:flex-row sm:items-center gap-1 text-sm sm:text-lg font-bold">
                   <p>{property.price}</p>
-                  <span className="hidden sm:inline">-</span>{" "}
+                  <span className="hidden sm:inline">-</span>{' '}
                   {/* Show only on medium screens or larger */}
                   <p>{property.size}</p>
                 </div>
