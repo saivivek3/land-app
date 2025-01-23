@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function PropertyMoreDetails() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     {
-      label: "Basic Details",
+      label: 'Basic Details',
       content: (
         <div className="p-6 bg-customGray border border-gray-300 rounded-md">
           <div className="flex flex-col sm:flex-row gap-y-4 sm:gap-x-6 text-end">
@@ -29,7 +29,7 @@ function PropertyMoreDetails() {
       ),
     },
     {
-      label: "Documents",
+      label: 'Documents',
       content: (
         <div className="p-6 bg-customGray border border-gray-300 rounded-md">
           <div className="flex flex-col sm:flex-row gap-y-4 sm:gap-x-6 text-end">
@@ -54,7 +54,7 @@ function PropertyMoreDetails() {
       ),
     },
     {
-      label: "Pricing & Other",
+      label: 'Pricing & Other',
       content: (
         <div className="p-6 bg-customGray border border-gray-300 rounded-md">
           <div className="flex flex-col sm:flex-row gap-y-4 sm:gap-x-6 text-end">
@@ -79,7 +79,7 @@ function PropertyMoreDetails() {
       ),
     },
     {
-      label: "Owner Details",
+      label: 'Owner Details',
       content: (
         <div className="p-6 bg-customGray border border-gray-300 rounded-md">
           <div className="flex flex-col sm:flex-row gap-y-4 sm:gap-x-6 text-end">
@@ -111,15 +111,15 @@ function PropertyMoreDetails() {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           More Details
         </h2>
-        <div className="flex gap-8 border-b mt-5 flex-wrap sm:flex-nowrap">
+        <div className="flex md:gap-6 border-b mt-5 flex-wrap sm:flex-nowrap">
           {tabs.map((tab, index) => (
             <p
               key={index}
               onClick={() => setActiveTab(index)}
-              className={`cursor-pointer text-sm sm:text-lg ${
+              className={`cursor-pointer text-[10px] gap-3 font-semibold sm:text-lg ${
                 activeTab === index
-                  ? "text-blue-500 border-b-2 border-blue-500 font-semibold"
-                  : "text-gray-600 hover:text-blue-500"
+                  ? 'text-blue-500 border-b-2 border-blue-500 font-semibold'
+                  : 'text-gray-600 hover:text-blue-500'
               }`}
             >
               {tab.label}

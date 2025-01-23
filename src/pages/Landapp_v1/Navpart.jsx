@@ -4,14 +4,18 @@ function NavPart() {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="flex gap-3">
-        <div className="absolute right-16 top-11 border border-white bg-green-500 rounded-full w-2 h-2"></div>
+      <div className="relative flex md:gap-3 gap-1">
+        {/* Green Dot */}
+        <div className="absolute -right-12 md:-right-12 top-6 md:top-7 border border-white bg-green-500 rounded-full w-2 h-2"></div>
+
+        {/* Sell Your Land Button */}
         <div
-          className="border border-gray-300 px-2 py-1 rounded-md shadow-md text-sm font-semibold"
+          className="border border-gray-300 px-4 py-2 rounded-md text-[10px] shadow-md md:text-sm font-semibold cursor-pointer"
           onClick={() => navigate('/authentication')}
         >
           Sell your Land
         </div>
+
         {/* Container with Black Border */}
         <div className="flex gap-1 border-2 p-1 cursor-pointer rounded-md border-black bg-white items-end">
           {/* Left Line */}

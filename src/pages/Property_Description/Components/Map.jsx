@@ -1,8 +1,7 @@
 // src/components/SimpleMap.js
-import "leaflet/dist/leaflet.css";
-import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 
 const Map = () => {
   // Coordinates for Malbarone location (Example: Melbourne, Australia)
@@ -27,7 +26,7 @@ const Map = () => {
             position={position}
             icon={
               new L.Icon({
-                iconUrl: require("leaflet/dist/images/marker-icon.png"),
+                iconUrl: require('leaflet/dist/images/marker-icon.png'),
                 iconSize: [30, 45], // Adjusted size for better visibility
                 iconAnchor: [15, 45],
               })
@@ -35,7 +34,7 @@ const Map = () => {
           >
             <Popup>
               {/* Highlighted Malbarone name */}
-              <strong style={{ color: "yellow", fontSize: "18px" }}>
+              <strong style={{ color: 'yellow', fontSize: '18px' }}>
                 Malbarone
               </strong>
             </Popup>
