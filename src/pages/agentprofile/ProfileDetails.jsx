@@ -2,6 +2,7 @@ import { PhoneCallIcon } from 'lucide-react';
 import Image1 from '@/assets/image-1.svg';
 import Image2 from '@/assets/image-2.svg';
 import Image3 from '@/assets/image-3.svg';
+import WhatappIcon from '@/assets/whatsapp.svg';
 
 function ProfileDetails() {
   const ProfileCard = ({
@@ -14,7 +15,7 @@ function ProfileDetails() {
     email,
   }) => {
     return (
-      <div className="grid grid-cols-2 gap-8 p-6 bg-white rounded-lg ">
+      <div className="grid grid-cols-2 gap-8 pl-0 pr-6 py-2 bg-white rounded-lg ">
         <div className="space-y-2 border-r-[1px]  border-[#d9d9d9] pr-6 ">
           <>
             <h2 className="text-sm font-medium text-primary ">About me</h2>
@@ -49,14 +50,13 @@ function ProfileDetails() {
           </div>
 
           <div>
-            <div className="rounded-lg shadow-sm  border border-disabledDark bg-white flex gap-2 items-center cursor-pointer">
-              <PhoneCallIcon
-                size={32}
-                className="text-[#42307d] p-2 cursor-pointer"
+            <div className="rounded-lg shadow-sm  max-w-fit px-4 py-1 border border-disabledDark bg-white flex gap-1 items-center cursor-pointer">
+              <img
+                src={WhatappIcon}
+                className="h-7 w-7 object-cover"
+                alt="whatapp-icon"
               />
-              <p className="text-secondary text-xs font-semibold px-4 py-2">
-                Whatapp
-              </p>
+              <p className="text-secondary text-xs font-semibold ">Whatapp</p>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ function ProfileDetails() {
 
   const KeyAchievements = ({ achievements }) => {
     return (
-      <div className="mt-8">
+      <div className="mt-8 px-4">
         <h2 className="text-xl font-bold mb-4">Key Achievements</h2>
         <div className="grid grid-cols-3 gap-4 ">
           {achievements.map((achievement, index) => (
@@ -74,13 +74,13 @@ function ProfileDetails() {
               key={index}
               className="p-4 bg-white rounded-xl  shadow-sm border border-bSecondary "
             >
-              <div className="flex gap-2 items-center justify-center">
+              <div className="flex gap-4 items-center ">
                 <img
                   src={achievement.image}
                   alt={achievement.title}
                   className="h-9 w-9 rounded-full object-cover"
                 />
-                <div className="text-center">
+                <div className="">
                   <h3 className="text-sm text-primary font-semibold">
                     {achievement.title}
                   </h3>

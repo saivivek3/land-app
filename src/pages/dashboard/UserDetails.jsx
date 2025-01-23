@@ -23,11 +23,14 @@ function UserDetails() {
 
   const PropertyCard = ({ image, title, location, price, area }) => (
     <div className="shadow-sm border border-bSecondary rounded-xl flex gap-2">
-      <img
-        src="https://images.unsplash.com/photo-1698296193806-df2054b6c9b3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhlJTIwbGFuZHxlbnwwfHwwfHx8MA%3D%3D"
-        alt={title}
-        className="w-32 rounded-lg h-32 object-cover"
-      />
+      <div className='p-3'>
+        <img
+          src="https://images.unsplash.com/photo-1698296193806-df2054b6c9b3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhlJTIwbGFuZHxlbnwwfHwwfHx8MA%3D%3D"
+          alt={title}
+          className="w-24 rounded-lg h-24 object-cover"
+        />
+      </div>
+
       <div className="p-4">
         <h3 className="font-semibold text-base text-tertiary">{title}</h3>
         <p className=" text-tertiary text-xs">{location}</p>

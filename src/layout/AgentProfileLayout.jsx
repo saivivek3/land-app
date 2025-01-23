@@ -2,124 +2,19 @@ import React, { useState } from 'react';
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input.jsx';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import {
-  MoreVertical,
-  Star,
-  Home,
-  LayoutDashboard,
-  ListPlus,
-  User,
-  Settings,
-} from 'lucide-react';
+import { MoreVertical, Star, MoreHorizontal } from 'lucide-react';
 import AvatarIcon from '@/assets/avatar-icon.svg';
-import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
+// import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
 import ArrowLeftIcon from '@/assets/arrow-left.svg';
 import PhoneCallIcon from '@/assets/phone.svg';
 import cn from '@/lib/cn';
 import PropertySidebar from '@/components/PropertySidebar';
 
-const SidebarLink = ({ icon: Icon, label, active }) => (
-  <div
-    className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer ${active ? 'bg-active text-[#252327]' : 'hover:text-[#252327]  hover:bg-active '}`}
-  >
-    <Icon className="w-5 h-5" />
-    <span className="text-xs font-medium">{label}</span>
-  </div>
-);
-
-// const SearchHistory = () => {
-//   const histories = [
-//     {
-//       investor: 'Charles T',
-//       property: 'Janpriya Properties',
-//       date: 'Dec 5, 2024, 3 PM',
-//       location: 'Shamshadad, Hyderabad',
-//       status: 'Active',
-//     },
-//     {
-//       investor: 'Davis Teff',
-//       property: 'Janpriya Properties',
-//       date: 'Dec 6, 2024, 3 PM',
-//       location: 'Shamshadad, Hyderabad',
-//       status: 'Revisit Appointment',
-//     },
-//     // Add more history items as needed
-//   ];
-
-//   return (
-//     <div className="mt-4">
-//       <div className="flex justify-between items-center mb-4">
-//         {/* <Input
-//           placeholder="Search"
-//           className="max-w-xs"
-//           icon={<Search className="w-4 h-4" />}
-//         /> */}
-//         <Button variant="outline">Filters</Button>
-//       </div>
-
-//       <table className="w-full">
-//         <thead className="text-sm text-gray-600">
-//           <tr>
-//             <th className="text-left p-3">Investor Name</th>
-//             <th className="text-left p-3">Property Name</th>
-//             <th className="text-left p-3">Contacted</th>
-//             <th className="text-left p-3">Location</th>
-//             <th className="text-left p-3">Status</th>
-//             <th className="p-3"></th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {histories.map((item, index) => (
-//             <tr key={index} className="border-t">
-//               <td className="p-3">{item.investor}</td>
-//               <td className="p-3 text-violet-600">{item.property}</td>
-//               <td className="p-3">{item.date}</td>
-//               <td className="p-3">{item.location}</td>
-//               <td className="p-3">
-//                 <span
-//                   className={`px-2 py-1 rounded-full text-xs ${
-//                     item.status === 'Active'
-//                       ? 'bg-green-100 text-green-600'
-//                       : 'bg-blue-100 text-blue-600'
-//                   }`}
-//                 >
-//                   {item.status}
-//                 </span>
-//               </td>
-//               <td className="p-3">
-//                 <Button variant="ghost" size="sm">
-//                   <MoreVertical className="w-4 h-4" />
-//                 </Button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-
-//       <div className="flex justify-between items-center mt-4">
-//         <Button variant="ghost">Previous</Button>
-//         <div className="flex gap-2">
-//           {[1, 2, 3, 4].map(page => (
-//             <Button
-//               key={page}
-//               variant={page === 1 ? 'secondary' : 'ghost'}
-//               className="w-8 h-8 p-0"
-//             >
-//               {page}
-//             </Button>
-//           ))}
-//         </div>
-//         <Button variant="ghost">Next</Button>
-//       </div>
-//     </div>
-//   );
-// };
-
 const AgentProfileLayout = ({ children, value }) => {
   const [activeTab, setActiveTab] = useState('profile');
 
   return (
-    <div className="flex max-h-screen shadow-sm  ">
+    <div className="flex min-h-screen shadow-sm  ">
       {/* Sidebar */}
       <PropertySidebar />
       {/* Main Content */}
@@ -197,17 +92,25 @@ const AgentProfileLayout = ({ children, value }) => {
           </div>
 
           {/* experience */}
-          <div className="space-y-2 p-4 border-b-bSecondary border-b-[1px] mb-4">
-            <h2 className="text-base text-primary font-semibold">Experience</h2>
-            <p className="text-tertiary text-xs">
-              12 years of experience in the real estate sector, specializing in
-              agricultural and non-agricultural properties.
-            </p>
+          <div className="space-y-2 p-4 border-b-bSecondary border-b-[1px] mb-4 flex gap-2 justify-between items-center">
+            <article>
+              <h2 className="text-base text-primary font-semibold">
+                Experience
+              </h2>
+              <p className="text-tertiary text-xs">
+                12 years of experience in the real estate sector, specializing
+                in agricultural and non-agricultural properties.
+              </p>
+            </article>
+            <MoreVertical
+              size={20}
+              className="object-cover text-gray-400 cursor-pointer"
+            />
           </div>
 
           {/* experience */}
 
-          <Tabs defaultValue="profile" className="w-full ">
+          <Tabs defaultValue="profile" className="w-full px-4">
             <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2">
               <TabsTrigger
                 value="profile"

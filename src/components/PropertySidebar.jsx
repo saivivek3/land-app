@@ -1,77 +1,104 @@
-import { Home, LayoutDashboard, ListPlus, User, Settings } from 'lucide-react';
+import HomeIcon from '@/assets/sidebar-icons/home.svg';
+import DashboardIcon from '@/assets/sidebar-icons/dashboard.svg';
+import ListIcon from '@/assets/sidebar-icons/listing.svg';
+import ProfileIcon from '@/assets/sidebar-icons/profile.svg';
+import SettingsIcon from '@/assets/sidebar-icons/settings.svg';
 import AvatarIcon from '@/assets/avatar-icon.svg';
 
 import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Search from '@/components/ui/Search';
 
 const SidebarLink = ({ icon: Icon, label, active, onClick }) => (
-  <div
-    className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer ${active ? 'bg-active text-[#252327]' : 'hover:text-[#252327]  hover:bg-active '}`}
+  <li
+    className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer ${active && 'bg-active text-[#252327] hover:text-[#252327]   '}`}
     onClick={onClick}
   >
-    <Icon className="w-5 h-5" />
+    <img src={Icon} className="w-5 h-5 object-cover" alt={label} />
     <span className="text-xs font-medium">{label}</span>
-  </div>
+  </li>
 );
 
 const sidebarLinksArr = [
-  { icon: Home, label: 'Home', active: false, navigate: '/' },
+  { icon: HomeIcon, label: 'Home', active: false, navigate: '/' },
   {
-    icon: LayoutDashboard,
+    icon: DashboardIcon,
     label: 'Dashboard',
     active: false,
     navigate: '/dashboard',
   },
   {
-    icon: ListPlus,
+    icon: ListIcon,
     label: 'Listings Management',
     active: false,
     navigate: '/listings',
   },
-  { icon: User, label: 'Profile', active: true, navigate: '/profile' },
-  { icon: Settings, label: 'Settings', active: false, navigate: '/settings' },
+  { icon: ProfileIcon, label: 'Profile', active: false, navigate: '/profile' },
+  {
+    icon: SettingsIcon,
+    label: 'Settings',
+    active: false,
+    navigate: '/settings',
+  },
 ];
 
 function PropertySidebar({ className = 'max-w-80' }) {
-  const [sidebarLinks, setSideBarLinks] = useState(() => sidebarLinksArr);
+  const [sidebarLinks, setSideBarLinks] = useState(sidebarLinksArr);
   const navigate = useNavigate();
+  const pathname = window.location.pathname;
+  const activeLinkName = pathname.split('/')[1];
 
-  const handleClick = (label, navigateLink) => {
+  useEffect(() => {
     setSideBarLinks(prev =>
-      prev.map(link =>
-        link.label === label
-          ? { ...link, active: true }
-          : { ...link, active: false },
+      prev.map(item =>
+        item.navigate === '/' + activeLinkName
+          ? { ...item, active: true }
+          : { ...item, active: false },
       ),
     );
+  }, [activeLinkName]);
+
+  console.log(sidebarLinks, 'sidebarlinks', activeLinkName);
+
+  const handleClick = (label, navigateLink) => {
+    setSideBarLinks(prev => {
+      const prevItems = JSON.parse(JSON.stringify(prev));
+      const newItems = prevItems.map(item => ({
+        ...item,
+        active: item.label === label,
+      }));
+
+      return newItems;
+    });
 
     navigate(navigateLink);
   };
 
   return (
     <div
-      className={` ${className} bg-white p-4 border-r rounded-xl  ml-2 mt-2 flex flex-col min-h-full`}
+      className={` ${className} bg-white p-4 border-r rounded-xl cursor-pointer  ml-2 mt-2 flex flex-col min-h-full`}
     >
-      <div className="mb-8">
-        <h1 className="text-xl font-semibold mb-6">LandApp</h1>
-        {/* <Input
-            placeholder="Search"
-            className="mb-4"
-            icon={<Search className="w-4 h-4" />}
-          /> */}
-      </div>
-      <div className="space-y-2">
-        {sidebarLinks.map((link, index) => (
+      <section className="mb-8">
+        <h1
+          className="text-xl font-semibold mb-6"
+          onClick={() => navigate('/')}
+        >
+          LandApp
+        </h1>
+        <Search />
+      </section>
+      <ul className="space-y-2">
+        {sidebarLinks.map(link => (
           <SidebarLink
-            key={index}
+            key={link.label}
             onClick={() => handleClick(link.label, link.navigate)}
             icon={link.icon}
             label={link.label}
             active={link.active}
           />
         ))}
-      </div>
+      </ul>
       <div className="shadow-sm border border-bSecondary rounded-lg mt-auto">
         <div className="flex items-center gap-2 p-4 ">
           <img
