@@ -59,7 +59,7 @@ function DashboardLayout({ children }) {
     to: addDays(new Date(2022, 0, 20), 20),
   });
   return (
-    <div>
+    <div className="shadow-sm py-4 px-6 rounded-lg bg-white">
       <div className="flex">
         <PropertySidebar />
         <div className="flex-1 px-4">

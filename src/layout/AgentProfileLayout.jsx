@@ -70,7 +70,7 @@ const AgentProfileLayout = ({ children, value }) => {
             <div className="flex justify-center items-center border-r-2 border-r-[#d9d9d9] ">
               <Button
                 iconUrl={PhoneCallIcon}
-                className="py-3 max-w-[70%] w-full px-4"
+                className="py-3 max-w-fit w-full px-4"
               >
                 Call Pradeep
               </Button>
