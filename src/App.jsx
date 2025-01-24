@@ -82,6 +82,11 @@ const SinglePropertyView = lazy(() => import('./pages/premium/index'));
 const PropertyMapView = lazy(() => import('./pages/premium/PropertyMapView'));
 const PremiumMapView = lazy(() => import('./pages/premium/PremiunMapView'));
 
+//listings
+const PropertyListingManagement = lazy(
+  () => import('./pages/property-listing-management'),
+);
+
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900" />
@@ -371,6 +376,12 @@ export default function App() {
           ),
         },
       ],
+    },
+    //listings
+
+    {
+      path: '/listings',
+      element: <PropertyListingManagement />,
     },
   ]);
 
