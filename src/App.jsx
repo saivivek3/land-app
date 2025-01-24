@@ -21,6 +21,7 @@ import PropertyListing from './pages/Property_Listing/Components';
 import PropertyDescription from './pages/Property_Description/Components';
 import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
+// import Listing_Management_Posted_Properties from './pages/Listing_Management_Posted_Properties/Listing_Management_Posted_Properties';
 
 // Layouts
 
@@ -365,7 +366,6 @@ export default function App() {
           path: '/premium-property/satellite-view',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              {' '}
               <PremiumMapView />
             </Suspense>
           ),

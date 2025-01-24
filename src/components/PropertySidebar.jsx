@@ -28,12 +28,7 @@ const sidebarLinksArr = [
     active: false,
     navigate: '/dashboard',
   },
-  {
-    icon: ListIcon,
-    label: 'Listings Management',
-    active: false,
-    navigate: '/listings',
-  },
+
   { icon: ProfileIcon, label: 'Profile', active: false, navigate: '/profile' },
   {
     icon: SettingsIcon,
