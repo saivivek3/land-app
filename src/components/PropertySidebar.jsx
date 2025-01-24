@@ -1,6 +1,6 @@
 import HomeIcon from '@/assets/sidebar-icons/home.svg';
 import DashboardIcon from '@/assets/sidebar-icons/dashboard.svg';
-import ListIcon from '@/assets/sidebar-icons/listing.svg';
+// import ListIcon from '@/assets/sidebar-icons/listing.svg';
 import ProfileIcon from '@/assets/sidebar-icons/profile.svg';
 import SettingsIcon from '@/assets/sidebar-icons/settings.svg';
 import AvatarIcon from '@/assets/avatar-icon.svg';
