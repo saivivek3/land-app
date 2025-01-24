@@ -9,9 +9,10 @@ import ArrowLeftIcon from '@/assets/arrow-left.svg';
 import PhoneCallIcon from '@/assets/phone.svg';
 import cn from '@/lib/cn';
 import PropertySidebar from '@/components/PropertySidebar';
+import { useNavigate } from 'react-router-dom';
 
 const AgentProfileLayout = ({ children, value }) => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen shadow-sm  ">
@@ -34,7 +35,10 @@ const AgentProfileLayout = ({ children, value }) => {
                   className="w-24 h-24 rounded-full border-4 border-white "
                 />
                 <div className=" mt-12 ml-4 space-y-1">
-                  <div className="flex items-center gap-2 text-primary mb-4">
+                  <div
+                    className="flex items-center gap-2 text-primary mb-4 cursor-pointer"
+                    onClick={() => navigate(-1)}
+                  >
                     <img src={ArrowLeftIcon} alt="" />
                     <span className="text-base font-bold">Back to</span>
                   </div>
