@@ -9,9 +9,10 @@ import ArrowLeftIcon from '@/assets/arrow-left.svg';
 import PhoneCallIcon from '@/assets/phone.svg';
 import cn from '@/lib/cn';
 import PropertySidebar from '@/components/PropertySidebar';
+import { useNavigate } from 'react-router-dom';
 
 const AgentProfileLayout = ({ children, value }) => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen shadow-sm  ">
@@ -34,7 +35,10 @@ const AgentProfileLayout = ({ children, value }) => {
                   className="w-24 h-24 rounded-full border-4 border-white "
                 />
                 <div className=" mt-12 ml-4 space-y-1">
-                  <div className="flex items-center gap-2 text-primary mb-4">
+                  <div
+                    className="flex items-center gap-2 text-primary mb-4 cursor-pointer"
+                    onClick={() => navigate(-1)}
+                  >
                     <img src={ArrowLeftIcon} alt="" />
                     <span className="text-base font-bold">Back to</span>
                   </div>
@@ -70,7 +74,7 @@ const AgentProfileLayout = ({ children, value }) => {
             <div className="flex justify-center items-center border-r-2 border-r-[#d9d9d9] ">
               <Button
                 iconUrl={PhoneCallIcon}
-                className="py-3 max-w-[70%] w-full px-4"
+                className="py-3 max-w-fit w-full px-4"
               >
                 Call Pradeep
               </Button>
@@ -111,17 +115,17 @@ const AgentProfileLayout = ({ children, value }) => {
           {/* experience */}
 
           <Tabs defaultValue="profile" className="w-full px-4">
-            <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2">
+            <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2 py-2 h-fit">
               <TabsTrigger
                 value="profile"
-                className=" rounded-md text-secondary text-xs font-semibold"
+                className=" rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4"
               >
                 Profile Details
               </TabsTrigger>
               <TabsTrigger
                 value="properties"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Posted Properties
@@ -129,7 +133,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="history"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 History
@@ -137,7 +141,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="reviews"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Reviews
@@ -145,7 +149,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="locations"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Locations

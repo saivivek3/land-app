@@ -5,17 +5,17 @@ function PropertyHistory() {
     <div>
       <TabsWithTable
         tabsTriggerData={[
-          { id: 1, value: 'searchHistory ', label: 'Search History' },
-          { id: 2, value: 'viewedProperties', label: 'Viewed Properties' },
+          { id: 1, value: 'Search History ', label: 'Search History' },
+          { id: 2, value: 'Viewed Properties', label: 'Viewed Properties' },
           {
             id: 3,
-            value: 'communicationHistory',
+            value: 'Communication History',
             label: 'Communication History',
           },
         ]}
         tabsData={[
-          { id: 1, value: 'allHistory', label: 'All History' },
-          { id: 2, value: 'contacted', label: 'Contacted' },
+          { id: 1, value: 'All History', label: 'All History' },
+          { id: 2, value: 'Contacted', label: 'Contacted' },
         ]}
       />
     </div>

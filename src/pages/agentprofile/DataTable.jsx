@@ -5,6 +5,9 @@ import { tableData } from './tableData';
 import cn from '@/lib/cn';
 import { Checkbox } from '@/components/ui/checkbox';
 import Pagination from '@/components/ui/Pagination';
+import Button from '@/components/ui/Button';
+import RightIcon from '@/assets/arrow-right.svg';
+import LeftIcon from '@/assets/arrow-left.svg';
 
 function DataTable() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,9 +23,27 @@ function DataTable() {
             ))}
           </tbody>
         </table>
-      </div>
-      <div className="w-full">
-        <Pagination currentPage={currentPage} onPageChange={setCurrentPage} />
+        <div className="w-full flex p-2 py-3">
+          <Button className="bg-blightMode rounded-lg px-4 border-none  max-w-fit outline-none  hover:bg-blightMode text-primary text-sm mt-0 shadow-sm">
+            <div className="flex items-center gap-2">
+              <img src={LeftIcon} alt="left-icon" className="text-white" />
+              <span> Previous</span>
+            </div>
+          </Button>
+          <div className="mx-auto">
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          </div>
+
+          <Button className="bg-blightMode rounded-lg  max-w-fit px-4 border-none outline-none   hover:bg-blightMode hover:bg-none text-primary text-sm mt-0 shadow-sm">
+            <div className="flex items-center gap-2">
+              <span>Next</span>
+              <img src={RightIcon} alt="right-icon" className="text-white" />
+            </div>
+          </Button>
+        </div>
       </div>
     </div>
   );
