@@ -17,8 +17,11 @@ import HeartIcon from '@/assets/heart.svg';
 import RightIcon from '@/assets/arrow-right.svg';
 import LeftIcon from '@/assets/arrow-left.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const PropertyMapView = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const properties = [
     {
       id: 1,
@@ -56,12 +59,13 @@ const PropertyMapView = () => {
   ];
 
   const totalPages = 20;
-  const currentPage = 19;
+
+  const navigate = useNavigate();
 
   return (
-    <div className="mx-auto p-4 max-w-7xl">
+    <div className="mx-auto max-w-screen-2xl px-6 py-2 ">
       <div className="flex gap-4 justify-between">
-        <div className="flex-1  basis-[1000px]">
+        <section className="flex-1  basis-[1000px]">
           <div className="flex justify-between items-center mb-3">
             <div>
               <h1 className="text-xl font-semibold text-primary">
@@ -96,14 +100,17 @@ const PropertyMapView = () => {
               options={[{ id: 1, label: 'Any Price', value: 'Any Price' }]}
             />
 
-            <Button className="border rounded-lg px-4  py-2 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 ">
+            <Button
+              className="border rounded-lg px-4  py-2 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
+              onClick={() => navigate('/all-lands')}
+            >
               <div className="flex items-center gap-2">
                 <img
                   src={ListViewIcon}
                   alt="lst-view-icon"
                   className="h-5 w-5"
                 />
-                <span className="text-xs">List View Icon</span>
+                <span className="text-xs">List View </span>
               </div>
             </Button>
           </div>
@@ -248,22 +255,32 @@ const PropertyMapView = () => {
             ))}
           </div>
 
-          <div className="flex gap-2 items-center">
-            <Button className="bg-transparent rounded-none border-none outline-none = hover:bg-transparent text-primary text-sm mt-0 shadow-none">
-              <div className="flex items-center gap-2">
+          <div className="flex gap-2 ">
+            <Button
+              className="bg-transparent rounded-none border-none outline-none  hover:bg-transparent text-primary text-sm mt-0 shadow-none justify-start"
+              childrenClassName="justify-start"
+            >
+              <div className="flex items-center  gap-2">
                 <img src={LeftIcon} alt="left-icon" className="text-white" />
                 <span> Previous</span>
               </div>
             </Button>
-            <Pagination currentPage={currentPage} totalPages={totalPages} />
-            <Button className="bg-transparent rounded-none border-none outline-none   hover:bg-transparent hover:bg-none text-primary text-sm mt-0 shadow-none">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+            <Button
+              className="bg-transparent rounded-none border-none outline-none   hover:bg-transparent hover:bg-none text-primary text-sm mt-0 shadow-none"
+              childrenClassName="justify-end"
+            >
               <div className="flex items-center gap-2">
                 <span>Next</span>
                 <img src={RightIcon} alt="right-icon" className="text-white" />
               </div>
             </Button>
           </div>
-        </div>
+        </section>
         <GoogleMapComponent oneMarker={false} mapWidth="50%" />
       </div>
     </div>

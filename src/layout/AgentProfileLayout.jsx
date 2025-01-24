@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+
 import Button from '@/components/ui/Button.jsx';
-import Input from '@/components/ui/Input.jsx';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { MoreVertical, Star, MoreHorizontal } from 'lucide-react';
 import AvatarIcon from '@/assets/avatar-icon.svg';

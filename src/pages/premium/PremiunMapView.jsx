@@ -37,7 +37,7 @@ const PropertyMap = () => {
 
   const containerStyle = {
     width: '100%',
-    height: '600px',
+    height: '100vh',
   };
 
   const center = {

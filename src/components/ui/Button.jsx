@@ -1,6 +1,13 @@
 import cn from '@/lib/cn';
 
-function Button({ className, iconUrl, children, onClick, ...props }) {
+function Button({
+  className,
+  iconUrl,
+  children,
+  onClick,
+  childrenClassName,
+  ...props
+}) {
   return (
     <button
       {...props}
@@ -10,7 +17,12 @@ function Button({ className, iconUrl, children, onClick, ...props }) {
         className,
       )}
     >
-      <div className="flex justify-center items-center gap-2">
+      <div
+        className={cn(
+          'flex justify-center items-center gap-2',
+          childrenClassName && childrenClassName,
+        )}
+      >
         {iconUrl && <img src={iconUrl} alt={iconUrl} />}
         {children}
       </div>
