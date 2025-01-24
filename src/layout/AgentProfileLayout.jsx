@@ -111,17 +111,17 @@ const AgentProfileLayout = ({ children, value }) => {
           {/* experience */}
 
           <Tabs defaultValue="profile" className="w-full px-4">
-            <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2">
+            <TabsList className="border-1 border-bSecondary rounded-lg  w-full justify-start block h- space-x-2 py-2 h-fit">
               <TabsTrigger
                 value="profile"
-                className=" rounded-md text-secondary text-xs font-semibold"
+                className=" rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4"
               >
                 Profile Details
               </TabsTrigger>
               <TabsTrigger
                 value="properties"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Posted Properties
@@ -129,7 +129,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="history"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 History
@@ -137,7 +137,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="reviews"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Reviews
@@ -145,7 +145,7 @@ const AgentProfileLayout = ({ children, value }) => {
               <TabsTrigger
                 value="locations"
                 className={cn(
-                  'rounded-md text-secondary text-xs font-semibold',
+                  'rounded-md text-secondary text-xs font-semibold transition-all duration-500 ease-in-out py-2 px-4',
                 )}
               >
                 Locations
