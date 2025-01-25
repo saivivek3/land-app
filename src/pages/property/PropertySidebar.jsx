@@ -1,13 +1,54 @@
-import { steps } from './propertyFormConfig';
 import cn from '@/lib/cn';
 import PropertyScoreCard from './PropertyScoreCard.jsx';
+import { useContext } from 'react';
+import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
+import { useNavigate } from 'react-router-dom';
 
 function PropertySidebar() {
+  const { steps } = useContext(PropertyDetailsContext);
+  const completedSteps = steps.filter(step => step.completed).length;
+  const navigate = useNavigate();
+  console.log(completedSteps, 'COMPLETEDSTEPS');
+
+  function handleClickedSteps(index) {
+    switch (index) {
+      case 0:
+        navigate('/');
+        break;
+      case 1:
+        navigate('/create-property/property-details');
+        break;
+      case 2:
+        navigate('/create-property/property-located');
+        break;
+      case 3:
+        navigate('/create-property/location-map');
+        break;
+      case 4:
+        navigate('/create-property/photos');
+        break;
+      case 5:
+        navigate('/create-property/owner-details');
+        break;
+      case 6:
+        navigate('/create-property/property-documents');
+        break;
+      case 7:
+        navigate('/create-property/confirmation');
+        break;
+      default:
+        return null;
+    }
+  }
   return (
     <div className=" border  bg-disabledlight px-8 py-4">
       <div className="space-y-10">
-        {steps.map((step, index) => (
-          <div key={index} className="flex items-start gap-4">
+        {steps?.map((step, index) => (
+          <div
+            key={index}
+            className="flex items-start gap-4 cursor-pointer"
+            onClick={() => handleClickedSteps(index)}
+          >
             <div className="relative">
               <div
                 className={`w-7 h-7 rounded-full flex justify-center items-center text-[12px] p-4  ${
@@ -72,7 +113,10 @@ function PropertySidebar() {
       </div>
 
       {/* Property Score Card */}
-      <PropertyScoreCard score={30} />
+      {/*prettier-ignore*/}
+      <PropertyScoreCard
+        score={Math.floor((completedSteps /( steps.length ) * 100))}
+      />
     </div>
   );
 }

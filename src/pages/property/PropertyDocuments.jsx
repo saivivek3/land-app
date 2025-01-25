@@ -1,13 +1,11 @@
-import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
+import usePropertyDocumentHook from '@/hooks/usePropertyDocumentHook';
 import cn from '@/lib/cn';
 import { Check } from 'lucide-react';
-import { useContext } from 'react';
 
-function PropertyDocuments() {
-  const { files } = useContext(PropertyDetailsContext);
+function PropertyDocuments({ files }) {
   return (
     <div className="space-y-4">
-      {files.map(file => (
+      {files?.map(file => (
         <div
           key={file.id}
           className={cn(

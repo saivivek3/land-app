@@ -85,34 +85,56 @@ export const propertyDetailsConfig = {
     },
   ],
 };
-export const steps = [
+export const stepsArr = [
   {
+    stepIndex: 0,
     title: 'Land Basic Details',
     subtitle: 'Agricultural or Commercial Lands',
     completed: true,
     active: true,
   },
   {
+    stepIndex: 1,
     title: 'Property Details',
     subtitle: 'Step 2',
     active: false,
-    completed: true,
-  },
-  {
-    title: 'Location Details',
-    subtitle: 'Step 3',
-    active: true,
     completed: false,
   },
-  { title: 'Land Map', subtitle: 'Step 4', active: false, completed: false },
-  { title: 'Photos', subtitle: 'Step 5', active: false, completed: false },
   {
+    stepIndex: 2,
+    title: 'Location Details',
+    subtitle: 'Step 3',
+    active: false,
+    completed: false,
+  },
+  {
+    stepIndex: 3,
+    title: 'Land Map',
+    subtitle: 'Step 4',
+    active: false,
+    completed: false,
+  },
+  {
+    stepIndex: 4,
+    title: 'Photos',
+    subtitle: 'Step 5',
+    active: false,
+    completed: false,
+  },
+  {
+    stepIndex: 5,
     title: 'Owner Details',
     subtitle: 'Step 6',
     active: false,
     completed: false,
   },
-  { title: 'Documents', subtitle: 'Step 7', active: false, completed: false },
+  {
+    stepIndex: 6,
+    title: 'Documents',
+    subtitle: 'Step 7',
+    active: false,
+    completed: false,
+  },
 ];
 
 export const openSidesOptions = ['01', '02', '03', '04'];

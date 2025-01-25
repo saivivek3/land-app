@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ChevronLeft, ChevronDown } from 'lucide-react';
 import SelectComponent from '@/components/SelectComponent.jsx';
 import Input from '@/components/ui/Input.jsx';
@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button.jsx';
 import { openSidesOptions } from '@/pages/property/propertyFormConfig.js';
 import PropertySidebar from './PropertySidebar.jsx';
 import { useNavigate } from 'react-router-dom';
+import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider.jsx';
 
 const DetailsForm = ({
   heading,
@@ -15,8 +16,10 @@ const DetailsForm = ({
   formHeading,
   isOpenSidesRequired = false,
   nextPath,
+  stepIndex,
 }) => {
   const { register, handleSubmit } = useFormHook();
+  const { handleSteps } = useContext(PropertyDetailsContext);
   const [selectedOpenSides, setSelectedOpenSides] = useState([]);
   const navigate = useNavigate();
   function onSubmit(data) {
@@ -24,7 +27,6 @@ const DetailsForm = ({
   }
 
   // Function to render the appropriate field component based on the field type
-
 
   const renderField = field => {
     switch (field.type) {
@@ -136,7 +138,10 @@ const DetailsForm = ({
             <Button
               type="submit"
               className="w-1/2 bg-primary rounded-lg text-base font-semibold hover:bg-primary/50"
-              onClick={() => navigate(`${nextPath}`)}
+              onClick={() => {
+                handleSteps(stepIndex);
+                navigate(nextPath);
+              }}
             >
               Continue
             </Button>

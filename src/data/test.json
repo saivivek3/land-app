@@ -1,0 +1,60 @@
+{
+  "propertyDetails": {
+    "location": "Hyderabad West, Pin Code 500072",
+    "price": 70.6,
+    "owner": "Mr. Sandeep",
+    "propertyInfo": {
+      "waterAvailability": "Adequate",
+      "roadDistance": "2 KM",
+      "soilType": "Red Soil",
+      "landZone": "Agriculture",
+      "area": "2200 sqft",
+      "legalStatus": "Verified",
+      "rating": "4.4",
+      "landAccess": "Agriculture"
+    },
+    "locationDetails": {
+      "address": "Premium 2-Acre Land Near Shamshabad Airport, shankarjally road, chevella highway",
+      "distanceFromOrr": "16 KM",
+      "loanOffered": "Estimated EMI: ₹67652"
+    },
+    "relatedProperties": [
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      },
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      },
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      },
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      },
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      },
+      {
+        "location": "Kandukur, Rangareddy",
+        "size": "3 Acres 20 Guntas",
+        "price": "1.25 Cr/acre",
+        "date": "19 Dec 2025"
+      }
+    ]
+  }
+}

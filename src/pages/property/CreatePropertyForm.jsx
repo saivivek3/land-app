@@ -19,7 +19,7 @@ const CreatePropertyForm = () => {
     console.log(data);
   }
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 gap-4 max-w-7xl px-4 mx-auto">
       <div>
         <div className="mb-8">
           <h2 className="text-3xl font-[700]">
@@ -54,8 +54,7 @@ const CreatePropertyForm = () => {
         </div>
         <div>
           <img
-            src={
-              HomeScreen}
+            src={HomeScreen}
             alt="lock-screen"
             className="object-cover w-full h-[260px] rounded-lg"
           />

@@ -21,6 +21,7 @@ import PropertyListing from './pages/Property_Listing/Components';
 import PropertyDescription from './pages/Property_Description/Components';
 import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
+import PropertyDocumentLayout from './layout/PropertyDocumentLayout';
 
 // Layouts
 
@@ -172,7 +173,11 @@ export default function App() {
     //CREATE PROPERTY
     {
       path: '/create-property',
-      element: <PropertyLayout />,
+      element: (
+        <PropertyDetailsContextProvider>
+          <PropertyLayout />
+        </PropertyDetailsContextProvider>
+      ),
       children: [
         {
           index: true,
@@ -196,6 +201,7 @@ export default function App() {
           element: (
             <Suspense fallback={<LoadingFallback />}>
               <PropertyDetailsForm
+                stepIndex={1}
                 heading="Property Details"
                 isOpenSidesRequired
                 formHeading="Property Details"
@@ -213,6 +219,7 @@ export default function App() {
           element: (
             <Suspense fallback={<LoadingFallback />}>
               <PropertyLocatedForm
+                stepIndex={2}
                 heading={'Where is the Property located?'}
                 formHeading="Location Details"
                 subHeading={
@@ -229,7 +236,7 @@ export default function App() {
           path: '/create-property/location-map',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              <LocationMap />,
+              <LocationMap stepIndex={3} />,
             </Suspense>
           ),
         },
@@ -238,9 +245,12 @@ export default function App() {
           path: '/create-property/photos',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              <PropertyDetailsContextProvider nextPath="/create-property/owner-details">
+              <PropertyDocumentLayout
+                stepIndex={4}
+                nextPath={'/create-property/owner-details'}
+              >
                 <ImageUploadGallery />
-              </PropertyDetailsContextProvider>
+              </PropertyDocumentLayout>
             </Suspense>
           ),
         },
@@ -249,6 +259,7 @@ export default function App() {
           element: (
             <Suspense fallback={<LoadingFallback />}>
               <OwnerDetailsForm
+                stepIndex={5}
                 heading={'Owner Details'}
                 formHeading=""
                 subHeading={'Owner information'}
@@ -262,9 +273,12 @@ export default function App() {
           path: '/create-property/property-documents',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              <PropertyDetailsContextProvider nextPath="/create-property/confirmation">
+              <PropertyDocumentLayout
+                nextPath="/create-property/confirmation"
+                stepIndex={6}
+              >
                 <PropertyDocuments />
-              </PropertyDetailsContextProvider>
+              </PropertyDocumentLayout>
             </Suspense>
           ),
         },
@@ -273,7 +287,7 @@ export default function App() {
           path: '/create-property/confirmation',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              <CreatePropertyConfirmation />
+              <CreatePropertyConfirmation stepIndex={7} />
             </Suspense>
           ),
         },

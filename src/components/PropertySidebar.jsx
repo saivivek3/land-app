@@ -43,7 +43,7 @@ const sidebarLinksArr = [
   },
 ];
 
-function PropertySidebar({ className = 'max-w-80' }) {
+function PropertySidebar({ className = '' }) {
   const [sidebarLinks, setSideBarLinks] = useState(sidebarLinksArr);
   const navigate = useNavigate();
   const pathname = window.location.pathname;
@@ -77,7 +77,7 @@ function PropertySidebar({ className = 'max-w-80' }) {
 
   return (
     <div
-      className={` ${className} bg-white p-4 border-r rounded-xl cursor-pointer  ml-2 mt-2 flex flex-col min-h-full`}
+      className={` ${className} bg-white p-4 border-r rounded-xl cursor-pointer  ml-2 mt-2 flex flex-col min-h-full w-64`}
     >
       <section className="mb-8">
         <h1
@@ -86,7 +86,7 @@ function PropertySidebar({ className = 'max-w-80' }) {
         >
           LandApp
         </h1>
-        <Search />
+        <Search className={'max-w-[230px]'} />
       </section>
       <ul className="space-y-2">
         {sidebarLinks.map(link => (

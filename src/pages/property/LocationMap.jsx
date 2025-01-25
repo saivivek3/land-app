@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   GoogleMap,
   MarkerF,
@@ -11,19 +11,21 @@ import PropertySidebar from './PropertySidebar';
 import MarkerPinIcon from '@/assets/marker-pin.svg';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
+import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
 
 const containerStyle = {
   width: '100%',
   height: '400px',
 };
 
-const LocationMap = () => {
+const LocationMap = ({ stepIndex }) => {
   const { register, handleSubmit } = useFormHook();
   // Reference to store the autocomplete instance
   const [searchBox, setSearchBox] = useState(null);
   const [location, setLocation] = useState({ lat: null, lng: null });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { handleSteps } = useContext(PropertyDetailsContext);
   // Categories with icons and active state
 
   useEffect(() => {
@@ -193,7 +195,10 @@ const LocationMap = () => {
               />
               <Button
                 className="bg-primary text-white shadow-sm hover:bg-primary/50"
-                onClick={() => navigate('/create-property/photos')}
+                onClick={() => {
+                  handleSteps(stepIndex);
+                  navigate('/create-property/photos');
+                }}
               >
                 Continue
               </Button>

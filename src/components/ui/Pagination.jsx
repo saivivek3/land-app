@@ -1,5 +1,3 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   // Show 5 pages at a time
   const getVisiblePages = () => {
