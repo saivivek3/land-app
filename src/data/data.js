@@ -480,7 +480,7 @@ const recentProperties = [
 const PendingApproveAllProperties = [
   {
     id: 1,
-    image: '/images/LatestOne.svg',
+    image: '/images/PendingApproveImgOne.svg',
     discription: '32 Guntas verified land, located 32 km, Shamshabad',
     landType: 'Agriculture Land',
     price: '1.2',
@@ -490,7 +490,7 @@ const PendingApproveAllProperties = [
   },
   {
     id: 2,
-    image: '/images/LatestOne.svg',
+    image: '/images/PendingApproveImgTwo.svg',
     discription: '32 Guntas verified land, located 32 km, Shamshabad',
     landType: 'Agriculture Land',
     price: '1.2',
@@ -500,7 +500,7 @@ const PendingApproveAllProperties = [
   },
   {
     id: 3,
-    image: '/images/LatestOne.svg',
+    image: '/images/PendingApproveImgThree.svg',
     discription: '32 Guntas verified land, located 32 km, Shamshabad',
     landType: 'Agriculture Land',
     price: '1.2',
