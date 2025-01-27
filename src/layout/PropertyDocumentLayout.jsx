@@ -12,7 +12,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
   const navigate = useNavigate();
   const { handleSteps } = useContext(PropertyDetailsContext);
   return (
-    <div className="w-full  p-6 bg-white flex gap-4">
+    <div className="w-full  p-6 bg-white flex gap-6  max-w-6xl mx-auto  rounded-lg shadow-sm">
       <PropertySidebar />
       <section className="flex-1">
         <div

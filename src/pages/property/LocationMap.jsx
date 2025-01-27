@@ -113,7 +113,7 @@ const LocationMap = ({ stepIndex }) => {
   console.log({ location });
 
   return (
-    <div className=" flex gap-2   ">
+    <div className=" flex gap-2 max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-sm  ">
       <PropertySidebar />
       <div className="w-full px-4">
         <div className="mb-6">
