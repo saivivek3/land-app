@@ -384,7 +384,6 @@ export default function App() {
           path: '/premium-property/satellite-view',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              {' '}
               <PremiumMapView />
             </Suspense>
           ),
