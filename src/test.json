@@ -1,0 +1,102 @@
+{
+  "propertyDetails": {
+    "title": "Janapriya Ventures",
+    "isVerified": true,
+    "location": "Shamshabad West, Pin Code-500072",
+    "rating": 4.5,
+    "isFavourite": true,
+    "description": "Strategically located near Shamshabad Airport, offering excellent connectivity to the city and key landmarks. Verified and clear-title property, ideal for commercial, residential, or investment purposes.",
+    "price": {
+      "amount": "70.6 Lakhs",
+      "landOwner": "Mr.Sandeep"
+    },
+    "metrics": {
+      "propertyScore": 90,
+      "growth": "+40%"
+    }
+  },
+
+  "propertySpecs": {
+    "utilities": [
+      {
+        "type": "Water",
+        "status": "Available"
+      },
+      {
+        "type": "ROAD DISTANCE",
+        "value": "25km"
+      },
+      {
+        "type": "SOIL TYPE",
+        "value": "Red Soil"
+      },
+      {
+        "type": "LAND ZONE",
+        "value": "Agriculture"
+      }
+    ],
+    "area": {
+      "size": "2200 sqft",
+      "legalStatus": "Verified"
+    }
+  },
+
+  "basicDetails": {
+    "priceDetails": {
+      "value": "In 1.2 CR",
+      "address": "Premium 2-Acre Land Near Shamshabad Airport",
+      "distance": "5 KM",
+      "direction": "Shamshabad road, Chevella highway",
+      "loanOffered": "Estimated EMI: ₹7,052"
+    }
+  },
+
+  "relatedProperties": [
+    {
+      "id": 1,
+      "title": "1.25 Crores - 3 Acres 20 Guntas",
+      "location": "Kandukur, Sangareddy",
+      "date": "18 Dec 2023",
+      "image": "property1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "1.25 Crores - 3 Acres 20 Guntas",
+      "location": "Kandukur, Sangareddy",
+      "date": "18 Dec 2023",
+      "image": "property2.jpg"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "company": "Powersurge",
+      "author": "Nicolas Osborne",
+      "position": "Frontend Developer, Powersurge",
+      "text": "Unified has been a lifesaver for our team—everything we need is right at our fingertips.",
+      "logo": "powersurge-logo.svg"
+    },
+    {
+      "company": "Goodwell",
+      "author": "Ammar Ejay",
+      "position": "UX Design, Goodwell",
+      "text": "Unified is our secret weapon for staying ahead of deadlines.",
+      "logo": "goodwell-logo.svg"
+    }
+  ],
+
+  "footer": {
+    "company": "LandApp",
+    "tagline": "An acre of performance is worth a whole world of promise",
+    "contact": {
+      "phone": "+91 9044451545",
+      "email": "support@landapp.in"
+    },
+    "services": [
+      "Hand Holding",
+      "Land Monitoring",
+      "Legal Verification",
+      "Get your land Surveyed"
+    ]
+  }
+}

@@ -401,12 +401,13 @@ export default function App() {
   return (
     <>
       <AuthProvider>
-        <Toaster />
         <LoadScript
           googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
           libraries={['places', 'marker']}
-        ></LoadScript>
-        <RouterProvider router={router} />
+        >
+          <RouterProvider router={router} />
+          <Toaster />
+        </LoadScript>
       </AuthProvider>
     </>
   );

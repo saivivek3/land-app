@@ -174,7 +174,7 @@ const PropertyMap = () => {
 
       <div
         onClick={() => navigate(-1)}
-        className="absolute top-[25%]  left-12    z-10 text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[5px] rounded-lg shadow-sm "
+        className="absolute top-[25%]  left-12  z-10 text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[5px] rounded-lg shadow-sm "
       >
         <img
           src={ArrowLeftIcon}
@@ -197,7 +197,10 @@ const PropertyMap = () => {
         ))}
 
         {selectedProperty && (
-          <InfoWindowF position={selectedProperty.position}>
+          <InfoWindowF
+            position={selectedProperty.position}
+            onCloseClick={() => setSelectedProperty(null)}
+          >
             <div className="bg-white py-2 px-4  rounded-lg shadow-md min-w-36">
               <div className="flex gap-2 items-center ">
                 <div className="text-sm font-bold">
