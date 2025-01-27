@@ -51,12 +51,14 @@ function EachCard({ cards }) {
             key={index}
             className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-80 sm:w-96 relative"
           >
+            {/* Lazy loading for the card image */}
             <img
               src={card.image}
               alt="Card"
+              loading="lazy"
               className="w-full h-56 sm:h-72 object-cover rounded-lg"
             />
-            {/* Always Display Transparent Content */}
+            {/* Transparent Content */}
             <div className="mx-4 rounded-md absolute inset-x-0 bottom-0 px-6 py-2 backdrop-blur-sm bg-white/30 mb-5">
               {/* Stars */}
               <div className="flex gap-1 mb-1">
@@ -66,6 +68,7 @@ function EachCard({ cards }) {
                     src={starImg}
                     alt="Star"
                     className="w-3 h-3"
+                    loading="lazy"
                   />
                 ))}
               </div>

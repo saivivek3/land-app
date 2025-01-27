@@ -477,6 +477,39 @@ const recentProperties = [
   },
 ];
 
+const PendingApproveAllProperties = [
+  {
+    id: 1,
+    image: '/images/PendingApproveImgOne.svg',
+    discription: '32 Guntas verified land, located 32 km, Shamshabad',
+    landType: 'Agriculture Land',
+    price: '1.2',
+    area: '5954 sqft',
+    dateListed: '23 Nov, 2024',
+    status: 'Approval Pending',
+  },
+  {
+    id: 2,
+    image: '/images/PendingApproveImgTwo.svg',
+    discription: '32 Guntas verified land, located 32 km, Shamshabad',
+    landType: 'Agriculture Land',
+    price: '1.2',
+    area: '5954 sqft',
+    dateListed: '23 Nov, 2024',
+    status: 'Approval Pending',
+  },
+  {
+    id: 3,
+    image: '/images/PendingApproveImgThree.svg',
+    discription: '32 Guntas verified land, located 32 km, Shamshabad',
+    landType: 'Agriculture Land',
+    price: '1.2',
+    area: '5954 sqft',
+    dateListed: '23 Nov, 2024',
+    status: 'Approval Pending',
+  },
+];
+
 export {
   propertydetailsOne,
   realEstateListings,
@@ -485,4 +518,5 @@ export {
   AllLandsDetails,
   latestProperties,
   recentProperties,
+  PendingApproveAllProperties,
 };
