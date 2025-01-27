@@ -175,7 +175,12 @@ const PropertyMapView = () => {
             {properties.map(property => (
               <Card
                 key={property.id}
-                className="flex shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5"
+                className="flex shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 cursor-pointer"
+                onClick={() =>
+                  navigate(
+                    `/premium-property/single-property-view/${property.id}`,
+                  )
+                }
               >
                 <div className="rounded-xl">
                   <img

@@ -21,7 +21,7 @@ export function PropertyDetailsContextProvider({ children }) {
     const newSteps = [...steps];
     const updatedSteps = newSteps.map((step, index) => {
       if (index === stepIndex) {
-        return { ...step, active: true, completed: true };
+        return { ...step, active: true, completed: false };
       } else if (index < stepIndex) {
         return { ...step, active: true, completed: true };
       } else {

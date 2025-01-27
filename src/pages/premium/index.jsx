@@ -13,7 +13,7 @@ import GoogleMapComponent from '@/components/GoogleMap';
 
 const SinglePropertyView = () => {
   return (
-    <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex gap-4 min-w-fit">
+    <div className="max-w-5xl mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex gap-4 min-w-fit">
       {/* Property Image */}
       <section>
         <div className="relative">
