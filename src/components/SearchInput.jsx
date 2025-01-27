@@ -7,7 +7,6 @@ function SearchInput({
   placeholder = 'Search',
   placeholderColor,
   borderColor,
-  type = 'text',
   value,
   onChange,
   children,

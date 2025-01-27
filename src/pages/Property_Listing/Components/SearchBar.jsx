@@ -1,8 +1,3 @@
-// import Button from "../common/Button";
-
-import Button from '@/components/ui/Button';
-
-// import SearchInput from "../common/SearchInput";
 import filterIcon from './images/filterIcon.svg';
 import SearchInput from '@/components/SearchInput';
 

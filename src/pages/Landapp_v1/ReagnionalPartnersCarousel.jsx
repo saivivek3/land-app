@@ -11,27 +11,27 @@ import rightArrow from './images/rightArrow.svg';
 
 function EachCard({ cards }) {
   const [activeCard, setActiveCard] = useState(0);
-  const [direction, setDirection] = useState('next');
+  // const [direction, setDirection] = useState('next');
 
   const handleNext = () => {
-    setDirection('next');
+    // setDirection('next');
     setActiveCard(prevCard => (prevCard + 1) % cards.length);
   };
 
   const handlePrevious = () => {
-    setDirection('previous');
+    // setDirection('previous');
     setActiveCard(prevCard =>
       prevCard === 0 ? cards.length - 1 : prevCard - 1,
     );
   };
 
-  const cardStyle = {
-    transform:
-      direction === 'next'
-        ? `translateX(-${activeCard * 10}%)`
-        : `translateX(${(cards.length - activeCard - 1) * 10}%)`,
-    transition: 'transform 0.3s ease-in-out',
-  };
+  // const cardStyle = {
+  //   transform:
+  //     direction === 'next'
+  //       ? `translateX(-${activeCard * 10}%)`
+  //       : `translateX(${(cards.length - activeCard - 1) * 10}%)`,
+  //   transition: 'transform 0.3s ease-in-out',
+  // };
 
   return (
     <div className="flex flex-col space-y-6 ml-5 sm:ml-20 overflow-hidden">
@@ -44,7 +44,7 @@ function EachCard({ cards }) {
       {/* Card Display */}
       <div
         className="flex space-x-4 max-w-7xl overflow-hidden"
-        style={cardStyle}
+        // style={cardStyle}
       >
         {cards.map((card, index) => (
           <div
