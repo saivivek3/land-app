@@ -11,19 +11,26 @@ import rightArrow from './images/rightArrow.svg';
 
 function EachCard({ cards }) {
   const [activeCard, setActiveCard] = useState(0);
-
-  const visibleCards = 5; // Number of cards to display at a time
+  const [direction, setDirection] = useState('next');
 
   const handleNext = () => {
-    setActiveCard(prevCard =>
-      prevCard + visibleCards >= cards.length ? 0 : prevCard + visibleCards,
-    );
+    setDirection('next');
+    setActiveCard(prevCard => (prevCard + 1) % cards.length);
   };
 
   const handlePrevious = () => {
+    setDirection('previous');
     setActiveCard(prevCard =>
-      prevCard === 0 ? cards.length - visibleCards : prevCard - visibleCards,
+      prevCard === 0 ? cards.length - 1 : prevCard - 1,
     );
+  };
+
+  const cardStyle = {
+    transform:
+      direction === 'next'
+        ? `translateX(-${activeCard * 10}%)`
+        : `translateX(${(cards.length - activeCard - 1) * 10}%)`,
+    transition: 'transform 0.3s ease-in-out',
   };
 
   return (
@@ -35,42 +42,47 @@ function EachCard({ cards }) {
         </p>
       </div>
       {/* Card Display */}
-      <div className="flex space-x-4 max-w-6xl overflow-hidden">
-        {cards
-          .slice(activeCard, activeCard + visibleCards)
-          .map((card, index) => (
-            <div
-              key={index}
-              className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-80 sm:w-96 relative"
-            >
-              <img
-                src={card.image}
-                alt="Card"
-                className="w-full h-56 sm:h-72 object-cover rounded-lg"
-              />
-              <div className="mx-4 rounded-md absolute inset-x-0 bottom-0 px-6 py-2 backdrop-blur-sm bg-white/30 mb-5">
-                {/* Stars */}
-                <div className="flex gap-1 mb-1">
-                  {Array.from({ length: card.stars }).map((_, starIndex) => (
-                    <img
-                      key={starIndex}
-                      src={starImg}
-                      alt="Star"
-                      className="w-3 h-3"
-                    />
-                  ))}
-                </div>
-                {/* Card Details */}
-                <div className="text-lg font-semibold text-white">
-                  {card.name}
-                </div>
-                <div className="text-white text-xs">{card.region}</div>
-                <div className="text-white text-sm">
-                  Listings: {card.listings}
-                </div>
+      <div
+        className="flex space-x-4 max-w-7xl overflow-hidden"
+        style={cardStyle}
+      >
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-80 sm:w-96 relative"
+          >
+            {/* Lazy loading for the card image */}
+            <img
+              src={card.image}
+              alt="Card"
+              loading="lazy"
+              className="w-full h-56 sm:h-72 object-cover rounded-lg"
+            />
+            {/* Transparent Content */}
+            <div className="mx-4 rounded-md absolute inset-x-0 bottom-0 px-6 py-2 backdrop-blur-sm bg-white/30 mb-5">
+              {/* Stars */}
+              <div className="flex gap-1 mb-1">
+                {Array.from({ length: card.stars }).map((_, starIndex) => (
+                  <img
+                    key={starIndex}
+                    src={starImg}
+                    alt="Star"
+                    className="w-3 h-3"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+              {/* Card Details */}
+              <div className="text-lg font-semibold text-white">
+                {card.name}
+              </div>
+              <div className="text-white text-xs">{card.region}</div>
+              <div className="text-white text-sm">
+                Listings: {card.listings}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
       {/* Navigation Buttons */}
       <div className="flex space-x-4 mr-auto">
