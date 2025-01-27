@@ -8,7 +8,6 @@ function PropertySidebar() {
   const { steps } = useContext(PropertyDetailsContext);
   const completedSteps = steps.filter(step => step.completed).length;
   const navigate = useNavigate();
-  console.log(completedSteps, 'COMPLETEDSTEPS');
 
   function handleClickedSteps(index) {
     switch (index) {

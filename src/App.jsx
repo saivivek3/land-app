@@ -406,9 +406,8 @@ export default function App() {
         <LoadScript
           googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
           libraries={['places', 'marker']}
-        >
-          <RouterProvider router={router} />
-        </LoadScript>
+        ></LoadScript>
+        <RouterProvider router={router} />
       </AuthProvider>
     </>
   );

@@ -1,10 +1,7 @@
 import {
   GoogleMap,
-  LoadScript,
   MarkerF,
-  useLoadScript,
 } from '@react-google-maps/api';
-import React, { useState, useEffect } from 'react';
 import GmapMarker from '@/assets/googlemarker.png';
 
 const GoogleMapComponent = ({ oneMarker, mapHeight, mapWidth = '100%' }) => {
