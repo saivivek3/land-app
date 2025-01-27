@@ -15,6 +15,7 @@ export default {
         buttonPrimary: 'rgba(127, 86, 217, 1)',
         buttontertiary: '#6941C6',
         brandTertiary: '#7F56D9',
+        customBlue: '#026AA2',
         brandPrimary: '#F9F5FF',
         brandSecondary: '#f4ebff',
 

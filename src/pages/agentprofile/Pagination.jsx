@@ -19,7 +19,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => (
         <Button
           key={index + 1}
           onClick={() => onPageChange(index + 1)}
-          className={`text-tertiary text-xs font-semibold cursor-pointer w-8 h-8 p-0 flex-1 bg-white mx-auto border-none hover:text-[#252b37] hover:bg-[#fafafa] ${currentPage === index + 1 && 'bg-[#fafafa]'} `}
+          className={`text-tertiary text-xs font-semibold cursor-pointer w-8 h-8 p-0 flex-1 bg-white mx-auto border-none hover:text-[#252b37] hover:bg-[#fafafa] ${currentPage === index + 1 && 'bg-[#e0e0e0]'} `}
         >
           {index + 1}
         </Button>
