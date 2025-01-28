@@ -19,6 +19,7 @@ import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
 import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
 import PropertyDocumentLayout from './layout/PropertyDocumentLayout';
+import MagnifyIcon from '@/assets/magnify.svg';
 
 // Layouts
 
@@ -96,7 +97,7 @@ const PropertyDescriptionScreen = lazy(
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
-    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900" />
+    <img src={MagnifyIcon} alt="mangnify_logo" className="w-36 h-36" />
   </div>
 );
 
