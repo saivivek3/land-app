@@ -16,9 +16,6 @@ import PostedProperties from './pages/agentprofile/PostedProperties';
 import ProfileDetails from './pages/agentprofile/ProfileDetails';
 import PropertyHistory from './pages/agentprofile/PropertyHistory';
 import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
-import Landapp_v1 from './pages/Landapp_v1/index.jsx';
-import PropertyListing from './pages/Property_Listing/Components';
-import PropertyDescription from './pages/Property_Description/Components';
 import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
 import PropertyDocumentLayout from './layout/PropertyDocumentLayout';
@@ -88,6 +85,15 @@ const PropertyListingManagement = lazy(
   () => import('./pages/property-listing-management'),
 );
 
+//Home Screen
+const HomeScreen = lazy(() => import('./pages/Landapp_v1'));
+const PropertyListingManagementScreen = lazy(
+  () => import('./pages/Property_Listing/Components'),
+);
+const PropertyDescriptionScreen = lazy(
+  () => import('./pages/Property_Description/Components'),
+);
+
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900" />
@@ -98,17 +104,29 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Landapp_v1 />,
+      element: (
+        <Suspense fallback={<LoadingFallback />}>
+          <HomeScreen />,
+        </Suspense>
+      ),
     },
 
     {
       path: '/all-lands',
-      element: <PropertyListing />,
+      element: (
+        <Suspense fallback={<LoadingFallback />}>
+          <PropertyListingManagementScreen />
+        </Suspense>
+      ),
     },
 
     {
       path: '/property-description',
-      element: <PropertyDescription />,
+      element: (
+        <Suspense fallback={<LoadingFallback />}>
+          <PropertyDescriptionScreen />{' '}
+        </Suspense>
+      ),
     },
     {
       path: '/authentication',
