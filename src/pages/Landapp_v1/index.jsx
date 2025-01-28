@@ -13,7 +13,7 @@ import WhyChooseLandapp from './WhyChooseLandapp';
 
 function Landapp_v1() {
   return (
-    <div>
+    <div className="">
       <Navbar>
         <NavPart />
       </Navbar>

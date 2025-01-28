@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import cardOneImg from './images/CardOneImg.jpg';
 import CardSecondImg from './images/CardSecondImg.jpg';
 import CardThirdImg from './images/CardThirdImg.jpg';
@@ -11,26 +11,23 @@ import rightArrow from './images/rightArrow.svg';
 
 function EachCard({ cards }) {
   const [activeCard, setActiveCard] = useState(0);
-  const [direction, setDirection] = useState('next');
+
+  const visibleCards = useMemo(() => {
+    const visibleRange = 5;
+    return cards.slice(
+      activeCard,
+      activeCard + visibleRange > cards.length
+        ? cards.length
+        : activeCard + visibleRange,
+    );
+  }, [activeCard, cards]);
 
   const handleNext = () => {
-    setDirection('next');
-    setActiveCard(prevCard => (prevCard + 1) % cards.length);
+    setActiveCard(prevCard => Math.min(prevCard + 1, cards.length - 3));
   };
 
   const handlePrevious = () => {
-    setDirection('previous');
-    setActiveCard(prevCard =>
-      prevCard === 0 ? cards.length - 1 : prevCard - 1,
-    );
-  };
-
-  const cardStyle = {
-    transform:
-      direction === 'next'
-        ? `translateX(-${activeCard * 10}%)`
-        : `translateX(${(cards.length - activeCard - 1) * 10}%)`,
-    transition: 'transform 0.3s ease-in-out',
+    setActiveCard(prevCard => Math.max(prevCard - 1, 0));
   };
 
   return (
@@ -41,26 +38,19 @@ function EachCard({ cards }) {
           Dorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      {/* Card Display */}
-      <div
-        className="flex space-x-4 max-w-7xl overflow-hidden"
-        style={cardStyle}
-      >
-        {cards.map((card, index) => (
+      <div className="flex space-x-4 max-w-7xl overflow-hidden">
+        {visibleCards.map((card, index) => (
           <div
             key={index}
-            className="rounded-lg shadow-lg mt-3 bg-white transition-transform duration-300 w-80 sm:w-96 relative"
+            className="rounded-lg shadow-lg mt-3 bg-white w-80 sm:w-96 relative"
           >
-            {/* Lazy loading for the card image */}
             <img
               src={card.image}
               alt="Card"
               loading="lazy"
               className="w-full h-56 sm:h-72 object-cover rounded-lg"
             />
-            {/* Transparent Content */}
             <div className="mx-4 rounded-md absolute inset-x-0 bottom-0 px-6 py-2 backdrop-blur-sm bg-white/30 mb-5">
-              {/* Stars */}
               <div className="flex gap-1 mb-1">
                 {Array.from({ length: card.stars }).map((_, starIndex) => (
                   <img
@@ -72,7 +62,6 @@ function EachCard({ cards }) {
                   />
                 ))}
               </div>
-              {/* Card Details */}
               <div className="text-lg font-semibold text-white">
                 {card.name}
               </div>
@@ -84,17 +73,18 @@ function EachCard({ cards }) {
           </div>
         ))}
       </div>
-      {/* Navigation Buttons */}
       <div className="flex space-x-4 mr-auto">
         <button
           onClick={handlePrevious}
           className="px-3 py-3 rounded-full border border-gray-300 text-white flex items-center justify-center"
+          disabled={activeCard === 0}
         >
           <img src={leftArrow} alt="leftArrow" className="w-3 h-3" />
         </button>
         <button
           onClick={handleNext}
           className="px-3 py-3 rounded-full border border-gray-300 text-white flex items-center justify-center"
+          disabled={activeCard >= cards.length - 3}
         >
           <img src={rightArrow} alt="rightArrow" className="w-3 h-3" />
         </button>
