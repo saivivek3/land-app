@@ -16,14 +16,12 @@ function EachCard({ cards }) {
     const visibleRange = 5;
     return cards.slice(
       activeCard,
-      activeCard + visibleRange > cards.length
-        ? cards.length
-        : activeCard + visibleRange,
+      Math.min(activeCard + visibleRange, cards.length),
     );
   }, [activeCard, cards]);
 
   const handleNext = () => {
-    setActiveCard(prevCard => Math.min(prevCard + 1, cards.length - 3));
+    setActiveCard(prevCard => Math.min(prevCard + 1, cards.length - 5));
   };
 
   const handlePrevious = () => {
@@ -42,7 +40,7 @@ function EachCard({ cards }) {
         {visibleCards.map((card, index) => (
           <div
             key={index}
-            className="rounded-lg shadow-lg mt-3 bg-white w-80 sm:w-96 relative"
+            className="rounded-lg shadow-lg mt-3 bg-white w-80 sm:w-96 relative transition-transform transform-gpu will-change-transform"
           >
             <img
               src={card.image}
@@ -84,7 +82,7 @@ function EachCard({ cards }) {
         <button
           onClick={handleNext}
           className="px-3 py-3 rounded-full border border-gray-300 text-white flex items-center justify-center"
-          disabled={activeCard >= cards.length - 3}
+          disabled={activeCard >= cards.length - 5}
         >
           <img src={rightArrow} alt="rightArrow" className="w-3 h-3" />
         </button>
