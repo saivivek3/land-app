@@ -121,7 +121,10 @@ const LocationMap = ({ stepIndex }) => {
             className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
             onClick={() => navigate(-1)}
           >
-            <ChevronLeft className="w-5 h-5 mr-1 " />
+            <ChevronLeft
+              className="w-5 h-5 mr-1 "
+              onClick={() => handleSteps(stepIndex - 1)}
+            />
             Back to
           </button>
           <h2 className="text-3xl font-bold  mb-2">Land Dimension map</h2>

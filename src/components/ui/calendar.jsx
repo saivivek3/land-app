@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DayPicker, DayPickerProvider } from 'react-day-picker';
+import { DayPicker } from 'react-day-picker';
 import cn from '@/lib/cn';
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {

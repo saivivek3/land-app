@@ -10,7 +10,7 @@ import {
   OwnerDetailsConfig,
   propertyDetailsConfig,
 } from './pages/property/propertyFormConfig';
-import { PropertyDetailsContextProvider } from './context/property/PropertyContextProvider';
+import PropertyDetailsContextProvider from './context/property/PropertyContextProvider';
 import { TabsContent } from '@radix-ui/react-tabs';
 import PostedProperties from './pages/agentprofile/PostedProperties';
 import ProfileDetails from './pages/agentprofile/ProfileDetails';

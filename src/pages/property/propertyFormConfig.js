@@ -97,7 +97,7 @@ export const stepsArr = [
     stepIndex: 1,
     title: 'Property Details',
     subtitle: 'Step 2',
-    active: false,
+    active: true,
     completed: false,
   },
   {

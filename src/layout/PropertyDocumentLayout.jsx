@@ -20,7 +20,12 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
-          <span className="text-[18px] font-bold">Back to</span>
+          <span
+            className="text-[18px] font-bold"
+            onClick={() => handleSteps(stepIndex - 1)}
+          >
+            Back to
+          </span>
         </div>
 
         <h1 className="text-2xl font-semibold mb-2">Property Documents</h1>
