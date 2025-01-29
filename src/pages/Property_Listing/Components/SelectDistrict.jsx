@@ -26,7 +26,7 @@ const districts = [
 export function SelectDistrict() {
   return (
     <Select>
-      <SelectTrigger className="w-[200px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder="Select District" />
       </SelectTrigger>
       <SelectContent>

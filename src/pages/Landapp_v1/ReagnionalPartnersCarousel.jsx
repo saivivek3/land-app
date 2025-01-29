@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-
 import leftArrow from './images/leftArrow.svg';
 import rightArrow from './images/rightArrow.svg';
 import ManImage from '@/assets/images/man.png';
@@ -54,7 +53,7 @@ const RegionalPartnersCarousel = () => {
   ];
 
   const nextSlide = useCallback(() => {
-    if (currentSlide < cards.length-4) {
+    if (currentSlide < cards.length - 4) {
       setCurrentSlide(currentSlide + 1);
     }
   }, [currentSlide, cards.length]);
@@ -133,7 +132,7 @@ const RegionalPartnersCarousel = () => {
         </button>
         <button
           onClick={nextSlide}
-          disabled={currentSlide === cards.length-4}
+          disabled={currentSlide === cards.length - 4}
           className="p-3 rounded-full border border-bSecondary bg-white text-[##717680]"
         >
           <img src={rightArrow} alt="Next" className="w-3 h-3" />

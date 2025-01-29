@@ -2,7 +2,10 @@ import cn from '@/lib/cn';
 import { Pencil } from 'lucide-react';
 import { useState } from 'react';
 import Button from '@/components/ui/Button.jsx';
-import HomeScreen from '@/assets/images/image.png';
+// import HomeScreen from '@/assets/images/image.png';
+import HomeScreenPeople from '../../../public/images/HomeScreenPeople.svg';
+import CreatePropertyRightIcon from '@/assets/images/createPropertyRightIcon.svg';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 const CreatePropertyForm = () => {
@@ -15,46 +18,41 @@ const CreatePropertyForm = () => {
 
   const navigate = useNavigate();
 
-  function onSubmit(data) {
-    console.log(data);
-  }
+  // function onSubmit(data) {
+  //   console.log(data);
+  // }
   return (
     <div className="grid grid-cols-2 gap-4 max-w-7xl px-4 mx-auto">
-      <div>
+      <div className="md:mx-12">
         <div className="mb-8">
           <h2 className="text-3xl font-[700]">
             Sell your <span className="text-brandTertiary">Property</span>
           </h2>
-          <p className=" mt-2 text-xl text-black ">
-            Get your property listed in minutes with an easy-to-use
-            <br />
-            for <span className="text-primary font-[700] text-xl">fre</span>
+          <p className=" mt-2 text-xl text-black">
+            Get your property listed in minutes with an easy-to-use for
+            <span className="text-primary font-[700] text-xl ml-1">free</span>
           </p>
         </div>
 
-        <div className="space-y-3 mb-6">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center text-xs">
-              ✓
-            </div>
-            <span className="text-primary text-base">List Your Property</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center text-xs">
-              ✓
-            </div>
-            <span className="text-primary text-base">Get Noticed</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center text-xs">
-              ✓
-            </div>
-            <span className="text-primary text-base">Seal the Deal</span>
+        <div className="flex items-center gap-2">
+          <div className="space-y-3 mb-6">
+            {['List Your Property', 'Get Noticed', 'Seal the Deal'].map(
+              (text, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <img
+                    src={CreatePropertyRightIcon}
+                    alt="Icon"
+                    className="w-5 h-5"
+                  />
+                  <span className="text-primary text-base">{text}</span>
+                </div>
+              ),
+            )}
           </div>
         </div>
         <div>
           <img
-            src={HomeScreen}
+            src={HomeScreenPeople}
             alt="lock-screen"
             className="object-cover w-full h-[260px] rounded-lg"
           />
@@ -69,8 +67,10 @@ const CreatePropertyForm = () => {
                 key={option}
                 onClick={() => setProperty({ ...property, role: option })}
                 className={cn(
-                  'px-4 py-2 rounded-full border border-bQuinary text-base',
-                  property.role === option ? 'bg-blightMode ' : '',
+                  'px-4 py-2 rounded-full border border-bQuinary text-base transition-all duration-300 ease-in-out transform',
+                  property.role === option
+                    ? 'bg-gray-200 scale-105'
+                    : 'hover:scale-105',
                 )}
               >
                 {option}
@@ -91,8 +91,10 @@ const CreatePropertyForm = () => {
                   setProperty({ ...property, propertyType: option })
                 }
                 className={cn(
-                  'px-4 py-2 rounded-full border border-bQuinary text-base ',
-                  property.propertyType === option ? 'bg-blightMode ' : '',
+                  'px-4 py-2 rounded-full border border-bQuinary text-base transition-all duration-300 ease-in-out transform',
+                  property.propertyType === option
+                    ? 'bg-gray-200 scale-105'
+                    : 'hover:scale-105',
                 )}
               >
                 {option}
@@ -113,8 +115,10 @@ const CreatePropertyForm = () => {
                   setProperty({ ...property, propertyCategory: option })
                 }
                 className={cn(
-                  'px-4 py-2 rounded-full border border-bQuinary',
-                  property.propertyCategory === option ? 'bg-blightMode ' : '',
+                  'px-4 py-2 rounded-full border border-bQuinary transition-all duration-300 ease-in-out transform',
+                  property.propertyCategory === option
+                    ? 'bg-gray-200 scale-105'
+                    : 'hover:scale-105',
                 )}
               >
                 {option}

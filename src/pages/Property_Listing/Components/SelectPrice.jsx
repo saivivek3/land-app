@@ -14,7 +14,7 @@ const prices = ['$50', '$100', '$150', '$200'];
 export function SelectPrice() {
   return (
     <Select>
-      <SelectTrigger className="w-[200px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder="Select Price" />
       </SelectTrigger>
       <SelectContent>

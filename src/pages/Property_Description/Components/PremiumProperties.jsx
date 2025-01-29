@@ -39,7 +39,7 @@ function PremiumProperties({ title, properties }) {
                     <img
                       src={HeartFill}
                       onClick={() => toggleLike(index)}
-                      alt="Filled Heart Icon" // Corrected alt attribute for filled heart
+                      alt="Filled Heart Icon"
                       className="absolute bg-white rounded-full p-1 shadow-md top-0 right-10 cursor-pointer"
                     />
                   )}
