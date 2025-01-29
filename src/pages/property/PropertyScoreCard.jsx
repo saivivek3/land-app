@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const PropertyScoreCard = ({
   score = 20,
@@ -11,17 +11,22 @@ const PropertyScoreCard = ({
   textColor = '#7F56D9',
 }) => {
   const [offset, setOffset] = useState(0);
+  const circleRef = useRef(null);
 
   const center = size / 2;
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
 
   useEffect(() => {
+    // Only add transition after initial render
+    if (circleRef.current) {
+      circleRef.current.style.transition = 'stroke-dashoffset 0.8s ease-in-out';
+    }
+  }, []);
+
+  useEffect(() => {
     const progress = 1 - score / 100;
     setOffset(circumference * progress);
-
-    const progressElement = document.querySelector('.progress-ring-circle');
-    progressElement.style.transition = 'stroke-dashoffset 0.8s ease-in-out';
   }, [score, circumference]);
 
   return (
@@ -30,17 +35,17 @@ const PropertyScoreCard = ({
         <div className="relative" style={{ width: size, height: size }}>
           <svg className="transform -rotate-90" width={size} height={size}>
             <circle
-              className="progress-ring-circle opacity-20"
               stroke={bgColor}
               strokeWidth={strokeWidth}
               fill="transparent"
               r={radius}
               cx={center}
               cy={center}
+              className="opacity-20"
             />
 
             <circle
-              className="progress-ring-circle"
+              ref={circleRef}
               stroke={progressColor}
               strokeWidth={strokeWidth}
               strokeDasharray={circumference}

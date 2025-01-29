@@ -25,7 +25,7 @@ const LocationMap = ({ stepIndex }) => {
   const [location, setLocation] = useState({ lat: null, lng: null });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { handleSteps } = useContext(PropertyDetailsContext);
+  const { handleSteps, handleStepsBack } = useContext(PropertyDetailsContext);
   // Categories with icons and active state
 
   useEffect(() => {
@@ -119,12 +119,12 @@ const LocationMap = ({ stepIndex }) => {
         <div className="mb-6">
           <button
             className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              handleStepsBack(stepIndex);
+              navigate(-1);
+            }}
           >
-            <ChevronLeft
-              className="w-5 h-5 mr-1 "
-              onClick={() => handleSteps(stepIndex - 1)}
-            />
+            <ChevronLeft className="w-5 h-5 mr-1 " />
             Back to
           </button>
           <h2 className="text-3xl font-bold  mb-2">Land Dimension map</h2>
