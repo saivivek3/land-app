@@ -44,7 +44,18 @@ const SinglePropertyView = () => {
             <Button className="bg-white rounded-lg border border-bPrimary hover:bg-white/50 min-w-56">
               <div className="flex gap-2 text-secondary text-xs font-semibold">
                 <span>Display total before taxes</span>
-                <img src={FilterIcon} alt="filter-icon" className="h-4 w-4" />
+                <div className="flex items-center">
+                  <div className="relative h-6 w-12 cursor-pointer rounded-full bg-gray-200">
+                    <input
+                      type="checkbox"
+                      className="peer sr-only"
+                      onChange={e => console.log(e.target.checked)}
+                    />
+                    <span className="absolute inset-0 flex h-full w-full items-center rounded-full bg-gray-300 transition-colors duration-200 ease-in-out peer-checked:bg-purple-500">
+                      <span className="absolute left-1 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-6" />
+                    </span>
+                  </div>
+                </div>
               </div>
             </Button>
           </div>
