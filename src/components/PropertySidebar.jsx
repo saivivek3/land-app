@@ -55,7 +55,7 @@ function PropertySidebar({ className = '' }) {
       prev.map(item =>
         item.navigate === '/' + activeLinkName
           ? { ...item, active: true }
-          : { ...item, active: false },  
+          : { ...item, active: false },
       ),
     );
   }, [activeLinkName]);
@@ -69,7 +69,6 @@ function PropertySidebar({ className = '' }) {
         ...item,
         active: item.label === label,
       }));
-
       return newItems;
     });
 

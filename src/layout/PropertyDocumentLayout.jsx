@@ -10,22 +10,20 @@ import { PropertyDetailsContext } from '@/context/property/PropertyContextProvid
 function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
   const { handleDrop, handleFileInput, files } = usePropertyDocumentHook();
   const navigate = useNavigate();
-  const { handleSteps } = useContext(PropertyDetailsContext);
+  const { handleSteps, handleStepsBack } = useContext(PropertyDetailsContext);
   return (
     <div className="w-full  p-6 bg-white flex gap-6  max-w-6xl mx-auto  rounded-lg shadow-sm">
       <PropertySidebar />
       <section className="flex-1">
         <div
           className="flex items-center mb-4 text-gray-600"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            handleStepsBack(stepIndex);
+            navigate(-1);
+          }}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
-          <span
-            className="text-[18px] font-bold"
-            onClick={() => handleSteps(stepIndex - 1)}
-          >
-            Back to
-          </span>
+          <span className="text-[18px] font-bold">Back to</span>
         </div>
 
         <h1 className="text-2xl font-semibold mb-2">Property Documents</h1>
