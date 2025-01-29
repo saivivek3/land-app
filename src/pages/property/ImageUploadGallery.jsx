@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import TrachIcon from '@/assets/trash.svg';
 import ZoomIn from '@/assets/zoom-in.svg';
+import PropertyImageOne from '@/assets/images/PropertyImageOne.svg';
+import PropertyImageTwo from '@/assets/images/PropertyImageTwo.svg';
+import PropertyImageThree from '@/assets/images/PropertyImageThree.svg';
+import PropertyImageFour from '@/assets/images/PropertyImageFour.svg';
+import PropertyImageFive from '@/assets/images/PropertyImageFive.svg';
 
 const ImageUploadGallery = () => {
   const [images, setImages] = useState([
-    'https://images.unsplash.com/photo-1521747116042-5a810fda9664',
-    'https://images.unsplash.com/photo-1521747116042-5a810fda9664',
-    'https://images.unsplash.com/photo-1521747116042-5a810fda9664',
-    'https://images.unsplash.com/photo-1521747116042-5a810fda9664',
-    'https://images.unsplash.com/photo-1521747116042-5a810fda9664',
+    PropertyImageOne,
+    PropertyImageTwo,
+    PropertyImageThree,
+    PropertyImageFour,
+    PropertyImageFive,
   ]);
 
   return (

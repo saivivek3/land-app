@@ -22,7 +22,9 @@ const PropertyPhoneNumberVerification = () => {
               onClick={() => navigate(-1)}
             >
               <ArrowLeft className="h-4 w-4 mr-1 text-tertiary" />
-              <span className="text-[18px] text-primary font-bold">Back to</span>
+              <span className="text-[18px] text-primary font-bold">
+                Back to
+              </span>
             </button>
           </div>
 
@@ -51,7 +53,7 @@ const PropertyPhoneNumberVerification = () => {
                 Number not confirmed yet
               </p>
             </div>
-            <Pencil className=" w-4 h-4 text-blue-500" />
+            <Pencil className=" w-4 h-4 text-blue-500 cursor-pointer" />
           </div>
         </div>
 
@@ -89,12 +91,12 @@ const PropertyPhoneNumberVerification = () => {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/50"
+            className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/90"
             onClick={() => navigate('/create-property/property-details')}
           >
             Verify & Login
           </Button>
-          <Button className="w-full  py-3 rounded-lg   border border-[#d6bbfb] bg-white text-buttontertiary font-medium">
+          <Button className="w-full  py-3 rounded-lg hover:bg-gray-300   border border-[#d6bbfb] bg-white text-buttontertiary font-medium">
             Verify with missed call
           </Button>
         </div>

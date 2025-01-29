@@ -47,7 +47,7 @@ function PropertySidebar() {
             key={index}
             className={cn('flex items-start gap-4 cursor-pointer', {
               'pointer-events-none': !step.active,
-          })}
+            })}
             onClick={() => handleClickedSteps(index)}
           >
             <div className="relative">
@@ -61,7 +61,7 @@ function PropertySidebar() {
                 }`}
               >
                 {step.completed ? (
-                  '✓'
+                  <span className="font-bold text-lg">✓</span>
                 ) : (
                   <div
                     className={cn(

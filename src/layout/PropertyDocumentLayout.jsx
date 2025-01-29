@@ -38,7 +38,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
         {/*)}*/}
         <div>
           <div
-            className="border-2  border-[#9E77ED] rounded-xl p-8 mb-6 text-center"
+            className="border  border-[#9E77ED] rounded-xl p-8 mb-6 text-center"
             onDrop={handleDrop}
             onDragOver={e => e.preventDefault()}
           >

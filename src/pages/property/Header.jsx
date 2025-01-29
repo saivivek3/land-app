@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className="bg-white shadow-md flex justify-between items-center py-5 px-16">
+    <header className="bg-white shadow-md flex justify-between items-center py-5 px-24">
       <Link to="/">
         <h1 className="text-base text-black font-bold">Land App</h1>
       </Link>
