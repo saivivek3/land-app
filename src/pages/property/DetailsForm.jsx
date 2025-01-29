@@ -85,7 +85,10 @@ const DetailsForm = ({
               className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
               onClick={() => navigate(-1)}
             >
-              <ChevronLeft className="w-5 h-5 mr-1 " />
+              <ChevronLeft
+                className="w-5 h-5 mr-1 "
+                onClick={() => handleSteps(stepIndex - 1)}
+              />
               Back to
             </button>
             <h2 className="text-3xl font-bold mt-2 mb-2">{heading}</h2>
@@ -140,6 +143,7 @@ const DetailsForm = ({
               type="submit"
               className="w-1/2 bg-primary rounded-lg text-base font-semibold hover:bg-primary/50"
               onClick={() => {
+                console.log(stepIndex, 'stepIndex');
                 handleSteps(stepIndex);
                 navigate(nextPath);
               }}

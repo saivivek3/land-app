@@ -1,8 +1,12 @@
 import CheckIconFull from '@/assets/check-circle-full.svg';
 import Button from '@/components/ui/Button.jsx';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function CreatePropertyConfirmation() {
+  useEffect(() => {
+    localStorage.removeItem('steps');
+  }, []);
   const navigate = useNavigate();
   return (
     <div className="flex justify-center  items-center h-screen ">

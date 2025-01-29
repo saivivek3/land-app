@@ -1,39 +1,40 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
 import { stepsArr } from '@/pages/property/propertyFormConfig';
+import { createContext, useCallback, useState } from 'react';
 
 export const PropertyDetailsContext = createContext(null);
 
-export function PropertyDetailsContextProvider({ children }) {
-  const [steps, setSteps] = useState(
-    localStorage.getItem('steps')
-      ? JSON.parse(localStorage.getItem('steps'))
-      : stepsArr,
+function PropertyDetailsContextProvider({ children }) {
+  // Combine initial state logic
+  const [steps, setSteps] = useState(() => {
+    const stored = localStorage.getItem('steps');
+    return stored ? JSON.parse(stored) : stepsArr;
+  });
+
+  // Remove redundant useEffect since initial state handles it
+
+  const handleSteps = useCallback(
+    stepIndex => {
+      const updatedSteps = steps.map((step, index) => {
+        if (index <= stepIndex) {
+          return { ...step, active: false, completed: true };
+        }
+        if (index === stepIndex + 1) {
+          return { ...step, active: true, completed: false };
+        }
+        return { ...step, active: false, completed: false };
+      });
+
+      setSteps(updatedSteps);
+      localStorage.setItem('steps', JSON.stringify(updatedSteps));
+    },
+    [steps],
   );
 
-  useEffect(() => {
-    if (localStorage.getItem('steps')) {
-      setSteps(JSON.parse(localStorage.getItem('steps')));
-    }
-  }, []);
-
-  // this function is used to handle the steps in the property form and navigate to the next step  and update the steps array
-  const handleSteps = useCallback(stepIndex => {
-    const newSteps = [...steps];
-    const updatedSteps = newSteps.map((step, index) => {
-      if (index === stepIndex) {
-        return { ...step, active: true, completed: false };
-      } else if (index < stepIndex) {
-        return { ...step, active: true, completed: true };
-      } else {
-        return { ...step, active: false, completed: false };
-      }
-    });
-    setSteps(updatedSteps);
-    localStorage.setItem('steps', JSON.stringify(updatedSteps));
-  }, []);
   return (
     <PropertyDetailsContext.Provider value={{ steps, handleSteps }}>
       {children}
     </PropertyDetailsContext.Provider>
   );
 }
+
+export default PropertyDetailsContextProvider;
