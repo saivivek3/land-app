@@ -46,14 +46,14 @@ function Navbar({
       </div>
 
       {/* Right Section - Notifications and Avatar (Hidden in Mobile View) */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center md:gap-4 gap-3">
         {children && <div className="addtional-content">{children}</div>}
 
         <Link to={profileLink}>
           <img
             src={Avatar}
             alt={avatarAlt}
-            className="rounded-full w-8 h-8 ml-2 border border-gray-300 cursor-pointer"
+            className="rounded-full w-8 h-8 border border-gray-300 cursor-pointer"
           />
         </Link>
 

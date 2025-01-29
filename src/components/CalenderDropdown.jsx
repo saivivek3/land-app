@@ -18,7 +18,7 @@ const CalendarDropdown = () => {
   };
 
   return (
-    <div className="relative w-80 z-30">
+    <div className="relative w-full z-30">
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

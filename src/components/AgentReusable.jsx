@@ -27,7 +27,7 @@ function AgentReusable({ agents }) {
               <img
                 src={agent.contactImage}
                 alt="WhatsApp"
-                className="w-6 h-6"
+                className="w-6 h-6 cursor-pointer"
               />
             </div>
             <div className="mt-4 w-full">
