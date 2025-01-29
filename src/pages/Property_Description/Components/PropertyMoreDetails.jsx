@@ -111,7 +111,7 @@ function PropertyMoreDetails() {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           More Details
         </h2>
-        <div className="flex md:gap-6 border-b mt-5 flex-wrap sm:flex-nowrap">
+        <div className="flex md:gap-6 gap-5 border-b mt-5 flex-wrap sm:flex-nowrap">
           {tabs.map((tab, index) => (
             <p
               key={index}

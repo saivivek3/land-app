@@ -5,7 +5,7 @@ import CardThirdImg from './images/CardThirdImg.jpg';
 import CardFourthImg from './images/CardFourthImg.jpg';
 import CardFifthImg from './images/CardFifthImg.jpg';
 import CardSixthImg from './images/CardSixthImg.jpg';
-import starImg from './images/emptyStar.svg';
+// import starImg from './images/emptyStar.svg';
 import leftArrow from './images/leftArrow.svg';
 import rightArrow from './images/rightArrow.svg';
 
