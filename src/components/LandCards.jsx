@@ -16,7 +16,7 @@ function LandCards({ item, link = '/property-description' }) {
       <img
         src={item.logo}
         alt={`${item.title} logo`}
-        className="w-full md:w-[400px] h-48 object-cover rounded-md"
+        className="w-full md:min-w-400 h-48 object-cover rounded-md"
       />
 
       {/* Featured Tag */}

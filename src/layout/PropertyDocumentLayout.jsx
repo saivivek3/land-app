@@ -42,7 +42,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
           >
             <input
               type="file"
-              className="hidden "
+              className="hidden"
               id="fileInput"
               onChange={handleFileInput}
               accept=".svg,.png,.jpg,.jpeg,.gif"
@@ -52,7 +52,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
               className="cursor-pointer flex flex-col items-center gap-1"
             >
               <img src={UploadIcon} alt="upload icon" />
-              <div className=" mb-1 text-[11px]">
+              <div className="mb-1 text-[11px]">
                 <span className="hover:underline text-buttontertiary">
                   Click to upload
                 </span>{' '}

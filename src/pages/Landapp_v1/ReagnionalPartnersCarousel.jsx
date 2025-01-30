@@ -139,7 +139,7 @@ const RegionalPartnersCarousel = () => {
         </button>
       </div>
 
-      <button className="py-2 px-4 w-full sm:w-1/5 rounded-lg bg-black text-white">
+      <button className="py-2 px-4 min-w-max sm:w-1/5 rounded-lg bg-black text-white whitespace-nowrap">
         View all Regional Partners
       </button>
     </div>
