@@ -91,8 +91,8 @@ const PropertyPhoneNumberVerification = () => {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/90"
-            onClick={() => navigate('/create-property/property-details')}
+            className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/50"
+            onClick={() => navigate('/create-property/form')}
           >
             Verify & Login
           </Button>
