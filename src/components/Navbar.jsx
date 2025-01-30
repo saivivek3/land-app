@@ -23,7 +23,7 @@ function Navbar({
   };
 
   return (
-    <nav className="flex items-center justify-between bg-white z-50 relative px-4 md:px-20  w-full  md:shadow-lg text-black">
+    <nav className="flex items-center md:mt-0 mt-4 justify-between bg-white z-50 relative px-4 md:px-20 w-full  md:shadow-lg text-black">
       {/* Left Section - Logo and Menu */}
       <div className="flex items-center gap-6">
         <Link to="/">

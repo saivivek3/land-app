@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CalendarDropdown = () => {
+const CalendarDropdown = ({ width = 'full' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dateRange, setDateRange] = useState({
     from: '2024',
@@ -18,7 +18,7 @@ const CalendarDropdown = () => {
   };
 
   return (
-    <div className="relative w-full z-30">
+    <div className={`relative w-${width} z-30`}>
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

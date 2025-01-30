@@ -39,7 +39,7 @@ function PendingApprovePropertiesTabs() {
   return (
     <div>
       <div className="mt-6">
-        <div className="flex gap-5 border border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer">
+        <div className="flex gap-5 border md:text-base text-sm border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer">
           {tabs.map(tab => (
             <div
               key={tab.key}

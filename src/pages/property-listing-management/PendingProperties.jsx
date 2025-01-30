@@ -11,7 +11,7 @@ const PendingProperties = ({ currentPage }) => {
       <div className="space-y-4 mt-2">
         {paginateData.map(property => (
           <div
-            className="flex gap-4 border border-gray-300 rounded-md p-2"
+            className="flex md:flex-row flex-col md:gap-20 lg:gap-28 gap-4 border border-gray-300 rounded-md p-2"
             key={property.id}
           >
             <img
@@ -19,7 +19,7 @@ const PendingProperties = ({ currentPage }) => {
               alt="Property Img"
               className="rounded-l-md w-62 h-28 object-cover"
             />
-            <div className=" space-y-2">
+            <div className="space-y-2">
               <div className="max-w-56 font-semibold">
                 {property.discription}
               </div>
