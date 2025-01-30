@@ -94,7 +94,8 @@ const PropertyMapView = () => {
                 { id: 2, label: 'Kandakur', value: 'kandakur' },
               ]}
             />
-            {/* <DatePickerWithRange /> */}
+
+            <DatePickerWithRange />
             <SelectComponent
               placeholder="Any Price"
               options={[{ id: 1, label: 'Any Price', value: 'Any Price' }]}

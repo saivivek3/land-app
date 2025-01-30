@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { addDays, format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, ChevronDown } from 'lucide-react';
 
 import cn from '@/lib/cn';
 import Button from '@/components/ui/Button';
@@ -26,11 +26,11 @@ export function DatePickerWithRange({ className }) {
           <Button
             id="date"
             className={cn(
-              'w-[300px] justify-start text-left font-normal bg-white text-primary mt-0 ',
+              'w-[300px] justify-start text-left  hover:bg-transparent font-normal bg-white text-primary mt-0 ',
               !date && 'text-muted-foreground',
             )}
           >
-            <CalendarIcon />
+            <CalendarIcon className="h-4 w-4" />
             {date?.from ? (
               date.to ? (
                 <>
@@ -43,9 +43,10 @@ export function DatePickerWithRange({ className }) {
             ) : (
               <span>Pick a date</span>
             )}
+            <ChevronDown className="h-4 w-4 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent className="w-auto p-0 " align="start">
           <Calendar
             initialFocus
             mode="range"

@@ -11,18 +11,18 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
       classNames={{
         months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4',
-        caption: 'flex justify-center pt-1 relative items-center',
-        caption_label: 'text-sm font-medium',
-        nav: 'space-x-1 flex items-center',
+        caption: 'flex justify-center pt-1 relative items-center px-8 ', // Added px-8 for spacing
+        caption_label: 'text-sm font-medium pl-12',
+        nav: '  absolute left-1 right-1 w-full top-[3px]', // Modified to flex and full width
         nav_button: cn(
-          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
+          'h-full w-full p-0 opacity-50 hover:opacity-100 flex items-center justify-center  ',
         ),
-        nav_button_previous: 'absolute left-1',
+        nav_button_previous: 'absolute left-1 ',
         nav_button_next: 'absolute right-1',
         table: 'w-full border-collapse space-y-1',
-        head_row: 'flex',
+        head_row: 'flex ',
         head_cell:
-          'text-neutral-500 rounded-md w-8 font-normal text-[0.8rem] dark:text-neutral-400',
+          'text-neutral-500 rounded-md w-8 font-normal text-[0.8rem] dark:text-neutral-400 bg-red-500',
         row: 'flex w-full mt-2',
         cell: cn(
           'relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-neutral-100 [&:has([aria-selected].day-outside)]:bg-neutral-100/50 [&:has([aria-selected].day-range-end)]:rounded-r-md dark:[&:has([aria-selected])]:bg-neutral-800 dark:[&:has([aria-selected].day-outside)]:bg-neutral-800/50',
@@ -30,7 +30,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
             ? '[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md'
             : '[&:has([aria-selected])]:rounded-md',
         ),
-        day: cn('h-8 w-8 p-0 font-normal aria-selected:opacity-100'),
+        day: cn('h-8 w-8 p-0 font-normal aria-selected:opacity-100 '),
         day_range_start: 'day-range-start',
         day_range_end: 'day-range-end',
         day_selected:
@@ -54,13 +54,14 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
         ),
       }}
       mode="single"
-      defaultMonth={new Date()} // Set current month as default
-      fromYear={new Date().getFullYear() - 1} // Current year - 1
-      toYear={new Date().getFullYear() + 1} // Current year + 1
+      defaultMonth={new Date()}
+      startMonth={new Date(2024, 0)}
+      endMonth={new Date(2025, 11)}
       {...props}
     />
   );
 }
+
 Calendar.displayName = 'Calendar';
 
 export { Calendar };

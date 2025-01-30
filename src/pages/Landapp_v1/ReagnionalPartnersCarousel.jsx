@@ -78,7 +78,7 @@ const RegionalPartnersCarousel = () => {
             transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             display: 'flex',
             backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',   
           }}
         >
           {cards.map((card, index) => (
