@@ -20,6 +20,7 @@ import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
 import PropertyDocumentLayout from './layout/PropertyDocumentLayout';
 import MagnifyIcon from '@/assets/magnify.svg';
+import CreatePropertyLayout from './pages/property/steps';
 
 // Layouts
 
@@ -46,30 +47,30 @@ const PasswordReset = lazy(
 
 // Property
 const CreatePropertyForm = lazy(
-  () => import('./pages/property/CreatePropertyForm'),
+  () => import('./pages/property/steps/CreatePropertyForm'),
 );
-const PropertyDetailsForm = lazy(
-  () => import('./pages/property/PropertyDetailsForm'),
-);
-const PropertyLocatedForm = lazy(
-  () => import('./pages/property/PropertyLocatedForm'),
-);
-const OwnerDetailsForm = lazy(
-  () => import('./pages/property/OwnerDetailsForm'),
-);
-const PropertyDocuments = lazy(
-  () => import('./pages/property/PropertyDocuments'),
-);
-const ImageUploadGallery = lazy(
-  () => import('./pages/property/ImageUploadGallery'),
-);
-const CreatePropertyConfirmation = lazy(
-  () => import('./pages/property/CreatePropertyConfirmation'),
-);
+// const PropertyDetailsForm = lazy(
+//   () => import('./pages/property/steps/PropertyDetailsForm'),
+// );
+// const PropertyLocatedForm = lazy(
+//   () => import('./pages/property/steps/PropertyLocatedForm'),
+// );
+// const OwnerDetailsForm = lazy(
+//   () => import('./pages/property/steps/OwnerDetailsForm'),
+// );
+// const PropertyDocuments = lazy(
+//   () => import('./pages/property/PropertyDocuments'),
+// );
+// const ImageUploadGallery = lazy(
+//   () => import('./pages/property/steps/ImageUploadGallery'),
+// );
+// const CreatePropertyConfirmation = lazy(
+//   () => import('./pages/property/steps/CreatePropertyConfirmation'),
+// );
 const PropertyPhoneNumberVerification = lazy(
   () => import('./pages/property/PropertyVerification'),
 );
-const LocationMap = lazy(() => import('./pages/property/LocationMap'));
+// const LocationMap = lazy(() => import('./pages/steps/property/LocationMap'));
 
 // Dashboard
 const UserDetails = lazy(() => import('./pages/dashboard/UserDetails'));
@@ -216,100 +217,90 @@ export default function App() {
         },
 
         {
-          path: '/create-property/property-details',
+          path: '/create-property/form',
           element: (
             <Suspense fallback={<LoadingFallback />}>
-              <PropertyDetailsForm
-                stepIndex={1}
-                heading="Property Details"
-                isOpenSidesRequired
-                formHeading="Property Details"
-                subHeading={
-                  'An accurate information helps you connect with right buyers'
-                }
-                formConfig={propertyDetailsConfig}
-                nextPath="/create-property/property-located"
-              />
+              <CreatePropertyLayout />
             </Suspense>
           ),
         },
-        {
-          path: '/create-property/property-located',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PropertyLocatedForm
-                stepIndex={2}
-                heading={'Where is the Property located?'}
-                formHeading="Location Details"
-                subHeading={
-                  'An accurate location helps you connect with right buyers'
-                }
-                formConfig={LocationDetailsConfig}
-                nextPath="/create-property/location-map"
-              />
-            </Suspense>
-          ),
-        },
+        // {
+        //   path: '/create-property/property-located',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <PropertyLocatedForm
+        //         stepIndex={2}
+        //         heading={'Where is the Property located?'}
+        //         formHeading="Location Details"
+        //         subHeading={
+        //           'An accurate location helps you connect with right buyers'
+        //         }
+        //         formConfig={LocationDetailsConfig}
+        //         nextPath="/create-property/location-map"
+        //       />
+        //     </Suspense>
+        //   ),
+        // },
 
-        {
-          path: '/create-property/location-map',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <LocationMap stepIndex={3} />,
-            </Suspense>
-          ),
-        },
+        // {
+        //   path: '/create-property/location-map',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <LocationMap stepIndex={3} />,
+        //     </Suspense>
+        //   ),
+        // },
 
-        {
-          path: '/create-property/photos',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PropertyDocumentLayout
-                stepIndex={4}
-                nextPath={'/create-property/owner-details'}
-              >
-                <ImageUploadGallery />
-              </PropertyDocumentLayout>
-            </Suspense>
-          ),
-        },
-        {
-          path: '/create-property/owner-details',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <OwnerDetailsForm
-                stepIndex={5}
-                heading={'Owner Details'}
-                formHeading=""
-                subHeading={'Owner information'}
-                formConfig={OwnerDetailsConfig}
-                nextPath="/create-property/property-documents"
-              />
-            </Suspense>
-          ),
-        },
-        {
-          path: '/create-property/property-documents',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PropertyDocumentLayout
-                nextPath="/create-property/confirmation"
-                stepIndex={6}
-              >
-                <PropertyDocuments />
-              </PropertyDocumentLayout>
-            </Suspense>
-          ),
-        },
+        // {
+        //   path: '/create-property/photos',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <PropertyDocumentLayout
+        //         stepIndex={4}
+        //         nextPath={'/create-property/owner-details'}
+        //       >
+        //         <ImageUploadGallery />
+        //       </PropertyDocumentLayout>
+        //     </Suspense>
+        //   ),
+        // },
+        // {
+        //   path: '/create-property/owner-details',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <OwnerDetailsForm
+        //         stepIndex={5}
+        //         heading={'Owner Details'}
+        //         formHeading=""
+        //         subHeading={'Owner information'}
+        //         formConfig={OwnerDetailsConfig}
+        //         nextPath="/create-property/property-documents"
+        //       />
+        //     </Suspense>
+        //   ),
+        // },
+        // {
+        //   path: '/create-property/property-documents',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <PropertyDocumentLayout
+        //         nextPath="/create-property/confirmation"
+        //         stepIndex={6}
+        //       >
+        //         <PropertyDocuments />
+        //       </PropertyDocumentLayout>
+        //     </Suspense>
+        //   ),
+        // },
 
-        {
-          path: '/create-property/confirmation',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <CreatePropertyConfirmation stepIndex={7} />
-            </Suspense>
-          ),
-        },
+        // {
+        //   path: '/create-property/confirmation',
+        //   element: (
+        //     <Suspense fallback={<LoadingFallback />}>
+        //       <CreatePropertyConfirmation stepIndex={7} />
+        //     </Suspense>
+        //   ),
+        // },
       ],
     },
 

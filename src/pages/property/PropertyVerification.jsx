@@ -22,7 +22,9 @@ const PropertyPhoneNumberVerification = () => {
               onClick={() => navigate(-1)}
             >
               <ArrowLeft className="h-4 w-4 mr-1 text-tertiary" />
-              <span className="text-[18px] text-primary font-bold">Back to</span>
+              <span className="text-[18px] text-primary font-bold">
+                Back to
+              </span>
             </button>
           </div>
 
@@ -90,7 +92,7 @@ const PropertyPhoneNumberVerification = () => {
         <div className="space-y-3">
           <Button
             className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/50"
-            onClick={() => navigate('/create-property/property-details')}
+            onClick={() => navigate('/create-property/form')}
           >
             Verify & Login
           </Button>

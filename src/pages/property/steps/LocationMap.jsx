@@ -7,7 +7,6 @@ import {
 import Button from '@/components/ui/Button.jsx';
 import Input from '@/components/ui/Input';
 import useFormHook from '@/hooks/useFormHook';
-import PropertySidebar from './PropertySidebar';
 import MarkerPinIcon from '@/assets/marker-pin.svg';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
@@ -25,7 +24,12 @@ const LocationMap = ({ stepIndex }) => {
   const [location, setLocation] = useState({ lat: null, lng: null });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { handleSteps, handleStepsBack } = useContext(PropertyDetailsContext);
+  const {
+    handleSteps,
+    handleStepsBack,
+    handleStepsIncrease,
+    handleStepsDecrease,
+  } = useContext(PropertyDetailsContext);
   // Categories with icons and active state
 
   useEffect(() => {
@@ -110,106 +114,101 @@ const LocationMap = ({ stepIndex }) => {
     }
   };
 
-  console.log({ location });
-
   return (
-    <div className=" flex gap-2 max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-sm  ">
-      <PropertySidebar />
-      <div className="w-full px-4">
-        <div className="mb-6">
-          <button
-            className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
-            onClick={() => {
-              handleStepsBack(stepIndex);
-              navigate(-1);
-            }}
-          >
-            <ChevronLeft className="w-5 h-5 mr-1 " />
-            Back to
-          </button>
-          <h2 className="text-3xl font-bold  mb-2">Land Dimension map</h2>
-        </div>
-
-        <h1
-          className="text-tertiary
-        ` font-semibold text-[18px] m-2 my-4"
+    <section className="w-full px-4">
+      <div className="mb-6">
+        <button
+          className="flex items-center text-primary font-bold text-base mb-3 hover:text-gray-900"
+          onClick={() => {
+            handleStepsBack(stepIndex);
+            handleStepsDecrease(stepIndex);
+          }}
         >
-          Mark exact location in map
-        </h1>
-
-        <div className="border border-[#D9D9D9] text-[18px] mb-3 "></div>
-
-        <div className="flex-1 px-6 relative ">
-          {/* Card */}
-          <div className="">
-            <div className="absolute top-6  z-10 left-1/2 -translate-x-1/2 shadow-customBoxShadow rounded-full">
-              <img
-                src={MarkerPinIcon}
-                alt="marker-pin"
-                className="absolute top-2 left-4"
-              />
-
-              <StandaloneSearchBox
-                onLoad={onLoad}
-                onPlacesChanged={onPlacesChanged}
-              >
-                <input
-                  type="text"
-                  className=" rounded-full p-2 w-full pl-10 min-w-fit"
-                  placeholder="Enter Your Search"
-                  value={location.address}
-                />
-              </StandaloneSearchBox>
-            </div>
-          </div>
-
-          <section className="shadow-sm rounded-lg">
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={{ lat: location.lat, lng: location.lng }}
-              zoom={10}
-            >
-              {/* Child components, such as markers, info windows, etc. */}
-              <CustomMarkerComponent />
-            </GoogleMap>
-
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="grid grid-cols-2 gap-2 mt-4"
-            >
-              <Input
-                type="text"
-                placeholder="0.5"
-                labelName="Location(Longitude)"
-                name="longitude"
-                register={register}
-                className="max-w-[300px]"
-                value={location.lng}
-              />
-
-              <Input
-                type="text"
-                placeholder="0.2"
-                labelName="Location(Latitude)"
-                name="latitude"
-                register={register}
-                className="max-w-[300px]"
-                value={location.lat}
-              />
-              <Button
-                className="bg-primary text-white shadow-sm hover:bg-primary/50"
-                onClick={() => {
-                  handleSteps(stepIndex);
-                  navigate('/create-property/photos');
-                }}
-              >
-                Continue
-              </Button>
-            </form>
-          </section>
-        </div>
+          <ChevronLeft className="w-5 h-5 mr-1 " />
+          Back to
+        </button>
+        <h2 className="text-3xl font-bold  mb-2">Land Dimension map</h2>
       </div>
-    </div>
+
+      <h1
+        className="text-tertiary
+        ` font-semibold text-[18px] m-2 my-4"
+      >
+        Mark exact location in map
+      </h1>
+
+      <div className="border border-[#D9D9D9] text-[18px] mb-3 "></div>
+
+      <div className="flex-1 px-6 relative ">
+        {/* Card */}
+        <div className="">
+          <div className="absolute top-6  z-10 left-1/2 -translate-x-1/2 shadow-customBoxShadow rounded-full">
+            <img
+              src={MarkerPinIcon}
+              alt="marker-pin"
+              className="absolute top-2 left-4"
+            />
+
+            <StandaloneSearchBox
+              onLoad={onLoad}
+              onPlacesChanged={onPlacesChanged}
+            >
+              <input
+                type="text"
+                className=" rounded-full p-2 w-full pl-10 min-w-fit"
+                placeholder="Enter Your Search"
+                value={location.address}
+              />
+            </StandaloneSearchBox>
+          </div>
+        </div>
+
+        <section className="shadow-sm rounded-lg">
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={{ lat: location.lat, lng: location.lng }}
+            zoom={10}
+          >
+            {/* Child components, such as markers, info windows, etc. */}
+            <CustomMarkerComponent />
+          </GoogleMap>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="grid grid-cols-2 gap-2 mt-4"
+          >
+            <Input
+              type="text"
+              placeholder="0.5"
+              labelName="Location(Longitude)"
+              name="longitude"
+              register={register}
+              className="max-w-[300px]"
+              value={location.lng}
+            />
+
+            <Input
+              type="text"
+              placeholder="0.2"
+              labelName="Location(Latitude)"
+              name="latitude"
+              register={register}
+              className="max-w-[300px]"
+              value={location.lat}
+            />
+            <Button
+              className="bg-primary text-white shadow-sm hover:bg-primary/50"
+              onClick={() => {
+                handleSteps(stepIndex);
+                handleStepsIncrease(stepIndex);
+              }}
+            >
+              Continue
+            </Button>
+          </form>
+        </section>
+      </div>
+    </section>
   );
 };
 
