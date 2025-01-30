@@ -5,25 +5,18 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import { LoadScript } from '@react-google-maps/api';
-import {
-  LocationDetailsConfig,
-  OwnerDetailsConfig,
-  propertyDetailsConfig,
-} from './pages/property/propertyFormConfig';
 import PropertyDetailsContextProvider from './context/property/PropertyContextProvider';
-import { TabsContent } from '@radix-ui/react-tabs';
-import PostedProperties from './pages/agentprofile/PostedProperties';
-import ProfileDetails from './pages/agentprofile/ProfileDetails';
-import PropertyHistory from './pages/agentprofile/PropertyHistory';
-import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
 import { AuthProvider } from './context/authentication/AuthProvider';
 import 'react-day-picker/dist/style.css';
-import PropertyDocumentLayout from './layout/PropertyDocumentLayout';
 import MagnifyIcon from '@/assets/magnify.svg';
+import ForgotPasswordLayout from './layout/ForgotPasswordLayout';
 import CreatePropertyLayout from './pages/property/steps';
+import ProfileDetails from './pages/agentprofile/ProfileDetails';
+import PostedProperties from './pages/agentprofile/PostedProperties';
+import PropertyHistory from './pages/agentprofile/PropertyHistory';
+import { TabsContent } from './components/ui/tabs';
 
 // Layouts
-
 const PropertyLayout = lazy(() => import('./layout/PropertyLayout'));
 const AgentProfileLayout = lazy(() => import('./layout/AgentProfileLayout'));
 const DashboardLayout = lazy(() => import('./layout/DashboardLayout'));
@@ -49,28 +42,9 @@ const PasswordReset = lazy(
 const CreatePropertyForm = lazy(
   () => import('./pages/property/steps/CreatePropertyForm'),
 );
-// const PropertyDetailsForm = lazy(
-//   () => import('./pages/property/steps/PropertyDetailsForm'),
-// );
-// const PropertyLocatedForm = lazy(
-//   () => import('./pages/property/steps/PropertyLocatedForm'),
-// );
-// const OwnerDetailsForm = lazy(
-//   () => import('./pages/property/steps/OwnerDetailsForm'),
-// );
-// const PropertyDocuments = lazy(
-//   () => import('./pages/property/PropertyDocuments'),
-// );
-// const ImageUploadGallery = lazy(
-//   () => import('./pages/property/steps/ImageUploadGallery'),
-// );
-// const CreatePropertyConfirmation = lazy(
-//   () => import('./pages/property/steps/CreatePropertyConfirmation'),
-// );
 const PropertyPhoneNumberVerification = lazy(
   () => import('./pages/property/PropertyVerification'),
 );
-// const LocationMap = lazy(() => import('./pages/steps/property/LocationMap'));
 
 // Dashboard
 const UserDetails = lazy(() => import('./pages/dashboard/UserDetails'));
@@ -82,12 +56,12 @@ const SinglePropertyView = lazy(() => import('./pages/premium/index'));
 const PropertyMapView = lazy(() => import('./pages/premium/PropertyMapView'));
 const PremiumMapView = lazy(() => import('./pages/premium/PremiunMapView'));
 
-//listings
+// Listings
 const PropertyListingManagement = lazy(
   () => import('./pages/property-listing-management'),
 );
 
-//Home Screen
+// Home Screen
 const HomeScreen = lazy(() => import('./pages/Landapp_v1'));
 const PropertyListingManagementScreen = lazy(
   () => import('./pages/Property_Listing/Components'),
@@ -98,7 +72,7 @@ const PropertyDescriptionScreen = lazy(
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
-    <img src={MagnifyIcon} alt="mangnify_logo" className="w-36 h-36" />
+    <img src={MagnifyIcon} alt="magnify_logo" className="w-36 h-36" />
   </div>
 );
 
@@ -106,91 +80,30 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-        <Suspense fallback={<LoadingFallback />}>
-          <HomeScreen />,
-        </Suspense>
-      ),
+      element: <HomeScreen />,
     },
-
     {
       path: '/all-lands',
-      element: (
-        <Suspense fallback={<LoadingFallback />}>
-          <PropertyListingManagementScreen />
-        </Suspense>
-      ),
+      element: <PropertyListingManagementScreen />,
     },
-
     {
       path: '/property-description',
-      element: (
-        <Suspense fallback={<LoadingFallback />}>
-          <PropertyDescriptionScreen />{' '}
-        </Suspense>
-      ),
+      element: <PropertyDescriptionScreen />,
     },
     {
       path: '/authentication',
-      children: [
-        {
-          index: true,
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <AuthenticationForm />
-            </Suspense>
-          ),
-        },
-      ],
+      element: <AuthenticationForm />,
     },
-
-    //Forgot PASSWORD
     {
-      element: (
-        <Suspense fallback={<LoadingFallback />}>
-          <ForgotPasswordLayout />
-        </Suspense>
-      ),
       path: '/forgot-password',
+      element: <ForgotPasswordLayout />,
       children: [
-        {
-          index: true,
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <ForgotPasswordForm />
-            </Suspense>
-          ),
-        },
-
-        {
-          path: '/forgot-password/check-email',
-
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <CheckEmailForm />
-            </Suspense>
-          ),
-        },
-        {
-          path: '/forgot-password/new-password',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <NewPasswordForm />,
-            </Suspense>
-          ),
-        },
-        {
-          path: '/forgot-password/password-reset',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PasswordReset />
-            </Suspense>
-          ),
-        },
+        { index: true, element: <ForgotPasswordForm /> },
+        { path: 'check-email', element: <CheckEmailForm /> },
+        { path: 'new-password', element: <NewPasswordForm /> },
+        { path: 'password-reset', element: <PasswordReset /> },
       ],
     },
-
-    //CREATE PROPERTY
     {
       path: '/create-property',
       element: (
@@ -199,209 +112,44 @@ export default function App() {
         </PropertyDetailsContextProvider>
       ),
       children: [
-        {
-          index: true,
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <CreatePropertyForm />
-            </Suspense>
-          ),
-        },
-        {
-          path: '/create-property/verification',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PropertyPhoneNumberVerification />,
-            </Suspense>
-          ),
-        },
-
-        {
-          path: '/create-property/form',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <CreatePropertyLayout />
-            </Suspense>
-          ),
-        },
-        // {
-        //   path: '/create-property/property-located',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <PropertyLocatedForm
-        //         stepIndex={2}
-        //         heading={'Where is the Property located?'}
-        //         formHeading="Location Details"
-        //         subHeading={
-        //           'An accurate location helps you connect with right buyers'
-        //         }
-        //         formConfig={LocationDetailsConfig}
-        //         nextPath="/create-property/location-map"
-        //       />
-        //     </Suspense>
-        //   ),
-        // },
-
-        // {
-        //   path: '/create-property/location-map',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <LocationMap stepIndex={3} />,
-        //     </Suspense>
-        //   ),
-        // },
-
-        // {
-        //   path: '/create-property/photos',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <PropertyDocumentLayout
-        //         stepIndex={4}
-        //         nextPath={'/create-property/owner-details'}
-        //       >
-        //         <ImageUploadGallery />
-        //       </PropertyDocumentLayout>
-        //     </Suspense>
-        //   ),
-        // },
-        // {
-        //   path: '/create-property/owner-details',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <OwnerDetailsForm
-        //         stepIndex={5}
-        //         heading={'Owner Details'}
-        //         formHeading=""
-        //         subHeading={'Owner information'}
-        //         formConfig={OwnerDetailsConfig}
-        //         nextPath="/create-property/property-documents"
-        //       />
-        //     </Suspense>
-        //   ),
-        // },
-        // {
-        //   path: '/create-property/property-documents',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <PropertyDocumentLayout
-        //         nextPath="/create-property/confirmation"
-        //         stepIndex={6}
-        //       >
-        //         <PropertyDocuments />
-        //       </PropertyDocumentLayout>
-        //     </Suspense>
-        //   ),
-        // },
-
-        // {
-        //   path: '/create-property/confirmation',
-        //   element: (
-        //     <Suspense fallback={<LoadingFallback />}>
-        //       <CreatePropertyConfirmation stepIndex={7} />
-        //     </Suspense>
-        //   ),
-        // },
+        { index: true, element: <CreatePropertyForm /> },
+        { path: 'verification', element: <PropertyPhoneNumberVerification /> },
+        { path: 'form', element: <CreatePropertyLayout /> },
       ],
     },
-
-    //AGENT PROFILE
-
     {
       path: '/profile',
-      children: [
-        {
-          index: true,
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <AgentProfileLayout>
-                <TabsContent value="profile">
-                  <ProfileDetails />
-                </TabsContent>
-                <TabsContent value="properties">
-                  <PostedProperties />
-                </TabsContent>
-                <TabsContent value="history">
-                  <PropertyHistory />
-                </TabsContent>
-              </AgentProfileLayout>
-            </Suspense>
-          ),
-        },
-      ],
+      element: (
+        <AgentProfileLayout>
+          <TabsContent value="profile">
+            <ProfileDetails />
+          </TabsContent>
+          <TabsContent value="properties">
+            <PostedProperties />
+          </TabsContent>
+          <TabsContent value="history">
+            <PropertyHistory />
+          </TabsContent>
+        </AgentProfileLayout>
+      ),
     },
-
-    // DASHBOARD
     {
       path: '/dashboard',
-      // element: <DashboardLayout />,
+      element: <DashboardLayout />,
       children: [
-        {
-          index: true,
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <DashboardLayout>
-                <UserDetails />
-              </DashboardLayout>
-            </Suspense>
-          ),
-        },
-        {
-          path: '/dashboard/agent',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <DashboardLayout>
-                <AgentDetails />
-              </DashboardLayout>
-            </Suspense>
-          ),
-        },
-        {
-          path: '/dashboard/admin',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <DashboardLayout>
-                <AdminDetails />
-              </DashboardLayout>
-            </Suspense>
-          ),
-        },
+        { index: true, element: <UserDetails /> },
+        { path: 'agent', element: <AgentDetails /> },
+        { path: 'admin', element: <AdminDetails /> },
       ],
     },
-
-    //PREMIUM
     {
       path: '/premium-property',
-
       children: [
-        {
-          path: '/premium-property/single-property-view/:id',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              {' '}
-              <SinglePropertyView />
-            </Suspense>
-          ),
-        },
-        {
-          path: '/premium-property/property-map-view',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PropertyMapView />
-            </Suspense>
-          ),
-        },
-        {
-          path: '/premium-property/satellite-view',
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <PremiumMapView />
-            </Suspense>
-          ),
-        },
+        { path: 'single-property-view/:id', element: <SinglePropertyView /> },
+        { path: 'property-map-view', element: <PropertyMapView /> },
+        { path: 'satellite-view', element: <PremiumMapView /> },
       ],
     },
-    //listings
-
     {
       path: '/listings',
       element: <PropertyListingManagement />,
@@ -409,16 +157,16 @@ export default function App() {
   ]);
 
   return (
-    <>
-      <AuthProvider>
-        <LoadScript
-          googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
-          libraries={['places', 'marker']}
-        >
+    <AuthProvider>
+      <LoadScript
+        googleMapsApiKey="AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28"
+        libraries={['places', 'marker']}
+      >
+        <Suspense fallback={<LoadingFallback />}>
           <RouterProvider router={router} />
           <Toaster />
-        </LoadScript>
-      </AuthProvider>
-    </>
+        </Suspense>
+      </LoadScript>
+    </AuthProvider>
   );
 }

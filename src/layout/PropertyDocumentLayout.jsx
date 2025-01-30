@@ -7,17 +7,22 @@ import usePropertyDocumentHook from '@/hooks/usePropertyDocumentHook';
 import PropertySidebar from '@/pages/property/PropertySidebar';
 import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
 
-function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
+function PropertyDocumentLayout({ children, stepIndex }) {
   const { handleDrop, handleFileInput, files } = usePropertyDocumentHook();
-  const navigate = useNavigate();
-  const { handleSteps, handleStepsBack } = useContext(PropertyDetailsContext);
+
+  const {
+    handleSteps,
+    handleStepsBack,
+    handleStepsIncrease,
+    handleStepsDecrease,
+  } = useContext(PropertyDetailsContext);
   return (
     <section className="flex-1">
       <div
         className="flex items-center mb-4 text-gray-600"
         onClick={() => {
           handleStepsBack(stepIndex);
-          navigate(-1);
+          handleStepsDecrease(stepIndex);
         }}
       >
         <ArrowLeft className="w-5 h-5 mr-2" />
@@ -70,7 +75,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
         className="bg-primary text-white w-1/3 hover:bg-primary/50"
         onClick={() => {
           handleSteps(stepIndex);
-          navigate(nextPath);
+          handleStepsIncrease(stepIndex);
         }}
       >
         Continue

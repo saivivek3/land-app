@@ -142,7 +142,7 @@ const LocationMap = ({ stepIndex }) => {
       <div className="flex-1 px-6 relative ">
         {/* Card */}
         <div className="">
-          <div className="absolute top-6  z-10 left-1/2 -translate-x-1/2 shadow-customBoxShadow rounded-full">
+          <div className="absolute top-2  z-10 left-[60%] -translate-x-1/2 shadow-customBoxShadow rounded-full border border-bPrimary shadow-sm">
             <img
               src={MarkerPinIcon}
               alt="marker-pin"

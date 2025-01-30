@@ -18,7 +18,7 @@ function ForgotPasswordForm() {
   return (
     <>
       <div className="flex justify-center items-center  ">
-        <div className="rounded-lg shadow-sm p-2">
+        <div className="rounded-lg shadow-customShadow border border-bSecondary p-3">
           <img src={KeyIcon} alt="Forgot Password" className="w-6 h-6 flex " />
         </div>
       </div>

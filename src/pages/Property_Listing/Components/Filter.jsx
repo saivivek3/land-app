@@ -9,6 +9,7 @@ import CalendarDropdown from '@/components/CalenderDropdown';
 import SelectDistrict from './SelectDistrict';
 import SelectPrice from './SelectPrice';
 import { useNavigate } from 'react-router-dom';
+import { DatePickerWithRange } from '@/components/DateRangePicker';
 // import CalendarDropdowns from '@/components/CalenderDropdowns';
 
 function Filter() {
@@ -17,10 +18,10 @@ function Filter() {
     <div className="px-4 md:px-20 flex flex-col md:flex-row items-center md:items-start -z-50">
       <div className="flex flex-col md:flex-row justify-between py-4 w-full gap-4">
         {/* Dropdown Section */}
-        <div className="flex flex-col md:flex-row z-40 items-center gap-4 md:w-1/2">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:w-1/2">
           {/* <StateDropdown /> */}
           <SelectDistrict />
-          <CalendarDropdown />
+          <DatePickerWithRange />
           <SelectPrice />
           {/* <CalendarDropdowns /> */}
         </div>

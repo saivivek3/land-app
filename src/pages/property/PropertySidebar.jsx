@@ -5,40 +5,10 @@ import { PropertyDetailsContext } from '@/context/property/PropertyContextProvid
 import { useNavigate } from 'react-router-dom';
 
 function PropertySidebar() {
-  const { steps } = useContext(PropertyDetailsContext);
+  const { steps, handleStepsIncrease } = useContext(PropertyDetailsContext);
   const completedSteps = steps.filter(step => step.completed).length;
   const navigate = useNavigate();
 
-  function handleClickedSteps(index) {
-    switch (index) {
-      case 0:
-        navigate('/');
-        break;
-      case 1:
-        navigate('/create-property/property-details');
-        break;
-      case 2:
-        navigate('/create-property/property-located');
-        break;
-      case 3:
-        navigate('/create-property/location-map');
-        break;
-      case 4:
-        navigate('/create-property/photos');
-        break;
-      case 5:
-        navigate('/create-property/owner-details');
-        break;
-      case 6:
-        navigate('/create-property/property-documents');
-        break;
-      case 7:
-        navigate('/create-property/confirmation');
-        break;
-      default:
-        return null;
-    }
-  }
   return (
     <div className=" border  bg-disabledlight px-8 py-4">
       <div className="space-y-10">
@@ -48,7 +18,6 @@ function PropertySidebar() {
             className={cn('flex items-start gap-4 cursor-pointer', {
               'pointer-events-none': !step.active,
             })}
-            onClick={() => handleClickedSteps(index)}
           >
             <div className="relative">
               <div

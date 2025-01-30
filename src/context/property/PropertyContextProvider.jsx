@@ -7,21 +7,12 @@ export const PropertyDetailsContext = createContext(null);
 function PropertyDetailsContextProvider({ children }) {
   // Combine initial state logic
   const [steps, setSteps] = useState(() => {
-
-    const stored = localStorage.getItem('steps');
+    const stored = sessionStorage.getItem('steps');
     return stored ? JSON.parse(stored) : stepsArr;
   });
-    const navigate = useNavigate();
-    
+  const navigate = useNavigate();
 
   const [stepIndex, setStepIndex] = useState(1);
-
-  useEffect(() => {
-    if (stepIndex === 1) {
-      navigate('/create-property/verification');
-      localStorage.removeItem('steps');
-    }
-  }, [stepIndex]);
 
   function handleStepsIncrease() {
     setStepIndex(prev => prev + 1);
@@ -47,7 +38,7 @@ function PropertyDetailsContextProvider({ children }) {
       });
 
       setSteps(updatedSteps);
-      localStorage.setItem('steps', JSON.stringify(updatedSteps));
+     sessionStorage.setItem('steps', JSON.stringify(updatedSteps));
     },
     [steps],
   );
@@ -55,7 +46,7 @@ function PropertyDetailsContextProvider({ children }) {
   //   All steps before stepIndex - 1 are marked as active and completed.
   // All other steps are inactive and incomplete.
 
-  const handleStepsBack = useCallback(
+  const handleStepsBack = useCallback( 
     stepIndex => {
       console.log('handleStepsBack called with stepIndex:', stepIndex);
       const updatedSteps = steps.map((step, index) => {

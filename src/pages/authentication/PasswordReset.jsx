@@ -1,12 +1,11 @@
-
 import Button from '@/components/ui/Button.jsx';
-import CheckCircleIcon from '@/assets/checkcircle-icon.svg'
+import CheckCircleIcon from '@/assets/checkcircle-icon.svg';
 
 function PasswordReset() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <div className="rounded-lg shadow-sm p-4">
+        <div className="rounded-lg shadow-customShadow border border-bSecondary p-3">
           <img
             src={CheckCircleIcon}
             alt="Forgot Password"
