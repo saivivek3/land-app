@@ -144,20 +144,20 @@ const PropertyMap = () => {
   return (
     <div className="relative ">
       {/* search */}
-      <div className="absolute z-10 top-[15%] left-12 flex  gap-1 items-center">
+      <div className="absolute z-10 top-[15%] left-1/2 flex  gap-1 items-center">
         <div className=" min-w-64 flex-1  flex items-center  ">
           <input
             type="search"
             placeholder="Search"
-            className=" w-full border rounded-lg px-4 text-xs py-2 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-7"
+            className=" w-full border rounded-lg px-4 text-xs py-3 pl-10 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-7"
           />
           <img
             src={SearchIcon}
             alt="search-Icon"
-            className="absolute top-[25%] left-5 h-4 w-4"
+            className="absolute top-[30%] left-5 h-4 w-4"
           />
 
-          <div className="absolute top-[23%] left-[60%] text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[2px] rounded-lg shasow-sm ">
+          <div className="absolute top-[25%] left-[60%] text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[2px] rounded-lg shasow-sm ">
             ⌘K
           </div>
         </div>

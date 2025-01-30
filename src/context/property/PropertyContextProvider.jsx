@@ -1,14 +1,35 @@
 import { stepsArr } from '@/pages/property/propertyFormConfig';
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const PropertyDetailsContext = createContext(null);
 
 function PropertyDetailsContextProvider({ children }) {
   // Combine initial state logic
   const [steps, setSteps] = useState(() => {
+
     const stored = localStorage.getItem('steps');
     return stored ? JSON.parse(stored) : stepsArr;
   });
+    const navigate = useNavigate();
+    
+
+  const [stepIndex, setStepIndex] = useState(1);
+
+  useEffect(() => {
+    if (stepIndex === 1) {
+      navigate('/create-property/verification');
+      localStorage.removeItem('steps');
+    }
+  }, [stepIndex]);
+
+  function handleStepsIncrease() {
+    setStepIndex(prev => prev + 1);
+  }
+
+  function handleStepsDecrease() {
+    setStepIndex(prev => prev - 1);
+  }
 
   // For steps with an index less than or equal to the stepIndex, the step is marked as completed and inactive.
   // The step that immediately follows the current one (stepIndex + 1) is set to active and incomplete.
@@ -54,7 +75,14 @@ function PropertyDetailsContextProvider({ children }) {
 
   return (
     <PropertyDetailsContext.Provider
-      value={{ steps, handleSteps, handleStepsBack }}
+      value={{
+        steps,
+        handleSteps,
+        handleStepsBack,
+        stepIndex,
+        handleStepsIncrease,
+        handleStepsDecrease,
+      }}
     >
       {children}
     </PropertyDetailsContext.Provider>
