@@ -11,7 +11,7 @@ const PendingProperties = ({ currentPage }) => {
       <div className="space-y-4 mt-2">
         {paginateData.map(property => (
           <div
-            className="flex md:flex-row flex-col md:gap-20 lg:gap-28 gap-4 border border-gray-300 rounded-md p-2"
+            className="flex md:flex-row flex-col border border-gray-300 rounded-md p-2 w-full md:gap-6 2xl:gap-28 xl:gap-12 lg:gap-6 gap-4"
             key={property.id}
           >
             <img
@@ -36,7 +36,7 @@ const PendingProperties = ({ currentPage }) => {
               <div className="">
                 Price: <span>{property.price}</span>
               </div>
-              <div className="w-full border border-gray-250 mt-6"></div>
+              <div className="w-full border border-gray-250"></div>
               <div className="-pt-2">
                 Area: <span>{property.area}</span>
               </div>

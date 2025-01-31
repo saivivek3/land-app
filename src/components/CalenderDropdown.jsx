@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CalendarDropdown = ({ width = 'full' }) => {
+const CalendarDropdown = ({ width = 'md:w-40' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dateRange, setDateRange] = useState({
     from: '2024',
@@ -18,11 +18,11 @@ const CalendarDropdown = ({ width = 'full' }) => {
   };
 
   return (
-    <div className={`relative w-${width} z-30`}>
+    <div className={`relative w-full ${width} z-30`}>
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="flex items-center md:justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 justify-center"
       >
         <div className="flex items-center">
           {/* Calendar Icon */}
@@ -59,7 +59,7 @@ const CalendarDropdown = ({ width = 'full' }) => {
         <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10">
           <div className="p-4">
             <p className="text-gray-700 text-sm mb-2">Select Date Range:</p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4">
               {/* From Date */}
               <div>
                 <label className="block text-gray-600 text-sm">From:</label>

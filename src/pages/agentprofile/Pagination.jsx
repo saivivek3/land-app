@@ -2,7 +2,7 @@ import Button from '@/components/ui/Button.jsx';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => (
-  <div className="flex justify-between items-center mt-8">
+  <div className="flex justify-between gap-3 items-center mt-2 mb-6">
     <Button
       disabled={currentPage === 1}
       onClick={() => onPageChange(currentPage - 1)}

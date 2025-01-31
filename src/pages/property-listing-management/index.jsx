@@ -5,11 +5,11 @@ import PendingApprovePropertiesTabs from './PendingApprovePropertiesTabs';
 
 function PropertyListing() {
   return (
-    <div className="flex">
-      <div className="md:w-1/4">
+    <div className="flex flex-col md:flex-row">
+      <div className="md:w-1/3 lg:w-1/4">
         <PropertySidebar />
       </div>
-      <div className="mt-6 relative w-full md:px-2 px-3">
+      <div className="mt-6 relative w-full md:px-4 px-3">
         <Topbar />
         <div className="absolute w-full h-[1px] left-0 right-4 bg-gray-200 mt-4"></div>
         <FilterPanel />

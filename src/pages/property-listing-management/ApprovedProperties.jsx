@@ -1,4 +1,5 @@
 import { PendingApproveAllProperties } from '@/data/data';
+
 const ApprovedProperties = ({ currentPage }) => {
   const itemsPerPage = 5;
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -12,7 +13,7 @@ const ApprovedProperties = ({ currentPage }) => {
       <div className="space-y-4 mt-2">
         {paginateData.map(property => (
           <div
-            className="flex md:flex-row flex-col lg:gap-20 border border-gray-300 rounded-md p-2"
+            className="flex md:flex-row flex-col md:gap-6 2xl:gap-28 xl:gap-12 lg:gap-6 gap-4 border border-gray-300 rounded-md p-2 w-full"
             key={property.id}
           >
             <img
@@ -34,7 +35,7 @@ const ApprovedProperties = ({ currentPage }) => {
             </div>
 
             <div className="space-y-2 mt-6">
-              <div className="">
+              <div>
                 Price: <span>{property.price}</span>
               </div>
               <div className="w-full border border-gray-250"></div>
@@ -43,12 +44,12 @@ const ApprovedProperties = ({ currentPage }) => {
               </div>
             </div>
 
-            <div className="space-y-2 mt-6 gap-4">
-              <div className="">
+            <div className="space-y-2 mt-6">
+              <div>
                 Date Listed: <span>{property.dateListed}</span>
               </div>
               <div className="w-full border border-gray-250"></div>
-              <div className="">
+              <div>
                 Status:
                 <span className="text-customBlue font-semibold ml-1">
                   {property.status === 'Approval Pending'

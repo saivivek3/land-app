@@ -13,7 +13,7 @@ function PendingApprovePropertiesTabs() {
   const tabs = [
     {
       key: 'posted',
-      label: 'posted property',
+      label: 'Posted Property',
       component: (
         <PendingProperties
           currentPage={currentPage}
@@ -23,7 +23,7 @@ function PendingApprovePropertiesTabs() {
     },
     {
       key: 'approved',
-      label: 'approved property',
+      label: 'Approved Property',
       component: (
         <ApprovedProperties
           currentPage={currentPage}
@@ -37,22 +37,31 @@ function PendingApprovePropertiesTabs() {
   const totalPages = Math.ceil(totalItems / itemPerPage);
 
   return (
-    <div>
-      <div className="mt-6">
-        <div className="flex gap-5 border md:text-base text-sm border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer">
+    <div className="w-full">
+      {/* Tabs Section */}
+      <div className="mt-6 w-full">
+        <div className="flex gap-2 md:gap-4 lg:gap-6 border md:text-base text-sm border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer w-full overflow-x-auto">
           {tabs.map(tab => (
             <div
               key={tab.key}
-              className={`  ${activeTab === tab.key ? 'bg-white rounded-md font-semibold p-2' : ''}`}
+              className={`px-3 py-2 text-center flex-1 md:flex-none ${
+                activeTab === tab.key
+                  ? 'bg-white rounded-md font-semibold shadow-md'
+                  : 'text-gray-600'
+              }`}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}
             </div>
           ))}
         </div>
-        <div>{tabs.find(tab => tab.key === activeTab)?.component}</div>
+        <div className="mt-4">
+          {tabs.find(tab => tab.key === activeTab)?.component}
+        </div>
       </div>
-      <div>
+
+      {/* Pagination Section */}
+      <div className="mt-6 flex justify-center">
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

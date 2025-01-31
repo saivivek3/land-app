@@ -14,8 +14,7 @@ function Filter() {
         {/* Dropdown Section */}
         <div className="flex flex-col md:flex-row z-40 items-center gap-4 md:w-2/3">
           <SelectDistrict />
-          <CalendarDropdown />
-          {/* <DatePicker /> */}
+          <CalendarDropdown width="w-full" />
           <SelectPrice />
         </div>
 

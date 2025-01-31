@@ -1,10 +1,10 @@
 import CalendarDropdown from '@/components/CalenderDropdown';
 import SearchInput from '@/components/SearchInput';
 import FilterIcon from '../Property_Listing/Components/images/filterIcon.svg';
-
+// md:gap-36
 function FilterPanel() {
   return (
-    <div className="flex flex-col md:flex-row items-center md:gap-36 gap-5 mt-10 w-full">
+    <div className="flex flex-col md:flex-row items-center gap-5 mt-10">
       <div className="relative w-full md:w-auto">
         <SearchInput
           className="relative"
@@ -21,7 +21,7 @@ function FilterPanel() {
         <button className="border border-gray-300 rounded-md bg-white text-black px-4 py-1 whitespace-nowrap w-full md:w-auto">
           Sort by date
         </button>
-        <CalendarDropdown width={80} />
+        <CalendarDropdown width="md:w-96" />
         <button className="border border-gray-300 px-6 py-1 flex items-center rounded-md gap-2 w-full md:w-auto justify-center">
           <img src={FilterIcon} alt="Filter icon" className="w-4 h-4" />
           <span>Filter</span>
