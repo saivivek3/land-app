@@ -10,12 +10,14 @@ function CheckEmailForm() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <div className="rounded-lg shadow-sm p-4">
+        <div className="rounded-lg shadow-customShadow border border-bSecondary p-3">
           <img src={MailIcon} alt="Forgot Password" className="w-6 h-6 flex " />
         </div>
       </div>
 
-      <h2 className="text-3xl font-semibold text-primary text-center">Check your email</h2>
+      <h2 className="text-3xl font-semibold text-primary text-center">
+        Check your email
+      </h2>
       <p className="text-tertiary text-base text-center">
         We sent a password reset link to olivia@untitledui.com
       </p>

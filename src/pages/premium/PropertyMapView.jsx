@@ -63,9 +63,9 @@ const PropertyMapView = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mx-auto max-w-screen-2xl px-6 py-2 ">
+    <div className="mx-auto max-w-7xl px-6 py-2 ">
       <div className="flex gap-4 justify-between">
-        <section className="flex-1  basis-[1000px]">
+        <section className="flex-1 min-w-fit ">
           <div className="flex justify-between items-center mb-3">
             <div>
               <h1 className="text-xl font-semibold text-primary">
@@ -94,7 +94,8 @@ const PropertyMapView = () => {
                 { id: 2, label: 'Kandakur', value: 'kandakur' },
               ]}
             />
-            {/* <DatePickerWithRange /> */}
+
+            <DatePickerWithRange />
             <SelectComponent
               placeholder="Any Price"
               options={[{ id: 1, label: 'Any Price', value: 'Any Price' }]}
@@ -147,7 +148,7 @@ const PropertyMapView = () => {
             </div>
           </div>
 
-          <div className="flex justify-between mb-3">
+          <div className="flex justify-between mb-3 ">
             <div className="flex gap-0">
               <Button className="border border-[#D5D7DA] text-xs font-[600]  bg-[#FAFAFA] hover:bg-[#FAFAFA]  rounded-r-none hover:opacity-50 text-primary min-w-fit px-3 py-2">
                 Sort by date
@@ -286,6 +287,7 @@ const PropertyMapView = () => {
             </Button>
           </div>
         </section>
+
         <GoogleMapComponent oneMarker={false} mapWidth="50%" />
       </div>
     </div>

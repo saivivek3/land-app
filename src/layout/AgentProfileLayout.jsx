@@ -1,4 +1,3 @@
-
 import Button from '@/components/ui/Button.jsx';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { MoreVertical, Star, MoreHorizontal } from 'lucide-react';
@@ -18,7 +17,7 @@ const AgentProfileLayout = ({ children, value }) => {
       {/* Sidebar */}
       <PropertySidebar />
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 ml-60">
         <div className="">
           <img
             src="https://images.unsplash.com/photo-1446071103084-c257b5f70672?q=80&w=2568&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

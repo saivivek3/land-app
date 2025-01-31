@@ -3,7 +3,8 @@ import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
 import CheckIcon from '@/assets/check-icon.svg';
 import { useNavigate } from 'react-router-dom';
-import MailIcon from '@/assets/mail-icon.svg'
+import MailIcon from '@/assets/mail-icon.svg';
+import GreyCheckedIcon from "@/assets/gray-check-icon.svg";
 
 function NewPasswordForm() {
   const { handleSubmit, register } = useFormHook();
@@ -20,7 +21,7 @@ function NewPasswordForm() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <div className="rounded-lg shadow-sm p-4">
+        <div className="rounded-lg shadow-customShadow border border-bSecondary p-3">
           <img src={MailIcon} alt="Forgot Password" className="w-6 h-6 flex " />
         </div>
       </div>
@@ -49,7 +50,7 @@ function NewPasswordForm() {
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <img
-              src={CheckIcon}
+              src={GreyCheckedIcon}
               alt="check-icon"
               className="h-4 w-4 object-cover"
             />
@@ -59,7 +60,7 @@ function NewPasswordForm() {
           </div>
           <div className="flex items-center gap-2">
             <img
-              src={CheckIcon}
+              src={GreyCheckedIcon}
               alt="check-icon"
               className="h-4 w-4 object-cover"
             />
@@ -72,7 +73,7 @@ function NewPasswordForm() {
         <Button onClick={navigateToPasswordResetSuccess}>Reset Password</Button>
       </form>
     </>
-  )
+  );
 }
 
 export default NewPasswordForm;

@@ -2,6 +2,7 @@ import Button from '@/components/ui/Button';
 import { Cloud } from 'lucide-react';
 
 function UserDetails() {
+  console.log('UserDetails');
   const recommendations = [
     {
       image:
@@ -23,7 +24,7 @@ function UserDetails() {
 
   const PropertyCard = ({ image, title, location, price, area }) => (
     <div className="shadow-sm border border-bSecondary rounded-xl flex gap-2">
-      <div className='p-3'>
+      <div className="p-3">
         <img
           src="https://images.unsplash.com/photo-1698296193806-df2054b6c9b3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhlJTIwbGFuZHxlbnwwfHwwfHx8MA%3D%3D"
           alt={title}

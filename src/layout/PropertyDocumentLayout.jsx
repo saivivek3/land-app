@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import UploadIcon from '@/assets/upload-cloud.svg';
 import usePropertyDocumentHook from '@/hooks/usePropertyDocumentHook';
 import PropertySidebar from '@/pages/property/PropertySidebar';
 import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
 
-function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
+function PropertyDocumentLayout({ children, stepIndex }) {
   const { handleDrop, handleFileInput, files } = usePropertyDocumentHook();
-  const navigate = useNavigate();
-  const { handleSteps, handleStepsBack } = useContext(PropertyDetailsContext);
+
+  const {
+    handleSteps,
+    handleStepsBack,
+    handleStepsIncrease,
+    handleStepsDecrease,
+  } = useContext(PropertyDetailsContext);
   return (
     <div className="w-full  p-6 bg-white flex gap-6  max-w-6xl mx-auto  rounded-lg shadow-sm">
       <PropertySidebar />
@@ -19,12 +23,21 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
           className="flex items-center mb-4 text-gray-600"
           onClick={() => {
             handleStepsBack(stepIndex);
-            navigate(-1);
+            handleStepsDecrease(stepIndex);
           }}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           <span className="text-[18px] font-bold">Back to</span>
         </div>
+
+        <h1 className="text-2xl font-semibold mb-2">Property Documents</h1>
+        <p className="text-gray-600 mb-6">Documents</p>
+
+        {/*{error && (*/}
+        {/*  <Alert variant="destructive" className="mb-4">*/}
+        {/*    <AlertDescription>{error}</AlertDescription>*/}
+        {/*  </Alert>*/}
+        {/*)}*/}
 
         <h1 className="text-2xl font-semibold mb-2">Property Documents</h1>
         <p className="text-gray-600 mb-6">Documents</p>
@@ -72,7 +85,7 @@ function PropertyDocumentLayout({ children, nextPath, stepIndex }) {
           className="bg-primary text-white w-1/3 hover:bg-primary/50"
           onClick={() => {
             handleSteps(stepIndex);
-            navigate(nextPath);
+            handleStepsIncrease(stepIndex);
           }}
         >
           Continue

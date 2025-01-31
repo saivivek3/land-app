@@ -9,6 +9,7 @@ import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from '@/components/ui/Search';
+import cn from '@/lib/cn';
 
 const SidebarLink = ({ icon: Icon, label, active, onClick }) => (
   <li
@@ -26,7 +27,7 @@ const sidebarLinksArr = [
     icon: DashboardIcon,
     label: 'Dashboard',
     active: false,
-    navigate: '/dashboard',
+    navigate: '/dashboard/user',
   },
   {
     icon: ListIcon,
@@ -77,7 +78,7 @@ function PropertySidebar({ className = '' }) {
 
   return (
     <div
-      className={`${className} bg-white p-2 border-r rounded-xl cursor-pointer flex flex-col min-h-full`}
+      className={`${className}  bg-white p-2 border-r rounded-xl cursor-pointer flex flex-col min-h-full  `}
     >
       {/* Mobile toggle button */}
       <div className="md:hidden mb-4">
@@ -96,24 +97,20 @@ function PropertySidebar({ className = '' }) {
         }`}
         onClick={() => setIsSidebarOpen(false)} // Close sidebar when clicked outside
       ></div>
-
       <div
-        className={`fixed left-0 top-0 bg-white p-4 border-r rounded-xl cursor-pointer flex flex-col min-h-full w-64 transform transition-transform z-50 ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:relative md:translate-x-0 md:block`} // Ensure the sidebar is visible on larger screens
+        className={cn(
+          'fixed left-0 top-0 bg-white p-4 border-r rounded-xl cursor-pointer flex flex-col w-64 transform transition-transform z-50 h-screen md:translate-x-0',
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+        )}
       >
-        {/* Sidebar Content */}
-        <section className="mb-8">
-          <h1
-            className="text-xl font-semibold mb-6"
-            onClick={() => navigate('/')}
-          >
-            LandApp
-          </h1>
-          <Search className={'max-w-[230px]'} />
+        {/* Top Section */}
+        <section className="mb-8 ">
+          <h1 className="text-xl font-semibold mb-6">LandApp</h1>
+          <Search className="max-w-[230px]" />
         </section>
 
-        <ul className="space-y-2">
+        {/* Middle Section */}
+        <ul className="space-y-2 flex-1 ">
           {sidebarLinks.map(link => (
             <SidebarLink
               key={link.label}
@@ -125,8 +122,8 @@ function PropertySidebar({ className = '' }) {
           ))}
         </ul>
 
-        {/* Close button for mobile sidebar */}
-        <div className="absolute top-4 right-4 md:hidden block">
+        {/*  Close button for mobile sidebar */}
+        <div className="absolute top-4 right-4 md:hidden block ">
           <button
             onClick={() => setIsSidebarOpen(false)}
             className="text-xl text-primary"
@@ -135,24 +132,24 @@ function PropertySidebar({ className = '' }) {
           </button>
         </div>
 
-        <div className="shadow-sm border border-bSecondary rounded-lg mt-auto">
-          <div className="flex items-center gap-2 p-4 ">
+        {/* Bottom Section */}
+        <div className="shadow-sm border border-bSecondary rounded-lg  ">
+          <div className="flex items-center gap-2 p-4">
             <img
               src={AvatarIcon}
               alt="avatar-icon"
-              className="w-8 h-8 rounded-full "
+              className="w-8 h-8 rounded-full"
             />
-            <div className="">
+            <div>
               <p className="text-primary font-semibold text-xs">
                 Pradeep Kumar
               </p>
               <p className="text-tertiary text-xs">pradeep@landapp.com</p>
             </div>
-
             <img
               src={ChevronVerticalIcon}
               alt="avatar-icon"
-              className="w-6 h-6 object-cover "
+              className="w-6 h-6 object-cover"
             />
           </div>
         </div>

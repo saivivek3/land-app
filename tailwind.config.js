@@ -27,7 +27,10 @@ export default {
       boxShadow: {
         customBoxShadow:
           'box-shadow: 0 4px 4px -2px rgba(10, 13, 18, 0.04), 0 24px 48px -12px rgba(10, 13, 18, 0.18);',
+           customShadow:
+        'box-shadow: 0 1px 2px 0 rgba(10, 13, 18, 0.05), inset 0 -2px 0 0 rgba(10, 13, 18, 0.05), inset 0 0 0 1px rgba(10, 13, 18, 0.18);'
       },
+     
     },
   },
   plugins: [require('tailwindcss-animate')],

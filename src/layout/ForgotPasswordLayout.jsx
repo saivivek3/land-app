@@ -5,7 +5,7 @@ function ForgotPasswordLayout() {
   const navigate = useNavigate();
 
   function navigateToLogin() {
-    navigate('/?tab=login');
+    navigate('/authentication?tab=login');
   }
   return (
     <div className="space-y-4 max-w-xs mx-auto ">

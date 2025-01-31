@@ -6,13 +6,14 @@ import Header from '../Header';
 
 function CreatePropertyConfirmation() {
   useEffect(() => {
-    localStorage.removeItem('steps');
+    sessionStorage.removeItem('steps');
   }, []);
+
   const navigate = useNavigate();
   return (
     <>
       <div className="flex justify-center  items-center ">
-        <div className="flex flex-col  gap-2 justify-center items-center max-w-[460px] border border-bPrimary shadow-sm rounded-[16px] p-12">
+        <div className="flex flex-col  gap-2 justify-center items-center max-w-[460px]  border border-bPrimary shadow-sm rounded-[16px] p-12">
           <img src={CheckIconFull} alt="checkiconfull" className="h-14 w-14" />
           <p className="text-primary text-[18px] font-semibold flex flex-col gap-1 text-center  ">
             Property posted Successfully, your property is{' '}
