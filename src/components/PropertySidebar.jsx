@@ -27,7 +27,7 @@ const sidebarLinksArr = [
     icon: DashboardIcon,
     label: 'Dashboard',
     active: false,
-    navigate: '/dashboard',
+    navigate: '/dashboard/user',
   },
   {
     icon: ListIcon,
