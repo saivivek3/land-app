@@ -12,7 +12,7 @@ const Button = React.forwardRef(
         ref={ref} // Forward the ref to the button element
         onClick={onClick}
         className={cn(
-          'w-full mt-6 p-2 bg-buttonPrimary border border-bPrimary text-base font-semibold shadow-sm rounded-lg text-white hover:bg-transparent/50',
+          'w-full mt-6 p-2 bg-buttonPrimary border border-bPrimary text-base font-semibold shadow-sm rounded-lg text-white hover:bg-buttonPrimary/50',
           className,
         )}
       >

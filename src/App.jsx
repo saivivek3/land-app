@@ -137,9 +137,9 @@ export default function App() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { index: true, element: <UserDetails /> },
         { path: 'agent', element: <AgentDetails /> },
         { path: 'admin', element: <AdminDetails /> },
+        { path: 'user', element: <UserDetails /> },
       ],
     },
     {

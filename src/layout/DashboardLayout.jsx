@@ -1,24 +1,19 @@
 import PropertySidebar from '@/components/PropertySidebar';
 
 import AvatarIcon from '@/assets/avatar-icon.svg';
-import { CalendarIcon } from 'lucide-react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import cn from '@/lib/cn';
+
 import Button from '@/components/ui/Button';
 import Filter from '@/assets/filter.svg';
 import { Card, CardContent } from '@/components/ui/card';
-import { MoreVertical, ChevronUp, ChevronDown, Cloud } from 'lucide-react';
+import { MoreVertical, PlusIcon } from 'lucide-react';
 import TabsWithTable from '@/pages/agentprofile/TabsWithTable';
 import { useState } from 'react';
 import { addDays, format } from 'date-fns';
 import IncreaseIcon from '@/assets/increase-icon.svg';
 import DecreaseIcon from '@/assets/decrease-icon.svg';
 import ReportIcon from '@/assets/report-icon.svg';
+import { DatePickerWithRange } from '@/components/DateRangePicker';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const stats = [
   { title: 'Saved Properties', value: 13, change: 10, isPositive: true },
@@ -53,13 +48,33 @@ const StatCard = ({ title, value, change, isPositive }) => (
   </Card>
 );
 
-function DashboardLayout({ children }) {
+function DashboardLayout() {
   const [date, setDate] = useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
+  const { pathname } = useLocation();
+  const pathName = pathname.split('/')[2];
+
+  const headingTypes = {
+    agent: {
+      heading: 'Listing Managemet',
+      subHeading:
+        'Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+    },
+    admin: {
+      heading: 'Property Listing',
+      subHeading:
+        'Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+    },
+    user: {
+      heading: 'Active Summary',
+      subHeading:
+        'Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+    },
+  };
   return (
-    <div className="shadow-sm py-4 px-6 rounded-lg bg-white">
+    <div className="shadow-sm py-4 px-6 rounded-lg bg-white ml-[216px]">
       <div className="flex">
         <PropertySidebar />
         <div className="flex-1 px-4">
@@ -90,42 +105,7 @@ function DashboardLayout({ children }) {
               </div>
             </div>
             <div className="min-w-96 ml-14  ">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    id="date"
-                    variant={'outline'}
-                    className={cn(
-                      'w-[300px] justify-start text-left font-normal mb-6 bg-white text-primary hover:bg-white hover:text-primary',
-                      !date && 'text-muted-foreground',
-                    )}
-                  >
-                    <CalendarIcon />
-                    {date?.from ? (
-                      date.to ? (
-                        <>
-                          {format(date.from, 'LLL dd, y')} -{' '}
-                          {format(date.to, 'LLL dd, y')}
-                        </>
-                      ) : (
-                        format(date.from, 'LLL dd, y')
-                      )
-                    ) : (
-                      <span>Pick a date</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    initialFocus
-                    mode="range"
-                    defaultMonth={date?.from}
-                    selected={date}
-                    onSelect={setDate}
-                    numberOfMonths={2}
-                  />
-                </PopoverContent>
-              </Popover>
+              <DatePickerWithRange />
             </div>
             <div>
               <Button
@@ -145,31 +125,59 @@ function DashboardLayout({ children }) {
             ))}
           </div>
 
-          {children}
-
+          <Outlet />
           {/* //table */}
           <section className="shadow-sm border border-bSecondary rounded-xl b-white p-4  ">
             <div className="flex gap-2 items-center  p-2">
               <div className="flex-1 space-y-1">
                 <p className="text-primary text-base font-semibold">
-                  Activity Summary
+                  {headingTypes[pathName].heading}
                 </p>
                 <p className="text-tertiary text-xs">
-                  Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum
+                  {' '}
+                  {headingTypes[pathName].subHeading}
                 </p>
               </div>
 
-              <Button className="shadow-sm bg-white text-tertiary max-w-32 mt-0 p-2 ">
-                <div className="flex gap-2 items-center">
-                  <img
-                    src={ReportIcon}
-                    alt="report-icon"
-                    className="w-4 h-4 object-cover"
-                  />
-                  <span>Report</span>
+              {['user', 'admin'].includes(pathName) && (
+                <Button className="shadow-sm bg-white text-tertiary max-w-fit mt-0 p-2 ">
+                  <div className="flex gap-2 items-center">
+                    <img
+                      src={ReportIcon}
+                      alt="report-icon"
+                      className="w-4 h-4 object-cover"
+                    />
+                    <span>
+                      {pathName === 'user' ? 'Report' : 'Bulk Upload'}
+                    </span>
+                  </div>
+                </Button>
+              )}
+
+              {pathName === 'agent' && (
+                <div className="flex gap-4">
+                  <Button className="bg-white min-w-fit px-4 mt-0 hover:bg-white/50">
+                    <div className="flex items-center gap-2 ">
+                      <img
+                        src={ReportIcon}
+                        alt="report-icon"
+                        className="w-6 h-6 object-cover  "
+                      />
+                      <span className="text-sm font-semibold text-secondary ">
+                        Download CSV
+                      </span>
+                    </div>
+                  </Button>
+                  <Button className=" min-w-fit px-4 mt-0">
+                    <div className="flex items-center gap-2 ">
+                      <PlusIcon />
+                      <span className="text-sm font-semibold text-white ">
+                        Create New
+                      </span>
+                    </div>
+                  </Button>
                 </div>
-              </Button>
+              )}
             </div>
 
             <div className=" h-[1px] bg-bPrimary w-full"></div>
