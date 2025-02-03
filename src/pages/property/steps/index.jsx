@@ -82,7 +82,7 @@ function CreatePropertyLayout() {
   return (
     <>
       <div className="flex gap-4">
-        <div className="w-full  p-6 bg-white flex gap-6  max-w-5xl mx-auto  rounded-lg shadow-sm">
+        <div className="w-full  p-6 bg-white flex flex-col md:flex-row gap-6  max-w-5xl mx-auto  rounded-lg shadow-sm">
           {stepIndex !== 7 && <PropertySidebar />}
           {renderForm()}
         </div>

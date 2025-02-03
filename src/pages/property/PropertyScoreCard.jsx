@@ -30,7 +30,7 @@ const PropertyScoreCard = ({
   }, [score, circumference]);
 
   return (
-    <div className="p-4 bg-white rounded-xl border my-3 min-w-32">
+    <div className="p-4 bg-white rounded-xl border my-3 max-w-40 md:min-w-32 ">
       <div className="flex flex-col items-center">
         <div className="relative" style={{ width: size, height: size }}>
           <svg className="transform -rotate-90" width={size} height={size}>
