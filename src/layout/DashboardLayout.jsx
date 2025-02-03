@@ -13,7 +13,7 @@ import IncreaseIcon from '@/assets/increase-icon.svg';
 import DecreaseIcon from '@/assets/decrease-icon.svg';
 import ReportIcon from '@/assets/report-icon.svg';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const stats = [
   { title: 'Saved Properties', value: 13, change: 10, isPositive: true },
@@ -74,124 +74,125 @@ function DashboardLayout() {
     },
   };
   return (
-    <div className="shadow-sm py-4 px-6 rounded-lg bg-white ml-[216px]">
-      <div className="flex">
-        <PropertySidebar />
-        <div className="flex-1 px-4">
-          <section className="flex gap-2 justify-between py-2 ">
-            <div>
-              <h2 className="text-primary text-xl font-semibold">
-                Hello, Uday! Here's your property journey at a glance.
-              </h2>
-              <p className="text-tertiary text-sm">
-                We're excited to have you back! Here's a quick glance at your
-                progress:
-              </p>
-            </div>
+    <div className="flex gap-8 shadow-sm py-4 px-6 rounded-lg bg-white">
+      {/* <div className="flex"> */}
+      <PropertySidebar />
+      <div className="flex-1">
+        <section className="flex gap-2 justify-between py-2">
+          <div>
+            <h2 className="text-primary text-xl font-semibold">
+              Hello, Uday! Here's your property journey at a glance.
+            </h2>
+            <p className="text-tertiary text-sm">
+              We're excited to have you back! Here's a quick glance at your
+              progress:
+            </p>
+          </div>
+          <Link to="/profile">
             <img
               src={AvatarIcon}
               alt="avatar-icon"
-              className="rounded-full h-8 w-8"
+              className="rounded-full h-10 w-10"
             />
-          </section>
+          </Link>
+        </section>
 
-          {/* -------calender--------------- */}
-          <div className="flex items-center ">
-            <div className="rounded-lg border border-bPrimary min-w-96 flex items-end  w-8 h-8 bg-white flex-1">
-              <div className="shadow-sm ">
-                <button className="rounded-l-lg max-w-32 px-4 py-1 text-sm border-r border-bPrimary bg-white">
-                  Default
-                </button>
-              </div>
+        {/* -------calender--------------- */}
+        <div className="flex items-center gap-3 w-full">
+          <div className="rounded-lg border border-bPrimary py-1.5 w-2/3 flex items-end bg-white">
+            <div className="shadow-sm">
+              <button className="rounded-l-lg w-full max-w-32 px-4 py-1 text-sm border-r border-bPrimary bg-white">
+                Default
+              </button>
             </div>
-            <div className="min-w-96 ml-14  ">
-              <DatePickerWithRange />
+          </div>
+          <div className="">
+            <DatePickerWithRange className="" />
+          </div>
+          <div className="w-1/8">
+            <Button
+              variant="outline"
+              className="bg-white py-2 px-6 text-secondary text-xs font-semibold mt-0 hover:bg-white/50"
+              iconUrl={Filter}
+            >
+              Filters
+            </Button>
+          </div>
+        </div>
+
+        {/* userstatus */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 mt-4">
+          {stats.map((stat, index) => (
+            <StatCard key={index} {...stat} />
+          ))}
+        </div>
+
+        <Outlet />
+        {/* //table */}
+        <section className="shadow-sm border border-bSecondary rounded-xl b-white p-4  ">
+          <div className="flex gap-2 items-center  p-2">
+            <div className="flex-1 space-y-1">
+              <p className="text-primary text-base font-semibold">
+                {headingTypes[pathName].heading}
+              </p>
+              <p className="text-tertiary text-xs">
+                {' '}
+                {headingTypes[pathName].subHeading}
+              </p>
             </div>
-            <div>
-              <Button
-                variant="outline"
-                className="bg-white text-secondary text-xs font-semibold mt-0 hover:bg-white/50"
-                iconUrl={Filter}
-              >
-                Filters
+
+            {['user', 'admin'].includes(pathName) && (
+              <Button className="shadow-sm bg-white text-tertiary max-w-fit mt-0 p-2 ">
+                <div className="flex gap-2 items-center">
+                  <img
+                    src={ReportIcon}
+                    alt="report-icon"
+                    className="w-4 h-4 object-cover"
+                  />
+                  <span>{pathName === 'user' ? 'Report' : 'Bulk Upload'}</span>
+                </div>
               </Button>
-            </div>
-          </div>
-          {/* userstatus */}
+            )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 mt-4">
-            {stats.map((stat, index) => (
-              <StatCard key={index} {...stat} />
-            ))}
-          </div>
-
-          <Outlet />
-          {/* //table */}
-          <section className="shadow-sm border border-bSecondary rounded-xl b-white p-4  ">
-            <div className="flex gap-2 items-center  p-2">
-              <div className="flex-1 space-y-1">
-                <p className="text-primary text-base font-semibold">
-                  {headingTypes[pathName].heading}
-                </p>
-                <p className="text-tertiary text-xs">
-                  {' '}
-                  {headingTypes[pathName].subHeading}
-                </p>
-              </div>
-
-              {['user', 'admin'].includes(pathName) && (
-                <Button className="shadow-sm bg-white text-tertiary max-w-fit mt-0 p-2 ">
-                  <div className="flex gap-2 items-center">
+            {pathName === 'agent' && (
+              <div className="flex gap-4">
+                <Button className="bg-white min-w-fit px-4 mt-0 hover:bg-white/50">
+                  <div className="flex items-center gap-2 ">
                     <img
                       src={ReportIcon}
                       alt="report-icon"
-                      className="w-4 h-4 object-cover"
+                      className="w-6 h-6 object-cover  "
                     />
-                    <span>
-                      {pathName === 'user' ? 'Report' : 'Bulk Upload'}
+                    <span className="text-sm font-semibold text-secondary ">
+                      Download CSV
                     </span>
                   </div>
                 </Button>
-              )}
+                <Button className=" min-w-fit px-4 mt-0">
+                  <div className="flex items-center gap-2 ">
+                    <PlusIcon />
+                    <span className="text-sm font-semibold text-white ">
+                      Create New
+                    </span>
+                  </div>
+                </Button>
+              </div>
+            )}
+          </div>
 
-              {pathName === 'agent' && (
-                <div className="flex gap-4">
-                  <Button className="bg-white min-w-fit px-4 mt-0 hover:bg-white/50">
-                    <div className="flex items-center gap-2 ">
-                      <img
-                        src={ReportIcon}
-                        alt="report-icon"
-                        className="w-6 h-6 object-cover  "
-                      />
-                      <span className="text-sm font-semibold text-secondary ">
-                        Download CSV
-                      </span>
-                    </div>
-                  </Button>
-                  <Button className=" min-w-fit px-4 mt-0">
-                    <div className="flex items-center gap-2 ">
-                      <PlusIcon />
-                      <span className="text-sm font-semibold text-white ">
-                        Create New
-                      </span>
-                    </div>
-                  </Button>
-                </div>
-              )}
-            </div>
-
-            <div className=" h-[1px] bg-bPrimary w-full"></div>
-            <TabsWithTable
-              tabsData={[
-                { id: 1, value: 'viewall', label: 'View All' },
-                { id: 2, value: 'monitored', label: 'Monitored' },
-                { id: 3, value: 'shortlisted', label: 'Shortlisted' },
-              ]}
-              tabsTriggerData={[]}
-            />
-          </section>
-        </div>
+          <div className=" h-[1px] bg-bPrimary w-full"></div>
+          <TabsWithTable
+            tabsData={[
+              { id: 1, value: 'viewall', label: 'View All' },
+              { id: 2, value: 'monitored', label: 'Monitored' },
+              { id: 3, value: 'shortlisted', label: 'Shortlisted' },
+            ]}
+            tabsTriggerData={[]}
+          />
+        </section>
       </div>
+      {/* </div> */}
     </div>
   );
 }

@@ -3,7 +3,8 @@ import DashboardIcon from '@/assets/sidebar-icons/dashboard.svg';
 import ListIcon from '@/assets/sidebar-icons/listing.svg';
 import ProfileIcon from '@/assets/sidebar-icons/profile.svg';
 import SettingsIcon from '@/assets/sidebar-icons/settings.svg';
-import AvatarIcon from '@/assets/avatar-icon.svg';
+// import AvatarIcon from '@/assets/avatar-icon.svg';
+import profileSidebar from '@/assets/profileSidebar.svg';
 
 import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
 import { useEffect, useState } from 'react';
@@ -45,7 +46,7 @@ const sidebarLinksArr = [
   },
 ];
 
-function PropertySidebar({ className = '' }) {
+function PropertySidebar({ className = '', absolute }) {
   const [sidebarLinks, setSideBarLinks] = useState(sidebarLinksArr);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // state to control sidebar visibility
   const navigate = useNavigate();
@@ -78,13 +79,13 @@ function PropertySidebar({ className = '' }) {
 
   return (
     <div
-      className={`${className}  bg-white p-2 border-r rounded-xl cursor-pointer flex flex-col min-h-full  `}
+      className={`${className}  bg-white z-50 border-r rounded-xl cursor-pointer flex flex-col h-screen `}
     >
       {/* Mobile toggle button */}
-      <div className="md:hidden mb-4">
+      <div className={` ${absolute} md:hidden mb-4 p-2`}>
         <button
           onClick={() => setIsSidebarOpen(true)}
-          className="text-lg text-primary"
+          className="text-4xl text-primary"
         >
           ☰
         </button>
@@ -99,7 +100,7 @@ function PropertySidebar({ className = '' }) {
       ></div>
       <div
         className={cn(
-          'fixed left-0 top-0 bg-white p-4 border-r rounded-xl cursor-pointer flex flex-col w-64 transform transition-transform z-50 h-screen md:translate-x-0',
+          'fixed left-0 top-0 bg-white h-full overflow-y-auto p-4 border-r rounded-xl cursor-pointer flex flex-col w-64 transform transition-transform z-50 md:translate-x-0',
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
@@ -133,12 +134,12 @@ function PropertySidebar({ className = '' }) {
         </div>
 
         {/* Bottom Section */}
-        <div className="shadow-sm border border-bSecondary rounded-lg  ">
-          <div className="flex items-center gap-2 p-4">
+        <div className="shadow-sm border border-bSecondary rounded-lg">
+          <div className="flex items-center p-4">
             <img
-              src={AvatarIcon}
+              src={profileSidebar}
               alt="avatar-icon"
-              className="w-8 h-8 rounded-full"
+              className="w-10 h-10 rounded-full"
             />
             <div>
               <p className="text-primary font-semibold text-xs">

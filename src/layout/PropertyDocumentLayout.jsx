@@ -17,7 +17,6 @@ function PropertyDocumentLayout({ children, stepIndex }) {
   } = useContext(PropertyDetailsContext);
   return (
     <div className="w-full  p-6 bg-white flex gap-6  max-w-6xl mx-auto  rounded-lg shadow-sm">
-      <PropertySidebar />
       <section className="flex-1">
         <div
           className="flex items-center mb-4 text-gray-600"
@@ -38,9 +37,6 @@ function PropertyDocumentLayout({ children, stepIndex }) {
         {/*    <AlertDescription>{error}</AlertDescription>*/}
         {/*  </Alert>*/}
         {/*)}*/}
-
-        <h1 className="text-2xl font-semibold mb-2">Property Documents</h1>
-        <p className="text-gray-600 mb-6">Documents</p>
 
         {/*{error && (*/}
         {/*  <Alert variant="destructive" className="mb-4">*/}

@@ -22,7 +22,7 @@ const CreatePropertyForm = () => {
   //   console.log(data);
   // }
   return (
-    <div className="grid grid-cols-2 gap-4 max-w-7xl px-4 mx-auto">
+    <div className="grid  grid-cols-1 sm:grid-cols-2 gap-4 max-w-7xl px-4 mx-auto">
       <div className="md:mx-12">
         <div className="mb-8">
           <h2 className="text-3xl font-[700]">
@@ -61,13 +61,13 @@ const CreatePropertyForm = () => {
       <div className="space-y-6 border  shadow-sm  rounded-lg p-4">
         <div>
           <label className="block  text-xl font-semibold mb-2">You are</label>
-          <div className="flex gap-2 text-primary ">
+          <div className="flex gap-2 text-primary flex-wrap ">
             {['User', 'Owner', 'Agent', 'Other'].map(option => (
               <button
                 key={option}
                 onClick={() => setProperty({ ...property, role: option })}
                 className={cn(
-                  'px-4 py-2 rounded-full border border-bQuinary text-base transition-all duration-300 ease-in-out transform',
+                  'px-4 py-2 rounded-full border border-bQuinary text-base transition-all duration-300 ease-in-out transform  ',
                   property.role === option
                     ? 'bg-gray-200 scale-105'
                     : 'hover:scale-105',
@@ -83,7 +83,7 @@ const CreatePropertyForm = () => {
           <label className="block  text-base font-[600] mb-2 ">
             You are looking to
           </label>
-          <div className="flex gap-2 ">
+          <div className="flex gap-2 flex-wrap ">
             {['Agriculture', 'Commercial'].map(option => (
               <button
                 key={option}
@@ -107,7 +107,7 @@ const CreatePropertyForm = () => {
           <label className="block  text-xl font-semibold mb-2">
             You are looking to
           </label>
-          <div className="flex gap-2 text-base">
+          <div className="flex gap-2 text-base flex-wrap">
             {['Land', 'Industry', 'Plot', 'Other'].map(option => (
               <button
                 key={option}

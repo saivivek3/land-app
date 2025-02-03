@@ -260,7 +260,6 @@ const PropertyMapView = () => {
               </Card>
             ))}
           </div>
-
           <div className="flex gap-2 ">
             <Button
               className="bg-transparent rounded-none border-none outline-none  hover:bg-transparent text-primary text-sm mt-0 shadow-none justify-start"

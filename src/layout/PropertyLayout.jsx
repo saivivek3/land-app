@@ -6,7 +6,7 @@ function PropertyLayout() {
   return (
     <>
       <Header />
-      <div className=" container mx-auto my-8 ">
+      <div className="  md:container md:mx-auto  my-8 ">
         <Outlet />
       </div>
     </>
