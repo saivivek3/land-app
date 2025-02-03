@@ -12,9 +12,9 @@ const PropertyPhoneNumberVerification = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-5xl mx-auto p-6  flex  gap-3">
+    <div className="max-w-5xl mx-auto p-6  flex flex-col md:flex-row  gap-3">
       {/* Header */}
-      <div className="flex-1 px-8  min-w-[500px]">
+      <div className="flex-1 px-8 max-w-fit  md:min-w-[500px]">
         <div className="mb-8">
           <div className="flex items-center mb-6">
             <button
@@ -31,7 +31,7 @@ const PropertyPhoneNumberVerification = () => {
           <h1 className="text-3xl font-semibold mb-2 text-[#242731] ">
             Welcome back,
           </h1>
-          <p className="text-[#575f6e] text-[18px]">
+          <p className="text-[#575f6e] text-xs  sm:text-[18px]">
             Fill in the registration data. It will take a couple of minutes. All
             you need is a phone number
           </p>
@@ -59,7 +59,7 @@ const PropertyPhoneNumberVerification = () => {
 
         {/* Verification Code Input */}
         <div className="mb-6">
-          <div className="flex justify-between items-center gap-2">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <div>
               <OTPInput />
               <div className="border-b-[1px] border-[#007aff]  h-2 w-full "></div>{' '}
@@ -103,12 +103,12 @@ const PropertyPhoneNumberVerification = () => {
       </div>
 
       {/* Why We Verify Section */}
-      <div className=" p-8 flex flex-col justify-center gap-2 bg-brandSecondary rounded-lg shadow-sm  max-w-[300px] w-full">
+      <div className=" p-8 flex  flex-col justify-center gap-2 bg-brandSecondary rounded-lg shadow-sm  max-w-fit md:max-w-[300px] ">
         {/* <Lock className="w-12 h-12 text-white" /> */}
         <img
           src={LockScreen}
           alt="lockscreen"
-          className="object-cover  w-full"
+          className="object-cover  max-w-[500px] md:w-full "
         />
         <h2 className="text-base font-semibold mb-2">
           Why we Verify your number?

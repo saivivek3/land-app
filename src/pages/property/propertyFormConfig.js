@@ -2,7 +2,7 @@ export const propertyDetailsConfig = {
   sections: [
     {
       id: 'basic',
-      grid: 'grid-cols-2',
+      grid: 'grid-cols-1 sm:grid-cols-2',
       fields: [
         {
           name: 'propertyName',
@@ -39,7 +39,7 @@ export const propertyDetailsConfig = {
     },
     {
       id: 'propertyDetails',
-      grid: 'grid-cols-2',
+      grid: 'grid-cols-1 sm:grid-cols-2',
       fields: [
         {
           name: 'propertyType',
@@ -67,7 +67,7 @@ export const propertyDetailsConfig = {
     },
     {
       id: 'zoning',
-      grid: 'grid-cols-2',
+      grid: 'grid-cols-1 sm:grid-cols-2',
       fields: [
         {
           name: 'landZone',
@@ -89,7 +89,7 @@ export const stepsArr = [
   {
     stepIndex: 0,
     title: 'Land Basic Details',
-    subtitle: 'Agricultural or Commercial Lands',
+    subtitle: 'Step 1',
     completed: true,
     active: true,
   },
@@ -143,7 +143,7 @@ export const LocationDetailsConfig = {
   sections: [
     {
       id: 'basic',
-      grid: 'grid-cols-2',
+      grid: 'grid-cols-1 sm:grid-cols-2',
       fields: [
         {
           name: 'villageName',
@@ -206,7 +206,7 @@ export const OwnerDetailsConfig = {
   sections: [
     {
       id: 'basic',
-      grid: 'grid-cols-2',
+      grid: 'grid-cols-1 md:grid-cols-2',
       fields: [
         {
           name: 'propertyOwnerName',
