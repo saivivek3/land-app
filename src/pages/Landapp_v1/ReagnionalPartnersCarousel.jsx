@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import leftArrow from './images/leftArrow.svg';
 import rightArrow from './images/rightArrow.svg';
 import ManImage from '@/assets/images/man.png';
-import { StarIcon, Star } from 'lucide-react';
-import StarRating from '../premium/StarRating';
+import { Star } from 'lucide-react';
+// import { StarIcon, Star } from 'lucide-react';
+// import StarRating from '../premium/StarRating';
 
 const RegionalPartnersCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,7 +66,7 @@ const RegionalPartnersCarousel = () => {
   }, [currentSlide]);
 
   return (
-    <div className="flex flex-col space-y-6 mx-5 sm:mx-20">
+    <div className="flex flex-col space-y-6 mx-5 sm:mx-20 mt-8">
       <div>
         <h2 className="font-semibold text-2xl">Top Regional Partners</h2>
         <p className="text-sm text-gray-600">Dorem ipsum dolor sit amet</p>
@@ -78,7 +79,7 @@ const RegionalPartnersCarousel = () => {
             transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             display: 'flex',
             backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',   
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
           {cards.map((card, index) => (
