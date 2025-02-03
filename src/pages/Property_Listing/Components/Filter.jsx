@@ -16,11 +16,7 @@ function Filter() {
         <div className="flex flex-col md:flex-row items-center gap-4 md:w-1/2">
           {/* <StateDropdown /> */}
           <SelectDistrict />
-<<<<<<< HEAD
-          <CalendarDropdown width="w-full" />
-=======
           <DatePickerWithRange />
->>>>>>> ebc4d3105adb37791ba19003507c21e9d076d24c
           <SelectPrice />
         </div>
 
