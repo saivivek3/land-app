@@ -63,8 +63,8 @@ const PropertyMapView = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-2 ">
-      <div className="flex gap-4 justify-between">
+    <div className=" lg:mx-auto lg:max-w-7xl px-4 lg:px-6 py-2 ">
+      <div className="flex flex-col lg:flex-row gap-4 justify-between">
         <section className="flex-1 min-w-fit ">
           <div className="flex justify-between items-center mb-3">
             <div>
@@ -86,7 +86,7 @@ const PropertyMapView = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 items-center mb-3">
+          <div className="flex gap-4 items-center mb-3 flex-wrap md:flex-nowrap">
             <SelectComponent
               placeholder="Kandukur, TS"
               options={[
@@ -123,7 +123,7 @@ const PropertyMapView = () => {
             </div>
           </Button>
 
-          <div className="flex gap-2 items-center mb-3">
+          <div className="flex flex-wrap md:flex-nowrap gap-2 items-center mb-3">
             <div className="relative min-w-fit flex-1 ">
               <input
                 type="search"
@@ -176,7 +176,7 @@ const PropertyMapView = () => {
             {properties.map(property => (
               <Card
                 key={property.id}
-                className="flex shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 cursor-pointer"
+                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 cursor-pointer"
                 onClick={() =>
                   navigate(
                     `/premium-property/single-property-view/${property.id}`,
@@ -287,7 +287,11 @@ const PropertyMapView = () => {
           </div>
         </section>
 
-        <GoogleMapComponent oneMarker={false} mapWidth="50%" />
+        <GoogleMapComponent
+          oneMarker={false}
+          mapWidth="100%"
+          mapHeight={'115vh'}
+        />
       </div>
     </div>
   );
