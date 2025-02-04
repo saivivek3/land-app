@@ -13,7 +13,7 @@ import GoogleMapComponent from '@/components/GoogleMap';
 
 const SinglePropertyView = () => {
   return (
-    <div className="max-w-5xl mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex gap-4 min-w-fit">
+    <div className="md:max-w-5xl md:mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex flex-col md:flex-row gap-4 min-w-fit">
       {/* Property Image */}
       <section>
         <div className="relative">
@@ -42,7 +42,7 @@ const SinglePropertyView = () => {
               </div>
             </Button>
             <Button className="bg-white rounded-lg border border-bPrimary hover:bg-white/50 min-w-56">
-              <div className="flex gap-2 text-secondary text-xs font-semibold">
+              <div className="flex items-center gap-2 text-secondary text-xs font-semibold">
                 <span>Display total before taxes</span>
                 <div className="flex items-center">
                   <div className="relative h-6 w-12 cursor-pointer rounded-full bg-gray-200">
@@ -119,7 +119,7 @@ const SinglePropertyView = () => {
         </div>
 
         {/* Property Features */}
-        <div className="grid grid-cols-4 p-4 gap-4 border-b">
+        <div className="grid  grid-cols-2 md:grid-cols-4 p-4 gap-4 border-b">
           <div className="flex items-center justify-center flex-col border border-bPrimary p-2 rounded-md bg-disabledlight">
             <img src={DropIcon} alt="drop-icon" />
             <div className="text-secondary font-semibold text-[9px] ">
@@ -149,7 +149,7 @@ const SinglePropertyView = () => {
         </div>
 
         {/* Additional Details */}
-        <div className="grid grid-cols-4 p-4 gap-4">
+        <div className="grid  grid-cols-2 md:grid-cols-4 p-4 gap-4">
           <div className="flex items-center justify-center flex-col border border-bPrimary p-2 rounded-md bg-disabledlight">
             <img src={CorporateIcon} alt="corporate-ion" />
             <div className="text-secondary font-semibold text-[9px]">AREA</div>
@@ -178,7 +178,13 @@ const SinglePropertyView = () => {
           </div>
         </div>
       </section>
-      <GoogleMapComponent oneMarker />
+      <section className="w-full ">
+        <GoogleMapComponent
+          oneMarker={false}
+          mapWidth="100%"
+          mapHeight={'100vh'}
+        />
+      </section>
     </div>
   );
 };
