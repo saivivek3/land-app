@@ -74,12 +74,12 @@ function DashboardLayout() {
     },
   };
   return (
-    <div className="flex gap-8 shadow-sm py-4 px-6 rounded-lg bg-white">
+    <div className="relative flex md:gap-8 mt-3 shadow-sm rounded-lg bg-white">
       {/* <div className="flex"> */}
-      <PropertySidebar />
-      <div className="flex-1">
+      <PropertySidebar absolute="absolute" bg="bg-gray-200" ml="ml-4" />
+      <div className="flex-1 px-4 md:ml-56">
         <section className="flex gap-2 justify-between py-2">
-          <div>
+          <div className="ml-auto md:ml-1">
             <h2 className="text-primary text-xl font-semibold">
               Hello, Uday! Here's your property journey at a glance.
             </h2>

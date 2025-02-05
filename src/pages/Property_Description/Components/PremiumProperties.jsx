@@ -10,14 +10,18 @@ function PremiumProperties({ title, properties }) {
     );
   }
   return (
-    <div className="md:px-20 mt-10">
-      <h2 className="md:text-xl md:text-start text-center text-[14px] font-bold mb-4">
+    <div className="mt-10 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24">
+      <h2 className="md:text-xl md:text-center xl:text-start text-center text-[14px] font-bold mb-4">
         {title}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-6">
         {properties && properties.length > 0 ? (
           properties.map((property, index) => (
-            <div key={index} title={property.location} className="border-none">
+            <div
+              key={index}
+              title={property.location}
+              className="border-none mt-4"
+            >
               <div className="relative">
                 {/* Property Image */}
                 <img
@@ -52,21 +56,21 @@ function PremiumProperties({ title, properties }) {
                 </div>
 
                 {/* Property Details */}
-                <div className="flex items-center md:justify-start justify-center mt-6 text-sm">
+                <div className="flex items-center md:justify-center justify-center mt-6 text-sm">
                   <p className="font-semibold text-black">
                     {property.location}
                   </p>
                   <span className="ml-1">.</span>
                   <p className="font-semibold">{property.date}</p>
                 </div>
-                <div className="flex flex-col md:text-start text-center sm:flex-row sm:items-center gap-1 text-sm sm:text-lg font-bold">
+                <div className="flex flex-col md:text-center text-center sm:flex-row sm:items-center justify-center gap-1 text-sm sm:text-lg font-bold">
                   <p>{property.price}</p>
                   <span className="hidden sm:inline">-</span>{' '}
                   {/* Show only on medium screens or larger */}
                   <p>{property.size}</p>
                 </div>
 
-                <p className="text-sm md:text-start text-center font-medium text-gray-600">
+                <p className="text-sm md:text-center text-center font-medium text-gray-600">
                   {property.area}
                 </p>
               </div>

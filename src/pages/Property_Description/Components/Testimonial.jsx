@@ -4,17 +4,17 @@ import { testimonials } from '@/data/data';
 function Testimonial() {
   return (
     <>
-      <div className="px-5 md:px-20">
+      <div className="mx-4 sm:mx-8 md:mx-12 xl:mx-20 2xl:mx-24">
         <div className="text-center mt-12">
           <div className="font-bold text-lg">Our reviews</div>
           <div className="text-gray-500">
             Hear first-hand from our incredible community of customers.
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
           {testimonials.map(testimonial => (
             <div key={testimonial.id}>
-              <div className="flex flex-col items-start border border-gray-300 p-4 rounded-lg">
+              <div className="flex flex-col items-center text-center border border-gray-300 p-4 w-full rounded-lg">
                 <img
                   src={testimonial.companyLogo}
                   alt="Company Logo"

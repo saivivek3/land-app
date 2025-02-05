@@ -8,7 +8,7 @@ import profileSidebar from '@/assets/profileSidebar.svg';
 
 import ChevronVerticalIcon from '@/assets/chevron-vertical.svg';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Search from '@/components/ui/Search';
 import cn from '@/lib/cn';
 
@@ -46,7 +46,7 @@ const sidebarLinksArr = [
   },
 ];
 
-function PropertySidebar({ className = '', absolute }) {
+function PropertySidebar({ className = '', absolute, bg, ml }) {
   const [sidebarLinks, setSideBarLinks] = useState(sidebarLinksArr);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // state to control sidebar visibility
   const navigate = useNavigate();
@@ -79,10 +79,10 @@ function PropertySidebar({ className = '', absolute }) {
 
   return (
     <div
-      className={`${className}  bg-white z-50 border-r rounded-xl cursor-pointer flex flex-col h-screen `}
+      className={`${className}  bg-white z-50 border-r rounded-xl cursor-pointer flex flex-col `}
     >
       {/* Mobile toggle button */}
-      <div className={` ${absolute} md:hidden mb-4 p-2`}>
+      <div className={` ${absolute} md:hidden mb-4 p-2 ${bg} ${ml}`}>
         <button
           onClick={() => setIsSidebarOpen(true)}
           className="text-4xl text-primary"
@@ -106,12 +106,14 @@ function PropertySidebar({ className = '', absolute }) {
       >
         {/* Top Section */}
         <section className="mb-8 ">
-          <h1 className="text-xl font-semibold mb-6">LandApp</h1>
+          <Link to="/">
+            <h1 className="text-xl font-semibold mb-6">LandApp</h1>
+          </Link>
           <Search className="max-w-[230px]" />
         </section>
 
         {/* Middle Section */}
-        <ul className="space-y-2 flex-1 ">
+        <ul className="space-y-2 flex-1">
           {sidebarLinks.map(link => (
             <SidebarLink
               key={link.label}
