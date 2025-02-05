@@ -19,8 +19,12 @@ const PropertyDescription = () => {
       <Lands />
       <VentureDetails />
       <VentureFacilities />
-      <div className="mt-12 lg:px-4 border border-gray-400 rounded-md w-full">
-        <GoogleMapComponent oneMarker mapHeight="500px" />
+      <div className="mt-12">
+        <GoogleMapComponent
+          oneMarker
+          mapHeight="500px"
+          className="mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24  border border-gray-400 rounded-md"
+        />
       </div>
       <PropertyMoreDetails />
       <PremiumProperties

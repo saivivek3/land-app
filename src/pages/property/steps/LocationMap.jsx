@@ -142,7 +142,7 @@ const LocationMap = ({ stepIndex }) => {
       <div className="flex-1 px-6 relative ">
         {/* Card */}
         <div className="">
-          <div className="absolute top-2  z-10 left-[60%] -translate-x-1/2 shadow-customBoxShadow rounded-full border border-bPrimary shadow-sm">
+          <div className="absolute top-16 left-[50%] w-[80%] sm:top-2  z-10   sm:left-[60%] -translate-x-1/2 shadow-customBoxShadow rounded-full border border-bPrimary shadow-sm">
             <img
               src={MarkerPinIcon}
               alt="marker-pin"
@@ -175,7 +175,7 @@ const LocationMap = ({ stepIndex }) => {
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-2 gap-2 mt-4"
+            className="grid  grid-cols-1 sm:grid-cols-2 gap-2 mt-4 px-2"
           >
             <Input
               type="text"

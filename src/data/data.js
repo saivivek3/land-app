@@ -163,7 +163,7 @@ const testimonials = [
   },
   {
     id: 3,
-    avatarImg: '/images/Avatarthree.svg',
+    avatarImg: '/images/AvatarThree.svg',
     name: 'Mathilde Lewis',
     title: 'Project Lead, Stack3d Lab',
     content:

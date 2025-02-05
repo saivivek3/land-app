@@ -1,10 +1,15 @@
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import GmapMarker from '@/assets/googlemarker.png';
 
-const GoogleMapComponent = ({ oneMarker, mapHeight, mapWidth = '100%' }) => {
+const GoogleMapComponent = ({
+  oneMarker,
+  mapHeight,
+  mapWidth = '100%',
+  className = '',
+}) => {
   const mapContainerStyle = {
     width: mapWidth,
-    height: mapHeight || 'auto',
+    height: mapHeight || '400px', // Set default height
   };
 
   const center = {
@@ -38,31 +43,33 @@ const GoogleMapComponent = ({ oneMarker, mapHeight, mapWidth = '100%' }) => {
   `;
 
   return (
-    <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      center={center}
-      zoom={14}
-      options={mapOptions}
-    >
-      {oneMarker ? (
-        <MarkerF
-          position={center}
-          icon={{
-            url: GmapMarker,
-          }}
-        />
-      ) : (
-        markers.map(marker => (
+    <div className={` ${className}`}>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={14}
+        options={mapOptions}
+      >
+        {oneMarker ? (
           <MarkerF
-            key={marker.id}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            position={center}
             icon={{
-              url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(createCustomMarkerSVG(marker.price))}`,
+              url: GmapMarker,
             }}
           />
-        ))
-      )}
-    </GoogleMap>
+        ) : (
+          markers.map(marker => (
+            <MarkerF
+              key={marker.id}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              icon={{
+                url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(createCustomMarkerSVG(marker.price))}`,
+              }}
+            />
+          ))
+        )}
+      </GoogleMap>
+    </div>
   );
 };
 

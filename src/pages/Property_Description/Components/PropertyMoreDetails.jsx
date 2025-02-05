@@ -107,7 +107,7 @@ function PropertyMoreDetails() {
 
   return (
     <div>
-      <div className="px-4 sm:px-20 mt-5">
+      <div className="mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24 mt-5 ">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           More Details
         </h2>

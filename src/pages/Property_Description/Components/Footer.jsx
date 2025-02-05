@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="text-black py-8 px-4 sm:px-8 md:px-16 lg:px-20 font-semibold">
-        <div className="flex flex-col sm:flex-row justify-between items-start">
+        <div className="flex flex-col sm:flex-row justify-between items-start ">
           {/* LandApp Title */}
           <div className="text-left font-bold text-xl mb-4 sm:mb-0">
             LandApp
