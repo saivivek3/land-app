@@ -6,7 +6,7 @@ function NavPart() {
     <div>
       <div className="relative flex md:gap-6 gap-1">
         {/* Green Dot */}
-        <div className="absolute -right-11 md:-right-12 top-6 md:top-7 border border-white bg-green-500 rounded-full w-2 h-2 "></div>
+        {/* <div className="absolute -right-11 md:-right-12 top-6 md:top-7 border border-white bg-green-500 rounded-full w-2 h-2 "></div> */}
 
         {/* Sell Your Land Button */}
         <div

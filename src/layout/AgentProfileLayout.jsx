@@ -103,7 +103,7 @@ const AgentProfileLayout = ({ children, value }) => {
 
           {/* Experience */}
           <div className="px-4 xs:px-8 space-y-2 p-4 border-b-bSecondary border-b-[1px] mb-4 flex flex-row gap-5 justify-between items-center">
-            <article className="w-full sm:w-auto">
+            <article className="w-full sm:w-auto ml-4">
               <h2 className="text-sm xs:text-base text-primary font-semibold">
                 Experience
               </h2>
