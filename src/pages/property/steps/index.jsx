@@ -1,12 +1,10 @@
 import { useContext } from 'react';
-
 import { PropertyDetailsContext } from '@/context/property/PropertyContextProvider';
 import {
   LocationDetailsConfig,
   OwnerDetailsConfig,
   propertyDetailsConfig,
 } from '../propertyFormConfig';
-
 import DetailsForm from './DetailsForm';
 import LocationMap from './LocationMap';
 import PropertyDocumentLayout from '@/layout/PropertyDocumentLayout';
@@ -20,7 +18,6 @@ function CreatePropertyLayout() {
   function renderForm() {
     switch (stepIndex) {
       case 1:
-        console.log('switch was called');
         return (
           <DetailsForm
             stepIndex={1}

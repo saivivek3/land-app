@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
-// import { ChevronLeft, ChevronDown } from 'lucide-react';
 import SelectComponent from '@/components/SelectComponent.jsx';
 import Input from '@/components/ui/Input.jsx';
 import useFormHook from '@/hooks/useFormHook.jsx';
@@ -24,16 +23,15 @@ const DetailsForm = ({
     handleStepsIncrease,
     handleStepsDecrease,
   } = useContext(PropertyDetailsContext);
+
   const [selectedOpenSides, setSelectedOpenSides] = useState([]);
   const navigate = useNavigate();
+
   function onSubmit(data) {
     console.log(data);
   }
 
-
-
   // Function to render the appropriate field component based on the field type
-
   const renderField = field => {
     switch (field.type) {
       case 'text':

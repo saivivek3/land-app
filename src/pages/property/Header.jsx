@@ -7,7 +7,6 @@ function Header() {
       <Link to="/">
         <h1 className="text-base text-black font-bold">Land App</h1>
       </Link>
-
       <Link to="/profile">
         <img src={AvatarIcon} alt="avatar" className="h-7 w-7 rounded-full" />
       </Link>

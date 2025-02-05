@@ -38,7 +38,7 @@ function PropertyDetailsContextProvider({ children }) {
       });
 
       setSteps(updatedSteps);
-     sessionStorage.setItem('steps', JSON.stringify(updatedSteps));
+      sessionStorage.setItem('steps', JSON.stringify(updatedSteps));
     },
     [steps],
   );
@@ -46,9 +46,8 @@ function PropertyDetailsContextProvider({ children }) {
   //   All steps before stepIndex - 1 are marked as active and completed.
   // All other steps are inactive and incomplete.
 
-  const handleStepsBack = useCallback( 
+  const handleStepsBack = useCallback(
     stepIndex => {
-      console.log('handleStepsBack called with stepIndex:', stepIndex);
       const updatedSteps = steps.map((step, index) => {
         if (index < stepIndex - 1) {
           return { ...step, active: true, completed: true };
