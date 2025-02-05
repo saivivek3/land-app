@@ -287,11 +287,13 @@ const PropertyMapView = () => {
           </div>
         </section>
 
-        <GoogleMapComponent
-          oneMarker={false}
-          mapWidth="100%"
-          mapHeight={'115vh'}
-        />
+        <section className="w-full ">
+          <GoogleMapComponent
+            oneMarker={false}
+            mapWidth="100%"
+            mapHeight={'118vh'}
+          />
+        </section>
       </div>
     </div>
   );
