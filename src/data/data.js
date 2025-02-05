@@ -25,12 +25,12 @@ const propertydetailsOne = [
     content: '2200 sqft',
   },
   {
-    img: '/images/legalStatus.svg',
+    img: '/images/rating.svg',
     title: 'LEGAL STATUS',
     content: 'Verified',
   },
   {
-    img: '/images/rating.svg',
+    img: '/images/legalStatus.svg',
     title: 'LEGAL STATUS',
     content: 'Verified',
   },

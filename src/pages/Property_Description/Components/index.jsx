@@ -4,7 +4,6 @@ import VentureDetails from './ventureDetails';
 import VentureFacilities from './VentureFacilities';
 // import Map from './Map';
 import Testimonial from './Testimonial';
-
 import PropertyMoreDetails from './PropertyMoreDetails';
 import PremiumProperties from './PremiumProperties';
 import { properties } from '@/data/data';
@@ -20,7 +19,7 @@ const PropertyDescription = () => {
       <Lands />
       <VentureDetails />
       <VentureFacilities />
-      <div className="mt-12 md:mx-20 border border-gray-400 rounded-md">
+      <div className="mt-12 lg:px-4 border border-gray-400 rounded-md w-full">
         <GoogleMapComponent oneMarker mapHeight="500px" />
       </div>
       <PropertyMoreDetails />

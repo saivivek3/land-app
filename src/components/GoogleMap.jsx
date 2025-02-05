@@ -1,7 +1,4 @@
-import {
-  GoogleMap,
-  MarkerF,
-} from '@react-google-maps/api';
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import GmapMarker from '@/assets/googlemarker.png';
 
 const GoogleMapComponent = ({ oneMarker, mapHeight, mapWidth = '100%' }) => {

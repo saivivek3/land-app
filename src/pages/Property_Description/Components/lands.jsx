@@ -1,16 +1,13 @@
-
-// import Land from "../Components/images/big-land-land.jpg";
 import LandLeft from '../Components/images/landLeft.svg';
-// import LandCard from "../Common/landCard";
 import secondLand from '../Components/images/secondLand.svg';
 import thirdLand from '../Components/images/thirdland.svg';
 import LandCard from '@/components/LandCard';
 
 const Lands = () => {
   return (
-    <div className="flex px-5 sm:px-20 w-screen gap-8 flex-col sm:flex-row">
+    <div className="flex flex-col sm:flex-row w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 gap-6 sm:gap-8">
       {/* First Image */}
-      <div className="w-full sm:w-3/4 mb-8 sm:mb-0">
+      <div className="w-full sm:w-3/4 mb-6 sm:mb-0">
         <LandCard imageUrl={LandLeft} altText="Big Land Image 1" />
       </div>
 

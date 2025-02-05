@@ -2,9 +2,9 @@ function PathInfo() {
   return (
     <div
       aria-label="Breadcrumb"
-      className="text-sm px-20 text-gray-600 my-4 md:px-20 sm:px-4 md:mt-4 mt-12"
+      className="text-sm px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 text-gray-600 my-4 md:mt-4 mt-12"
     >
-      <ol className="flex space-x-2">
+      <ol className="flex flex-wrap space-x-2">
         <li>
           <a href="/" className="text-blue-500 hover:underline">
             Home
