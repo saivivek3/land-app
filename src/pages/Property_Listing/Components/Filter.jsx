@@ -1,11 +1,8 @@
 import filterIcon from '../Components/images/filterIcon.svg';
 import Location from './images/location.svg';
-import CalendarDropdown from '@/components/CalenderDropdown';
-import SelectDistrict from './SelectDistrict';
-import SelectPrice from './SelectPrice';
 import { useNavigate } from 'react-router-dom';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
-// import CalendarDropdowns from '@/components/CalenderDropdowns';
+import SelectComponent from '@/components/SelectComponent';
 
 function Filter() {
   const navigate = useNavigate();
@@ -14,10 +11,25 @@ function Filter() {
       <div className="flex flex-col md:flex-row justify-between py-4 w-full gap-4">
         {/* Dropdown Section */}
         <div className="flex flex-col md:flex-row items-center gap-4 md:w-1/2">
-          {/* <StateDropdown /> */}
-          <SelectDistrict />
+          <SelectComponent
+            placeholder="Select District"
+            options={[
+              { id: 1, label: 'Medak', value: 'Ts' },
+              { id: 2, label: 'Warangal', value: 'Ts' },
+              { id: 3, label: 'KarimNagar', value: 'Ts' },
+              { id: 4, label: 'Adilabad', value: 'Ts' },
+            ]}
+          />
           <DatePickerWithRange />
-          <SelectPrice />
+          <SelectComponent
+            placeholder="Select Price"
+            options={[
+              { id: 1, label: '$50' },
+              { id: 2, label: '$100' },
+              { id: 3, label: '$150' },
+              { id: 4, label: '$200' },
+            ]}
+          />
         </div>
 
         {/* Mobile View Buttons */}

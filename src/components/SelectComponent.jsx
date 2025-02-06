@@ -6,17 +6,26 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import cn from '@/lib/cn.js';
+import { useState } from 'react';
 
-function SelectComponent({ placeholder, className, options }) {
+function SelectComponent({ placeholder, className, options, valueClassName }) {
+  const [inputvalue, setValue] = useState(null);
   return (
-    <Select>
+    <Select onValueChange={setValue}>
       <SelectTrigger className={cn('w-full', className)}>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue
+          placeholder={
+            inputvalue
+              ? `${inputvalue.label}, ${inputvalue.value}`
+              : placeholder
+          }
+        />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="flex gap-40">
         {options.map(option => (
-          <SelectItem value={option.value} key={option.label}>
-            {option.label}
+          <SelectItem key={option.id} value={option}>
+            <span>{option.label}</span>
+            <span className="ml-1">{option.value}</span>
           </SelectItem>
         ))}
       </SelectContent>

@@ -112,7 +112,7 @@ function ProfileDetails() {
         <KeyAchievements
           achievements={[
             {
-              title: 'Top Sales Agent of Year (2023)',
+              title: 'Top Sales Agent of Year(2023)',
               description: 'Benchmark for sales success',
               period: 'Jan 2023 - Dec 2023',
               image: Image1,

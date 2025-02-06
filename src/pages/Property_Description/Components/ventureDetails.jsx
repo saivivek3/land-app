@@ -16,17 +16,17 @@ const VentureDetails = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center py-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-24 mt-4">
+    <div className="flex flex-col md:flex-row justify-between items-center py-6 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 2xl:px-24">
       {/* Left Side: Venture Details */}
-      <div className="text-left w-full md:w-2/3 lg:w-1/2">
-        <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between w-full">
+      <div className="text-left w-full lg:w-2/3">
+        <div className="flex flex-row items-center sm:items-start justify-between w-full xl:-mt-12">
           <div className="flex items-center gap-2">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
               Janapriya Ventures
             </h2>
             <img src={Verified} alt="Verified Badge" className="w-6 sm:w-8" />
           </div>
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <svg
               onClick={handleLike}
               xmlns="http://www.w3.org/2000/svg"
