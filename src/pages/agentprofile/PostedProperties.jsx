@@ -125,7 +125,7 @@ const PostedProperties = () => {
   ];
 
   return (
-    <div className="p-6  ">
+    <div className="p-6">
       <h2 className="text-2xl font-semibold mb-6">Properties</h2>
 
       <Tabs defaultValue="latest" className="w-full">

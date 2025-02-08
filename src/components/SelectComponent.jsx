@@ -8,7 +8,7 @@ import {
 import cn from '@/lib/cn.js';
 import { useState } from 'react';
 
-function SelectComponent({ placeholder, className, options, valueClassName }) {
+function SelectComponent({ placeholder, className, options }) {
   const [inputvalue, setValue] = useState(null);
   return (
     <Select onValueChange={setValue}>

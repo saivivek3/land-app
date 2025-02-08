@@ -14,7 +14,7 @@ function WhyChooseLandapp() {
     'Group-Buying Options',
   ];
   return (
-    <div className="mx-5 sm:mx-32 mt-16 sm:mt-32 flex flex-col sm:flex-row">
+    <div className="mx-5   sm:mx-4 lg:mx-40 mt-16 sm:mt-32 flex flex-col sm:flex-row">
       <div className="w-full sm:w-1/2 relative mb-10 sm:mb-0">
         <img src={VerifiedImg} alt={VerifiedImg} className="w-8 h-8 ml-3" />
         <img

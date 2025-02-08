@@ -56,7 +56,7 @@ function LandCards({ item, link = '/property-description' }) {
         <div className="border-b border-gray-200 mb-3"></div>
 
         {/* Price, Size, and Rating */}
-        <div className="flex justify-between items-center text-gray-600 text-sm">
+        <div className="flex justify-between text-xs sm:flex-row xl:text-sm items-center text-gray-600">
           <p>
             <span className="font-bold text-gray-800">Price:</span> {item.price}
           </p>
@@ -66,7 +66,7 @@ function LandCards({ item, link = '/property-description' }) {
           </p>
           <span className="text-gray-300">|</span>
           <p>
-            <span className="font-bold text-gray-800">Rating:</span>{' '}
+            <span className="font-bold text-gray-800">Rating:</span>
             {item.rating}
           </p>
         </div>
