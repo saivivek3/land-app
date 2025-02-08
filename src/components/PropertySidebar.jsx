@@ -100,7 +100,7 @@ function PropertySidebar({ className = '', absolute, bg, ml }) {
       ></div>
       <div
         className={cn(
-          'fixed left-0 top-0 bg-white h-full overflow-y-auto p-4 border-r rounded-xl cursor-pointer flex flex-col w-64 transform transition-transform z-50 md:translate-x-0',
+          'fixed left-0 top-0 bg-white h-full overflow-y-auto p-4 border-r rounded-xl cursor-pointer flex flex-col w-64 transform transition-transform z-50 lg:translate-x-0',
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
