@@ -1,7 +1,5 @@
 import PropertySidebar from '@/components/PropertySidebar';
-
 import AvatarIcon from '@/assets/avatar-icon.svg';
-
 import Button from '@/components/ui/Button';
 import Filter from '@/assets/filter.svg';
 import { Card, CardContent } from '@/components/ui/card';
