@@ -1,7 +1,5 @@
 import PropertySidebar from '@/components/PropertySidebar';
-
 import AvatarIcon from '@/assets/avatar-icon.svg';
-
 import Button from '@/components/ui/Button';
 import Filter from '@/assets/filter.svg';
 import { Card, CardContent } from '@/components/ui/card';
@@ -74,7 +72,7 @@ function DashboardLayout() {
     },
   };
   return (
-    <div className="relative flex md:gap-8 mt-3 shadow-sm rounded-lg bg-white">
+    <div className="relative flex md:gap-8 mt-5 shadow-sm rounded-lg bg-white">
       {/* <div className="flex"> */}
       <PropertySidebar absolute="absolute" bg="bg-gray-200" ml="ml-4" />
       <div className="flex-1 px-4 md:ml-56">
@@ -98,7 +96,7 @@ function DashboardLayout() {
         </section>
 
         {/* -------calender--------------- */}
-        <div className="flex items-center gap-3 w-full">
+        <div className="flex items-center gap-3 w-full mt-4">
           <div className="rounded-lg border border-bPrimary py-1.5 w-2/3 flex items-end bg-white">
             <div className="shadow-sm">
               <button className="rounded-l-lg w-full max-w-32 px-4 py-1 text-sm border-r border-bPrimary bg-white">

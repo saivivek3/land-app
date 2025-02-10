@@ -12,13 +12,13 @@ function DigitizeLands() {
     'Integration with Technology',
   ];
   return (
-    <div className="mx-4 sm:mx-10 md:mx-20 mt-10 sm:mt-12 flex flex-col md:flex-row gap-6">
+    <div className="mx-4 sm:mx-10 md:mx-20 mt-10 lg:mt-0 lg:mx-40 sm:mt-12 flex flex-col md:flex-row gap-6">
       {/* Left Section: Image */}
       <div className="md:w-1/2">
         <img
           src={DigitizelandImg}
           alt="Digitized Lands"
-          className="w-full max-w-sm sm:max-w-md md:max-w-full"
+          className="w-full max-w-sm sm:ml-16 md:-ml-16 sm:max-w-md md:w-96 lg:w-96 md:mt-20"
         />
       </div>
       {/* Right Section: Content */}

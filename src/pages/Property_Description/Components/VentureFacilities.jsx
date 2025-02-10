@@ -70,12 +70,12 @@ const VentureFacilities = () => {
           <div className="absolute left-0 w-full border-b border-gray-300 mt-4"></div>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Button className="text-black bg-white p-3 rounded-md border border-gray-300 flex gap-2 items-center text-xs md:text-md whitespace-nowrap hover:bg-gray-300">
+            <Button className="text-black bg-white p-3 justify-center rounded-md border border-gray-300 flex gap-2 items-center text-xs md:text-md whitespace-nowrap hover:bg-gray-300">
               <img src={Clipboard} alt="Clipboard" className="w-5 h-5" /> Report
               Property
             </Button>
 
-            <Button className="text-black bg-white text-center p-3 rounded-md border border-gray-300 flex gap-2 items-center text-xs md:text-md hover:bg-gray-300">
+            <Button className="text-black justify-center bg-white text-center p-3 rounded-md border border-gray-300 flex gap-2 items-center text-xs md:text-md hover:bg-gray-300">
               {/* Heart Icon */}
               <svg
                 onClick={handleLike}

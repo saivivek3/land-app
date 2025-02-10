@@ -26,7 +26,7 @@ export function DatePickerWithRange({ className }) {
           <Button
             id="date"
             className={cn(
-              'w-[300px] justify-start text-left  hover:bg-transparent font-normal bg-white text-primary mt-0 ',
+              'md:w-[300px] w-full justify-start text-left  hover:bg-transparent font-normal bg-white text-primary mt-0 ',
               !date && 'text-muted-foreground',
             )}
           >
@@ -46,7 +46,7 @@ export function DatePickerWithRange({ className }) {
             <ChevronDown className="h-4 w-4 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 " align="start">
+        <PopoverContent className="w-auto  p-0 " align="start">
           <Calendar
             initialFocus
             mode="range"
@@ -54,8 +54,8 @@ export function DatePickerWithRange({ className }) {
             selected={date}
             onSelect={setDate}
             numberOfMonths={2}
-            fromYear={new Date().getFullYear() - 1} // Current year - 1
-            toYear={new Date().getFullYear() + 1} // Current year + 1
+            fromYear={new Date().getFullYear() - 1}
+            toYear={new Date().getFullYear() + 1}
           />
         </PopoverContent>
       </Popover>

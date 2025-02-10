@@ -8,9 +8,9 @@ function AgentReusable({ agents }) {
   return (
     <div className="mx-4 md:mx-20">
       <div className="mt-6 text-lg md:text-xl font-semibold text-center md:text-left">
-        Top Agents in Shamshabad, Telengana
+        Top Agents in Shamshabad, Telengana
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border border-gray-300 rounded-md p-4 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 border border-gray-300 rounded-md p-4 mt-6">
         {agents.map((agent, index) => (
           <div
             key={index}

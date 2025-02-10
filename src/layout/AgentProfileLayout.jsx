@@ -17,11 +17,11 @@ const AgentProfileLayout = ({ children, value }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex min-h-screen shadow-sm relative px-5">
+    <div className="flex shadow-sm relative md:gap-2 lg:gap-3">
       {/* Sidebar */}
       <PropertySidebar absolute="absolute" />
       {/* Main Content */}
-      <div className="flex-1  lg:ml-60">
+      <div className="flex-1 xs:ml-20 md:ml-60">
         <div className="relative">
           <img
             src={BgImg}
@@ -54,7 +54,7 @@ const AgentProfileLayout = ({ children, value }) => {
                   <p className="text-tertiary text-xs xs:text-sm">
                     Senior Real Estate Consultant
                   </p>
-                  <div className="flex">
+                  <div className="flex mt-2">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
@@ -103,7 +103,7 @@ const AgentProfileLayout = ({ children, value }) => {
 
           {/* Experience */}
           <div className="px-4 xs:px-8 space-y-2 p-4 border-b-bSecondary border-b-[1px] mb-4 flex flex-row gap-5 justify-between items-center">
-            <article className="w-full sm:w-auto">
+            <article className="w-full sm:w-auto ml-4">
               <h2 className="text-sm xs:text-base text-primary font-semibold">
                 Experience
               </h2>

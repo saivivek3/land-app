@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import SearchIcon from '@/assets/images/searchIcon.svg';
 import RightIcon from '@/assets/images/RightIcon.svg';
@@ -11,27 +10,20 @@ function SearchInput({
   onChange,
   children,
   showIcon = true,
-  className = 'w-full', // Default to "w-full" if no className is provided
+  className = 'w-full',
   padding,
   borderBold,
   width = 'w-full',
   py,
   rounded,
 }) {
-  const [inputValue, setInputValue] = useState(''); // Step 1: Manage input value with state
-  const handleInputChange = e => {
-    setInputValue(e.target.value); // Step 2: Update state on user input
-  };
   return (
     <div className={`relative ${className}`}>
       {/* Search Input */}
       <input
         type="text"
-        value={value || inputValue} // Step 3: Bind input value to state or prop
-        onChange={e => {
-          handleInputChange(e);
-          if (onChange) onChange(e); // Step 4: Update the state and call onChange prop
-        }} // Step 4: Update the state on input change
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className={`${borderColor} ${padding} placeholder-${
           placeholderColor || 'gray-500'
@@ -40,17 +32,16 @@ function SearchInput({
       {children}
 
       {/* Search Icon */}
-
       {showIcon && (
         <div className="absolute inset-y-0 left-2 flex items-center pr-3">
-          <img src={SearchIcon} alt={SearchIcon} />
+          <img src={SearchIcon} alt="Search Icon" />
         </div>
       )}
 
       {/* Right Icon */}
       {showIcon && (
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-          <img src={RightIcon} alt={RightIcon} />
+          <img src={RightIcon} alt="Right Icon" />
         </div>
       )}
     </div>
@@ -61,8 +52,8 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   children: PropTypes.node,
-  value: PropTypes.string, // Added value prop type
-  onChange: PropTypes.func, // Added onChange prop type
+  value: PropTypes.string, // Controlled input value
+  onChange: PropTypes.func, // Prop for handling input changes
   showIcon: PropTypes.bool,
   className: PropTypes.string,
   padding: PropTypes.string,

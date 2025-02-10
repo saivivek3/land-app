@@ -88,21 +88,26 @@ const PropertyMapView = () => {
 
           <div className="flex gap-4 items-center mb-3 flex-wrap md:flex-nowrap">
             <SelectComponent
-              placeholder="Kandukur, TS"
+              placeholder="Select District"
               options={[
-                { id: 1, label: 'Kandakur', value: 'kandakur' },
-                { id: 2, label: 'Kandakur', value: 'kandakur' },
+                { id: 1, label: 'Medak', value: 'Ts' },
+                { id: 2, label: 'Warangal', value: 'Ts' },
+                { id: 3, label: 'KarimNagar', value: 'Ts' },
+                { id: 4, label: 'Adilabad', value: 'Ts' },
               ]}
             />
-
             <DatePickerWithRange />
             <SelectComponent
-              placeholder="Any Price"
-              options={[{ id: 1, label: 'Any Price', value: 'Any Price' }]}
+              placeholder="Select Price"
+              options={[
+                { id: 1, label: '$50' },
+                { id: 2, label: '$100' },
+                { id: 3, label: '$150' },
+                { id: 4, label: '$200' },
+              ]}
             />
-
             <Button
-              className="border rounded-lg px-4  py-2 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
+              className="border rounded-lg px-4 py-2 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
               onClick={() => navigate('/all-lands')}
             >
               <div className="flex items-center gap-2">
@@ -128,7 +133,7 @@ const PropertyMapView = () => {
               <input
                 type="search"
                 placeholder="Search"
-                className="w-full border rounded-lg px-4 py-2 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-7"
+                className="w-full border rounded-lg pl-12 px-4 py-2 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-2"
               />
               <img
                 src={SearchIcon}
@@ -176,18 +181,18 @@ const PropertyMapView = () => {
             {properties.map(property => (
               <Card
                 key={property.id}
-                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 cursor-pointer"
+                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
                 onClick={() =>
                   navigate(
                     `/premium-property/single-property-view/${property.id}`,
                   )
                 }
               >
-                <div className="rounded-xl">
+                <div className="">
                   <img
                     src={property.image}
                     alt={property.title}
-                    className="w-64 h-32 object-cover px-4 "
+                    className="w-64 h-32 object-cover rounded-lg"
                   />
                 </div>
 

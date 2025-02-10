@@ -25,7 +25,7 @@ function Navbar({
   return (
     <nav
       className="flex items-center justify-between bg-white z-50 relative w-full text-black 
-      mt-4 md:mt-0 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-24 md:shadow-lg"
+      mt-4 md:mt-0 px-4 sm:px-6 md:px-20 md:py-3 lg:py-0 lg:px-16 xl:px-20 2xl:px-24 md:shadow-lg"
     >
       {/* Left Section - Logo and Menu */}
       <div className="flex items-center gap-6">
@@ -34,11 +34,11 @@ function Navbar({
         </Link>
         {/* Menu */}
         <div
-          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent md:flex gap-6 py-6 ${
+          className={`absolute lg:static top-16 left-0 w-full lg:w-auto lg:bg-transparent lg:flex bg-white gap-6 py-6 ${
             menuOpen ? 'block' : 'hidden'
           }`}
         >
-          <ul className="flex flex-col font-semibold justify-center items-center md:flex-row md:items-center gap-5 cursor-pointer">
+          <ul className="flex flex-col font-semibold justify-center items-center lg:flex-row md:items-center gap-5 cursor-pointer">
             {menuItems.map((item, index) => (
               <li key={index}>
                 <Link to={item.to}>{item.label}</Link>
@@ -65,7 +65,7 @@ function Navbar({
 
         {/* Hamburger Menu - Visible on Small Screens */}
         <button
-          className="md:hidden text-gray-700 focus:outline-none ml-6"
+          className="lg:hidden text-gray-700 focus:outline-none ml-6"
           onClick={handleToggleMenu}
         >
           {/* Hamburger Icon */}
