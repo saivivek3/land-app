@@ -12,6 +12,7 @@ import DecreaseIcon from '@/assets/decrease-icon.svg';
 import ReportIcon from '@/assets/report-icon.svg';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import CalendarDropdown from '@/components/CalenderDropdown';
 
 const stats = [
   { title: 'Saved Properties', value: 13, change: 10, isPositive: true },
@@ -95,17 +96,18 @@ function DashboardLayout() {
           </Link>
         </section>
 
-        {/* -------calender--------------- */}
+        {/* Filters */}
         <div className="flex items-center gap-3 w-full mt-4">
-          <div className="rounded-lg border border-bPrimary py-1.5 w-2/3 flex items-end bg-white">
+          <div className="rounded-lg border border-bPrimary py-1.5 w-full flex items-end bg-white">
             <div className="shadow-sm">
               <button className="rounded-l-lg w-full max-w-32 px-4 py-1 text-sm border-r border-bPrimary bg-white">
                 Default
               </button>
             </div>
           </div>
-          <div className="">
-            <DatePickerWithRange className="" />
+          <div className="w-full lg:w-1/2">
+            <DatePickerWithRange className="md:block hidden" />
+            <CalendarDropdown className="md:hidden block" />
           </div>
           <div className="w-1/8">
             <Button

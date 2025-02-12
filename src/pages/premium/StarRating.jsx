@@ -1,5 +1,5 @@
 import { Star, StarHalf } from 'lucide-react';
-import React from 'react'
+import React from 'react';
 
 const StarRating = ({
   rating = 0,
