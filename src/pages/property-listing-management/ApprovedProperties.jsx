@@ -10,7 +10,7 @@ const ApprovedProperties = ({ currentPage }) => {
 
   return (
     <div>
-      <div className="space-y-4 mt-2">
+      <div className="space-y-4 mt-2 w-full">
         {paginateData.map(property => (
           <div
             className="flex md:flex-row flex-col md:gap-6 2xl:gap-28 xl:gap-12 lg:gap-6 gap-4 border border-gray-300 rounded-md p-2 w-full"

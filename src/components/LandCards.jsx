@@ -14,8 +14,8 @@ function LandCards({ item, link = '/property-description' }) {
     >
       {/* Logo */}
       <img
-        src={item.logo}
-        alt={`${item.title} logo`}
+        src={item.images?.[0] || 'https://via.placeholder.com/400'}
+        alt={item.landName}
         className="w-full md:min-w-400 h-48 object-cover rounded-md"
       />
 
@@ -42,14 +42,16 @@ function LandCards({ item, link = '/property-description' }) {
       <div className="p-4">
         {/* Title and Verified Icon */}
         <div className="flex items-center mb-2">
-          <h3 className="font-semibold text-lg text-gray-800">{item.title}</h3>
+          <h3 className="font-semibold text-lg text-gray-800">
+            {item.landName || 'Land Name'}
+          </h3>
           <img src={item.verified} alt="Verified" className="w-5 h-5 ml-auto" />
         </div>
 
         {/* Location */}
         <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
           <img src={item.locationIcon} alt="Location" className="w-4 h-4" />
-          <span>{item.location}</span>
+          <span>{item.address}</span>
         </div>
 
         {/* Separator */}
@@ -58,11 +60,13 @@ function LandCards({ item, link = '/property-description' }) {
         {/* Price, Size, and Rating */}
         <div className="flex justify-between text-xs sm:flex-row xl:text-sm items-center text-gray-600">
           <p>
-            <span className="font-bold text-gray-800">Price:</span> {item.price}
+            <span className="font-bold text-gray-800">Price:</span>
+            {item.pricePerAcre}
           </p>
           <span className="text-gray-300">|</span>
           <p>
-            <span className="font-bold text-gray-800">Size:</span> {item.size}
+            <span className="font-bold text-gray-800">Size:</span>
+            {item.sizeInAcres || 'N/A'} acres
           </p>
           <span className="text-gray-300">|</span>
           <p>
