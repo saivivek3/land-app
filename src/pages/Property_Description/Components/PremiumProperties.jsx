@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeartFill from '../Components/images/HeartFill.svg';
 
-function PremiumProperties({ title, properties }) {
-  const [like, setLike] = useState(properties.map(() => true));
+function PremiumProperties({ title, properties = [] }) {
+  const [like, setLike] = useState([]);
+
+  useEffect(() => {
+    setLike(properties.map(() => false)); // Initialize likes state
+  }, [properties]);
 
   function toggleLike(index) {
     setLike(prevlike =>
-      prevlike.map((like, i) => (i === index ? !like : like)),
+      prevlike.map((liked, i) => (i === index ? !liked : liked)),
     );
   }
 

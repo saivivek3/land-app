@@ -1,20 +1,13 @@
 import LocationIcon from '../Components/images/locationIcon.svg';
 import shareLocation from '../Components/images/share.svg';
 import Verified from '@/assets/Verified.svg';
-// import Like from '../Components/images/like.svg';
 import Star from '../Components/images/YellowStar.svg';
 import ShareCross from '../Components/images/shareCross.svg';
 import Button from '@/components/ui/Button';
-import { useState } from 'react';
+// import { useState } from 'react';
+import WishlistButton from '@/components/WishListButton';
 
-const VentureDetails = () => {
-  const [like, setLike] = useState(false);
-
-  function handleLike(e) {
-    e.preventDefault(); // Prevent navigation on SVG click
-    setLike(!like);
-  }
-
+const VentureDetails = ({ userId }) => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center py-6 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 2xl:px-24">
       {/* Left Side: Venture Details */}
@@ -26,26 +19,14 @@ const VentureDetails = () => {
             </h2>
             <img src={Verified} alt="Verified Badge" className="w-6 sm:w-8" />
           </div>
-          <div className="flex items-center gap-3">
-            <svg
-              onClick={handleLike}
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 cursor-pointer p-1 border border-gray-300 rounded-md"
-              viewBox="0 0 24 24"
-              fill={like ? 'red' : 'transparent'}
-              stroke={like ? 'white' : 'gray'}
-              strokeWidth="2"
-            >
-              <path
-                fill={like ? 'red' : 'transparent'}
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              />
-            </svg>
-            <img
-              src={shareLocation}
-              alt="Share Icon"
-              className="w-8 h-8 cursor-pointer border border-gray-300 p-1 rounded-md"
+
+          <div className="flex gap-2 items-center">
+            <WishlistButton
+              border="border border-gray-300"
+              userId={userId}
+              landId={6}
             />
+            <img src={shareLocation} alt="Share Location" className="w-6 h-6" />
           </div>
         </div>
 

@@ -23,6 +23,7 @@ const PropertyDescription = () => {
   } = useGet('PropertyDetails', `/GetLandById?id=${propertyId}`, {
     staleTime: 300000, // 5 minutes
   });
+
   console.log('Fetched Properties:', PropertyDetails);
   return (
     <div className="">
