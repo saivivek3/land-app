@@ -7,9 +7,19 @@ import SearchBar from './SearchBar';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLands } from '../api';
+import { useGet } from '@/apis';
 
 function PropertyListing() {
-  const { data, isLoading, isError } = useLands(); // React Query for fetching lands
+  // React Query for fetching lands
+  const {
+    data: allLandProperties,
+    isLoading,
+    isError,
+  } = useGet('allLands', '/GetAllLands', {
+    staleTime: 300000, // 5 minutes
+  });
+
+  console.log('Fetched Properties:', allLandProperties);
 
   return (
     <div>
@@ -27,8 +37,8 @@ function PropertyListing() {
         <p className="text-center text-red-500">Error fetching data</p>
       ) : (
         <LandDetails
-          title={`${data?.data?.length || 0} Lands - Shamshabad Region`}
-          landsData={data?.data || []}
+          title={`${allLandProperties?.data?.length || 0} Lands - Shamshabad Region`}
+          landsData={allLandProperties?.data || []}
           link="/property-description"
         />
       )}
