@@ -57,8 +57,8 @@ const TabsWithTable = ({ tabsTriggerData, tabsData }) => {
           </>
         )}
 
-        <div className="flex justify-between items-center gap-4 mb-4 shadow-sm">
-          <section className="flex items-center ">
+        <div className="flex  lg:justify-between   lg:items-center gap-4 mb-4 shadow-sm flex-col lg:flex-row">
+          <section className="flex items-center  ">
             {tabsData.map(tabD => (
               <Button
                 key={tabD.id}
@@ -69,7 +69,7 @@ const TabsWithTable = ({ tabsTriggerData, tabsData }) => {
                   }))
                 }
                 className={cn(
-                  'text-secondary text-xs font-semibold hover:bg-transparent bg-white min-w-fit',
+                  'text-secondary text-xs font-semibold hover:bg-transparent bg-white  max-w-fit lg:min-w-fit',
                   'border-r border-r-bPrimary rounded-none  px-4',
                   // First child styling
                   'first:rounded-l-md',
@@ -83,11 +83,11 @@ const TabsWithTable = ({ tabsTriggerData, tabsData }) => {
               </Button>
             ))}
           </section>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 lg:items-center ">
             <SearchComponent />
             <Button
               variant="outline"
-              className="bg-white text-secondary text-xs font-semibold"
+              className="bg-white text-secondary text-xs font-semibold max-w-fit"
               iconUrl={Filter}
             >
               Filters

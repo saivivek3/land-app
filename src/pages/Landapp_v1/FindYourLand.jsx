@@ -8,13 +8,12 @@ function FindYourLand() {
       <div className="border-2 border-gray-300 shadow-xl rounded-lg p-4 w-full max-w-3xl md:max-w-6xl">
         <div className="flex flex-col md:flex-row gap-4">
           <SelectComponent
-            placeholder="Select Location"
-            valueClassName="ml-auto"
+            placeholder="Select State"
             options={[
-              { id: 1, label: 'Mehdipatnam,', value: 'Hyd' },
-              { id: 2, label: 'Tolichowki,', value: 'Hyd' },
-              { id: 3, label: 'Hitech City,', value: 'Hyd' },
-              { id: 4, label: 'Madhapur,', value: 'Hyd' },
+              { id: 1, label: 'Telangana,', value: 'India' },
+              { id: 2, label: 'Karnataka,', value: 'India' },
+              { id: 3, label: 'Maharashtra,', value: 'India' },
+              { id: 4, label: 'Delhi,', value: 'India' },
             ]}
           />
 
@@ -28,14 +27,15 @@ function FindYourLand() {
             ]}
           />
           <SelectComponent
-            placeholder="Select State"
+            placeholder="Select Mandal"
             options={[
-              { id: 1, label: 'Telangana,', value: 'India' },
-              { id: 2, label: 'Karnataka,', value: 'India' },
-              { id: 3, label: 'Maharashtra,', value: 'India' },
-              { id: 4, label: 'Delhi,', value: 'India' },
+              { id: 1, label: 'Mehdipatnam,', value: 'Hyd' },
+              { id: 2, label: 'Tolichowki,', value: 'Hyd' },
+              { id: 3, label: 'Hitech City,', value: 'Hyd' },
+              { id: 4, label: 'Madhapur,', value: 'Hyd' },
             ]}
           />
+
           {/* Search Button with consistent padding */}
           <button
             className="w-full md:w-auto border border-gray-300 rounded-md bg-black text-white py-2 px-4"

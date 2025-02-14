@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import verifiedIcon from '@/assets/verified.svg';
+import MapMarkerDown from '@/assets/map-marker-down.svg';
+import CurrencyDollar from '@/assets/currency-dollar.svg';
+import Rating from '@/assets/rating.svg';
 
 function LandCards({ item, link = '/property-description' }) {
   const [like, setLike] = useState(false);
@@ -45,12 +49,18 @@ function LandCards({ item, link = '/property-description' }) {
           <h3 className="font-semibold text-lg text-gray-800">
             {item.landName || 'Land Name'}
           </h3>
-          <img src={item.verified} alt="Verified" className="w-5 h-5 ml-auto" />
+          {item.verifiedIcon && (
+            <img
+              src={verifiedIcon}
+              alt="Verified"
+              className="w-5 h-5 ml-auto"
+            />
+          )}
         </div>
 
         {/* Location */}
         <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
-          <img src={item.locationIcon} alt="Location" className="w-4 h-4" />
+          <img src={MapMarkerDown} alt="Location" className="w-4 h-4" />
           <span>{item.address}</span>
         </div>
 
@@ -59,19 +69,21 @@ function LandCards({ item, link = '/property-description' }) {
 
         {/* Price, Size, and Rating */}
         <div className="flex justify-between text-xs sm:flex-row xl:text-sm items-center text-gray-600">
-          <p>
-            <span className="font-bold text-gray-800">Price:</span>
+          <p className="flex items-center gap-2">
+            <img src={CurrencyDollar} alt="Location" className="w-4 h-4" />
+
             {item.pricePerAcre}
           </p>
           <span className="text-gray-300">|</span>
-          <p>
-            <span className="font-bold text-gray-800">Size:</span>
+          <p className="flex items-center gap-2">
+            <img src={MapMarkerDown} alt="Location" className="w-4 h-4" />
             {item.sizeInAcres || 'N/A'} acres
           </p>
           <span className="text-gray-300">|</span>
-          <p>
-            <span className="font-bold text-gray-800">Rating:</span>
-            {item.rating}
+          <p className="flex items-center gap-2">
+            <img src={Rating} alt="Location" className="w-4 h-4" />
+
+            {item.rating||0}
           </p>
         </div>
       </div>

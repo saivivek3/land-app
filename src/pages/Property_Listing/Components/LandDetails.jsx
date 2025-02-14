@@ -9,7 +9,7 @@ function LandDetails({ title, landsData, link }) {
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:p-6">
           {landsData?.map(item => (
-            <LandCards key={item.id} item={item} link={link} />
+            <LandCards key={item.landId} item={item} link={link} />
           ))}
         </div>
       </div>

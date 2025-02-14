@@ -37,7 +37,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center text-[8px] lg:text-xs font-semibold h-full">
       {getVisiblePages().map((page, index) =>
         page === '...' ? (
           <span key={index}>...</span>

@@ -14,10 +14,10 @@ function DataTable() {
 
   return (
     <div className="space-y-6">
-      <div className="border rounded-lg overflow-hidden">
-        <table className="w-full">
+      <div className="border rounded-lg max-w-full overflow-x-auto mb-3">
+        <table className="w-full table-auto">
           <TableHeader />
-          <tbody>
+          <tbody className="text[8px] lg:text-xs">
             {tableData?.map((row, index) => (
               <TableRow key={index} data={row} />
             ))}
@@ -27,7 +27,7 @@ function DataTable() {
           <Button className="bg-blightMode rounded-lg px-4 border-none  max-w-fit outline-none  hover:bg-blightMode text-primary text-sm mt-0 shadow-sm">
             <div className="flex items-center gap-2">
               <img src={LeftIcon} alt="left-icon" className="text-white" />
-              <span> Previous</span>
+              <span className=" text-[8px] lg:text-xs"> Previous</span>
             </div>
           </Button>
           <div className="mx-auto">
@@ -39,7 +39,7 @@ function DataTable() {
 
           <Button className="bg-blightMode rounded-lg  max-w-fit px-4 border-none outline-none   hover:bg-blightMode hover:bg-none text-primary text-sm mt-0 shadow-sm">
             <div className="flex items-center gap-2">
-              <span>Next</span>
+              <span className="text-[8px] lg:text-xs">Next</span>
               <img src={RightIcon} alt="right-icon" className="text-white" />
             </div>
           </Button>
@@ -54,19 +54,19 @@ const TableHeader = () => (
       <th className="w-12 px-4 py-3">
         <Checkbox />
       </th>
-      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
+      <th className="px-4 py-3 text-left  text-[8px] lg:text-xs font-semibold text-quaternary">
         Investor Name
       </th>
-      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
+      <th className="px-4 py-3 text-left  text-[8px] lg:text-xs font-semibold text-quaternary">
         Property Name
       </th>
-      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
+      <th className="px-4 py-3 text-left   text-[8px] lg:text-xs font-semibold text-quaternary">
         Contacted
       </th>
-      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
+      <th className="px-4 py-3 text-left  text-[8px] lg:text-xs font-semibold text-quaternary">
         Location
       </th>
-      <th className="px-4 py-3 text-left text-xs font-semibold text-quaternary">
+      <th className="px-4 py-3 text-left  text-[8px] lg:text-xs font-semibold text-quaternary">
         Status
       </th>
       <th className="w-20 px-4 py-3"></th>
@@ -79,19 +79,19 @@ const TableRow = ({ data }) => (
     <td className="px-4 py-3">
       <Checkbox />
     </td>
-    <td className="px-4 py-3 text-xs text-primary font-medium">
+    <td className="px-4 py-3 text-[8px] lg:text-xs text-primary font-medium  ">
       {data.investor}
     </td>
-    <td className="px-4 py-3  text-tertiary font-medium text-xs">
+    <td className="px-4 py-3 text-[8px] text-tertiary font-medium lg:text-xs">
       {data.property}
     </td>
-    <td className="px-4 py-3 text-tertiary font-medium text-xs">
+    <td className="px-4 py-3 text-[8px] text-tertiary font-medium lg:text-xs">
       {data.contacted}
     </td>
-    <td className="px-4 py-3 text-tertiary font-medium text-xs">
+    <td className="px-4 py-3 text-[8px] text-tertiary font-medium lg:text-xs">
       {data.location}
     </td>
-    <td className=" border-bPrimary rounded-md text-xs text-secondary font-medium ">
+    <td className=" border-bPrimary rounded-md lg:text-xs text-secondary font-medium ">
       <div className="items-center flex gap-1">
         <div
           className={cn(
@@ -99,7 +99,9 @@ const TableRow = ({ data }) => (
             data.status === 'Active' ? 'bg-[ #17b26a]' : 'bg-[#0ba5ec]',
           )}
         ></div>
-        <span className={`inline-flex px-2 py-1 rounded-full text-xs   `}>
+        <span
+          className={`inline-flex px-2 py-1 rounded-full lg:text-xs  text-[8px]  `}
+        >
           {data.status}
         </span>
       </div>

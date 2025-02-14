@@ -120,7 +120,7 @@ const AgentProfileLayout = ({ children, value }) => {
 
           <Tabs defaultValue="profile" className="px-4 xs:px-8 w-full">
             <div className="overflow-x-auto">
-              <TabsList className="border-1 border-bSecondary rounded-lg w-full flex md:justify-start space-x-2 py-2 h-fit whitespace-nowrap">
+              <TabsList className="border-1 flex-wrap lg:flex-nowrap border-bSecondary rounded-lg w-full flex md:justify-start space-x-2 py-2 h-fit whitespace-nowrap">
                 {[
                   { label: 'Profile Details', value: 'profile' },
                   { label: 'Posted Properties', value: 'properties' },
