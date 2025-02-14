@@ -14,6 +14,8 @@ export function useGet(key, url, options = {}) {
     queryKey: [key],
     queryFn: async () => {
       const { data } = await api.get(url);
+      console.log('Fetched API Data:', data); // Debugging line
+
       return data;
     },
     ...options,
@@ -61,5 +63,3 @@ export function useDelete(key, url) {
     },
   });
 }
-
-
