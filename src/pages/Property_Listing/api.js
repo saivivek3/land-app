@@ -18,12 +18,11 @@ const fetchLands = async () => {
   return data;
 };
 
-// Custom React Query Hook
 export const useLands = () => {
   return useQuery({
     queryKey: ['lands'],
     queryFn: fetchLands,
-    staleTime: 5 * 60 * 1000, // Cache data for 5 minutes
-    retry: 2, // Retry twice if the request fails
+    staleTime: 5 * 60 * 1000,
+    retry: 2,
   });
 };
