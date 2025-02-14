@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Dropdown from '../Components/images/Dropdown.svg';
 import arrowUp from '../Components/images/arrowup.svg';
 import Clipboard from '../Components/images/clipboard.svg';
@@ -10,13 +9,6 @@ import HalfRadialProgress from './HalfRadialProgress';
 import WishlistButton from '@/components/WishListButton';
 
 const VentureFacilities = () => {
-  const [like, setLike] = useState(false);
-
-  function handleLike(e) {
-    e.preventDefault(); // Prevent navigation on SVG click
-    setLike(!like);
-  }
-
   return (
     <div className="flex flex-col md:flex-col lg:flex-row justify-center items-center md:gap-10 gap-16 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
       {/* Content Section */}

@@ -31,12 +31,12 @@ const propertydetailsOne = [
   },
   {
     img: '/images/legalStatus.svg',
-    title: 'LEGAL STATUS',
+    title: 'Rating',
     content: 'Verified',
   },
   {
     img: '/images/landAccess.svg',
-    title: 'LEGAL STATUS',
+    title: 'Land Access',
     content: 'Verified',
   },
 ];

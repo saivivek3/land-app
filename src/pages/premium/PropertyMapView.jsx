@@ -1,4 +1,4 @@
-import { Heart, ChevronLeft, ChevronRight, Map, List } from 'lucide-react';
+// import { Heart, ChevronLeft, ChevronRight, Map, List } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import hearImg from '@/assets/HeartFill.svg';
 
@@ -74,10 +74,10 @@ const PropertyMapView = () => {
   const navigate = useNavigate();
 
   return (
-    <div className=" lg:mx-auto lg:max-w-7xl px-4 lg:px-6 py-2 ">
+    <div className="lg:mx-auto lg:max-w-7xl px-4 lg:px-6 py-2">
       <div className="flex flex-col lg:flex-row gap-4 justify-between">
-        <section className="flex-1 min-w-fit ">
-          <div className="flex md:flex-row flex-col justify-between items-center mb-3">
+        <section className="flex-1 min-w-fit">
+          <div className="flex flex-col lg:flex-row justify-between items-center mb-3">
             <div className="">
               <h1 className="md:text-xl text-2xl font-semibold text-primary">
                 Property Map View
@@ -88,10 +88,10 @@ const PropertyMapView = () => {
             </div>
 
             <div className="flex gap-2 w-full md:w-auto">
-              <Button className="px-5 border rounded-lg  border-bPrimary  bg-white min-w-fit  text-primary">
+              <Button className="px-5 border rounded-lg border-bPrimary bg-white min-w-fit text-primary">
                 Share
               </Button>
-              <Button className=" px-2 text-white border border-bPrimary rounded-md bg-primary flex items-center justify-center gap-2 min-w-fit ">
+              <Button className="px-2 text-white border border-bPrimary rounded-md bg-primary flex items-center justify-center gap-2 min-w-fit">
                 <span className="text-lg">★</span> Save search
               </Button>
             </div>
@@ -120,7 +120,7 @@ const PropertyMapView = () => {
               ]}
             />
             <Button
-              className="border rounded-lg px-4 md:py-2 py-6 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
+              className="border rounded-lg px-4 md:py-2 py-6 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0"
               onClick={() => navigate('/all-lands')}
             >
               <div className="flex items-center gap-2">
@@ -129,12 +129,12 @@ const PropertyMapView = () => {
                   alt="lst-view-icon"
                   className="h-5 w-5"
                 />
-                <span className="text-xs">List View </span>
+                <span className="text-xs">List View</span>
               </div>
             </Button>
           </div>
 
-          <div className="w-full md:w-auto md:hidden">
+          <div className="w-full">
             <Button className="border rounded-lg px-4 py-3 bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 mb-2 w-full">
               <div className="flex gap-2 items-center">
                 <img src={FilterIcon} alt="filter-icon" />
@@ -144,11 +144,11 @@ const PropertyMapView = () => {
           </div>
 
           <div className="flex flex-wrap md:flex-nowrap gap-2 items-center mb-3">
-            <div className="relative min-w-fit flex-1 ">
+            <div className="relative min-w-fit flex-1">
               <input
                 type="search"
                 placeholder="Search"
-                className="w-full border rounded-lg pl-12 px-4 py-2 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-2"
+                className="w-full border rounded-lg pl-12 px-4 py-2 shadow-xs border-bPrimary placeholder-[#717680] placeholder:pl-2"
                 value={clearSearchbar}
                 onChange={e => setClearSearchbar(e.target.value)}
               />
@@ -172,36 +172,28 @@ const PropertyMapView = () => {
                   Search
                 </Button>
               </div>
-              <div className="w-full md:w-auto md:block hidden">
-                <Button className="border rounded-lg px-4 py-3 bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 mb-2 w-full">
-                  <div className="flex gap-2 items-center">
-                    <img src={FilterIcon} alt="filter-icon" />
-                    <span>More filters</span>
-                  </div>
-                </Button>
-              </div>
             </div>
           </div>
 
-          <div className="flex justify-between mb-3 ">
+          <div className="flex justify-between mb-3">
             <div className="flex gap-0">
-              <Button className="border border-[#D5D7DA] text-xs font-[600]  bg-[#FAFAFA] hover:bg-[#FAFAFA]  rounded-r-none hover:opacity-50 text-primary min-w-fit px-3 py-2">
+              <Button className="border border-[#D5D7DA] text-xs font-[600] bg-[#FAFAFA] hover:bg-[#FAFAFA] rounded-r-none hover:opacity-50 text-primary min-w-fit px-3 py-2">
                 Sort by date
               </Button>
-              <Button className="border border-[#D5D7DA] text-xs  hover:opacity-50 hover:bg-white font-[500] rounded-l-none min-w-fit bg-white text-primary px-3 py-2">
+              <Button className="border border-[#D5D7DA] text-xs hover:opacity-50 hover:bg-white font-[500] rounded-l-none min-w-fit bg-white text-primary px-3 py-2">
                 Sort by price
               </Button>
             </div>
 
             <div className="flex">
-              <Button className="border border-[#D5D7DA]  hover:opacity-50 hover:bg-[#FAFAFA]  text-primary  p-1  bg-[ #FAFAFA] min-w-10 justify-center flex items-center rounded-r-none">
+              <Button className="border border-[#D5D7DA] hover:opacity-50 hover:bg-[#FAFAFA] text-primary p-1 bg-[#FAFAFA] min-w-10 justify-center flex items-center rounded-r-none">
                 <img
                   src={ListViewIcon}
                   alt="list-view"
-                  className="text-primary h-4 w-4  rounded-r-none"
+                  className="text-primary h-4 w-4 rounded-r-none"
                 />
               </Button>
-              <Button className="border border-[#D5D7DA]  hover:opacity-50 hover:bg-white bg-white text-primary  p-1 w-2 min-w-10 flex justify-center items-center  rounded-l-none">
+              <Button className="border border-[#D5D7DA] hover:opacity-50 hover:bg-white bg-white text-primary p-1 w-2 min-w-10 flex justify-center items-center rounded-l-none">
                 <img src={MarkerPin} alt="marker-pin" className="h-4 w-4" />
               </Button>
             </div>
@@ -211,54 +203,36 @@ const PropertyMapView = () => {
             {properties.map(property => (
               <Card
                 key={property.id}
-                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
+                className="flex flex-col md:flex-row shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
                 onClick={() =>
                   navigate(
                     `/premium-property/single-property-view/${property.id}`,
                   )
                 }
               >
-                <div className="">
+                <div className="w-full md:w-64">
                   <img
                     src={property.image}
                     alt={property.title}
-                    className="w-64 h-32 object-cover rounded-lg"
+                    className="w-full h-32 object-cover rounded-lg"
                   />
                 </div>
 
-                <div className="flex-1 ">
-                  <div className="flex justify-between">
-                    <div>
+                <div className="flex-1">
+                  <div className="flex justify-betweens">
+                    <div className="flex">
                       <div className="flex items-center gap-1 text-buttontertiary text-sm font-semibold">
                         <img
                           src={VerifiedIcon}
                           alt=" verified-icon"
                           className="h-5 w-5"
                         />
-                        <span className=" rounded-full w-2 h-2" />
+                        <span className="rounded-full w-2 h-2" />
                         {property.company}
                       </div>
-                      <h3 className="text-base font-semibold mt-2 text-primary ">
+                      <h3 className="text-base font-semibold mt-2 text-primary">
                         {property.title}
                       </h3>
-                    </div>
-                    <div
-                      onClick={e => handleLike(e, property.id)}
-                      className={`border border-[#d6bbfb] bg-white rounded-lg p-3 h-auto cursor-pointer shadow-lg`}
-                    >
-                      {like[property.id] ? (
-                        <img
-                          src={hearImg}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      ) : (
-                        <img
-                          src={HeartIcon}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      )}
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
@@ -284,7 +258,7 @@ const PropertyMapView = () => {
                           <img
                             src={SquareFeetIcon}
                             alt="squarefeet"
-                            className='"text-bQuinary'
+                            className="text-bQuinary"
                           />
                           <span className="text-tertiary font-medium text-xs">
                             {property.area}
@@ -292,26 +266,46 @@ const PropertyMapView = () => {
                         </div>
                       </div>
                     </section>
-
-                    <section className="mb-2 flex">
-                      <div className="flex gap-2 items-center">
-                        <span className="text-primary text-base font-semibold ">
-                          {property.price}
-                        </span>
-                        <span className="text-tertiary text-sm">Price</span>
-                      </div>
-                    </section>
+                  </div>
+                </div>
+                <div className="flex flex-row md:flex-col items-center w-full gap-3 md:gap-2">
+                  <div
+                    onClick={e => handleLike(e, property.id)}
+                    className={`border border-[#d6bbfb] bg-white rounded-lg p-3 h-auto cursor-pointer shadow-lg`}
+                  >
+                    {like[property.id] ? (
+                      <img
+                        src={hearImg}
+                        alt="heart-icon"
+                        className={`h-auto w-6 `}
+                      />
+                    ) : (
+                      <img
+                        src={HeartIcon}
+                        alt="heart-icon"
+                        className={`h-auto w-6 `}
+                      />
+                    )}
+                  </div>
+                  <div className="mb-2 flex mt-2">
+                    <div className="flex gap-2 items-center">
+                      <span className="text-primary text-base font-semibold">
+                        {property.price}
+                      </span>
+                      <span className="text-tertiary text-sm">Price</span>
+                    </div>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
+
           <div className="flex gap-2 ">
             <Button
-              className="bg-transparent rounded-none border-none outline-none  hover:bg-transparent text-primary text-sm mt-0 shadow-none justify-start"
+              className="bg-transparent rounded-none border-none outline-none hover:bg-transparent text-primary text-sm mt-0 shadow-none justify-start"
               childrenClassName="justify-start"
             >
-              <div className="flex items-center  gap-2">
+              <div className="flex items-center gap-2">
                 <img src={LeftIcon} alt="left-icon" className="text-white" />
                 <span> Previous</span>
               </div>
@@ -322,7 +316,7 @@ const PropertyMapView = () => {
               onPageChange={setCurrentPage}
             />
             <Button
-              className="bg-transparent rounded-none border-none outline-none   hover:bg-transparent hover:bg-none text-primary text-sm mt-0 shadow-none"
+              className="bg-transparent rounded-none border-none outline-none hover:bg-transparent hover:bg-none text-primary text-sm mt-0 shadow-none"
               childrenClassName="justify-end"
             >
               <div className="flex items-center gap-2">
