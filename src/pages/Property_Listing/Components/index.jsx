@@ -15,7 +15,7 @@ function PropertyListing() {
     data: allLandProperties,
     isLoading,
     isError,
-  } = useGet('allLands', '/GetAllLands', {
+  } = useGet('allLands', '/Land/GetAllLands', {
     staleTime: 300000, // 5 minutes
   });
 

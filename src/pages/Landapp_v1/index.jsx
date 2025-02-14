@@ -11,7 +11,9 @@ import PremiumFeatures from './PremiumFeatures';
 import ReagnionalPartnersCarousel from './ReagnionalPartnersCarousel';
 import WhyChooseLandapp from './WhyChooseLandapp';
 
+
 function Landapp_v1() {
+
   return (
     <div className="">
       <Navbar>

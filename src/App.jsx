@@ -1,9 +1,8 @@
 // utils/lazyLoad.js
 
 // App.jsx
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Toaster } from '@/components/ui/toaster';
 import { LoadScript } from '@react-google-maps/api';
 import PropertyDetailsContextProvider from './context/property/PropertyContextProvider';
 import { AuthProvider } from './context/authentication/AuthProvider';
@@ -15,6 +14,7 @@ import ProfileDetails from './pages/agentprofile/ProfileDetails';
 import PostedProperties from './pages/agentprofile/PostedProperties';
 import PropertyHistory from './pages/agentprofile/PropertyHistory';
 import { TabsContent } from './components/ui/tabs';
+import { Toaster } from './components/ui/toaster';
 
 // Layouts
 const PropertyLayout = lazy(() => import('./layout/PropertyLayout'));
@@ -76,19 +76,41 @@ const LoadingFallback = () => (
   </div>
 );
 
+function ScrollRestoration() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return null;
+}
+
 export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <HomeScreen />,
+      element: (
+        <>
+          <ScrollRestoration />
+          <HomeScreen />
+        </>
+      ),
     },
     {
       path: '/all-lands',
-      element: <PropertyListingManagementScreen />,
+      element: (
+        <>
+          <ScrollRestoration />
+          <PropertyListingManagementScreen />
+        </>
+      ),
     },
     {
       path: '/property-description/:id',
-      element: <PropertyDescriptionScreen />,
+      element: (
+        <>
+          <ScrollRestoration />
+          <PropertyDescriptionScreen />
+        </>
+      ),
     },
     {
       path: '/authentication',

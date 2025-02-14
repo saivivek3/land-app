@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const api = axios.create({
-  baseURL: 'https://syncapi.co/api/Land',
+  baseURL: 'https://syncapi.co/api',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -1,4 +1,3 @@
-import LandLeft from '../Components/images/landLeft.svg';
 import secondLand from '../Components/images/secondLand.svg';
 import thirdLand from '../Components/images/thirdland.svg';
 import LandCard from '@/components/LandCard';
