@@ -5,7 +5,6 @@ import Star from '../Components/images/YellowStar.svg';
 import ShareCross from '../Components/images/shareCross.svg';
 import Button from '@/components/ui/Button';
 import WishlistButton from '@/components/WishListButton';
-import { useState } from 'react';
 import { toIndianLakhs } from '@/utils/helper';
 
 const VentureDetails = ({
@@ -18,13 +17,6 @@ const VentureDetails = ({
     userId,
   },
 }) => {
-  const [like, setLike] = useState(false);
-
-  function handleLike(e) {
-    e.preventDefault(); // Prevent navigation on SVG click
-    setLike(!like);
-  }
-
   return (
     <div className="flex flex-col md:flex-row justify-between items-center py-6 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 2xl:px-24">
       {/* Left Side: Venture Details */}

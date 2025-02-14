@@ -5,8 +5,6 @@ const GoogleMapComponent = ({
   oneMarker,
   mapHeight,
   mapWidth = '100%',
-  latitude,
-  longitude,
   className = '',
 }) => {
   const mapContainerStyle = {
@@ -15,8 +13,8 @@ const GoogleMapComponent = ({
   };
 
   const center = {
-    lat: latitude,
-    lng: longitude,
+    lat: 17.2403,
+    lng: 78.4294,
   };
 
   const markers = [

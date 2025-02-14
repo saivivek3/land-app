@@ -70,7 +70,7 @@ function Navbar({
         >
           {/* Hamburger Icon */}
           {menuOpen ? (
-            <span className="text-2xl">&times;</span> // Close Icon
+            <span className="text-4xl">&times;</span> // Close Icon
           ) : (
             <span className="text-2xl">&#9776;</span> // Hamburger Icon
           )}

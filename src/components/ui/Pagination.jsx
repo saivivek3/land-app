@@ -37,7 +37,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center text-[8px] lg:text-xs font-semibold h-full">
+    <div className="flex items-center text-[8px] lg:text-xs font-semibold h-full">
       {getVisiblePages().map((page, index) =>
         page === '...' ? (
           <span key={index}>...</span>
@@ -45,7 +45,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
           <button
             key={index}
             onClick={() => onPageChange(page)}
-            className={`px-3 py-1 rounded ${currentPage === page ? 'bg-black text-white' : ''}`}
+            className={`sm:px-5 sm:text-xs px-2 py-1 rounded ${currentPage === page ? 'bg-black text-white' : ''}`}
           >
             {page}
           </button>

@@ -37,7 +37,7 @@ const Lands = ({ propertyDetails }) => {
         )}
       </div>
 
-      <div className="flex flex-col w-full sm:w-1/3 gap-4">
+      <div className="flex flex-col w-full gap-4">
         <LandCard
           imageUrl={secondLand}
           altText="Big Land Image 2"
@@ -46,7 +46,7 @@ const Lands = ({ propertyDetails }) => {
         <LandCard
           imageUrl={thirdLand}
           altText="Big Land Image 3"
-          className="w-full mt-auto"
+          className="w-full"
         />
       </div>
     </div>

@@ -32,7 +32,6 @@ const PropertyDescription = () => {
         <p>loading..</p>
       ) : (
         <>
-          {' '}
           <Lands propertyDetails={propertyDetails} />
           <VentureDetails propertyDetails={propertyDetails} />
           <VentureFacilities />

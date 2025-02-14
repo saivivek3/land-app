@@ -39,8 +39,8 @@ function PendingApprovePropertiesTabs() {
   return (
     <div className="w-full">
       {/* Tabs Section */}
-      <div className="mt-6 w-full">
-        <div className="flex gap-2 md:gap-4 lg:gap-6 border md:text-base text-sm border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer w-full overflow-x-auto">
+      <div className="mt-6 md:w-[240%] lg:w-[200%] xl:w-full">
+        <div className="flex gap-2 md:gap-4 lg:gap-6 border md:text-base text-sm border-gray-200 bg-gray-200 rounded-md p-1 cursor-pointer">
           {tabs.map(tab => (
             <div
               key={tab.key}

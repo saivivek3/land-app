@@ -144,12 +144,12 @@ const PropertyMap = () => {
   return (
     <div className="relative ">
       {/* search */}
-      <div className="absolute z-10 top-[15%] left-1/2 flex  gap-1 items-center">
-        <div className=" min-w-64 flex-1  flex items-center  ">
+      <div className="absolute z-10 left-[28%] top-2 w-1/2 flex  gap-1 items-center">
+        <div className=" w-full flex-1  flex items-center  ">
           <input
             type="search"
             placeholder="Search"
-            className=" w-full border rounded-lg px-4 text-xs py-3 pl-10 shadow-xs border-bPrimary placeholder:[ #717680] placeholder:pl-7"
+            className=" w-full border rounded-lg px-4 text-xs py-3 pl-10 shadow-xs border-bPrimary placeholder:[ #717680]"
           />
           <img
             src={SearchIcon}
@@ -157,12 +157,12 @@ const PropertyMap = () => {
             className="absolute top-[30%] left-5 h-4 w-4"
           />
 
-          <div className="absolute top-[25%] left-[60%] text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[2px] rounded-lg shasow-sm ">
+          <div className="absolute top-[25%] right-28 text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[2px] rounded-lg shasow-sm ">
             ⌘K
           </div>
         </div>
 
-        <Button className="border rounded-lg  bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 max-w-fit  px-5 py-2  ">
+        <Button className="border rounded-lg  bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 max-w-fit  px-5 py-3  ">
           <div className="flex gap-2 items-center ">
             <img src={FilterIcon} alt="filter-icon" className="h-3 w-3" />
             <span className="text-xs"> filters</span>
@@ -174,7 +174,7 @@ const PropertyMap = () => {
 
       <div
         onClick={() => navigate(-1)}
-        className="absolute top-[25%]  left-12  z-10 text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[5px] rounded-lg shadow-sm "
+        className="absolute top-16 left-4  z-10 text-[10px] border border-bPrimary shadow-customBoxShadow bg-white text-primary p-[5px] rounded-lg shadow-sm "
       >
         <img
           src={ArrowLeftIcon}
