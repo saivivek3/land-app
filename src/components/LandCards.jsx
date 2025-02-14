@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import verifiedIcon from '@/assets/verified.svg';
+import verifiedIcon from '@/assets/Verified.svg';
 import MapMarkerDown from '@/assets/map-marker-down.svg';
 import CurrencyDollar from '@/assets/currency-dollar.svg';
 import Rating from '@/assets/rating.svg';
