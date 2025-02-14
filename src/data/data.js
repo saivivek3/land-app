@@ -209,7 +209,7 @@ const testimonials = [
     content:
       'Starting projects used to feel daunting, but Untitled simplifies everything. We’ve used it for both small and large projects, and it never disappoints.',
     verified: '/images/verified-added.svg',
-    companyLogo: '/images/Crafted.svg',
+    companyLogo: '/images/crafted.svg',
   },
   {
     id: 8,

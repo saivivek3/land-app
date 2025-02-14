@@ -1,7 +1,7 @@
 import LocationIcon from '../Components/images/locationIcon.svg';
 import shareLocation from '../Components/images/share.svg';
 import Verified from '@/assets/Verified.svg';
-import Like from '../Components/images/like.svg';
+// import Like from '../Components/images/like.svg';
 import Star from '../Components/images/YellowStar.svg';
 import ShareCross from '../Components/images/shareCross.svg';
 import Button from '@/components/ui/Button';

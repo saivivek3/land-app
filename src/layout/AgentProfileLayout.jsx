@@ -31,7 +31,7 @@ const AgentProfileLayout = ({ children, value }) => {
           <div className="border-b border-b-disabledDark px-2 xs:px-4">
             <div className="px-4 md:px-10 md:py-6">
               <section className="flex flex-wrap items-center py-2 relative">
-                <div className="absolute -mt-32 xs:-mt-36 sm:-mt-40 md:-mt-20 xl:-mt-28">
+                <div className="absolute -mt-36 xs:-mt-36 sm:-mt-40 md:-mt-32 xl:-mt-28">
                   <img
                     src={AvatarIcon}
                     alt="Profile"
