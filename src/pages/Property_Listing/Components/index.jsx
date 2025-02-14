@@ -6,7 +6,7 @@ import PathInfo from './PathInfo';
 import SearchBar from './SearchBar';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { useLands } from '../api';
+// import { useLands } from '../api';
 import { useGet } from '@/apis';
 
 function PropertyListing() {
@@ -31,7 +31,7 @@ function PropertyListing() {
 
       {isLoading ? (
         <div className="flex justify-center items-center">
-          <ImSpinner8 className="animate-spin text-4xl text-blue-500 " />
+          <ImSpinner8 className="animate-spin text-4xl text-blue-500" />
         </div>
       ) : isError ? (
         <p className="text-center text-red-500">Error fetching data</p>
