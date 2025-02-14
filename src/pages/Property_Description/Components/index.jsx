@@ -11,46 +11,43 @@ import PremiumProperties from './PremiumProperties';
 import Navbar from '@/components/Navbar';
 import GoogleMapComponent from '@/components/GoogleMap';
 import Footer from './Footer';
+import { useParams } from 'react-router-dom';
 import { useGet } from '@/apis';
 
 const PropertyDescription = () => {
-  const propertyId = 6; // Set a fixed or dynamic property ID
+  const { id: landID } = useParams();
+  const { data: propertyDetails, isLoading } = useGet(
+    'propertDescription',
+    `/GetLandById?id=${landID}`,
+    {
+      staleTime: 300000, // 5 minutes
+    },
+  );
 
-  const {
-    data: PropertyDetails,
-    isLoading,
-    isError,
-  } = useGet('PropertyDetails', `/GetLandById?id=${propertyId}`, {
-    staleTime: 300000, // 5 minutes
-  });
-
-  console.log('Fetched Properties:', PropertyDetails);
   return (
     <div className="">
       <Navbar />
       <PathInfo />
-      <Lands />
-      <VentureDetails />
-      <VentureFacilities />
-      <div className="mt-12">
-        <GoogleMapComponent
-          oneMarker
-          mapHeight="500px"
-          className="mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24  border border-gray-400 rounded-md"
-        />
-      </div>
-      <PropertyMoreDetails />
       {isLoading ? (
-        <div className="flex justify-center items-center">
-          <ImSpinner8 className="animate-spin text-4xl text-blue-500" />
-        </div>
-      ) : isError ? (
-        <p className=" text-center text-red-500">Error fetching data</p>
+        <p>loading..</p>
       ) : (
-        <PremiumProperties
-          title="Related Premium Properties"
-          properties={PropertyDetails?.data || []}
-        />
+        <>
+          {' '}
+          <Lands propertyDetails={propertyDetails} />
+          <VentureDetails propertyDetails={propertyDetails} />
+          <VentureFacilities />
+          <div className="mt-12">
+            <GoogleMapComponent
+              oneMarker
+              mapHeight="500px"
+              className="mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24  border border-gray-400 rounded-md"
+              latitude={propertyDetails?.latitude}
+              longitude={propertyDetails?.longitude}
+            />
+          </div>
+          <PropertyMoreDetails propertyDetails={propertyDetails} />
+          <PremiumProperties title="Related Premium Properties" />
+        </>
       )}
       <Testimonial />
       <Footer />

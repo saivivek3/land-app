@@ -87,7 +87,7 @@ export default function App() {
       element: <PropertyListingManagementScreen />,
     },
     {
-      path: '/property-description',
+      path: '/property-description/:id',
       element: <PropertyDescriptionScreen />,
     },
     {

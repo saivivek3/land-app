@@ -1,6 +1,7 @@
+import { toIndianLakhs } from '@/utils/helper';
 import { useState } from 'react';
 
-function PropertyMoreDetails() {
+function PropertyMoreDetails({ propertyDetails:{address,totalPrice} }) {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     {
@@ -18,8 +19,8 @@ function PropertyMoreDetails() {
             </div>
 
             <div className="flex flex-col sm:w-[600px] text-start">
-              <div>Rs 1.2 CR</div>
-              <div>Premium 2-Acre Land Near Shamshabad Airport</div>
+              <div>Rs {toIndianLakhs(totalPrice)}</div>
+              <div>{address}</div>
               <div>16 KM</div>
               <div>Shankarpally road, Chevella highway</div>
               <div>Estimated EMI: ₹67652</div>
