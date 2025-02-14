@@ -7,9 +7,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1,
+      staleTime: 1000 * 60 * 5, // Data stays fresh for 5 minutes
+      cacheTime: 1000 * 60 * 30, // Keep in cache for 30 minutes
+      refetchOnMount: false, // Don't refetch on component mount
       refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 5, // Cache for 5 minutes
     },
   },
 });
