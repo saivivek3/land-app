@@ -10,7 +10,6 @@ const Box = ({
   buttonText,
   buttonClass,
   onButtonClick,
-  className,
   bg,
   // children,
   border,
@@ -22,7 +21,7 @@ const Box = ({
       {/* {children} */}
       {img && <img src={img} alt={title} className="" />}
       {title && <h2 className="font-bold">{title}</h2>}
-      {content && <p className="font-bold">{content}</p>}
+      {content && <div className="font-bold">{content}</div>}
       {buttonText && (
         <Button className={buttonClass} onClick={onButtonClick}>
           {buttonText}
@@ -30,25 +29,6 @@ const Box = ({
       )}
     </div>
   );
-};
-
-Box.propTypes = {
-  img: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  buttonClass: PropTypes.string,
-  onButtonClick: PropTypes.func,
-  className: PropTypes.string,
-  bg: PropTypes.string,
-  border: PropTypes.string,
-};
-
-Box.defaultProps = {
-  buttonClass: 'bg-black text-white rounded-md',
-  onButtonClick: () => {},
-  className: '', // Default value for className
-  bg: 'white', // Default value for bg
 };
 
 export default Box;

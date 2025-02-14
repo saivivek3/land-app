@@ -6,8 +6,11 @@ import Star from '../Components/images/YellowStar.svg';
 import ShareCross from '../Components/images/shareCross.svg';
 import Button from '@/components/ui/Button';
 import { useState } from 'react';
+import { toIndianLakhs } from '@/utils/helper';
 
-const VentureDetails = () => {
+const VentureDetails = ({
+  propertyDetails: { landName, description, pincode, address, totalPrice },
+}) => {
   const [like, setLike] = useState(false);
 
   function handleLike(e) {
@@ -22,7 +25,7 @@ const VentureDetails = () => {
         <div className="flex flex-row items-center sm:items-start justify-between w-full xl:-mt-12">
           <div className="flex items-center gap-2">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-              Janapriya Ventures
+              {landName}
             </h2>
             <img src={Verified} alt="Verified Badge" className="w-6 sm:w-8" />
           </div>
@@ -52,7 +55,9 @@ const VentureDetails = () => {
         {/* Location */}
         <div className="flex items-center gap-4 mt-4 text-sm sm:text-base text-black">
           <img src={LocationIcon} alt="Location Icon" className="w-6 sm:w-8" />
-          <span>Hyderabad West, Pin Code 500072</span>
+          <p>
+            {address}, <span>Pin Code {pincode}</span>
+          </p>
           <img src={ShareCross} alt="Share Cross" className="w-6 sm:w-8" />
         </div>
 
@@ -70,15 +75,7 @@ const VentureDetails = () => {
 
         {/* Description */}
         <p className="mt-4 text-sm sm:text-base text-gray-700 font-medium">
-          Strategically located near Shamshabad Airport, offering excellent
-          connectivity to the city, major highways, IT hubs, and key landmarks.
-          This prime real estate boasts verified and clear-title documentation,
-          ensuring a hassle-free transaction. The property is ideal for
-          commercial, residential, or investment purposes, with rapidly growing
-          infrastructure, high appreciation potential, and proximity to business
-          centers, educational institutions, and healthcare facilities.
-          Surrounded by greenery and modern amenities, it provides a perfect
-          blend of convenience, luxury, and future growth prospects.
+          {description}
         </p>
       </div>
 
@@ -86,7 +83,9 @@ const VentureDetails = () => {
       <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col sm:flex-row md:flex-col gap-4 mt-6 md:mt-0 md:ml-24">
         <div className="border p-4 flex flex-col justify-center items-center sm:items-start gap-2 rounded-md w-full">
           <p className="text-gray-500 text-sm sm:text-base">Price</p>
-          <p className="font-bold text-lg sm:text-xl">70.6 Lakhs</p>
+          <p className="font-bold text-lg sm:text-xl">
+            {toIndianLakhs(totalPrice)}
+          </p>
           <Button className="bg-black text-white py-2 px-6 w-full rounded-md">
             Quotation
           </Button>

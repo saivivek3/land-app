@@ -4,6 +4,7 @@ import verifiedIcon from '@/assets/verified.svg';
 import MapMarkerDown from '@/assets/map-marker-down.svg';
 import CurrencyDollar from '@/assets/currency-dollar.svg';
 import Rating from '@/assets/rating.svg';
+import { toIndianLakhs } from '@/utils/helper';
 
 function LandCards({ item, link = '/property-description' }) {
   const [like, setLike] = useState(false);
@@ -13,13 +14,13 @@ function LandCards({ item, link = '/property-description' }) {
   }
   return (
     <Link
-      to={link}
+      to={link + `/${item.landId}`}
       className="p-2 relative block bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       {/* Logo */}
       <img
         src={item.images?.[0] || 'https://via.placeholder.com/400'}
-        alt={item.landName}
+        alt={item?.landName}
         className="w-full md:min-w-400 h-48 object-cover rounded-md"
       />
 
@@ -72,18 +73,18 @@ function LandCards({ item, link = '/property-description' }) {
           <p className="flex items-center gap-2">
             <img src={CurrencyDollar} alt="Location" className="w-4 h-4" />
 
-            {item.pricePerAcre}
+            {toIndianLakhs(item.pricePerAcre)}
           </p>
           <span className="text-gray-300">|</span>
           <p className="flex items-center gap-2">
             <img src={MapMarkerDown} alt="Location" className="w-4 h-4" />
-            {item.sizeInAcres || 'N/A'} acres
+            {item.sizeInAcres || 'N/A'}
           </p>
           <span className="text-gray-300">|</span>
           <p className="flex items-center gap-2">
             <img src={Rating} alt="Location" className="w-4 h-4" />
 
-            {item.rating||0}
+            {item.rating || 0}
           </p>
         </div>
       </div>
