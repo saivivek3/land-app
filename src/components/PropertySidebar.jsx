@@ -48,7 +48,7 @@ const sidebarLinksArr = [
 
 function PropertySidebar({ className = '', absolute, bg, ml }) {
   const [sidebarLinks, setSideBarLinks] = useState(sidebarLinksArr);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // state to control sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
   const navigate = useNavigate();
   const pathname = window.location.pathname;
   const activeLinkName = pathname.split('/')[1];

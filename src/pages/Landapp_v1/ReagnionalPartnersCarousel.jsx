@@ -3,10 +3,21 @@ import leftArrow from './images/leftArrow.svg';
 import rightArrow from './images/rightArrow.svg';
 import ManImage from '@/assets/images/man.png';
 import { Star } from 'lucide-react';
+import { useGet } from '@/apis';
 
 const RegionalPartnersCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(4); // Default for large screens
+
+  const { data: allRegionalPatners } = useGet(
+    'allTopRegionalPatners',
+    '/Users/GetAllAgents',
+    {},
+  );
+
+  const { data: allStates } = useGet('allStates', '/GeoLocation/GetAllStates', {
+    staleTime: 300000, // 5 minutes
+  });
 
   useEffect(() => {
     const updateSlidesToShow = () => {
@@ -28,56 +39,66 @@ const RegionalPartnersCarousel = () => {
     return () => window.removeEventListener('resize', updateSlidesToShow);
   }, []);
 
-  const cards = [
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-    {
-      image: ManImage,
-      name: 'Manikanta',
-      region: 'Vikarabad Region',
-      listings: 140,
-      stars: 5,
-    },
-  ];
+  const cards = allRegionalPatners?.map(card => ({
+    image: ManImage,
+    name: card.name,
+    region: allStates?.find(state => state.id === card.stateId)?.name,
+    listings: card.landsPosted,
+    stars: 5,
+  }));
+
+  console.log(cards, 'cards');
+
+  // const cards = [
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  //   {
+  //     image: ManImage,
+  //     name: 'Manikanta',
+  //     region: 'Vikarabad Region',
+  //     listings: 140,
+  //     stars: 5,
+  //   },
+  // ];
 
   const nextSlide = useCallback(() => {
     if (currentSlide < cards.length - slidesToShow) {
       setCurrentSlide(currentSlide + 1);
     }
-  }, [currentSlide, cards.length, slidesToShow]);
+  }, [currentSlide, cards?.length, slidesToShow]);
 
   const prevSlide = useCallback(() => {
     if (currentSlide > 0) {
@@ -102,7 +123,7 @@ const RegionalPartnersCarousel = () => {
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          {cards.map((card, index) => (
+          {cards?.map((card, index) => (
             <div
               key={index}
               className={`w-full ${slidesToShow === 1 ? 'sm:w-full' : slidesToShow === 2 ? 'sm:w-1/2' : 'sm:w-1/4'} flex-shrink-0 px-2`} // **Updated width for mobile & tablet**
@@ -130,7 +151,7 @@ const RegionalPartnersCarousel = () => {
                       {card.name}
                     </div>
                     <div className="text-white text-[18px] font-semibold">
-                      {card.region}
+                      {card.region} Region
                     </div>
                     <div className="text-white text-base font-medium">
                       {card.listings} Listings
@@ -153,7 +174,7 @@ const RegionalPartnersCarousel = () => {
         </button>
         <button
           onClick={nextSlide}
-          disabled={currentSlide === cards.length - slidesToShow} // **Updated for dynamic slidesToShow**
+          disabled={currentSlide === cards?.length - slidesToShow} // **Updated for dynamic slidesToShow**
           className="p-3 rounded-full border border-bSecondary bg-white text-[##717680]"
         >
           <img src={rightArrow} alt="Next" className="w-3 h-3" />

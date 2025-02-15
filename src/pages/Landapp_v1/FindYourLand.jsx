@@ -9,15 +9,22 @@ function FindYourLand() {
     district: { districtID: '', label: '', value: '', stateID: '' },
     mandal: { mandalID: '', label: '', value: '', districtID: '' },
   });
-  const { data: allStates } = useGet('allStates', '/GeoLocation/GetAllStates', {
-    staleTime: 300000, // 5 minutes
-  });
+   const { data: allStates } = useGet(
+     'allStates',
+     '/GeoLocation/GetAllStates',
+     {
+       staleTime: 300000, // 5 minutes
+       cacheTime: 600000, // 10 minutes - keeps data in cache longer
+     },
+   );
+
 
   const { data: allDistricts } = useGet(
     'allDistricts',
     '/GeoLocation/GetAllDistricts',
     {
       staleTime: 300000, // 5 minutes
+      cacheTime: 600000,
     },
   );
   const { data: allMandals } = useGet(
@@ -25,6 +32,7 @@ function FindYourLand() {
     '/GeoLocation/GetAllMandals',
     {
       staleTime: 300000, // 5 minutes
+      cacheTime: 600000,
     },
   );
   console.log(allMandals, 'allMandals');
