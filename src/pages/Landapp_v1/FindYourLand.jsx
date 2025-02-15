@@ -1,9 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import SelectComponent from '@/components/SelectComponent';
-import { useGet } from '@/apis';
+import { useGet, usePost } from '@/apis';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setLocation } from '@/features/property/propertySlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setAllLandProperties,
+  setLocation,
+} from '@/features/property/propertySlice';
+import { store } from '@/store';
 
 function FindYourLand() {
   const [inputvalue, setValue] = useState({
@@ -40,9 +44,15 @@ function FindYourLand() {
       setLocation({
         stateID: inputvalue?.state?.stateID,
         districtID: inputvalue.district?.districtID,
+        mandalID: inputvalue.mandal?.mandalID,
       }),
     );
-  }, [inputvalue.state.stateID, inputvalue.district.districtID, dispatch]);
+  }, [
+    inputvalue.state.stateID,
+    inputvalue.district.districtID,
+    inputvalue.mandal.mandalID,
+    dispatch,
+  ]);
 
   const formatAllStates = allStates?.map(state => ({
     id: state.id,
@@ -98,9 +108,33 @@ function FindYourLand() {
     }
     return formatAllMandals;
   };
-  console.log(formatAllMandals, 'formatAllMandals');
-
   const navigate = useNavigate();
+  const { districtId, stateId, mandalId } = useSelector(
+    state => state.location,
+  );
+  const createSearchData = usePost('allSearch', '/Search/search');
+  async function handleSubmit() {
+    console.log('handlesubmit was called');
+    if (districtId || stateId || mandalId) {
+      try {
+        const result = await createSearchData.mutateAsync({
+          stateId,
+          districtId,
+          mandalId,
+        });
+        console.log('result', result);
+        if (result?.data) {
+          console.log('Dispatching data:', result.data);
+          dispatch(setAllLandProperties(result.data));
+          console.log('State after dispatch:', store.getState());
+          navigate('/all-lands'); // Add store import
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  }
+
   return (
     <div className="flex justify-center mt-6 sm:mt-8 md:mt-10 mx-4 sm:mx-10 md:mx-20 lg:mx-24">
       <div className="border-2 border-gray-300 shadow-xl rounded-lg p-4 w-full max-w-3xl md:max-w-6xl">
@@ -139,7 +173,7 @@ function FindYourLand() {
           {/* Search Button with consistent padding */}
           <button
             className="w-full md:w-auto border border-gray-300 rounded-md bg-black text-white py-2 px-4"
-            onClick={() => navigate('/all-lands')}
+            onClick={handleSubmit}
           >
             Search
           </button>

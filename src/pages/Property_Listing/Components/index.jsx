@@ -5,9 +5,11 @@ import PathInfo from './PathInfo';
 import SearchBar from './SearchBar';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-// import { useLands } from '../api';
-import { useGet } from '@/apis';
+import { useGet, usePost } from '@/apis';
 import SkeletonCard from '@/components/SkeletonCard';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAllLandProperties } from '@/features/property/propertySlice';
 
 function PropertyListing() {
   // React Query for fetching lands
@@ -20,12 +22,38 @@ function PropertyListing() {
     cacheTime: 600000, // 10 minutes - keeps data in cache longer
   });
 
+  const { districtId } = useSelector(state => state.location);
+  const { landPropertiesState } = useSelector(state => state.location);
+  const queryClient = useQueryClient();
+  const allDistricts = queryClient.getQueryData(['allDistricts']);
+  const districtName = allDistricts?.find(
+    district => district.id === districtId,
+  )?.name;
+  const dispatch = useDispatch();
+  const createSearchData = usePost('allSearch', '/Search/search', {
+    // Add onSuccess handler
+    onSuccess: data => {
+      dispatch(setAllLandProperties(data.data));
+      queryClient.invalidateQueries('allLands'); // Invalidate if needed
+    },
+  });
+
+  console.log(landPropertiesState, 'landpropertiesstate');
+
+  async function handleSubmit(data) {
+    try {
+      await createSearchData.mutateAsync(data);
+    } catch (error) {
+      // Error handling
+    }
+  }
+
   return (
     <div>
       <Navbar />
       <PathInfo />
       <Filter />
-      <SearchBar />
+      <SearchBar onHandleSubmit={handleSubmit} />
       <Agents />
 
       {isLoading ? (
@@ -40,8 +68,8 @@ function PropertyListing() {
         <p className="text-center text-red-500">Error fetching data</p>
       ) : (
         <LandDetails
-          title={`${allLandProperties?.data?.length || 0} Lands - Shamshabad Region`}
-          landsData={allLandProperties?.data || []}
+          title={`${landPropertiesState?.length || 0} Lands - ${districtName} Region  `}
+          landsData={landPropertiesState || []}
           link="/property-description"
         />
       )}

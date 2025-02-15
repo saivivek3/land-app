@@ -3,14 +3,25 @@ import Location from './images/location.svg';
 import { useNavigate } from 'react-router-dom';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
 import SelectComponent from '@/components/SelectComponent';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import { setDistrictId } from '@/features/property/propertySlice';
 
 function Filter() {
   const navigate = useNavigate();
   const { stateId } = useSelector(state => state.location);
   const queryClient = useQueryClient();
   const allDistricts = queryClient.getQueryData(['allDistricts']);
+  const [inputvalue, setValue] = useState({
+    district: { districtID: '', label: '', value: '', stateID: '' },
+  });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (inputvalue?.district?.districtID)
+      dispatch(setDistrictId(inputvalue?.district?.districtID));
+  }, [inputvalue?.district?.districtID, dispatch]);
 
   const districts = allDistricts
     ?.filter(district => district.stateId === stateId)
@@ -28,7 +39,9 @@ function Filter() {
           <SelectComponent
             placeholder="Select District"
             className="py-5 gap-2 flex items-center"
-            options={districts}
+            options={Array.isArray(districts) ? districts : []}
+            inputvalue={inputvalue}
+            setValue={setValue}
           />
           <DatePickerWithRange className="w-full" />
           <SelectComponent

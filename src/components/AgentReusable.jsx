@@ -3,6 +3,8 @@ import AgentOne from '@/assets/images/man.png';
 import WhatsApp from '@/assets/whatsapp.svg';
 
 import { useGet } from '@/apis';
+import { useSelector } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
 
 function AgentReusable({ agents }) {
   const { data: allRegionalPatners } = useGet(
@@ -17,10 +19,19 @@ function AgentReusable({ agents }) {
     staleTime: 300000, // 5 minutes
   });
 
+  const { districtId, stateId } = useSelector(state => state.location);
+  console.log('districtId', districtId);
+  const queryClient = useQueryClient();
+  const allDistricts = queryClient.getQueryData(['allDistricts']);
+  const districtName = allDistricts?.find(
+    district => district.id === districtId,
+  )?.name;
+  const stateName = allStates?.find(state => state.id === stateId)?.name;
+
   return (
     <div className="mx-4 md:mx-20">
       <div className="mt-6 text-lg md:text-xl font-semibold text-center md:text-left">
-        Top Agents in Shamshabad, Telengana
+        Top Agents in {districtName}, {stateName}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-4 border border-gray-300 rounded-md p-4 mt-6">
         {allRegionalPatners?.map((agent, index) => (

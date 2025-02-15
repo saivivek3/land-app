@@ -6,6 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
+import { useDispatch } from 'react-redux';
+import { setDistrictId } from '@/features/property/propertySlice';
 function SelectComponent({
   placeholder,
   className,
@@ -14,9 +16,10 @@ function SelectComponent({
   setValue,
   name,
 }) {
+  const dispatch = useDispatch();
   return (
     <Select
-      onValueChange={value =>
+      onValueChange={value => {
         setValue(prevValue => ({
           ...prevValue,
           [name]: {
@@ -24,8 +27,9 @@ function SelectComponent({
             label: value.label,
             value: value.value,
           },
-        }))
-      }
+        }));
+        dispatch(setDistrictId(value.id));
+      }}
     >
       <SelectTrigger className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder}>
@@ -34,7 +38,7 @@ function SelectComponent({
       </SelectTrigger>
       <SelectContent className="max-h-60 overflow-y-auto">
         <div className="flex flex-col gap-1">
-          {options.map(option => (
+          {options?.map(option => (
             <SelectItem key={option.id} value={option}>
               {option.label}
             </SelectItem>

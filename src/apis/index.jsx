@@ -9,20 +9,18 @@ const api = axios.create({
 });
 
 // Reusable hooks for different operations
-export function useGet(key, url, options = {}) {
+export function useGet(key, url, options = {}, params = {}) {
   return useQuery({
     queryKey: [key],
     queryFn: async () => {
-      const { data } = await api.get(url);
-      console.log('Fetched API Data:', data); // Debugging line
-
+      const { data } = await api.get(url, { params });
       return data;
     },
     ...options,
   });
 }
 
-export function usePost(key, url) {
+export function usePost(key, url, options) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -33,6 +31,7 @@ export function usePost(key, url) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [key] });
     },
+    ...options,
   });
 }
 
