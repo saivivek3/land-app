@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import SelectComponent from '@/components/SelectComponent';
 import { useGet } from '@/apis';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setLocation } from '@/features/property/propertySlice';
 
 function FindYourLand() {
   const [inputvalue, setValue] = useState({
@@ -9,15 +11,12 @@ function FindYourLand() {
     district: { districtID: '', label: '', value: '', stateID: '' },
     mandal: { mandalID: '', label: '', value: '', districtID: '' },
   });
-   const { data: allStates } = useGet(
-     'allStates',
-     '/GeoLocation/GetAllStates',
-     {
-       staleTime: 300000, // 5 minutes
-       cacheTime: 600000, // 10 minutes - keeps data in cache longer
-     },
-   );
 
+  const dispatch = useDispatch();
+  const { data: allStates } = useGet('allStates', '/GeoLocation/GetAllStates', {
+    staleTime: 300000, // 5 minutes
+    cacheTime: 600000, // 10 minutes - keeps data in cache longer
+  });
 
   const { data: allDistricts } = useGet(
     'allDistricts',
@@ -35,7 +34,15 @@ function FindYourLand() {
       cacheTime: 600000,
     },
   );
-  console.log(allMandals, 'allMandals');
+
+  useEffect(() => {
+    dispatch(
+      setLocation({
+        stateID: inputvalue?.state?.stateID,
+        districtID: inputvalue.district?.districtID,
+      }),
+    );
+  }, [inputvalue.state.stateID, inputvalue.district.districtID, dispatch]);
 
   const formatAllStates = allStates?.map(state => ({
     id: state.id,

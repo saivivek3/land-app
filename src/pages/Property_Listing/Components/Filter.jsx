@@ -3,9 +3,23 @@ import Location from './images/location.svg';
 import { useNavigate } from 'react-router-dom';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
 import SelectComponent from '@/components/SelectComponent';
+import { useSelector } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
 
 function Filter() {
   const navigate = useNavigate();
+  const { stateId } = useSelector(state => state.location);
+  const queryClient = useQueryClient();
+  const allDistricts = queryClient.getQueryData(['allDistricts']);
+
+  const districts = allDistricts
+    ?.filter(district => district.stateId === stateId)
+    .map(district => ({
+      id: district.id,
+      label: district.name,
+      value: district.name,
+    }));
+
   return (
     <div className="px-4 md:px-20 flex flex-col md:flex-row items-center md:items-start">
       <div className="flex flex-col md:flex-col xl:flex-row justify-between py-4 w-full gap-4">
@@ -14,12 +28,7 @@ function Filter() {
           <SelectComponent
             placeholder="Select District"
             className="py-5 gap-2 flex items-center"
-            options={[
-              { id: 1, label: 'Medak', value: 'Ts' },
-              { id: 2, label: 'Warangal', value: 'Ts' },
-              { id: 3, label: 'KarimNagar', value: 'Ts' },
-              { id: 4, label: 'Adilabad', value: 'Ts' },
-            ]}
+            options={districts}
           />
           <DatePickerWithRange className="w-full" />
           <SelectComponent

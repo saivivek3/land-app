@@ -8,7 +8,6 @@ import Footer from '@/components/Footer';
 // import { useLands } from '../api';
 import { useGet } from '@/apis';
 import SkeletonCard from '@/components/SkeletonCard';
-import { useQueryClient } from '@tanstack/react-query';
 
 function PropertyListing() {
   // React Query for fetching lands
@@ -20,9 +19,6 @@ function PropertyListing() {
     staleTime: 300000, // 5 minutes
     cacheTime: 600000, // 10 minutes - keeps data in cache longer
   });
-
-  // const queryClient = useQueryClient();
-  // const allStates = queryClient.getQueryData(['allStates']);
 
   return (
     <div>
