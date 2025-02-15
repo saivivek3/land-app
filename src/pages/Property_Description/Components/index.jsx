@@ -18,7 +18,7 @@ const PropertyDescription = () => {
   const { id: landID } = useParams();
   const { data: propertyDetails, isLoading } = useGet(
     'propertDescription',
-    `/GetLandById?id=${landID}`,
+    `/Land/GetLandById?id=${landID}`,
     {
       staleTime: 300000, // 5 minutes
     },

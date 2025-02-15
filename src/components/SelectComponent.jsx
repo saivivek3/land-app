@@ -1,33 +1,45 @@
+import cn from '@/lib/cn';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import cn from '@/lib/cn.js';
-import { useState } from 'react';
-
-function SelectComponent({ placeholder, className, options }) {
-  const [inputvalue, setValue] = useState(null);
+} from './ui/select';
+function SelectComponent({
+  placeholder,
+  className,
+  options,
+  inputvalue,
+  setValue,
+  name,
+}) {
   return (
-    <Select onValueChange={setValue}>
+    <Select
+      onValueChange={value =>
+        setValue(prevValue => ({
+          ...prevValue,
+          [name]: {
+            [`${name}ID`]: value.id,
+            label: value.label,
+            value: value.value,
+          },
+        }))
+      }
+    >
       <SelectTrigger className={cn('w-full', className)}>
-        <SelectValue
-          placeholder={
-            inputvalue
-              ? `${inputvalue.label}, ${inputvalue.value}`
-              : placeholder
-          }
-        />
+        <SelectValue placeholder={placeholder}>
+          {inputvalue?.[name]?.label || placeholder}
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent className="flex gap-40">
-        {options.map(option => (
-          <SelectItem key={option.id} value={option}>
-            <span>{option.label}</span>
-            <span className="ml-1">{option.value}</span>
-          </SelectItem>
-        ))}
+      <SelectContent className="max-h-60 overflow-y-auto">
+        <div className="flex flex-col gap-1">
+          {options.map(option => (
+            <SelectItem key={option.id} value={option}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </div>
       </SelectContent>
     </Select>
   );
