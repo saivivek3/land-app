@@ -21,7 +21,11 @@ const LocationMap = ({ stepIndex }) => {
   const { register, handleSubmit } = useFormHook();
   // Reference to store the autocomplete instance
   const [searchBox, setSearchBox] = useState(null);
-  const [location, setLocation] = useState({ lat: null, lng: null });
+  const [location, setLocation] = useState({
+    lat: null,
+    lng: null,
+    address: '',
+  });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const {
@@ -141,8 +145,8 @@ const LocationMap = ({ stepIndex }) => {
 
       <div className="flex-1 px-6 relative ">
         {/* Card */}
-        <div className="">
-          <div className="absolute top-16 left-[50%] w-[80%] sm:top-2  z-10   sm:left-[60%] -translate-x-1/2 shadow-customBoxShadow rounded-full border border-bPrimary shadow-sm">
+        <div className="flex justify-center">
+          <div className="absolute mt-12 top-20 w-[80%] sm:top-2 z-10 shadow-customBoxShadow rounded-full border border-bPrimary shadow-sm left-1/2 transform -translate-x-1/2">
             <img
               src={MarkerPinIcon}
               alt="marker-pin"
@@ -155,9 +159,12 @@ const LocationMap = ({ stepIndex }) => {
             >
               <input
                 type="text"
-                className=" rounded-full p-2 w-full pl-10 min-w-fit"
+                className="rounded-full p-2 w-full pl-10 min-w-fit"
                 placeholder="Enter Your Search"
                 value={location.address}
+                onChange={e =>
+                  setLocation(prev => ({ ...prev, address: e.target.value }))
+                }
               />
             </StandaloneSearchBox>
           </div>

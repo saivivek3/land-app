@@ -9,7 +9,13 @@ import { useNavigate } from 'react-router-dom';
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
+  const [editing, setIsEditing] = useState(false);
   const navigate = useNavigate();
+
+  const handlePhoneChange = e => {
+    const numericValue = e.target.value.replace(/\D/g, '');
+    setPhone(numericValue);
+  };
 
   return (
     <div className="max-w-5xl mx-auto p-6  flex flex-col md:flex-row  gap-3">
@@ -40,20 +46,33 @@ const PropertyPhoneNumberVerification = () => {
         {/* Phone Input Section */}
         <div className="mb-6">
           <div className="flex items-center gap-2 justify-between    border border-[#E2E4E5]  rounded-lg px-4">
-            <div className="px-1 py-2">
-              <input
-                className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
-                defaultValue=" +91 9966132599"
-                value={phone}
-                type="text"
-                onChange={e => setPhone(e.target.value)}
-              />
-
+            <div className="px-1 py-2 w-full">
+              {editing ? (
+                <input
+                  className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
+                  defaultValue=" +91 9966132599"
+                  value={phone}
+                  type="text"
+                  onChange={handlePhoneChange}
+                  onBlur={() => setIsEditing(false)}
+                  onFocus
+                />
+              ) : (
+                <p
+                  className="text-base font-semibold text-[#242426] cursor-pointer"
+                  onClick={() => setIsEditing(true)}
+                >
+                  {phone}
+                </p>
+              )}
               <p className="text-base text-[#575F6E] ">
                 Number not confirmed yet
               </p>
             </div>
-            <Pencil className=" w-4 h-4 text-blue-500 cursor-pointer" />
+            <Pencil
+              className=" w-4 h-4 text-blue-500 cursor-pointer"
+              onClick={() => setIsEditing(true)}
+            />
           </div>
         </div>
 
