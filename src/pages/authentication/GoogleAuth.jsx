@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { usePost } from '@/apis';
 
 const GoogleAuth = ({ mode }) => {
-  const postAuthData = usePost('auth', '/Auth/AuthenticateUser', {
+  const postAuthData = usePost('auth', `/Auth/AuthenticateUser`, {
     onSuccess: data => {
       console.log(data, 'data');
     },
@@ -30,16 +30,13 @@ const GoogleAuth = ({ mode }) => {
           },
         );
 
-        // Here you would typically make different API calls based on mode
-        if (mode === 'signup') {
-          await postAuthData.mutateAsync({
-            provider: 'Google',
-            accessToken: tokenResponse.access_token,
-          });
-        } else {
-          navigate('/create-property');
-          console.log('Signing in with Google');
-        }
+        console.log(tokenResponse, 'tokenResponse');
+        const encodedToken = encodeURIComponent(tokenResponse.access_token);
+        const response = await axios.post(
+          `/Auth/AuthenticateUser?provider=Google&authtoken=${encodedToken}`,
+        );
+
+        navigate('/create-property/form');
         setUser(userInfo.data);
       } catch (error) {
         console.error(`Google ${mode} failed:`, error);

@@ -9,6 +9,8 @@ const PropertySlice = createSlice({
     mandalId: 0,
     landPropertiesState: [],
     selectedDate: null,
+    phoneNumber: '',
+    otp: '',
   },
   reducers: {
     setLocation: (state, action) => {
@@ -26,6 +28,12 @@ const PropertySlice = createSlice({
     seteSelectedDate: (state, action) => {
       state.selectedDate = formatDateRange(action.payload);
     },
+    setPhoneNumber: (state, action) => {
+      state.phoneNumber = action.payload;
+    },
+    setOtpForValidation: (state, action) => {
+      state.otp = action.payload;
+    },
   },
 });
 
@@ -34,5 +42,6 @@ export const {
   setDistrictId,
   setAllLandProperties,
   seteSelectedDate,
+  setPhoneNumber,
 } = PropertySlice.actions;
 export default PropertySlice.reducer;

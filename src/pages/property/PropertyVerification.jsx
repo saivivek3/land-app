@@ -5,14 +5,34 @@ import OTPInput from './OtpInput.jsx';
 import Button from '@/components/ui/Button.jsx';
 import LockScreen from '@/assets/lock-screen.svg';
 import { useNavigate } from 'react-router-dom';
-import { set } from 'date-fns';
+import { usePost } from '@/apis/index.jsx';
+import { useSelector } from 'react-redux';
 
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
+  const { phoneNumber } = useSelector(state => state.location);
+  const [otp, setOtp] = useState(new Array(6).fill(''));
   const [editing, setIsEditing] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+
   const navigate = useNavigate();
+  const postAuthData = usePost(
+    'auth',
+    `/Auth/validate-otp?mobileNumber=${phoneNumber}&otp=${otp.join('')}&RoleId=${Number(1)}`,
+    {
+      onSuccess: data => {
+        navigate('/create-property/form');
+      },
+      onError: error => {
+        console.error('Query Error:', error);
+      },
+    },
+  );
+
+  async function handleOtp() {
+    await postAuthData.mutateAsync();
+  }
 
   const handlePhoneChange = e => {
     const numericValue = e.target.value.replace(/\D/g, '');
@@ -64,7 +84,7 @@ const PropertyPhoneNumberVerification = () => {
               {editing ? (
                 <input
                   className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
-                  defaultValue=" +91 9966132599"
+                  defaultValue={phoneNumber}
                   value={phone}
                   type="text"
                   onChange={handlePhoneChange}
@@ -94,7 +114,7 @@ const PropertyPhoneNumberVerification = () => {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <div>
-              <OTPInput onChange={handleOTPChange} />
+              <OTPInput otp={otp} setOtp={setOtp} />
               <div className="border-b-[1px] border-[#007aff]  h-2 w-full "></div>{' '}
               <p className="text-[#575f6e] text-base mt-2 ">
                 Confirm phone number with code from sms message
@@ -125,7 +145,7 @@ const PropertyPhoneNumberVerification = () => {
         <div className="space-y-3">
           <Button
             className="w-full bg-primary text-white py-3 rounded-lg font-medium border hover:bg-primary/50"
-            onClick={() => navigate('/create-property/form')}
+            onClick={handleOtp}
           >
             Verify & Login
           </Button>

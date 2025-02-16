@@ -7,6 +7,11 @@ import HomeScreenPeople from '@/assets/images/HomeScreenPeople.svg';
 import CreatePropertyRightIcon from '@/assets/images/createPropertyRightIcon.svg';
 
 import { Link, useNavigate } from 'react-router-dom';
+import Input from '@/components/ui/Input';
+import GoogleAuth from '@/pages/authentication/GoogleAuth';
+import { usePost } from '@/apis';
+import { useDispatch } from 'react-redux';
+import { setPhoneNumber } from '@/features/property/propertySlice';
 
 const CreatePropertyForm = () => {
   const [property, setProperty] = useState({
@@ -14,9 +19,30 @@ const CreatePropertyForm = () => {
     propertyCategory: '',
     role: '',
   });
+  const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
   // const { register, handleSubmit } = useFormHook();
 
   const navigate = useNavigate();
+  const postAuthData = usePost(
+    'auth',
+    `/Auth/RegisterUser?phoneNumber=${inputValue}`,
+    {
+      onSuccess: data => {
+        dispatch(setPhoneNumber(inputValue));
+      },
+      onError: error => {
+        console.error('Query Error:', error);
+      },
+    },
+  );
+
+  async function handleLogin() {
+    await postAuthData.mutateAsync({
+      phoneNumber: inputValue,
+    });
+    navigate('/create-property/verification');
+  }
 
   // function onSubmit(data) {
   //   console.log(data);
@@ -133,26 +159,35 @@ const CreatePropertyForm = () => {
 
         <div className="flex items-center gap-2 justify-between    border border-[#E2E4E5]  rounded-lg px-4">
           <div className="px-1 py-2">
-            <p className="text-base font-semibold text-[#242426]">
-              +91 9966132599
-            </p>
+            <input
+              type="text "
+              className="border-none outline-none"
+              placeholder="Enter Mobile Number ..."
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
+            />
             <p className="text-base text-[#575F6E] ">Registered number</p>
           </div>
           <Pencil className=" w-4 h-4 text-blue-500" />
         </div>
 
-        <div className="mt-3 flex items-center  gap-2">
-          <p className="text-base text-[#242426]">
-            Are you a registered user? <Link to="/?tab=login">Login</Link>
+        <div className="mt-3 flex items-center  gap-2 w-full  justify-center">
+          <p className="text-base text-[#242426] ">
+            Are you a registered user?{' '}
           </p>
+          <Button className="max-w-32 py-1 mt-0" onClick={handleLogin}>
+            Login
+          </Button>
         </div>
+        <p className="text-center">Or</p>
+        <GoogleAuth />
 
-        <Button
+        {/* <Button
           className="bg-primary text-white text-base font-semibold hover:bg-primary/55"
           onClick={() => navigate('/create-property/verification')}
         >
           Start Now
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
