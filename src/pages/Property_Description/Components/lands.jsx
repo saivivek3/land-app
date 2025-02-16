@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 // import LandLeft from '../Components/images/landLeft.svg';
-=======
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
 import secondLand from '../Components/images/secondLand.svg';
 import thirdLand from '../Components/images/thirdland.svg';
 import LandCard from '@/components/LandCard';
