@@ -10,20 +10,15 @@ import LegalIcon from '@/assets/legal.svg';
 import RatingIcon from '@/assets/invoice.svg';
 import WirelessIcon from '@/assets/wireless.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
-<<<<<<< HEAD
 import WishlistButton from '@/components/WishListButton';
 import { useState } from 'react';
-
-const SinglePropertyView = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-=======
 import { useParams } from 'react-router-dom';
 import { useGet } from '@/apis';
 import { toIndianLakhs } from '@/utils/helper';
 
 const SinglePropertyView = () => {
   const { id: landID } = useParams();
+  const [isChecked, setIsChecked] = useState(false);
 
   const { data: propertyDetails, isLoading } = useGet(
     'propertDescription',
@@ -35,7 +30,6 @@ const SinglePropertyView = () => {
   );
 
   console.log(propertyDetails, 'propertyDetails');
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
   return (
     <div className="md:max-w-5xl md:mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3  py-3 flex flex-col md:flex-row gap-4 min-w-fit">
       {/* Property Image */}
