@@ -11,8 +11,12 @@ import { useSelector } from 'react-redux';
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
+<<<<<<< HEAD
   const { phoneNumber } = useSelector(state => state.location);
   const [otp, setOtp] = useState(new Array(6).fill(''));
+=======
+  const [editing, setIsEditing] = useState(false);
+>>>>>>> a7f81090323fd098bbba27ea757199ef7f4c2ec6
   const navigate = useNavigate();
   const postAuthData = usePost(
     'auth',
@@ -30,6 +34,11 @@ const PropertyPhoneNumberVerification = () => {
   async function handleOtp() {
     await postAuthData.mutateAsync();
   }
+
+  const handlePhoneChange = e => {
+    const numericValue = e.target.value.replace(/\D/g, '');
+    setPhone(numericValue);
+  };
 
   return (
     <div className="max-w-5xl mx-auto p-6  flex flex-col md:flex-row  gap-3">
@@ -60,18 +69,33 @@ const PropertyPhoneNumberVerification = () => {
         {/* Phone Input Section */}
         <div className="mb-6">
           <div className="flex items-center gap-2 justify-between    border border-[#E2E4E5]  rounded-lg px-4">
-            <div className="px-1 py-2">
-              <input
-                className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
-                defaultValue={phoneNumber}
-                type="text"
-              />
-
+            <div className="px-1 py-2 w-full">
+              {editing ? (
+                <input
+                  className="text-base  font-semibold text-[#242426] outline-none border-none mb-1"
+                  defaultValue={phoneNumber}
+                  value={phone}
+                  type="text"
+                  onChange={handlePhoneChange}
+                  onBlur={() => setIsEditing(false)}
+                  onFocus
+                />
+              ) : (
+                <p
+                  className="text-base font-semibold text-[#242426] cursor-pointer"
+                  onClick={() => setIsEditing(true)}
+                >
+                  {phone}
+                </p>
+              )}
               <p className="text-base text-[#575F6E] ">
                 Number not confirmed yet
               </p>
             </div>
-            <Pencil className=" w-4 h-4 text-blue-500 cursor-pointer" />
+            <Pencil
+              className=" w-4 h-4 text-blue-500 cursor-pointer"
+              onClick={() => setIsEditing(true)}
+            />
           </div>
         </div>
 
