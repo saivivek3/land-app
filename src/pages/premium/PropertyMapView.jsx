@@ -74,9 +74,9 @@ const PropertyMapView = () => {
   const navigate = useNavigate();
 
   return (
-    <div className=" lg:mx-auto lg:max-w-7xl w-full px-4 lg:px-6 py-2 ">
-      <div className="flex flex-col lg:flex-row gap-4 w-full justify-between">
-        <section className="flex-1 min-w-fit ">
+    <div className="lg:mx-auto lg:max-w-7xl w-full px-4 lg:px-6 py-2">
+      <div className="flex flex-col xl:flex-row gap-4 w-full justify-between">
+        <section className="flex-1 min-w-fit">
           <div className="flex md:flex-row flex-col justify-between items-center mb-3">
             <div className="">
               <h1 className="md:text-xl text-2xl font-semibold text-primary">
@@ -120,7 +120,7 @@ const PropertyMapView = () => {
               ]}
             />
             <Button
-              className="border rounded-lg px-4 md:py-2 py-6 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
+              className="border rounded-lg px-4 md:py-2 py-3 min-w-fit bg-white text-primary border-bPrimary hover:bg-white/50 mt-0  "
               onClick={() => navigate('/all-lands')}
             >
               <div className="flex items-center gap-2">
@@ -135,7 +135,7 @@ const PropertyMapView = () => {
           </div>
 
           <div className="w-full md:w-auto md:hidden">
-            <Button className="border rounded-lg px-4 py-3 bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 mb-2 w-full">
+            <Button className="border rounded-lg px-4 py-2.5 bg-white text-primary border-bPrimary hover:bg-white/50 mt-0 mb-2 w-full">
               <div className="flex gap-2 items-center">
                 <img src={FilterIcon} alt="filter-icon" />
                 <span>More filters</span>
@@ -211,7 +211,7 @@ const PropertyMapView = () => {
             {properties.map(property => (
               <Card
                 key={property.id}
-                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
+                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl md:px-4 px-2 md:py-5 py-2 gap-5 cursor-pointer"
                 onClick={() =>
                   navigate(
                     `/premium-property/single-property-view/${property.id}`,
@@ -339,12 +339,12 @@ const PropertyMapView = () => {
           </div>
         </section>
 
-        <section className="">
+        <section className="w-full xl:w-[60%]">
           <GoogleMapComponent
             oneMarker={false}
             mapWidth="100%"
             className="w-full rounded-md"
-            mapHeight={'118vh'}
+            mapHeight="100vh"
           />
         </section>
       </div>

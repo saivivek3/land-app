@@ -1,7 +1,7 @@
 import { toIndianLakhs } from '@/utils/helper';
 import { useState } from 'react';
 
-function PropertyMoreDetails({ propertyDetails:{address,totalPrice} }) {
+function PropertyMoreDetails({ propertyDetails: { address, totalPrice } }) {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     {
@@ -110,7 +110,7 @@ function PropertyMoreDetails({ propertyDetails:{address,totalPrice} }) {
     <div>
       <div className="mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-24 mt-5 ">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
-          More Details
+          Property More Details
         </h2>
         <div className="flex md:gap-6 gap-5 border-b mt-5 flex-wrap sm:flex-nowrap">
           {tabs.map((tab, index) => (

@@ -4,9 +4,9 @@ import HeartFill from '../Components/images/HeartFill.svg';
 function PremiumProperties({ title, properties = [] }) {
   const [like, setLike] = useState([]);
 
-  useEffect(() => {
-    setLike(properties.map(() => false)); // Initialize likes state
-  }, [properties]);
+  // useEffect(() => {
+  //   setLike(properties.map(() => false)); // Initialize likes state
+  // }, [properties]);
 
   function toggleLike(index) {
     setLike(prevlike =>

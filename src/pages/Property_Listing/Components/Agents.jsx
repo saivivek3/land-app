@@ -27,6 +27,34 @@ function Agents() {
       image: AgentThree,
       contactImage: WhatsApp,
     },
+    {
+      name: 'Sandeep',
+      location: 'Secundrabad',
+      listings: 95,
+      image: AgentThree,
+      contactImage: WhatsApp,
+    },
+    {
+      name: 'Sandeep',
+      location: 'Secundrabad',
+      listings: 95,
+      image: AgentThree,
+      contactImage: WhatsApp,
+    },
+    {
+      name: 'Sandeep',
+      location: 'Secundrabad',
+      listings: 95,
+      image: AgentThree,
+      contactImage: WhatsApp,
+    },
+    {
+      name: 'Sandeep',
+      location: 'Secundrabad',
+      listings: 95,
+      image: AgentThree,
+      contactImage: WhatsApp,
+    },
   ];
   return <AgentReusable agents={agentList} />;
 }

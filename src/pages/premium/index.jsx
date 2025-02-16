@@ -10,10 +10,14 @@ import LegalIcon from '@/assets/legal.svg';
 import RatingIcon from '@/assets/invoice.svg';
 import WirelessIcon from '@/assets/wireless.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
+import WishlistButton from '@/components/WishListButton';
+import { useState } from 'react';
 
 const SinglePropertyView = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
-    <div className="md:max-w-5xl md:mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3 py-3 flex flex-col md:flex-row gap-4 min-w-fit">
+    <div className="md:max-w-5xl md:mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3  py-3 flex flex-col md:flex-row gap-4 min-w-fit">
       {/* Property Image */}
       <section>
         <div className="relative">
@@ -33,26 +37,35 @@ const SinglePropertyView = () => {
         </div>
 
         {/* Filters Bar */}
-        <div className="p-4 border-b flex  items-center">
+        <div className="p-4 border-b flex items-center">
           <div className="flex items-center gap-2">
-            <Button className="bg-white rounded-lg border border-bPrimary hover:bg-white/50 ">
-              <div className="flex gap-2 text-secondary text-xs font-semibold">
-                <span>Filters</span>
+            <Button className="bg-white rounded-lg border px-5 py-3 border-bPrimary hover:bg-white/50 flex items-center justify-center">
+              <div className="flex items-center gap-2 text-secondary text-xs font-semibold">
+                <span className="-ml-3 sm:ml-0">Filters</span>
                 <img src={FilterIcon} alt="filter-icon" className="h-4 w-4" />
               </div>
             </Button>
+
             <Button className="bg-white rounded-lg border border-bPrimary hover:bg-white/50 min-w-56">
               <div className="flex items-center gap-2 text-secondary text-xs font-semibold">
                 <span>Display total before taxes</span>
                 <div className="flex items-center">
-                  <div className="relative h-6 w-12 cursor-pointer rounded-full bg-gray-200">
+                  <div
+                    className="relative h-6 w-12 cursor-pointer rounded-full bg-gray-200"
+                    onClick={() => setIsChecked(!isChecked)}
+                  >
                     <input
                       type="checkbox"
                       className="peer sr-only"
-                      onChange={e => console.log(e.target.checked)}
+                      checked={isChecked}
+                      readOnly
                     />
-                    <span className="absolute inset-0 flex h-full w-full items-center rounded-full bg-gray-300 transition-colors duration-200 ease-in-out peer-checked:bg-purple-500">
-                      <span className="absolute left-1 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-6" />
+                    <span
+                      className={`absolute inset-0 flex h-full w-full items-center rounded-full transition-colors duration-200 ease-in-out ${isChecked ? 'bg-purple-500' : 'bg-gray-300'}`}
+                    >
+                      <span
+                        className={`absolute left-1 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out ${isChecked ? 'translate-x-6' : ''}`}
+                      />
                     </span>
                   </div>
                 </div>
@@ -78,18 +91,20 @@ const SinglePropertyView = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="p-4 border-b flex items-center bg-disabledlight border border-bPrimary rounded-lg ">
-          <div>
-            <div className="text-xs text-tertiary font-semibold ">
+        <div className="p-4 border-b flex items-center bg-disabledlight border border-bPrimary rounded-lg">
+          <div className="flex sm:flex-row flex-col gap-5 sm:gap-0 items-center">
+            <div className="sm:text-xs sm:text-tertiary font-semibold sm:border-none border border-[#d6bbfb] rounded-lg px-3 py-2.5 text-black text-sm">
               Contact Owner
             </div>
-            <div className="text-primary text-base font-bold">Mr. Sandeep</div>
+            <div className="text-primary text-base font-bold sm:border-none border border-[#d6bbfb] rounded-lg px-3 py-2">
+              Mr. Sandeep
+            </div>
           </div>
-          <div className="flex gap-3 ml-auto items-center">
+          <div className="flex gap-3 ml-auto items-center sm:flex-row flex-col">
             <Button className="bg-black text-white font-semibold text-xs min-w-32 py-3 mt-0 hover:bg-black/50">
               Call Owner
             </Button>
-            <Button className="b-white text-buttontertiary bg-white mt-0 border-[0.6px] border-[#d6bbfb] hover:bg-white/50">
+            <Button className="b-white text-buttontertiary font-normal bg-white mt-0 border-[0.6px] border-[#d6bbfb] hover:bg-[#d6bbfb] hover:text-white">
               Message
             </Button>
           </div>
@@ -104,7 +119,8 @@ const SinglePropertyView = () => {
             <div className="flex gap-2 items-center">
               <img src={VerifiedIcon} alt="verified-icon" className="h-5 w-5" />
               <div className="border border-bSecondary rounded-lg p-1">
-                <Heart className="h-5 w-5" />
+                {/* <Heart className="h-5 w-5" /> */}
+                <WishlistButton />
               </div>
               <div className="border border-bSecondary rounded-lg p-1">
                 <Share2 className="h-5 w-5" />
