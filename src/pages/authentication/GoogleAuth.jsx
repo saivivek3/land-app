@@ -33,7 +33,7 @@ const GoogleAuth = ({ mode }) => {
         console.log(tokenResponse, 'tokenResponse');
         const encodedToken = encodeURIComponent(tokenResponse.access_token);
         const response = await axios.post(
-          `https://syncapi.co/api/Auth/AuthenticateUser?provider=Google&authtoken=${encodedToken}`,
+          `https://syncapi.co/api/Auth/AuthenticateUser?provider=Google&accessToken=${encodedToken}`,
         );
 
         navigate('/create-property/form');
