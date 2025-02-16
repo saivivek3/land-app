@@ -11,12 +11,9 @@ import { useSelector } from 'react-redux';
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
-<<<<<<< HEAD
   const { phoneNumber } = useSelector(state => state.location);
   const [otp, setOtp] = useState(new Array(6).fill(''));
-=======
   const [editing, setIsEditing] = useState(false);
->>>>>>> a7f81090323fd098bbba27ea757199ef7f4c2ec6
   const navigate = useNavigate();
   const postAuthData = usePost(
     'auth',
