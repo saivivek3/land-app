@@ -8,7 +8,7 @@ function NavPart() {
         {/* Sell Your Land Button */}
         <div
           className="border border-gray-300 px-4 py-2 rounded-md text-[10px] shadow-md md:text-sm font-semibold cursor-pointer"
-          onClick={() => navigate('/authentication')}
+          onClick={() => navigate('/create-property')}
         >
           Sell your Land
         </div>

@@ -6,24 +6,37 @@ import Button from '@/components/ui/Button.jsx';
 import LockScreen from '@/assets/lock-screen.svg';
 import { useNavigate } from 'react-router-dom';
 import { usePost } from '@/apis/index.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPhoneNumber } from '@/features/property/propertySlice.js';
 
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
-<<<<<<< HEAD
   const { phoneNumber } = useSelector(state => state.location);
   const [otp, setOtp] = useState(new Array(6).fill(''));
-=======
   const [editing, setIsEditing] = useState(false);
->>>>>>> a7f81090323fd098bbba27ea757199ef7f4c2ec6
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const postAuthData = usePost(
     'auth',
     `/Auth/validate-otp?mobileNumber=${phoneNumber}&otp=${otp.join('')}&RoleId=${Number(1)}`,
     {
       onSuccess: data => {
         navigate('/create-property/form');
+      },
+      onError: error => {
+        console.error('Query Error:', error);
+      },
+    },
+  );
+
+  const postPhoneNumberData = usePost(
+    'auth',
+    `/Auth/RegisterUser?phoneNumber=${phoneNumber}`,
+    {
+      onSuccess: data => {
+        dispatch(setPhoneNumber(phoneNumber));
       },
       onError: error => {
         console.error('Query Error:', error);
@@ -39,6 +52,10 @@ const PropertyPhoneNumberVerification = () => {
     const numericValue = e.target.value.replace(/\D/g, '');
     setPhone(numericValue);
   };
+
+  async function handleSendAgainOTP() {
+    await postPhoneNumberData.mutateAsync();
+  }
 
   return (
     <div className="max-w-5xl mx-auto p-6  flex flex-col md:flex-row  gap-3">
@@ -123,7 +140,10 @@ const PropertyPhoneNumberVerification = () => {
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 />
               </svg>
-              <span className="mr-1 text-[##007aff] font-semibold text-base">
+              <span
+                className="mr-1 text-[##007aff] font-semibold text-base"
+                onClick={handleSendAgainOTP}
+              >
                 Send again
               </span>
             </button>
