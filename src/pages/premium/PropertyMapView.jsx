@@ -67,15 +67,9 @@ const PropertyMapView = () => {
   }, [allLandProperties]);
 
   return (
-<<<<<<< HEAD
-    <div className="lg:mx-auto lg:max-w-7xl w-full px-4 lg:px-6 py-2">
-      <div className="flex flex-col xl:flex-row gap-4 w-full justify-between">
-        <section className="flex-1 min-w-fit">
-=======
     <div className=" lg:mx-auto lg:max-w-7xl w-full px-4 lg:px-6 py-2 ">
       <div className="flex flex-col lg:flex-row gap-4 w-full justify-between">
         <section className="lg:w-[65%] w-full ">
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
           <div className="flex md:flex-row flex-col justify-between items-center mb-3">
             <div className="">
               <h1 className="md:text-xl text-2xl font-semibold text-primary">
@@ -207,60 +201,6 @@ const PropertyMapView = () => {
           </div>
 
           <div className="grid gap-6 mb-6">
-<<<<<<< HEAD
-            {properties.map(property => (
-              <Card
-                key={property.id}
-                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl md:px-4 px-2 md:py-5 py-2 gap-5 cursor-pointer"
-                onClick={() =>
-                  navigate(
-                    `/premium-property/single-property-view/${property.id}`,
-                  )
-                }
-              >
-                <div className="w-full md:w-1/2">
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-44 md:h-56 2xl:h-52 object-cover rounded-lg"
-                  />
-                </div>
-
-                <div className="flex-1 ">
-                  <div className="flex justify-between">
-                    <div>
-                      <div className="flex items-center gap-1 text-buttontertiary text-sm font-semibold">
-                        <img
-                          src={VerifiedIcon}
-                          alt=" verified-icon"
-                          className="h-5 w-5"
-                        />
-                        <span className=" rounded-full w-2 h-2" />
-                        {property.company}
-                      </div>
-                      <h3 className="text-xs sm:text-base md:text-sm font-semibold mt-2 text-primary ">
-                        {property.title}
-                      </h3>
-                    </div>
-                    <div
-                      onClick={e => handleLike(e, property.id)}
-                      className={`border border-[#d6bbfb] bg-white rounded-lg p-2 h-10 cursor-pointer shadow-lg`}
-                    >
-                      {like[property.id] ? (
-                        <img
-                          src={hearImg}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      ) : (
-                        <img
-                          src={HeartIcon}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      )}
-                    </div>
-=======
             {isLoading ? (
               <Loading />
             ) : (
@@ -280,7 +220,6 @@ const PropertyMapView = () => {
                       alt={property.landName}
                       className=" h-44 md:h-44 w-full object-cover rounded-lg"
                     />
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
                   </div>
 
                   <div className="flex-1 ">
@@ -397,14 +336,6 @@ const PropertyMapView = () => {
           </div>
         </section>
 
-<<<<<<< HEAD
-        <section className="w-full xl:w-[60%]">
-          <GoogleMapComponent
-            oneMarker={false}
-            mapWidth="100%"
-            className="w-full rounded-md"
-            mapHeight="100vh"
-=======
         <section className="lg:w-[35%] w-full h-screen sticky top-0">
           <GoogleMapComponent
             oneMarker={false}
@@ -412,7 +343,6 @@ const PropertyMapView = () => {
             className="w-full h-full rounded-md"
             mapHeight="100%"
             stateAllLandProperties={stateAllLandProperties}
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
           />
         </section>
       </div>
