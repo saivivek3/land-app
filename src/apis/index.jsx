@@ -16,6 +16,7 @@ export function useGet(key, url, options = {}, params = {}) {
       const { data } = await api.get(url, { params });
       return data;
     },
+
     ...options,
   });
 }

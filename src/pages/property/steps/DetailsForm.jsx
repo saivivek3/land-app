@@ -56,7 +56,6 @@ const DetailsForm = ({
         return (
           <div className="flex gap-2 ">
             <SelectComponent
-              {...register('sizeUnit')}
               className="w-24"
               options={field.options}
               placeholder={field.placeholder}

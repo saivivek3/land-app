@@ -93,7 +93,9 @@ const SinglePropertyView = () => {
           <div className="bg-disabledlight border border-bPrimary rounded-lg p-2">
             <div className="text-xs text-tertiary font-medium ">Price</div>
             <div className="text-primary font-bold text-base">
-              {toIndianLakhs(propertyDetails.totalPrice)}
+              {(propertyDetails?.totalPrice &&
+                toIndianLakhs(propertyDetails.totalPrice)) ||
+                0}
             </div>
           </div>
           <div className="bg-disabledlight border border-bPrimary rounded-lg p-2">
@@ -130,7 +132,7 @@ const SinglePropertyView = () => {
         <div className="p-4 border-b">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-base text-primary">
-              {propertyDetails.landName}
+              {propertyDetails?.landName}
             </h2>
             <div className="flex gap-2 items-center">
               <img src={VerifiedIcon} alt="verified-icon" className="h-5 w-5" />
@@ -144,7 +146,7 @@ const SinglePropertyView = () => {
             </div>
           </div>
           <p className="text-black text-xs mt-2">
-            {propertyDetails.description}
+            {propertyDetails?.description}
           </p>
         </div>
 

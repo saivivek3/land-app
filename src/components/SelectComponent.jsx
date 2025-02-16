@@ -13,7 +13,7 @@ function SelectComponent({
   className,
   options,
   inputvalue,
-  setValue,
+  setValue = () => {},
   name,
 }) {
   const dispatch = useDispatch();
