@@ -1,6 +1,7 @@
 import LandCards from '@/components/LandCards';
 
 function LandDetails({ title, landsData, link }) {
+  console.log(landsData, 'landsData');
   return (
     <div className="px-4 md:mx-10">
       <div className="mt-6 md:mb-0 mb-3 font-semibold md:text-lg md:ml-6">

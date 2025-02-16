@@ -31,10 +31,6 @@ const PropertyMap = () => {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const navigate = useNavigate();
 
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: 'AIzaSyA5DtxaJ3M6Rmg0N7HwqrdVb2Y3ozecT28',
-  // });
-
   const containerStyle = {
     width: '100%',
     height: '100vh',

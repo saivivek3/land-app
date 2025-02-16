@@ -10,12 +10,32 @@ import LegalIcon from '@/assets/legal.svg';
 import RatingIcon from '@/assets/invoice.svg';
 import WirelessIcon from '@/assets/wireless.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
+<<<<<<< HEAD
 import WishlistButton from '@/components/WishListButton';
 import { useState } from 'react';
 
 const SinglePropertyView = () => {
   const [isChecked, setIsChecked] = useState(false);
 
+=======
+import { useParams } from 'react-router-dom';
+import { useGet } from '@/apis';
+import { toIndianLakhs } from '@/utils/helper';
+
+const SinglePropertyView = () => {
+  const { id: landID } = useParams();
+
+  const { data: propertyDetails, isLoading } = useGet(
+    'propertDescription',
+    `/Land/GetLandById?id=${landID}`,
+    {
+      staleTime: 300000, // 5 minutes
+      cacheTime: 600000, // 10 minutes - keeps data in cache longer
+    },
+  );
+
+  console.log(propertyDetails, 'propertyDetails');
+>>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
   return (
     <div className="md:max-w-5xl md:mx-auto my-4  bg-white rounded-lg shadow-sm border border-bPrimary px-3  py-3 flex flex-col md:flex-row gap-4 min-w-fit">
       {/* Property Image */}
@@ -78,7 +98,9 @@ const SinglePropertyView = () => {
         <div className="p-4 grid grid-cols-3 gap-4 border-b">
           <div className="bg-disabledlight border border-bPrimary rounded-lg p-2">
             <div className="text-xs text-tertiary font-medium ">Price</div>
-            <div className="text-primary font-bold text-base">1.2CR</div>
+            <div className="text-primary font-bold text-base">
+              {toIndianLakhs(propertyDetails.totalPrice)}
+            </div>
           </div>
           <div className="bg-disabledlight border border-bPrimary rounded-lg p-2">
             <div className="text-xs text-tertiary font-medium ">sqft</div>
@@ -114,7 +136,7 @@ const SinglePropertyView = () => {
         <div className="p-4 border-b">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-base text-primary">
-              JANAPRIYA VENTURES
+              {propertyDetails.landName}
             </h2>
             <div className="flex gap-2 items-center">
               <img src={VerifiedIcon} alt="verified-icon" className="h-5 w-5" />
@@ -128,9 +150,7 @@ const SinglePropertyView = () => {
             </div>
           </div>
           <p className="text-black text-xs mt-2">
-            Strategically located near Shamshabad Airport, offering excellent
-            connectivity to the city and key landmarks. Verified and clear title
-            property, ideal for commercial, residential communities.
+            {propertyDetails.description}
           </p>
         </div>
 
@@ -145,7 +165,7 @@ const SinglePropertyView = () => {
           </div>
           <div className="flex items-center justify-center flex-col border border-bPrimary p-2 rounded-md bg-disabledlight">
             <img src={RoadIcon} alt="road-icon" />
-            <div className="text-secondary font-semibold text-[9px]">
+            <div className="text-secondary font-semibold text-[9px] text-center">
               ROAD DISTANCE
             </div>
             <div className="text-primary text-xs font-bold">2.0M</div>
@@ -196,7 +216,7 @@ const SinglePropertyView = () => {
       </section>
       <section className="w-full ">
         <GoogleMapComponent
-          oneMarker={false}
+          oneMarker={true}
           mapWidth="100%"
           mapHeight={'100vh'}
         />

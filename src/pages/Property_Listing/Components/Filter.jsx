@@ -3,9 +3,41 @@ import Location from './images/location.svg';
 import { useNavigate } from 'react-router-dom';
 import { DatePickerWithRange } from '@/components/DateRangePicker';
 import SelectComponent from '@/components/SelectComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import { setDistrictId, seteSelectedDate } from '@/features/property/propertySlice';
 
 function Filter() {
   const navigate = useNavigate();
+  const { stateId } = useSelector(state => state.location);
+  const queryClient = useQueryClient();
+  const allDistricts = queryClient.getQueryData(['allDistricts']);
+  const [inputvalue, setValue] = useState({
+    district: { districtID: '', label: '', value: '', stateID: '' },
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (inputvalue?.district?.districtID)
+      dispatch(setDistrictId(inputvalue?.district?.districtID));
+  }, [inputvalue?.district?.districtID]);
+
+  const districts = allDistricts
+    ?.filter(district => district.stateId === stateId)
+    .map(district => ({
+      id: district.id,
+      label: district.name,
+      value: district.name,
+    }));
+
+  function handleDateChange(date) {
+   if(date){
+    dispatch(seteSelectedDate(date));
+   }
+  }
+
   return (
     <div className="px-4 md:px-20 flex flex-col md:flex-row items-center md:items-start">
       <div className="flex flex-col md:flex-col xl:flex-row justify-between py-4 w-full gap-4">
@@ -14,15 +46,15 @@ function Filter() {
           <SelectComponent
             placeholder="Select District"
             className="py-5 gap-2 flex items-center"
-            options={[
-              { id: 1, label: 'Medak', value: 'Ts' },
-              { id: 2, label: 'Warangal', value: 'Ts' },
-              { id: 3, label: 'KarimNagar', value: 'Ts' },
-              { id: 4, label: 'Adilabad', value: 'Ts' },
-            ]}
+            options={Array.isArray(districts) ? districts : []}
+            inputvalue={inputvalue}
+            setValue={setValue}
           />
-          <DatePickerWithRange className="w-full" />
-          <SelectComponent
+          <DatePickerWithRange
+            className="w-full"
+            onDateChange={handleDateChange}
+          />
+          {/* <SelectComponent
             placeholder="Select Price"
             className="py-5 gap-2 flex items-center"
             options={[
@@ -31,7 +63,7 @@ function Filter() {
               { id: 3, label: '$150' },
               { id: 4, label: '$200' },
             ]}
-          />
+          /> */}
         </div>
 
         {/* Desktop View Buttons */}

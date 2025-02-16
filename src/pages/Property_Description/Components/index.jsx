@@ -18,11 +18,14 @@ const PropertyDescription = () => {
   const { id: landID } = useParams();
   const { data: propertyDetails, isLoading } = useGet(
     'propertDescription',
-    `/GetLandById?id=${landID}`,
+    `/Land/GetLandById?id=${landID}`,
     {
       staleTime: 300000, // 5 minutes
+      cacheTime: 600000, // 10 minutes - keeps data in cache longer
     },
   );
+
+  console.log({ propertyDetails });
 
   return (
     <div className="">
