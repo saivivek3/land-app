@@ -5,16 +5,30 @@ import OTPInput from './OtpInput.jsx';
 import Button from '@/components/ui/Button.jsx';
 import LockScreen from '@/assets/lock-screen.svg';
 import { useNavigate } from 'react-router-dom';
+import { set } from 'date-fns';
 
 const PropertyPhoneNumberVerification = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [phone, setPhone] = useState('+91 9668123599');
   const [editing, setIsEditing] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
   const handlePhoneChange = e => {
     const numericValue = e.target.value.replace(/\D/g, '');
     setPhone(numericValue);
+  };
+
+  const handleOTPChange = otp => {
+    setVerificationCode(otp);
+  };
+  const handleVerifyAndLogin = () => {
+    if (verificationCode.length === 6) {
+      setIsVerified(true);
+      navigate('/create-property/form');
+    } else {
+      alert('Please enter a valid OTP');
+    }
   };
 
   return (
@@ -80,7 +94,7 @@ const PropertyPhoneNumberVerification = () => {
         <div className="mb-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <div>
-              <OTPInput />
+              <OTPInput onChange={handleOTPChange} />
               <div className="border-b-[1px] border-[#007aff]  h-2 w-full "></div>{' '}
               <p className="text-[#575f6e] text-base mt-2 ">
                 Confirm phone number with code from sms message
