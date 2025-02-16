@@ -18,24 +18,32 @@ const VentureDetails = ({
   },
 }) => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center py-6 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 2xl:px-24">
+    <div className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 2xl:px-24">
       {/* Left Side: Venture Details */}
-      <div className="text-left w-full lg:w-2/3">
-        <div className="flex flex-row items-center sm:items-start justify-between w-full xl:-mt-12">
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
+      <div className="text-left w-full lg:w-2/3 md:-mt-20 mt-6 mx-22 px-3 md:px-0">
+        <div className="flex lg:flex-row flex-col lg:items-center justify-between w-full gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <h2 className="text-base sm:max-w-lg md:max-w-md max-w-64 sm:text-lg md:text-xl font-bold text-gray-800">
               {landName}
             </h2>
-            <img src={Verified} alt="Verified Badge" className="w-6 sm:w-8" />
+            <img
+              src={Verified}
+              alt="Verified Badge"
+              className="w-5 sm:w-6 md:w-8 sm:-mt-6"
+            />
           </div>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2 sm:gap-3 lg:-mt-6">
             <WishlistButton
               border="border border-gray-300"
               userId={userId}
               landId={6}
             />
-            <img src={shareLocation} alt="Share Location" className="w-6 h-6" />
+            <img
+              src={shareLocation}
+              alt="Share Location"
+              className="w-5 h-5 sm:w-6 sm:h-6"
+            />
           </div>
         </div>
 
@@ -61,13 +69,13 @@ const VentureDetails = ({
         </div>
 
         {/* Description */}
-        <p className="mt-4 text-sm sm:text-base text-gray-700 font-medium">
+        <p className="text-sm sm:text-base mt-3 text-gray-700 font-medium">
           {description}
         </p>
       </div>
 
       {/* Right Side: Pricing & Contact */}
-      <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col sm:flex-row md:flex-col gap-4 mt-6 md:mt-0 md:ml-24">
+      <div className="w-full md:mt-6 md:w-1/3 lg:w-1/4 flex flex-col sm:flex-row md:flex-col gap-4 md:ml-24">
         <div className="border p-4 flex flex-col justify-center items-center sm:items-start gap-2 rounded-md w-full">
           <p className="text-gray-500 text-sm sm:text-base">Price</p>
           <p className="font-bold text-lg sm:text-xl">

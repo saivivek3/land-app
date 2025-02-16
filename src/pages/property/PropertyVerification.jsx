@@ -15,11 +15,6 @@ const PropertyPhoneNumberVerification = () => {
   const { phoneNumber } = useSelector(state => state.location);
   const [otp, setOtp] = useState(new Array(6).fill(''));
   const [editing, setIsEditing] = useState(false);
-<<<<<<< HEAD
-  const [isVerified, setIsVerified] = useState(false);
-
-=======
->>>>>>> 53ae74866d6d70e15f44011d26f31083d34b669b
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -58,23 +53,9 @@ const PropertyPhoneNumberVerification = () => {
     setPhone(numericValue);
   };
 
-<<<<<<< HEAD
-  const handleOTPChange = otp => {
-    setVerificationCode(otp);
-  };
-  const handleVerifyAndLogin = () => {
-    if (verificationCode.length === 6) {
-      setIsVerified(true);
-      navigate('/create-property/form');
-    } else {
-      alert('Please enter a valid OTP');
-    }
-  };
-=======
   async function handleSendAgainOTP() {
     await postPhoneNumberData.mutateAsync();
   }
->>>>>>> 53ae74866d6d70e15f44011d26f31083d34b669b
 
   return (
     <div className="max-w-5xl mx-auto p-6  flex flex-col md:flex-row  gap-3">

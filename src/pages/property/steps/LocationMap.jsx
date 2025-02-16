@@ -22,8 +22,8 @@ const LocationMap = ({ stepIndex }) => {
   // Reference to store the autocomplete instance
   const [searchBox, setSearchBox] = useState(null);
   const [location, setLocation] = useState({
-    lat: null,
-    lng: null,
+    lat: '',
+    lng: '',
     address: '',
   });
   const [error, setError] = useState(null);
@@ -44,6 +44,7 @@ const LocationMap = ({ stepIndex }) => {
           setLocation({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
+            address: location.address,
           });
           setError(null); // Clear any previous errors
         },
@@ -60,6 +61,7 @@ const LocationMap = ({ stepIndex }) => {
     setLocation({
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
+      address: location.address,
     });
   };
 
@@ -73,12 +75,12 @@ const LocationMap = ({ stepIndex }) => {
           url:
             'data:image/svg+xml;charset=UTF-8,' +
             encodeURIComponent(`
-            <svg width="100" height="160" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Shadow circle -->
-              <circle cx="40" cy="44" r="38" fill="#F3D1CD" />
+              <circle cx="40" cy="44" r="24" fill="#F3D1CD" />
 
               <!-- Main background circle -->
-              <circle cx="40" cy="44" r="25" fill="#E41D53" />
+              <circle cx="40" cy="44" r="18" fill="#E41D53" />
 
               <!-- House icon - centered and scaled -->
               <g transform="translate(30, 33) scale(0.9)">

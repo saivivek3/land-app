@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-// import LandLeft from '../Components/images/landLeft.svg';
-=======
->>>>>>> d438e27cf3bdbbc9ab53dbbbce55696e339d0535
+import LandLeft from '../Components/images/landLeft.svg';
 import secondLand from '../Components/images/secondLand.svg';
 import thirdLand from '../Components/images/thirdland.svg';
 import LandCard from '@/components/LandCard';
@@ -67,7 +64,7 @@ const Lands = ({ propertyDetails }) => {
                 className="each-slide-effect rounded-lg overflow-hidden"
               >
                 <div
-                  className="w-full bg-cover bg-center sm:h-[200px] h-[160px] md:h-[250px] lg:h-[304px]object-cover rounded-lg overflow-hidden"
+                  className="w-full bg-cover bg-center sm:h-[200px] h-[160px] md:h-[250px] lg:h-[256px] xl:h-[340px] object-cover rounded-lg overflow-hidden"
                   style={{
                     backgroundImage: `url(${image})`,
                   }}
