@@ -6,7 +6,7 @@ import SelectComponent from '@/components/SelectComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { setDistrictId } from '@/features/property/propertySlice';
+import { setDistrictId, seteSelectedDate } from '@/features/property/propertySlice';
 
 function Filter() {
   const navigate = useNavigate();
@@ -16,12 +16,13 @@ function Filter() {
   const [inputvalue, setValue] = useState({
     district: { districtID: '', label: '', value: '', stateID: '' },
   });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (inputvalue?.district?.districtID)
       dispatch(setDistrictId(inputvalue?.district?.districtID));
-  }, [inputvalue?.district?.districtID, dispatch]);
+  }, [inputvalue?.district?.districtID]);
 
   const districts = allDistricts
     ?.filter(district => district.stateId === stateId)
@@ -30,6 +31,12 @@ function Filter() {
       label: district.name,
       value: district.name,
     }));
+
+  function handleDateChange(date) {
+   if(date){
+    dispatch(seteSelectedDate(date));
+   }
+  }
 
   return (
     <div className="px-4 md:px-20 flex flex-col md:flex-row items-center md:items-start">
@@ -43,8 +50,11 @@ function Filter() {
             inputvalue={inputvalue}
             setValue={setValue}
           />
-          <DatePickerWithRange className="w-full" />
-          <SelectComponent
+          <DatePickerWithRange
+            className="w-full"
+            onDateChange={handleDateChange}
+          />
+          {/* <SelectComponent
             placeholder="Select Price"
             className="py-5 gap-2 flex items-center"
             options={[
@@ -53,7 +63,7 @@ function Filter() {
               { id: 3, label: '$150' },
               { id: 4, label: '$200' },
             ]}
-          />
+          /> */}
         </div>
 
         {/* Desktop View Buttons */}

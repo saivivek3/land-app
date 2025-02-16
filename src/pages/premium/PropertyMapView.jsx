@@ -10,7 +10,6 @@ import ListViewIcon from '@/assets/list.svg';
 import FilterIcon from '@/assets/filter-icon.svg';
 import SearchIcon from '@/assets/search.svg';
 import MarkerPin from '@/assets/marker-pin.svg';
-import HomeImage from '@/assets/images/image.png';
 import VerifiedIcon from '@/assets/verified-icon.svg';
 import StarRating from './StarRating';
 import SquareFeetIcon from '@/assets/sqftpin.svg';
@@ -19,7 +18,10 @@ import RightIcon from '@/assets/arrow-right.svg';
 import LeftIcon from '@/assets/arrow-left.svg';
 import GoogleMapComponent from '@/components/GoogleMap';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useGet } from '@/apis';
+import { toIndianLakhs } from '@/utils/helper';
+import Loading from '@/components/Loading';
 
 const PropertyMapView = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,50 +35,41 @@ const PropertyMapView = () => {
     e.stopPropagation();
     setLike(prev => ({ ...prev, [id]: !prev[id] }));
   };
-  const properties = [
-    {
-      id: 1,
-      title: '32 Guntas verified land, located 32 km',
-      company: 'Vishnupriya Ventures',
-      location: 'Kandukar',
-      area: '2200sqft',
-      price: '1.2 CR',
-      rating: 4.9,
-      reviews: 20,
-      image: HomeImage,
-    },
-    {
-      id: 2,
-      title: '32 Guntas verified land, located 32 km',
-      company: 'Vishnupriya Ventures',
-      location: 'Kandukar',
-      area: '2200sqft',
-      price: '1.2 CR',
-      rating: 4.9,
-      reviews: 20,
-      image: HomeImage,
-    },
-    {
-      id: 3,
-      title: '32 Guntas verified land, located 32 km',
-      company: 'Vishnupriya Ventures',
-      location: 'Kandukar',
-      area: '2200sqft',
-      price: '1.2 CR',
-      rating: 4.9,
-      reviews: 20,
-      image: HomeImage,
-    },
-  ];
-
-  const totalPages = 5;
 
   const navigate = useNavigate();
+
+  const {
+    data: allLandProperties,
+    isLoading,
+    isError,
+  } = useGet('allLands', '/Land/GetAllLands', {
+    staleTime: 300000, // 5 minutes
+    cacheTime: 600000, // 10 minutes - keeps data in cache longer
+  });
+  const [stateAllLandProperties, setStateAllLandProperties] = useState([]);
+
+  const totalPages = useMemo(() => {
+    return Math.ceil((allLandProperties?.data?.length || 0) / 10);
+  }, [allLandProperties]);
+
+  console.log(allLandProperties, 'allLandProperties=====');
+
+  useEffect(() => {
+    if (allLandProperties?.data?.length > 0) {
+      const markersProperties = allLandProperties.data.map(data => ({
+        id: data.landId,
+        lat: data.latitude,
+        lng: data.longitude,
+        price: toIndianLakhs(data.totalPrice),
+      }));
+      setStateAllLandProperties(markersProperties);
+    }
+  }, [allLandProperties]);
 
   return (
     <div className=" lg:mx-auto lg:max-w-7xl w-full px-4 lg:px-6 py-2 ">
       <div className="flex flex-col lg:flex-row gap-4 w-full justify-between">
-        <section className="flex-1 min-w-fit ">
+        <section className="lg:w-[65%] w-full ">
           <div className="flex md:flex-row flex-col justify-between items-center mb-3">
             <div className="">
               <h1 className="md:text-xl text-2xl font-semibold text-primary">
@@ -208,109 +201,113 @@ const PropertyMapView = () => {
           </div>
 
           <div className="grid gap-6 mb-6">
-            {properties.map(property => (
-              <Card
-                key={property.id}
-                className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
-                onClick={() =>
-                  navigate(
-                    `/premium-property/single-property-view/${property.id}`,
-                  )
-                }
-              >
-                <div className="w-full md:w-1/2">
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-44 md:h-56 2xl:h-52 object-cover rounded-lg"
-                  />
-                </div>
-
-                <div className="flex-1 ">
-                  <div className="flex justify-between">
-                    <div>
-                      <div className="flex items-center gap-1 text-buttontertiary text-sm font-semibold">
-                        <img
-                          src={VerifiedIcon}
-                          alt=" verified-icon"
-                          className="h-5 w-5"
-                        />
-                        <span className=" rounded-full w-2 h-2" />
-                        {property.company}
-                      </div>
-                      <h3 className="text-xs sm:text-base md:text-sm font-semibold mt-2 text-primary ">
-                        {property.title}
-                      </h3>
-                    </div>
-                    <div
-                      onClick={e => handleLike(e, property.id)}
-                      className={`border border-[#d6bbfb] bg-white rounded-lg p-2 h-10 cursor-pointer shadow-lg`}
-                    >
-                      {like[property.id] ? (
-                        <img
-                          src={hearImg}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      ) : (
-                        <img
-                          src={HeartIcon}
-                          alt="heart-icon"
-                          className={`h-auto w-6 `}
-                        />
-                      )}
-                    </div>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              allLandProperties?.data?.map(property => (
+                <Card
+                  key={property.id}
+                  className="flex flex-wrap md:flex-nowrap shadow-sm border border-bSecondary bg-white rounded-xl px-4 py-5 gap-5 cursor-pointer"
+                  onClick={() =>
+                    navigate(
+                      `/premium-property/single-property-view/${property.landId}`,
+                    )
+                  }
+                >
+                  <div className="w-full md:w-[30%]">
+                    <img
+                      src={property.images[0]}
+                      alt={property.landName}
+                      className=" h-44 md:h-44 w-full object-cover rounded-lg"
+                    />
                   </div>
-                  <div className="flex justify-between items-center">
-                    <section>
-                      <div className="flex items-center gap-1 mt-2">
-                        <StarRating
-                          starSize={16}
-                          rating={property.reviews}
-                          className=""
-                        />
-                        <span className="text-tertiary text-sm">
-                          {property.reviews} reviews
-                        </span>
-                      </div>
-                      <div className="mt-4 flex items-center gap-6">
-                        <div className="flex items-center gap-2">
+
+                  <div className="flex-1 ">
+                    <div className="flex justify-between">
+                      <div>
+                        <div className="flex items-center gap-1 text-buttontertiary text-sm font-semibold">
                           <img
-                            src={MarkerPin}
-                            alt="MarkerPin"
-                            className="text-bQuinary"
+                            src={VerifiedIcon}
+                            alt=" verified-icon"
+                            className="h-5 w-5"
                           />
-                          <span className="text-tertiary font-medium text-xs">
-                            {property.location}
+                          <span className=" rounded-full w-2 h-2 text-sm" />
+                          {property.landName}
+                        </div>
+                        <h3 className="text-xs sm:text-sm md:text-sm font-semibold mt-2 text-primary ">
+                          {property.description}
+                        </h3>
+                      </div>
+                      <div
+                        onClick={e => handleLike(e, property.id)}
+                        className={`border border-[#d6bbfb] bg-white rounded-lg p-2 h-8 w-8 cursor-pointer shadow-lg`}
+                      >
+                        {like[property.id] ? (
+                          <img
+                            src={hearImg}
+                            alt="heart-icon"
+                            className={`h-auto w-6 `}
+                          />
+                        ) : (
+                          <img
+                            src={HeartIcon}
+                            alt="heart-icon"
+                            className={`h-auto w-6 `}
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <section>
+                        <div className="flex items-center gap-1 mt-2">
+                          <StarRating
+                            starSize={16}
+                            rating={property.reviews || 4}
+                            className=""
+                          />
+                          <span className="text-tertiary text-sm">
+                            {property.reviews} reviews
                           </span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <img
-                            src={SquareFeetIcon}
-                            alt="squarefeet"
-                            className='"text-bQuinary'
-                          />
-                          <span className="text-tertiary font-medium text-xs">
-                            {property.area}
+                        <div className="mt-4 flex items-center gap-6">
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={MarkerPin}
+                              alt="MarkerPin"
+                              className="text-bQuinary"
+                            />
+                            <span className="text-tertiary font-medium text-xs">
+                              {property.address}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={SquareFeetIcon}
+                              alt="squarefeet"
+                              className='"text-bQuinary'
+                            />
+                            <span className="text-tertiary font-medium text-xs">
+                              {property.areaInSqft || 0}
+                            </span>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section className="-mt-6 flex">
+                        <div className="flex gap-2 items-center">
+                          <span className="text-primary text-sm sm:text-base font-semibold ">
+                            {toIndianLakhs(property.totalPrice)}
+                          </span>
+                          <span className="text-tertiary text-sm sm:text-base">
+                            Price
                           </span>
                         </div>
-                      </div>
-                    </section>
-
-                    <section className="-mt-6 flex">
-                      <div className="flex gap-2 items-center">
-                        <span className="text-primary text-sm sm:text-base font-semibold ">
-                          {property.price}
-                        </span>
-                        <span className="text-tertiary text-sm sm:text-base">
-                          Price
-                        </span>
-                      </div>
-                    </section>
+                      </section>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              ))
+            )}
           </div>
           <div className="flex gap-2 justify-between items-center w-full">
             <Button
@@ -339,12 +336,13 @@ const PropertyMapView = () => {
           </div>
         </section>
 
-        <section className="">
+        <section className="lg:w-[35%] w-full h-screen sticky top-0">
           <GoogleMapComponent
             oneMarker={false}
             mapWidth="100%"
-            className="w-full rounded-md"
-            mapHeight={'118vh'}
+            className="w-full h-full rounded-md"
+            mapHeight="100%"
+            stateAllLandProperties={stateAllLandProperties}
           />
         </section>
       </div>

@@ -9,7 +9,7 @@ import { useQueryClient } from '@tanstack/react-query';
 function SearchBar({ onHandleSubmit }) {
   const [searchInput, setSearchInput] = useState('');
 
-  const { districtId, stateId, mandalId } = useSelector(
+  const { districtId, stateId, mandalId, selectedDate } = useSelector(
     state => state.location,
   );
 
@@ -24,9 +24,10 @@ function SearchBar({ onHandleSubmit }) {
       mandalId,
       keyword: searchInput,
       // isDescending: true,
-      // postedFrom: 'string',
-      // postedTo: 'string',
+      postedFrom: selectedDate?.from,
+      postedTo: selectedDate?.to,
     };
+    console.log(data, 'data');
     onHandleSubmit(data);
   }
 

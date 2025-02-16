@@ -1,3 +1,4 @@
+import { formatDateRange } from '@/utils/helper';
 import { createSlice } from '@reduxjs/toolkit';
 
 const PropertySlice = createSlice({
@@ -7,6 +8,7 @@ const PropertySlice = createSlice({
     districtId: 0,
     mandalId: 0,
     landPropertiesState: [],
+    selectedDate: null,
   },
   reducers: {
     setLocation: (state, action) => {
@@ -21,9 +23,16 @@ const PropertySlice = createSlice({
     setAllLandProperties: (state, action) => {
       state.landPropertiesState = action.payload;
     },
+    seteSelectedDate: (state, action) => {
+      state.selectedDate = formatDateRange(action.payload);
+    },
   },
 });
 
-export const { setLocation, setDistrictId, setAllLandProperties } =
-  PropertySlice.actions;
+export const {
+  setLocation,
+  setDistrictId,
+  setAllLandProperties,
+  seteSelectedDate,
+} = PropertySlice.actions;
 export default PropertySlice.reducer;

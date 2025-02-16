@@ -21,8 +21,11 @@ const PropertyDescription = () => {
     `/Land/GetLandById?id=${landID}`,
     {
       staleTime: 300000, // 5 minutes
+      cacheTime: 600000, // 10 minutes - keeps data in cache longer
     },
   );
+
+  console.log({ propertyDetails });
 
   return (
     <div className="">

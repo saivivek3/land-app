@@ -6,8 +6,14 @@ import Button from '@/components/ui/Button';
 import GoogleIcon from '@/assets/google-icon.svg';
 import { useAuth } from '@/context/authentication/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { usePost } from '@/apis';
 
 const GoogleAuth = ({ mode }) => {
+  const postAuthData = usePost('auth', '/Auth/AuthenticateUser', {
+    onSuccess: data => {
+      console.log(data, 'data');
+    },
+  });
   const [loading, setLoading] = useState(false);
   const { setUser, user } = useAuth();
   const navigate = useNavigate();
@@ -26,7 +32,10 @@ const GoogleAuth = ({ mode }) => {
 
         // Here you would typically make different API calls based on mode
         if (mode === 'signup') {
-          navigate('/create-property');
+          await postAuthData.mutateAsync({
+            provider: 'Google',
+            accessToken: tokenResponse.access_token,
+          });
         } else {
           navigate('/create-property');
           console.log('Signing in with Google');

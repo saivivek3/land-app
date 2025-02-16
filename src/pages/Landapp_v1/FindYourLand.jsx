@@ -112,23 +112,23 @@ function FindYourLand() {
   const { districtId, stateId, mandalId } = useSelector(
     state => state.location,
   );
-  const createSearchData = usePost('allSearch', '/Search/search');
+  const createSearchData = usePost('allSearch', '/Search/search', {
+    onSuccess: data => {
+      dispatch(setAllLandProperties(data.data));
+      navigate(
+        `/all-lands?stateId=${stateId}&districtId=${districtId}&mandalId=${mandalId}`,
+      );
+    },
+  });
   async function handleSubmit() {
     console.log('handlesubmit was called');
     if (districtId || stateId || mandalId) {
       try {
-        const result = await createSearchData.mutateAsync({
+        await createSearchData.mutateAsync({
           stateId,
           districtId,
           mandalId,
         });
-        console.log('result', result);
-        if (result?.data) {
-          console.log('Dispatching data:', result.data);
-          dispatch(setAllLandProperties(result.data));
-          console.log('State after dispatch:', store.getState());
-          navigate('/all-lands'); // Add store import
-        }
       } catch (error) {
         console.error('Error:', error);
       }

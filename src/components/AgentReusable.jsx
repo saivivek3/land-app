@@ -5,6 +5,7 @@ import WhatsApp from '@/assets/whatsapp.svg';
 import { useGet } from '@/apis';
 import { useSelector } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
+import { useSearchParams } from 'react-router-dom';
 
 function AgentReusable({ agents }) {
   const { data: allRegionalPatners } = useGet(
@@ -15,18 +16,31 @@ function AgentReusable({ agents }) {
     },
   );
 
+  const { data: allDistricts } = useGet(
+    'allDistricts',
+    '/GeoLocation/GetAllDistricts',
+    {
+      staleTime: 300000, // 5 minutes
+      cacheTime: 600000,
+    },
+  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsDistrictId = searchParams.get('districtId');
+  const paramsStateId = searchParams.get('stateId');
+
   const { data: allStates } = useGet('allStates', '/GeoLocation/GetAllStates', {
     staleTime: 300000, // 5 minutes
   });
-
   const { districtId, stateId } = useSelector(state => state.location);
-  console.log('districtId', districtId);
-  const queryClient = useQueryClient();
-  const allDistricts = queryClient.getQueryData(['allDistricts']);
+
   const districtName = allDistricts?.find(
-    district => district.id === districtId,
+    district =>
+      district.id === (Number(paramsDistrictId) || Number(districtId)),
   )?.name;
-  const stateName = allStates?.find(state => state.id === stateId)?.name;
+
+  const stateName = allStates?.find(
+    state => state.id === stateId || Number(paramsStateId),
+  )?.name;
 
   return (
     <div className="mx-4 md:mx-20">
