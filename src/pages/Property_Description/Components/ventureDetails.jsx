@@ -70,17 +70,22 @@ const VentureDetails = ({
       <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col sm:flex-row md:flex-col gap-4 mt-6 md:mt-0 md:ml-24">
         <div className="border p-4 flex flex-col justify-center items-center sm:items-start gap-2 rounded-md w-full">
           <p className="text-gray-500 text-sm sm:text-base">Price</p>
+<<<<<<< Updated upstream
           <p className="font-bold text-lg sm:text-xl">
             {toIndianLakhs(totalPrice)}
           </p>
           <Button className="bg-black text-white py-2 px-6 w-full rounded-md">
+=======
+          <p className="font-bold text-lg sm:text-xl">70.6 Lakhs</p>
+          <Button className="bg-black text-white py-2 px-6 w-full rounded-md hover:bg-black/70  transition-all ">
+>>>>>>> Stashed changes
             Quotation
           </Button>
         </div>
         <div className="border p-4 flex flex-col justify-center items-center sm:items-start gap-2 rounded-md w-full">
           <p className="text-gray-500 text-sm sm:text-base">Land Owner</p>
           <p className="font-bold text-lg sm:text-xl">Mr. Sandeep</p>
-          <Button className="bg-black text-white py-2 px-6 w-full rounded-md">
+          <Button className="bg-black text-white py-2 px-6 w-full rounded-md hover:bg-black/70  transition-all">
             Contact Owner
           </Button>
         </div>

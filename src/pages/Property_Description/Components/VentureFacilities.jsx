@@ -13,7 +13,7 @@ const VentureFacilities = () => {
     <div className="flex flex-col md:flex-col lg:flex-row justify-center items-center md:gap-10 gap-16 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
       {/* Content Section */}
       <div className="w-full lg:w-2/3 h-auto md:mt-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 py-6 px-4 rounded-md bg-gray-100 gap-4 border border-gray-400 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 py-6 px-4 rounded-md bg-gray-100 gap-4 border border-gray-400 p-4">
           {propertydetailsOne.map((box, index) => (
             <Box
               key={index}

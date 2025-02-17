@@ -24,7 +24,7 @@ function Navbar({
 
   return (
     <nav
-      className="flex items-center justify-between bg-white z-50 relative w-full text-black 
+      className="flex items-center justify-between bg-white z-50 relative w-full text-black
       mt-4 md:mt-0 px-4 sm:px-6 md:px-20 md:py-3 lg:py-0 lg:px-16 xl:px-20 2xl:px-24 md:shadow-lg"
     >
       {/* Left Section - Logo and Menu */}

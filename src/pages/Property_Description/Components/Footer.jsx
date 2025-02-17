@@ -12,19 +12,36 @@ const Footer = () => {
           <nav className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-10">
             {/* Services Section */}
             <div>
-              <div className="font-semibold mb-2 text-gray-500">Services</div>
-              <div>Hand Holding</div>
-              <div>Land Monitoring</div>
-              <div>Legal Verification</div>
-              <div>Get your land Surveyed</div>
+              <div className="font-semibold mb-2 text-gray-500 pb-2 transition-all duration-500">
+                Services
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-7
+              dc00">
+                Hand Holding
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Land Monitoring
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Legal Verification
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Get your land Surveyed
+              </div>
             </div>
 
             {/* Company Section */}
             <div>
               <div className="font-semibold mb-2 text-gray-500">Company</div>
-              <div>Terms & Condition</div>
-              <div>Privacy Policy</div>
-              <div>Blog</div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Terms & Condition
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Privacy Policy
+              </div>
+              <div className="hover:underline cursor-pointer transition-all duration-300">
+                Blog
+              </div>
             </div>
 
             {/* Contact Section */}
