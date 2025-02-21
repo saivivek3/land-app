@@ -29,17 +29,19 @@ function AgentReusable({ agents }) {
   const paramsStateId = searchParams.get('stateId');
 
   const { data: allStates } = useGet('allStates', '/GeoLocation/GetAllStates', {
-    staleTime: 300000, // 5 minutes
+    // 5 minutes
   });
   const { districtId, stateId } = useSelector(state => state.location);
 
+  console.log({ districtId, stateId },"in agents");
+
   const districtName = allDistricts?.find(
     district =>
-      district.id === (Number(paramsDistrictId) || Number(districtId)),
+      district.id === (districtId||Number(paramsDistrictId) ),
   )?.name;
 
   const stateName = allStates?.find(
-    state => state.id === stateId || Number(paramsStateId),
+    state => state.id === (stateId || Number(paramsStateId)),
   )?.name;
 
   return (

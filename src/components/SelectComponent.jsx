@@ -13,6 +13,7 @@ function SelectComponent({
   className,
   options,
   inputvalue,
+
   setValue = () => {},
   name,
 }) {

@@ -17,8 +17,13 @@ const containerStyle = {
   height: '400px',
 };
 
-const LocationMap = ({ stepIndex }) => {
-  const { register, handleSubmit } = useFormHook();
+const LocationMap = ({
+  stepIndex,
+  control,
+  handleSubmit,
+  setValue,
+  onSubmit,
+}) => {
   // Reference to store the autocomplete instance
   const [searchBox, setSearchBox] = useState(null);
   const [location, setLocation] = useState({
@@ -29,9 +34,8 @@ const LocationMap = ({ stepIndex }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const {
-    handleSteps,
+
     handleStepsBack,
-    handleStepsIncrease,
     handleStepsDecrease,
   } = useContext(PropertyDetailsContext);
   // Categories with icons and active state
@@ -55,6 +59,11 @@ const LocationMap = ({ stepIndex }) => {
       setError('Geolocation is not supported by your browser.');
     }
   }, []); // Empty dependency array ensures this runs only once
+
+  useEffect(() => {
+    setValue('latitude', location.lat);
+    setValue('longitude', location.lng);
+  }, [location.lat, location.lng]);
 
   const handleDragEnd = event => {
     setLocation({
@@ -93,10 +102,6 @@ const LocationMap = ({ stepIndex }) => {
       />
     </div>
   );
-
-  function onSubmit(data) {
-    console.log(data);
-  }
 
   const onLoad = ref => {
     setSearchBox(ref);
@@ -170,7 +175,7 @@ const LocationMap = ({ stepIndex }) => {
           </div>
         </div>
 
-        <section className="shadow-sm rounded-lg">
+        <section className="shadow-sm rounded-lg w-full">
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={{ lat: location.lat, lng: location.lng }}
@@ -180,39 +185,29 @@ const LocationMap = ({ stepIndex }) => {
             <CustomMarkerComponent />
           </GoogleMap>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="grid  grid-cols-1 sm:grid-cols-2 gap-2 mt-4 px-2"
-          >
-            <Input
-              type="text"
-              placeholder="0.5"
-              labelName="Location(Longitude)"
-              name="longitude"
-              register={register}
-              className="max-w-[300px]"
-              value={location.lng}
-            />
+          <Input
+            type="text"
+            labelName="Location(Longitude)"
+            name="longitude"
+            control={control}
+            defaultValue={location.lat}
+          />
 
-            <Input
-              type="text"
-              placeholder="0.2"
-              labelName="Location(Latitude)"
-              name="latitude"
-              register={register}
-              className="max-w-[300px]"
-              value={location.lat}
-            />
-            <Button
-              className="bg-primary text-white shadow-sm hover:bg-primary/50"
-              onClick={() => {
-                handleSteps(stepIndex);
-                handleStepsIncrease(stepIndex);
-              }}
-            >
-              Continue
-            </Button>
-          </form>
+          <Input
+            type="text"
+            labelName="Location(Latitude)"
+            name="latitude"
+            control={control}
+            className="max-w-[300px]"
+          />
+          <Button
+            className="bg-primary text-white shadow-sm hover:bg-primary/50"
+            onClick={() => {
+              handleSubmit(onSubmit);
+            }}
+          >
+            Continue
+          </Button>
         </section>
       </div>
     </section>

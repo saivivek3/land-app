@@ -10,7 +10,7 @@ import SkeletonCard from '@/components/SkeletonCard';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllLandProperties } from '@/features/property/propertySlice';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function PropertyListing() {
@@ -23,11 +23,16 @@ function PropertyListing() {
     staleTime: 300000, // 5 minutes
     cacheTime: 600000, // 10 minutes - keeps data in cache longer
   });
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsStateId = searchParams.get('stateId');
+  const paramsDistrictId = searchParams.get('districtId');
+  const paramsMandalId = searchParams.get('mandalId');
 
-  console.log(allLandProperties, 'allLandProperties');
+  const { districtId, landPropertiesState, stateId, mandalId } = useSelector(
+    state => state.location,
+  );
 
-  const { districtId } = useSelector(state => state.location);
-  const { landPropertiesState } = useSelector(state => state.location);
   const { data: allDistricts } = useGet(
     'allDistricts',
     '/GeoLocation/GetAllDistricts',
@@ -36,12 +41,11 @@ function PropertyListing() {
       cacheTime: 600000,
     },
   );
-  const [searchParams, setSearchParams] = useSearchParams();
-  const paramsDistrictId = searchParams.get('districtId');
 
   const districtName = allDistricts?.find(
-    district => district.id === districtId || Number(paramsDistrictId),
+    district => district.id === (districtId || Number(paramsDistrictId)),
   )?.name;
+
   const dispatch = useDispatch();
   const createSearchData = usePost('allSearch', '/Search/search', {
     // Add onSuccess handler
@@ -49,22 +53,21 @@ function PropertyListing() {
       dispatch(setAllLandProperties(data.data));
     },
   });
-  console.log(allLandProperties, 'allLandProperties');
-  console.log(landPropertiesState, 'landPropertiesState');
 
   useEffect(() => {
-    if (!landPropertiesState || landPropertiesState.length === 0) {
+    if (paramsStateId || paramsDistrictId || paramsMandalId) {
       dispatch(
         setAllLandProperties(
           allLandProperties?.data?.filter(
             land =>
-              land.districtId === districtId ||
-              land.districtId === Number(paramsDistrictId),
+              land.districtId === (districtId || Number(paramsDistrictId)),
           ),
         ),
       );
+    } else {
+      dispatch(setAllLandProperties(allLandProperties?.data));
     }
-  }, [allLandProperties]);
+  }, [allLandProperties, location]);
 
   async function handleSubmit(data) {
     try {
@@ -94,7 +97,16 @@ function PropertyListing() {
         <p className="text-center text-red-500">Error fetching data</p>
       ) : (
         <LandDetails
-          title={`${landPropertiesState?.length || 0} Lands - ${districtName} Region  `}
+          title={
+            <p>
+              {paramsMandalId || paramsStateId || paramsDistrictId
+                ? landPropertiesState?.length +
+                  ' Lands -' +
+                  districtName +
+                  '  Region'
+                : 'All Lands'}
+            </p>
+          }
           landsData={landPropertiesState || []}
           link="/property-description"
         />

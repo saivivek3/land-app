@@ -4,9 +4,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const PropertySlice = createSlice({
   name: 'property',
   initialState: {
-    stateId: 0,
-    districtId: 0,
-    mandalId: 0,
+    stateId: null,
+    districtId: null,
+    mandalId: null,
     landPropertiesState: [],
     selectedDate: null,
     phoneNumber: '',

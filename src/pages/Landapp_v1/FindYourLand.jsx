@@ -69,7 +69,6 @@ function FindYourLand() {
     name: 'district',
   }));
   const filterDistrictByStateID = () => {
-    console.log(inputvalue.state.stateID, 'inputvalue.state.stateID');
     if (inputvalue.state.stateID) {
       const filteredDistricts = formatAllDistricts
         .filter(district => district.stateID === inputvalue.state.stateID)
@@ -121,7 +120,6 @@ function FindYourLand() {
     },
   });
   async function handleSubmit() {
-    console.log('handlesubmit was called');
     if (districtId || stateId || mandalId) {
       try {
         await createSearchData.mutateAsync({

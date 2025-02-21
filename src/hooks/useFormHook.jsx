@@ -5,9 +5,10 @@ function useFormHook() {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm();
-  return { register, handleSubmit, watch, errors };
+  return { register, handleSubmit, watch, errors, control };
 }
 
 export default useFormHook;
